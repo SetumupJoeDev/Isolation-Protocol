@@ -17,15 +17,19 @@ public class MouseAiming : MonoBehaviour
     void Update()
     {
         
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 
-        Debug.DrawRay(transform.position, mousePos * 1000 , Color.red );
+        Vector3 direction = mousePos - transform.position;
+
+        Vector3 laserTarget = transform.position + ( direction.normalized * 1000 );
+
+        Debug.DrawRay(transform.position, laserTarget , Color.red );
 
         if( Input.GetMouseButtonDown( 0 ))
         {
             projectile newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<projectile>();
 
-            newBullet.velocity =  Camera.main.ScreenToWorldPoint( Input.mousePosition ) - transform.position ;
+            newBullet.velocity =  mousePos - transform.position ;
 
         }
 
