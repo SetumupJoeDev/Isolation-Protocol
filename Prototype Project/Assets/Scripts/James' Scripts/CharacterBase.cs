@@ -28,21 +28,21 @@ public class CharacterBase : MonoBehaviour
     protected virtual void Update( )
     {
 
-        //m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
+        m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
 
-        //m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
+        m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
     }
 
 
     protected virtual void FixedUpdate()
     {
-        //Move( );
+        Move( );
     }
 
-    //protected virtual void Move( )
-    //{
-    //    m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.fixedDeltaTime;
-    //}
+    protected virtual void Move( )
+    {
+        m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.fixedDeltaTime;
+    }
 
 }
