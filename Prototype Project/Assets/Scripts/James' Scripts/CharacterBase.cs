@@ -28,9 +28,9 @@ public class CharacterBase : MonoBehaviour
     protected virtual void Update( )
     {
 
-        m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
+        //m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
 
-        m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
+        //m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
     }
 
