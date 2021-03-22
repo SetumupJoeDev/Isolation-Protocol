@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDemo : CharacterBase
 {
+    [SerializeField]
     protected int health = 3;
 
     // Update is called once per frame
@@ -17,9 +18,9 @@ public class EnemyDemo : CharacterBase
         }
     }
 
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Projectile"))
         {
             health--;
         }
