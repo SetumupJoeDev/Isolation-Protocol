@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
@@ -74,13 +74,25 @@ public class WeaponBase : MonoBehaviour
     [Tooltip("The current amount of ammo for this weapon the player is carrying.")]
     protected int m_currentCarriedAmmo;
 
+    [SerializeField]
+    [Tooltip("The UI element for displaying the weapon's current ammo.")]
+    protected Text m_magazineUIText;
+
+    [SerializeField]
+    [Tooltip("The UI element for displaying the weapon's total ammo.")]
+    protected Text m_totalAmmoText;
+
     #endregion
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        
 
+        m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
+
+        m_totalAmmoText.text = m_maxAmmoCapacity.ToString( );
+
+        m_canWeaponFire = true;
 
     }
 
@@ -105,17 +117,42 @@ public class WeaponBase : MonoBehaviour
 
     }
 
+    public IEnumerator LaunchProjectiles( )
+    {
+        
+        for ( int i = 0; i < m_projectilesPerShot; i++ )
+        {
+            //Instantiates a projectile at the barrel of the weapon 
+            projectile newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<projectile>();
+
+            //Sets the projectiles velocity to the aiming direction of the weapon
+            newBullet.velocity = m_aimingDirection;
+
+            m_currentMagAmmo--;
+
+            m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
+
+            //Play's the weapon's firing sound
+            m_fireSound.Play( );
+
+            //Adds a short delay between firing each projectile, so they aren't all fired at once
+            yield return new WaitForSeconds( m_fireInterval );
+
+        }
+
+        m_canWeaponFire = true;
+
+    }
+
     public virtual void FireWeapon( )
     {
+        if ( m_canWeaponFire && m_currentMagAmmo - m_projectilesPerShot >= 0 )
+        {
+            StartCoroutine( LaunchProjectiles( ) );
 
-        //Instantiates a projectile at the barrel of the weapon 
-        projectile newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<projectile>();
+            m_canWeaponFire = false;
 
-        //Sets the projectiles velocity to the aiming direction of the weapon
-        newBullet.velocity = m_aimingDirection;
-
-        //Play's the weapon's firing sound
-        m_fireSound.Play( );
+        }
 
     }
 
@@ -130,6 +167,10 @@ public class WeaponBase : MonoBehaviour
 
         //Plays the weapon's reload sound
         m_reloadSound.Play( );
+
+        m_totalAmmoText.text = m_currentCarriedAmmo.ToString( );
+
+        m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
 
     }
 

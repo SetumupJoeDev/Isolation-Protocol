@@ -12,8 +12,7 @@ public class projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2.5f;
-
+        
         StartCoroutine( WaitToDestroy( ) );
 
     }

@@ -25,5 +25,10 @@ public class PlayerDemo : CharacterBase
             m_currentWeapon.FireWeapon( );
         }
 
+        if( Input.GetKeyDown(KeyCode.R) )
+        {
+            m_currentWeapon.ReloadWeapon( );
+        }
+
     }
 }
