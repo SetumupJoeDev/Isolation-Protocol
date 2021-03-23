@@ -88,9 +88,7 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Start()
     {
 
-        m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
-
-        m_totalAmmoText.text = m_maxAmmoCapacity.ToString( );
+        UpdateUIElements( );
 
         m_canWeaponFire = true;
 
@@ -130,7 +128,7 @@ public class WeaponBase : MonoBehaviour
 
             m_currentMagAmmo--;
 
-            m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
+            UpdateUIElements( );
 
             //Play's the weapon's firing sound
             m_fireSound.Play( );
@@ -159,19 +157,43 @@ public class WeaponBase : MonoBehaviour
     public virtual void ReloadWeapon( )
     {
 
-        //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
-        m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
+        if ( m_currentMagAmmo < m_magCapacity )
+        {
 
-        //Sets the current magazine ammo to its capacity
-        m_currentMagAmmo = m_magCapacity;
+            if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
+            {
 
-        //Plays the weapon's reload sound
-        m_reloadSound.Play( );
+                //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
+                m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
 
+                //Sets the current magazine ammo to its capacity
+                m_currentMagAmmo = m_magCapacity;
+
+            }
+            else
+            {
+
+                m_currentMagAmmo += m_currentCarriedAmmo;
+
+                m_currentCarriedAmmo = 0;
+            }
+
+            //Plays the weapon's reload sound
+            m_reloadSound.Play( );
+
+            UpdateUIElements( );
+
+        }
+
+    }
+
+
+    protected virtual void UpdateUIElements( )
+    {
         m_totalAmmoText.text = m_currentCarriedAmmo.ToString( );
 
         m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
-
     }
+
 
 }
