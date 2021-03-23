@@ -31464,6 +31464,7 @@ GameObject:
   - component: {fileID: 1421113734}
   - component: {fileID: 1421113735}
   - component: {fileID: 1421113736}
+  - component: {fileID: 1421113737}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -31573,6 +31574,8 @@ MonoBehaviour:
   m_moveSpeed: 150
   m_characterRigidBody: {fileID: 1421113734}
   m_currentWeapon: {fileID: 977953197}
+  m_animator: {fileID: 1421113737}
+  m_direction: {x: 0, y: 0, z: 0}
 --- !u!61 &1421113736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31599,6 +31602,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1421113737
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421113731}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35f29be93f91317438a26e02dc26ea01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1581012619
 GameObject:
   m_ObjectHideFlags: 0
