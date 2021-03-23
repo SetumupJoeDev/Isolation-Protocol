@@ -68,11 +68,11 @@ public class WeaponBase : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The maximum amount of ammo that can be carried for this weapon.")]
-    protected int m_maxAmmoCapacity;
+    public int m_maxAmmoCapacity;
 
     [SerializeField]
     [Tooltip("The current amount of ammo for this weapon the player is carrying.")]
-    protected int m_currentCarriedAmmo;
+    public int m_currentCarriedAmmo;
 
     [SerializeField]
     [Tooltip("The UI element for displaying the weapon's current ammo.")]
@@ -188,7 +188,7 @@ public class WeaponBase : MonoBehaviour
     }
 
 
-    protected virtual void UpdateUIElements( )
+    public virtual void UpdateUIElements( )
     {
         m_totalAmmoText.text = m_currentCarriedAmmo.ToString( );
 

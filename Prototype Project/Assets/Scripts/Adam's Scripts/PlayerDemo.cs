@@ -80,4 +80,14 @@ public class PlayerDemo : CharacterBase
 
         m_animator.SetBool("isWalking", false);
     }
+
+    public void ReplenishAmmo( )
+    {
+
+        m_currentWeapon.m_currentCarriedAmmo = m_currentWeapon.m_maxAmmoCapacity;
+
+        m_currentWeapon.UpdateUIElements( );
+
+    }
+
 }
