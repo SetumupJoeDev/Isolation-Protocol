@@ -26,6 +26,11 @@ public class projectile : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D( Collider2D collision )
+    {
+        Destroy( gameObject );
+    }
+
     // Update is called once per frame
     void Update()
     {

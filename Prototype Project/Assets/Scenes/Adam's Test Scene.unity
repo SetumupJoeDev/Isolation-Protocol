@@ -31958,8 +31958,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977953195}
-  - component: {fileID: 977953197}
   - component: {fileID: 977953196}
+  - component: {fileID: 977953197}
+  - component: {fileID: 977953198}
   m_Layer: 0
   m_Name: TestWeapon
   m_TagString: Untagged
@@ -31977,7 +31978,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.31, y: -0.286, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1988854634}
   m_Father: {fileID: 1421113733}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32019,7 +32021,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f3271328c240de145ac3dc764858f95d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -32043,18 +32045,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a53309ddfb5f24184fae77c341fc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_weaponFireMode: 0
   m_fireInterval: 0
-  m_projectilePrefab: {fileID: 0}
-  m_projectilesPerShot: 0
-  m_fireSound: {fileID: 0}
+  m_projectilePrefab: {fileID: 326638196393901105, guid: b709ba4c46b4aa04191fd26b91375125,
+    type: 3}
+  m_projectilesPerShot: 1
+  m_fireSound: {fileID: 977953198}
   m_canWeaponFire: 0
-  m_barrelTransform: {fileID: 0}
+  m_barrelTransform: {fileID: 1988854634}
+  m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 0
   m_reloadSound: {fileID: 0}
   m_magCapacity: 0
   m_currentMagAmmo: 0
   m_maxAmmoCapacity: 0
   m_currentCarriedAmmo: 0
+--- !u!82 &977953198
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977953194}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d058c0f3284c4654ab67a747f6bbd084, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &996948697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 581887646300684927, guid: b18e1885a8ad09f47a5c5b5bcb170b02,
@@ -32782,7 +32883,6 @@ GameObject:
   - component: {fileID: 1421113733}
   - component: {fileID: 1421113732}
   - component: {fileID: 1421113734}
-  - component: {fileID: 1421113736}
   - component: {fileID: 1421113735}
   m_Layer: 0
   m_Name: Player
@@ -32892,20 +32992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 100
   m_characterRigidBody: {fileID: 1421113734}
---- !u!114 &1421113736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421113731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c59da61aa7293ea4fa27431efe324da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 326638196393901105, guid: b709ba4c46b4aa04191fd26b91375125,
-    type: 3}
+  m_currentWeapon: {fileID: 977953197}
 --- !u!4 &1427828759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 581887646300684927, guid: b18e1885a8ad09f47a5c5b5bcb170b02,
@@ -37948,6 +38035,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2065646252}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1988854633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988854634}
+  m_Layer: 0
+  m_Name: BarrelPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988854634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988854633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 977953195}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2008039678
 PrefabInstance:
   m_ObjectHideFlags: 0

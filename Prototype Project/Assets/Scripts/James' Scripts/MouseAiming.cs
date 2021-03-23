@@ -25,13 +25,13 @@ public class MouseAiming : MonoBehaviour
 
         Debug.DrawRay(transform.position, laserTarget , Color.red );
 
-        if( Input.GetMouseButtonDown( 0 ))
-        {
-            projectile newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<projectile>();
+        //if( Input.GetMouseButtonDown( 0 ))
+        //{
+        //    projectile newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<projectile>();
 
-            newBullet.velocity =  mousePos - transform.position ;
+        //    newBullet.velocity =  mousePos - transform.position ;
 
-        }
+        //}
 
     }
 }
