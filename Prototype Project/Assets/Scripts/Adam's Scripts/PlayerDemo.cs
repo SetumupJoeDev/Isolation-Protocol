@@ -31,4 +31,14 @@ public class PlayerDemo : CharacterBase
         }
 
     }
+
+    public void ReplenishAmmo( )
+    {
+
+        m_currentWeapon.m_currentCarriedAmmo = m_currentWeapon.m_maxAmmoCapacity;
+
+        m_currentWeapon.UpdateUIElements( );
+
+    }
+
 }
