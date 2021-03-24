@@ -16,7 +16,7 @@ public class AmmoPickup : CollectableBase
         
     }
 
-    public override void GetCollected( PlayerDemo player )
+    public override void GetCollected( PlayerController player )
     {
         player.ReplenishAmmo( );
     }

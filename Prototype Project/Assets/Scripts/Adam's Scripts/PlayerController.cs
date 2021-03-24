@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDemo : CharacterBase
+public class PlayerController : CharacterBase
 {
 
     [Header("Weapons")]

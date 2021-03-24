@@ -25,14 +25,14 @@ public class CollectableBase : MonoBehaviour
     {
         if ( collision.gameObject.tag == "Player" )
         {
-            PlayerDemo player = collision.gameObject.GetComponent<PlayerDemo>();
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             GetCollected( player );
             AudioSource.PlayClipAtPoint( m_collectedSound , transform.position );
             Destroy( gameObject );
         }
     }
 
-    public virtual void GetCollected( PlayerDemo player )
+    public virtual void GetCollected( PlayerController player )
     {
         Destroy( gameObject );
     }
