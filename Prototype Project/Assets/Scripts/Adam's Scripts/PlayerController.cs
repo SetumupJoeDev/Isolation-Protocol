@@ -7,14 +7,30 @@ public class PlayerController : CharacterBase
 
     [Header("Weapons")]
     [Tooltip("The weapon held by the player.")]
-    public WeaponBase m_currentWeapon;
+    public WeaponBase    m_currentWeapon;
 
     [Header("Animation")]
-    public Animator m_animator;
-    protected int m_currentLayerIndex = 1;
+    public Animator      m_animator;
+    protected int        m_currentLayerIndex;
 
+    [Header("Dodge")]
     [SerializeField]
-    protected Vector3 m_direction;
+    protected Vector3    m_mouseDirection;
+    [SerializeField]
+    protected float      m_dodgeSpeed;
+    protected float      m_dodgeTime;
+    [SerializeField]
+    protected float      m_startDodgeTime;
+    protected bool       m_canDodge;
+    protected bool       m_isDodging;
+
+    protected override void Start()
+    {
+        m_currentLayerIndex = 1;
+        m_dodgeTime = m_startDodgeTime;
+        m_canDodge = true;
+        m_isDodging = false;
+    }
 
     // Update is called once per frame
     protected override void Update()
@@ -23,7 +39,14 @@ public class PlayerController : CharacterBase
 
         m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
-        if( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        m_mouseDirection = mousePos - transform.position;
+
+        Dodge();
+
+        if ( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
         {
             m_currentWeapon.FireWeapon( );
         }
@@ -37,9 +60,6 @@ public class PlayerController : CharacterBase
             m_currentWeapon.ReloadWeapon( );
         }
 
-        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //m_direction = mousePos - transform.position;
 
         if(m_directionalVelocity.x > 0)
         {
@@ -63,7 +83,14 @@ public class PlayerController : CharacterBase
 
     protected override void FixedUpdate()
     {
-        Move();
+        if (m_isDodging)
+        {
+            m_characterRigidBody.velocity = m_mouseDirection.normalized * m_dodgeSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Move();
+        }
     }
 
     public void ReplenishAmmo( )
@@ -85,4 +112,36 @@ public class PlayerController : CharacterBase
         m_currentLayerIndex = layerIndex;
     }
 
+    protected void Dodge()
+    {
+        if (m_canDodge)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                m_isDodging = true;
+                m_canDodge = false;
+            }
+        }
+
+        if (m_isDodging)
+        {
+            if (m_dodgeTime <= 0)
+            {
+                StartCoroutine(DodgeCooldown());
+                m_isDodging = false;
+                m_dodgeTime = m_startDodgeTime;
+                m_characterRigidBody.velocity = Vector2.zero;
+            }
+            else
+            {
+                m_dodgeTime -= Time.deltaTime;
+            }
+        }
+    }
+
+    IEnumerator DodgeCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_canDodge = true;
+    }
 }
