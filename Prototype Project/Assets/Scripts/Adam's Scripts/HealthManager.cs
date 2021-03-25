@@ -28,4 +28,9 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth = currentHealth - damage;
     }
+
+    public void Heal(float healAmount)
+    {
+        currentHealth = currentHealth + healAmount;
+    }
 }
