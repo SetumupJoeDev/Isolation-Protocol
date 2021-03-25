@@ -31540,10 +31540,10 @@ GameObject:
   - component: {fileID: 1421113733}
   - component: {fileID: 1421113732}
   - component: {fileID: 1421113735}
+  - component: {fileID: 1421113738}
   - component: {fileID: 1421113734}
   - component: {fileID: 1421113736}
   - component: {fileID: 1421113737}
-  - component: {fileID: 1421113738}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -31636,7 +31636,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1421113735
 MonoBehaviour:
@@ -31656,7 +31656,9 @@ MonoBehaviour:
   m_healthManager: {fileID: 0}
   m_currentWeapon: {fileID: 977953197}
   m_animator: {fileID: 1421113737}
-  m_direction: {x: 0, y: 0, z: 0}
+  m_mouseDirection: {x: 0, y: 0, z: 0}
+  m_dodgeSpeed: 200
+  m_startDodgeTime: 0.1
 --- !u!61 &1421113736
 BoxCollider2D:
   m_ObjectHideFlags: 0

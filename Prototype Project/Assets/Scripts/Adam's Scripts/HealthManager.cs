@@ -27,11 +27,11 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
     }
 
     public void Heal(float healAmount)
     {
-        currentHealth = currentHealth + healAmount;
+        currentHealth += healAmount;
     }
 }
