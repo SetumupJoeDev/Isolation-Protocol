@@ -39,45 +39,25 @@ public class PlayerController : CharacterBase
             m_currentWeapon.ReloadWeapon( );
         }
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        m_direction = mousePos - transform.position;
+        //m_direction = mousePos - transform.position;
 
         if(m_directionalVelocity.x > 0)
         {
-            m_animator.SetBool("isWalking", true);
-
-            m_animator.SetLayerWeight(m_currentLayerIndex, 0);
-            m_animator.SetLayerWeight(4, 1);
-
-            m_currentLayerIndex = 4;
+            Animate(4);
         }
         if (m_directionalVelocity.x < 0)
         {
-            m_animator.SetBool("isWalking", true);
-
-            m_animator.SetLayerWeight(m_currentLayerIndex, 0);
-            m_animator.SetLayerWeight(3, 1);
-
-            m_currentLayerIndex = 3;
+            Animate(3);
         }
         if (m_directionalVelocity.y < 0)
         {
-            m_animator.SetBool("isWalking", true);
-
-            m_animator.SetLayerWeight(m_currentLayerIndex, 0);
-            m_animator.SetLayerWeight(2, 1);
-
-            m_currentLayerIndex = 2;
+            Animate(2);
         }
         if (m_directionalVelocity.y > 0)
         {
-            m_animator.SetBool("isWalking", true);
-
-            m_animator.SetLayerWeight(m_currentLayerIndex, 0);
-            m_animator.SetLayerWeight(1, 1);
-
-            m_currentLayerIndex = 1;
+            Animate(1);
         }
 
         m_animator.SetBool("isWalking", false);
@@ -90,6 +70,16 @@ public class PlayerController : CharacterBase
 
         m_currentWeapon.UpdateUIElements( );
 
+    }
+
+    protected void Animate(int layerIndex)
+    {
+        m_animator.SetBool("isWalking", true);
+
+        m_animator.SetLayerWeight(m_currentLayerIndex, 0);
+        m_animator.SetLayerWeight(layerIndex, 1);
+
+        m_currentLayerIndex = layerIndex;
     }
 
 }
