@@ -34,6 +34,33 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
+    #region Chasing
+
+    [Header("Chasing")]
+    [SerializeField]
+    [Tooltip("The closest distance to the player to which the enemy will move.")]
+    protected float m_chaseProximity;
+
+    #endregion
+
+    #region Attacking
+
+    [Header("Attacking")]
+
+    [SerializeField]
+    [Tooltip("The attack range of the enemy.")]
+    protected float m_attackRange;
+
+    [SerializeField]
+    [Tooltip("The amount of damahe this enemy deals on each attack.")]
+    protected float m_attackDamage;
+
+    [SerializeField]
+    [Tooltip("The interval between this enemy's attacks.")]
+    protected float m_attackInterval;
+
+    #endregion
+
     #region EnemyStates
 
     public enum enemyStates { idle, chasing, attacking };
@@ -69,7 +96,7 @@ public class EnemyBase : CharacterBase
                 break;
             case ( enemyStates.chasing ):
                 {
-                    ChaseTarget( );
+                    
                 }
                 break;
             case ( enemyStates.attacking ):
@@ -78,7 +105,14 @@ public class EnemyBase : CharacterBase
                 }
                 break;
         }
+    }
 
+    protected override void FixedUpdate( )
+    {
+        if( m_currentState == enemyStates.chasing )
+        {
+            ChaseTarget( );
+        }
     }
 
     protected virtual void ChaseTarget( )
@@ -86,7 +120,26 @@ public class EnemyBase : CharacterBase
 
         m_directionalVelocity = m_currentTarget.transform.position - transform.position;
 
-        m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.deltaTime;
+        float distanceToTarget = Vector3.Distance( transform.position , m_currentTarget.transform.position );
+
+        if ( distanceToTarget > m_chaseProximity )
+        {
+            m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.deltaTime;
+        }
+        else if( distanceToTarget <= m_chaseProximity )
+        {
+            m_currentState = enemyStates.attacking;
+            m_characterRigidBody.velocity = Vector3.zero;
+            m_characterRigidBody.angularVelocity = 0;
+        }
+
+        if ( distanceToTarget > m_detectionRange * 2 )
+        {
+            m_currentState = enemyStates.idle;
+            m_searchingForTargets = false;
+            m_characterRigidBody.velocity = Vector3.zero;
+            m_characterRigidBody.angularVelocity = 0;
+        }
 
         Debug.DrawRay( transform.position , m_directionalVelocity );
 
