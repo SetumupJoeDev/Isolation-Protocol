@@ -23,8 +23,6 @@ public class PlayerController : CharacterBase
 
         m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
-        Move();
-
         if( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
         {
             m_currentWeapon.FireWeapon( );
@@ -60,7 +58,12 @@ public class PlayerController : CharacterBase
             Animate(1);
         }
 
-        m_animator.SetBool("isWalking", false);
+        //m_animator.SetBool("isWalking", false);
+    }
+
+    protected override void FixedUpdate()
+    {
+        Move();
     }
 
     public void ReplenishAmmo( )
@@ -74,7 +77,7 @@ public class PlayerController : CharacterBase
 
     protected void Animate(int layerIndex)
     {
-        m_animator.SetBool("isWalking", true);
+        //m_animator.SetBool("isWalking", true);
 
         m_animator.SetLayerWeight(m_currentLayerIndex, 0);
         m_animator.SetLayerWeight(layerIndex, 1);
