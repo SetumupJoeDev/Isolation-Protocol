@@ -64,6 +64,7 @@ public class EnemyBase : CharacterBase
                         StartCoroutine( CheckForTargets( ) );
                         m_searchingForTargets = true;
                     }
+                    
                 }
                 break;
             case ( enemyStates.chasing ):
@@ -136,6 +137,12 @@ public class EnemyBase : CharacterBase
             yield return new WaitForSeconds( m_searchInterval );
             m_searchingForTargets = false;
         }
+    }
+
+    public void OnDrawGizmosSelected( )
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere( transform.position , m_detectionRange );
     }
 
 }
