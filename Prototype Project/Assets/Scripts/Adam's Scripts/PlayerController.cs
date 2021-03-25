@@ -23,6 +23,8 @@ public class PlayerController : CharacterBase
 
         m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
+        Move();
+
         if( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
         {
             m_currentWeapon.FireWeapon( );
