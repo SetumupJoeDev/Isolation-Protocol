@@ -11,25 +11,39 @@ public class PlayerController : CharacterBase
 
     [Header("Animation")]
     public Animator      m_animator;
-    protected int        m_currentLayerIndex;
 
     [Header("Dodge")]
     [SerializeField]
-    protected Vector3    m_mouseDirection;
+    protected Vector2    m_mouseDirection;
     [SerializeField]
     protected float      m_dodgeSpeed;
     protected float      m_dodgeTime;
     [SerializeField]
     protected float      m_startDodgeTime;
+    protected float      m_directionTolerance;
     protected bool       m_canDodge;
     protected bool       m_isDodging;
+    [SerializeField]
+    protected Vector2    m_dodgeDirection;
+    protected Vector2[]  m_directions;
 
     protected override void Start()
     {
-        m_currentLayerIndex = 1;
         m_dodgeTime = m_startDodgeTime;
-        m_canDodge = true;
+        m_canDodge  = true;
         m_isDodging = false;
+        m_directionTolerance = 0.5f;
+        m_directions = new Vector2[]
+        {
+            Vector2.up,
+            Vector2.down,
+            Vector2.left,
+            Vector2.right,
+            new Vector2(-1, 1),     // up-left
+            new Vector2(1, 1),      // up-right
+            new Vector2(-1, -1),    // down-left
+            new Vector2(1, -1)      // down-right
+        };
     }
 
     // Update is called once per frame
@@ -39,11 +53,11 @@ public class PlayerController : CharacterBase
 
         m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         m_mouseDirection = mousePos - transform.position;
 
+        Animate();
         Dodge();
 
         if ( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
@@ -59,33 +73,13 @@ public class PlayerController : CharacterBase
         {
             m_currentWeapon.ReloadWeapon( );
         }
-
-
-        if(m_directionalVelocity.x > 0)
-        {
-            Animate(4);
-        }
-        if (m_directionalVelocity.x < 0)
-        {
-            Animate(3);
-        }
-        if (m_directionalVelocity.y < 0)
-        {
-            Animate(2);
-        }
-        if (m_directionalVelocity.y > 0)
-        {
-            Animate(1);
-        }
-
-        //m_animator.SetBool("isWalking", false);
     }
 
     protected override void FixedUpdate()
     {
         if (m_isDodging)
         {
-            m_characterRigidBody.velocity = m_mouseDirection.normalized * m_dodgeSpeed * Time.deltaTime;
+            m_characterRigidBody.velocity = m_dodgeDirection * m_dodgeSpeed * Time.deltaTime;
         }
         else
         {
@@ -102,18 +96,23 @@ public class PlayerController : CharacterBase
 
     }
 
-    protected void Animate(int layerIndex)
+    protected void Animate()
     {
-        //m_animator.SetBool("isWalking", true);
-
-        m_animator.SetLayerWeight(m_currentLayerIndex, 0);
-        m_animator.SetLayerWeight(layerIndex, 1);
-
-        m_currentLayerIndex = layerIndex;
+        m_animator.SetFloat("Horizontal", m_mouseDirection.x);
+        m_animator.SetFloat("Vertical", m_mouseDirection.y);
+        m_animator.SetFloat("Speed", m_directionalVelocity.sqrMagnitude);
     }
 
     protected void Dodge()
     {
+        for (int i = 0; i < m_directions.Length; i++)
+        {
+            if (Mathf.Abs(m_mouseDirection.normalized.x - m_directions[i].x) < m_directionTolerance && Mathf.Abs(m_mouseDirection.normalized.y - m_directions[i].y) < m_directionTolerance)
+            {
+                m_dodgeDirection = m_directions[i];
+            }
+        }
+
         if (m_canDodge)
         {
             if (Input.GetMouseButtonDown(1))
