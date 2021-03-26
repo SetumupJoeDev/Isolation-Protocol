@@ -8,7 +8,7 @@ public class textTest : MonoBehaviour
 {
     void CreateText()
     {
-        string path = @"C:\Users\Lewis.Reynolds.ADM\Documents\GitHub\Module-10-Project\Prototype Project\Assets\Scripts";
+        string path = Application.dataPath + "/Scripts/Log.txt";
 
         if (!File.Exists(path))
         {
