@@ -28,6 +28,11 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        if( currentHealth <= 0 )
+        {
+            Destroy( gameObject );
+        }
+        Debug.Log( "TakeDamage called!" );
     }
 
     public void Heal(float healAmount)

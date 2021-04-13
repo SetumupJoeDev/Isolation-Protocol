@@ -9,6 +9,8 @@ public class projectile : MonoBehaviour
 
     public float speed;
 
+    public float damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,10 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter2D( Collider2D collision )
     {
+        if( collision.gameObject.GetComponent<HealthManager>() != null )
+        {
+            collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( damage );
+        }
         Destroy( gameObject );
     }
 
