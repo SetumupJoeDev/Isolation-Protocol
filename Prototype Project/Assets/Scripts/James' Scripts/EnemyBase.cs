@@ -59,6 +59,10 @@ public class EnemyBase : CharacterBase
     [Tooltip("The interval between this enemy's attacks.")]
     protected float m_attackInterval;
 
+    [SerializeField]
+    [Tooltip("Determines whether or not the enemy is currently attacking.")]
+    protected bool m_isAttacking;
+
     #endregion
 
     #region EnemyStates
@@ -101,7 +105,15 @@ public class EnemyBase : CharacterBase
                 break;
             case ( enemyStates.attacking ):
                 {
-
+                    if( Vector3.Distance(transform.position, m_currentTarget.transform.position) > m_attackRange )
+                    {
+                        m_currentState = enemyStates.chasing;
+                    }
+                    else if( !m_isAttacking )
+                    {
+                        StartCoroutine( AttackTarget( ) );
+                        m_isAttacking = true;
+                    }
                 }
                 break;
         }
@@ -190,6 +202,16 @@ public class EnemyBase : CharacterBase
             yield return new WaitForSeconds( m_searchInterval );
             m_searchingForTargets = false;
         }
+    }
+
+    protected virtual IEnumerator AttackTarget( )
+    {
+        m_currentTarget.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
+
+        yield return new WaitForSecondsRealtime( m_attackInterval );
+
+        m_isAttacking = false;
+
     }
 
     public void OnDrawGizmosSelected( )

@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
 
+    //THIS CLASS IS NOW DEPRECATED
+
     #region Firing
 
     public enum fireModes { semiAuto, fullAuto };
