@@ -7,7 +7,7 @@ public class PlayerController : CharacterBase
 
     [Header("Weapons")]
     [Tooltip("The weapon held by the player.")]
-    public WeaponBase    m_currentWeapon;
+    public GameObject   m_currentWeapon;
 
     [Header("Animation")]
     public Animator      m_animator;
@@ -60,18 +60,15 @@ public class PlayerController : CharacterBase
         Animate();
         Dodge();
 
-        if ( Input.GetMouseButtonDown( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.semiAuto )
+        if ( Input.GetMouseButtonDown( 0 ) )
         {
-            m_currentWeapon.FireWeapon( );
+            m_currentWeapon.GetComponent<GunBase>().FireWeapon( );
         }
-        else if( Input.GetMouseButton( 0 ) && m_currentWeapon.m_weaponFireMode == WeaponBase.fireModes.fullAuto )
-        {
-            m_currentWeapon.FireWeapon( );
-        }
+        
 
         if( Input.GetKeyDown(KeyCode.R) )
         {
-            m_currentWeapon.ReloadWeapon( );
+            m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
         }
     }
 
@@ -90,9 +87,11 @@ public class PlayerController : CharacterBase
     public void ReplenishAmmo( )
     {
 
-        m_currentWeapon.m_currentCarriedAmmo = m_currentWeapon.m_maxAmmoCapacity;
+        GunBase gunBase = m_currentWeapon.GetComponent<GunBase>();
 
-        m_currentWeapon.UpdateUIElements( );
+        gunBase.m_currentCarriedAmmo = gunBase.m_maxAmmoCapacity;
+
+        gunBase.UpdateUIElements( );
 
     }
 
