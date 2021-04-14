@@ -54,7 +54,7 @@ public class PlayerController : CharacterBase
         m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+        
         m_mouseDirection = mousePos - transform.position;
 
         Animate();
@@ -76,7 +76,7 @@ public class PlayerController : CharacterBase
     {
         if (m_isDodging)
         {
-            m_characterRigidBody.velocity = m_dodgeDirection * m_dodgeSpeed * Time.deltaTime;
+            m_characterRigidBody.velocity = m_dodgeDirection.normalized * m_dodgeSpeed * Time.deltaTime;
         }
         else
         {
@@ -106,7 +106,7 @@ public class PlayerController : CharacterBase
     {
         for (int i = 0; i < m_directions.Length; i++)
         {
-            if (Mathf.Abs(m_mouseDirection.normalized.x - m_directions[i].x) < m_directionTolerance && Mathf.Abs(m_mouseDirection.normalized.y - m_directions[i].y) < m_directionTolerance)
+            if (Mathf.Abs(m_directionalVelocity.normalized.x - m_directions[i].x) < m_directionTolerance && Mathf.Abs(m_directionalVelocity.normalized.y - m_directions[i].y) < m_directionTolerance)
             {
                 m_dodgeDirection = m_directions[i];
             }
@@ -129,6 +129,7 @@ public class PlayerController : CharacterBase
                 m_isDodging = false;
                 m_dodgeTime = m_startDodgeTime;
                 m_characterRigidBody.velocity = Vector2.zero;
+                m_dodgeDirection = Vector2.zero;
             }
             else
             {
@@ -139,7 +140,7 @@ public class PlayerController : CharacterBase
 
     IEnumerator DodgeCooldown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         m_canDodge = true;
     }
 }
