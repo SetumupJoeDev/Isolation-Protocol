@@ -76,6 +76,13 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
+    #region Animation
+
+    [SerializeField]
+    protected Animator m_animator;
+
+    #endregion
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -117,6 +124,16 @@ public class EnemyBase : CharacterBase
                 }
                 break;
         }
+
+        Animate( );
+
+    }
+
+    protected void Animate( )
+    {
+        m_animator.SetFloat( "Horizontal" , m_directionalVelocity.normalized.x );
+        m_animator.SetFloat( "Vertical" , m_directionalVelocity.normalized.y );
+        m_animator.SetFloat( "Speed" , m_directionalVelocity.sqrMagnitude );
     }
 
     protected override void FixedUpdate( )

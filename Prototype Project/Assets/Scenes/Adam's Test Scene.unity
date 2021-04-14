@@ -31633,6 +31633,7 @@ MonoBehaviour:
   m_attackInterval: 4
   m_isAttacking: 0
   m_currentState: 0
+  m_animator: {fileID: 1234421670}
 --- !u!212 &1234421668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31672,13 +31673,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2907206556705414797, guid: 4bddd5189a2d96347aaa87944bc1a6fd,
+  m_Sprite: {fileID: 4177090954856053832, guid: b7a7b1f3848fabf4e9e32c906df95597,
     type: 3}
   m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -31748,8 +31749,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.0625}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -31966,7 +31967,7 @@ MonoBehaviour:
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 1421113734}
   m_healthManager: {fileID: 1421113738}
-  m_currentWeapon: {fileID: 240551286}
+  m_currentWeapon: {fileID: 240551282}
   m_animator: {fileID: 1421113737}
   m_mouseDirection: {x: 0, y: 0}
   m_dodgeSpeed: 1250
