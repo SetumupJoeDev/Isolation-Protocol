@@ -8,7 +8,7 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The health this unit currently has")]
-    protected float currentHealth;
+    public float currentHealth;
     [SerializeField]
     [Tooltip("The maximum amount of health this unit can have")]
     protected float maxHealth;
