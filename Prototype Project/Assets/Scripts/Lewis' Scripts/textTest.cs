@@ -16,7 +16,7 @@ public class textTest : MonoBehaviour
     void Start()
     {
         Send();
-        CreateText();
+       
     }
 
     IEnumerator Post(string dataString1)
@@ -31,7 +31,7 @@ public class textTest : MonoBehaviour
     public void Send()
     {
         print("I sent");
-        dataInt = gameObject.GetComponent<testScript>().goodbye;
+        dataInt = gameObject.GetComponent<testScript>().goodbye; // the int for the data we want to send 
         dataString = string.Empty + dataInt;
         StartCoroutine(Post(dataString));
     }
@@ -42,19 +42,7 @@ public class textTest : MonoBehaviour
 
 
 
-    void CreateText()
-    {
-        string path = Application.dataPath + "/Scripts/Log.csv";
-
-        if (!File.Exists(path))
-        {
-            File.WriteAllText(path, "Login log \n\n");
-
-        }
-
-        string content = "hello";
-        File.AppendAllText(path, content);
-    }
+   
     // Start is called before the first frame update
     
 
