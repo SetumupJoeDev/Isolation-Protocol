@@ -7,11 +7,8 @@ public class analyticsTest : MonoBehaviour
 {
     // attach to player
 
+    public bool isActive;
     public int roomsCrossed = 0;
-    public int enemiesKilled = 0;
-    public string[] familyMembers = new string[] { "Greg", "Kate", "Adam", "Mia" };
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -27,30 +24,41 @@ public class analyticsTest : MonoBehaviour
 
 
      
-        if (GameObject.Find("Player").GetComponent<HealthManager>().currentHealth == 0) // when player dies 
+        if (GameObject.Find("Player").GetComponent<HealthManager>().currentHealth == 0 && isActive == false)   // when player dies 
         {
-            AnalyticsResult result = Analytics.CustomEvent("player died" + roomsCrossed); // send number of rooms player crossed out w/ player died tag
+            
+
+            isActive = true;
+           /* AnalyticsResult result = Analytics.CustomEvent("player died" + roomsCrossed); // send number of rooms player crossed out w/ player died tag
         Debug.Log("player died" + result); // tells us if the above was sent 
-            Debug.Log(roomsCrossed);
+            Debug.Log(roomsCrossed); */
         
         }
     }
 
 
 
-    public void OnGameOver(ArrayList array)
+    public void OnGameOver()
     {
-        Analytics.CustomEvent("Game Over", new Dictionary<string, object>
+
+
+
+        int number = 10;
+        int enemiesKilled = 15;
+      //  string[] familyMembers = new string[] { "Greg", "Kate", "Adam", "Mia" };
+        AnalyticsResult result = Analytics.CustomEvent("Game Over", new Dictionary<string, object>
         {
-            {  "rooms crossed", roomsCrossed},
+            {  "rooms crossed", number},
             {"enemies killed", enemiesKilled},
-            {"array", familyMembers }
+         //   {"array", familyMembers }
 
         }
         
         
         
+        
         );
+        Debug.Log("Game over" + result);
 
 
     }
