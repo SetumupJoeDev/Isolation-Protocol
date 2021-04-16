@@ -24,7 +24,7 @@ public class analyticsTest : MonoBehaviour
 
 
      
-        if (GameObject.Find("Player").GetComponent<HealthManager>().currentHealth == 0 && isActive == false)   // when player dies 
+        if (GameObject.Find("Player").GetComponent<HealthManager>().m_currentHealth == 0 && isActive == false)   // when player dies 
         {
             
 
