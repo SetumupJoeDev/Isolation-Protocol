@@ -57,11 +57,13 @@ public class MutoSlug : EnemyBase
 
             m_characterRigidBody.isKinematic = true;
 
+            m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+
             m_isAttachedToTarget = true;
 
             m_healthManager.m_isInvulnerable = true;
 
-            gameObject.layer = 12;
+            gameObject.layer = 13;
 
         }
     }
