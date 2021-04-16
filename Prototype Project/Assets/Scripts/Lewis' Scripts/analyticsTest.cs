@@ -27,7 +27,7 @@ public class analyticsTest : MonoBehaviour
 
 
      
-        if (GameObject.Find("Player").GetComponent<HealthManager>().currentHealth == 0) // when player dies 
+        if (GameObject.Find("Player").GetComponent<HealthManager>().m_currentHealth == 0) // when player dies 
         {
             AnalyticsResult result = Analytics.CustomEvent("player died" + roomsCrossed); // send number of rooms player crossed out w/ player died tag
         Debug.Log("player died" + result); // tells us if the above was sent 
