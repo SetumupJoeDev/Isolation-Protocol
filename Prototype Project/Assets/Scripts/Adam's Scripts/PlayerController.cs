@@ -23,9 +23,9 @@ public class PlayerController : CharacterBase
     protected float      m_directionTolerance;
     protected bool       m_canDodge;
     protected bool       m_isDodging;
-    [SerializeField]
     protected Vector2    m_dodgeDirection;
     protected Vector2[]  m_directions;
+    public float      m_slowness;
 
     protected override void Start()
     {
@@ -118,6 +118,7 @@ public class PlayerController : CharacterBase
             {
                 m_isDodging = true;
                 m_canDodge = false;
+                m_healthManager.m_isInvulnerable = true;
             }
         }
 
@@ -130,6 +131,7 @@ public class PlayerController : CharacterBase
                 m_dodgeTime = m_startDodgeTime;
                 m_characterRigidBody.velocity = Vector2.zero;
                 m_dodgeDirection = Vector2.zero;
+                m_healthManager.m_isInvulnerable = false;
             }
             else
             {
@@ -142,5 +144,10 @@ public class PlayerController : CharacterBase
     {
         yield return new WaitForSeconds(0.75f);
         m_canDodge = true;
+    }
+
+    protected override void Move()
+    {
+        m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
     }
 }
