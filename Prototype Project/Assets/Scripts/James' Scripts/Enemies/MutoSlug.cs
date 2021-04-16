@@ -7,6 +7,8 @@ public class MutoSlug : EnemyBase
 
     #region Attacking
 
+    [Header("Attacking")]
+
     [Tooltip("Determines how long the enemy waits before pouncing.")]
     public float m_pouncePrepDuration;
 
@@ -16,7 +18,15 @@ public class MutoSlug : EnemyBase
     [Tooltip("Determines whether or not this enemy has attached to its target.")]
     public bool m_isAttachedToTarget;
 
+    [Tooltip("The integer value referring to the Physics Layer that this object sits on when it attaches to the player.")]
+    public int m_attachedLayerIndex;
+
     #endregion
+
+    [Header("Collisions")]
+
+    [Tooltip("The collider used to detect physical collisions and prevent the enmy from passing through walls.")]
+    public GameObject m_colliderObject;
 
     public override IEnumerator AttackTarget( )
     {
@@ -48,21 +58,29 @@ public class MutoSlug : EnemyBase
 
     }
 
+    private void AttachToPlayer( Collider2D playerCollider )
+    {
+        transform.parent = playerCollider.gameObject.transform;
+
+        m_characterRigidBody.isKinematic = true;
+
+        m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        m_isAttachedToTarget = true;
+
+        m_healthManager.m_isInvulnerable = true;
+
+        gameObject.layer = 13;
+
+        Destroy( m_colliderObject );
+
+    }
 
     public void OnTriggerEnter2D( Collider2D collision )
     {
         if( m_currentState == enemyStates.attacking && collision.gameObject.tag == "Player" )
         {
-            transform.parent = collision.gameObject.transform;
-
-            m_characterRigidBody.isKinematic = true;
-
-            m_isAttachedToTarget = true;
-
-            m_healthManager.m_isInvulnerable = true;
-
-            gameObject.layer = 12;
-
+            AttachToPlayer( collision );
         }
     }
 

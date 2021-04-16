@@ -96,14 +96,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5707961849273049078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe2933254fc0546befda5c2f839a3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 88afc415f12c70046a5b112831ccd472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 75
+  m_moveSpeed: 70
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 5707961849273049076}
   m_healthManager: {fileID: 3341951120311908520}
-  m_detectionRange: 5
+  m_detectionRange: 0
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -114,9 +114,9 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.25
   m_chaseProximity: 1
-  m_attackRange: 1
-  m_attackDamage: 2.5
-  m_attackInterval: 4
+  m_attackRange: 2
+  m_attackDamage: 10
+  m_attackInterval: 1.75
   m_isAttacking: 0
   m_currentState: 0
   m_animator: {fileID: 5707961849273049072}
