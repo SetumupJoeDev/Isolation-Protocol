@@ -357,26 +357,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 240551282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b022f284036e8f54caa5718d8229e64b, type: 3}
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_fireSound: {fileID: 240551285}
   m_canWeaponFire: 1
   m_barrelTransform: {fileID: 612543022}
   m_aimingDirection: {x: 0, y: 0, z: 0}
-  m_reloadTime: 1
+  m_reloadTime: 1.5
   m_reloadSound: {fileID: 240551284}
-  m_magCapacity: 12
-  m_currentMagAmmo: 12
-  m_maxAmmoCapacity: 50
-  m_currentCarriedAmmo: 50
+  m_magCapacity: 15
+  m_currentMagAmmo: 15
+  m_maxAmmoCapacity: 90
+  m_currentCarriedAmmo: 90
   m_magazineUIText: {fileID: 399501964}
   m_totalAmmoText: {fileID: 972080651}
-  m_weaponFireMode: 0
-  m_fireInterval: 0.25
-  m_projectilePrefab: {fileID: 326638196393901105, guid: b709ba4c46b4aa04191fd26b91375125,
+  m_weaponFireMode: 1
+  m_fireInterval: 0.175
+  m_projectilePrefab: {fileID: 326638196393901105, guid: bc4faa6f933a9a4468b60f3fd64f0da9,
     type: 3}
-  m_projectilesPerShot: 2
+  m_projectilesPerShot: 1
 --- !u!212 &240551287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31246,23 +31246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a53309ddfb5f24184fae77c341fc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weaponFireMode: 0
-  m_fireInterval: 0.15
-  m_projectilePrefab: {fileID: 326638196393901105, guid: b709ba4c46b4aa04191fd26b91375125,
-    type: 3}
-  m_projectilesPerShot: 3
-  m_fireSound: {fileID: 977953198}
-  m_canWeaponFire: 0
-  m_barrelTransform: {fileID: 1988854634}
-  m_aimingDirection: {x: 0, y: 0, z: 0}
-  m_reloadTime: 2
-  m_reloadSound: {fileID: 977953199}
-  m_magCapacity: 18
-  m_currentMagAmmo: 18
-  m_maxAmmoCapacity: 72
-  m_currentCarriedAmmo: 0
-  m_magazineUIText: {fileID: 399501964}
-  m_totalAmmoText: {fileID: 972080651}
 --- !u!82 &977953198
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31667,10 +31650,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234421664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe2933254fc0546befda5c2f839a3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 88afc415f12c70046a5b112831ccd472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 75
+  m_moveSpeed: 70
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 1234421666}
   m_healthManager: {fileID: 1234421671}
@@ -31685,9 +31668,9 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.25
   m_chaseProximity: 1
-  m_attackRange: 1
-  m_attackDamage: 2.5
-  m_attackInterval: 4
+  m_attackRange: 2
+  m_attackDamage: 10
+  m_attackInterval: 2.5
   m_isAttacking: 0
   m_currentState: 0
   m_animator: {fileID: 1234421670}
@@ -31787,8 +31770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194fed5e297f2374c9e337414f669081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 5
+  m_currentHealth: 0
+  m_maxHealth: 0
+  m_isInvulnerable: 0
 --- !u!61 &1234421672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31930,7 +31914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322998532
 GameObject:
@@ -32206,8 +32190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194fed5e297f2374c9e337414f669081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
+  m_currentHealth: 0
+  m_maxHealth: 0
+  m_isInvulnerable: 0
 --- !u!114 &1421113739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32220,8 +32205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b3f166b45febc428a1137b22645dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   roomsCrossed: 0
-  enemiesKilled: 0
 --- !u!114 &1421113740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32310,11 +32295,8 @@ Transform:
   m_Children:
   - {fileID: 1234421669}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_currentHealth: 0
-  m_maxHealth: 0
-  m_isInvulnerable: 0
 --- !u!1 &1482386359
 GameObject:
   m_ObjectHideFlags: 0
@@ -32346,7 +32328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dab70fd9fe8c5346be0da6ab6597de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_collectedSound: {fileID: 8300000, guid: f9f2b090941337747ba446f9a63487b8, type: 3}
 --- !u!212 &1482386361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35475,7 +35456,7 @@ Transform:
   m_Children:
   - {fileID: 1035031126}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2136840597
 Rigidbody2D:
@@ -35619,6 +35600,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_moveSpeed
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_attackInterval
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_chaseProximity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_detectionRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_searchInterval
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_wallLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_playerLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe,
         type: 3}
