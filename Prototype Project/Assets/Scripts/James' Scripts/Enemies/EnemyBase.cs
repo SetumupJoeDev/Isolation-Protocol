@@ -199,7 +199,7 @@ public class EnemyBase : CharacterBase
         }
     }
 
-    protected virtual IEnumerator CheckForTargets( )
+    public virtual IEnumerator CheckForTargets( )
     {
 
         //Uses an overlap circle to search for objects on the player layer within the detection range
@@ -221,7 +221,7 @@ public class EnemyBase : CharacterBase
         }
     }
 
-    protected virtual IEnumerator AttackTarget( )
+    public virtual IEnumerator AttackTarget( )
     {
         m_currentTarget.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
 
