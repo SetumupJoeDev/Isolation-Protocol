@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class RoomSpawner : MonoBehaviour
 {
-    protected enum DoorDirection {Left, Right, Top, Bottom};
     [SerializeField]
-    protected DoorDirection doorDirection;
-
+    protected Enums.Directions doorDirection;
     protected RoomTemplates templates;
     protected int random;
     protected bool spawned;
+    protected Vector3 centerDistance;
+    protected GameObject spawnedRoom;
 
     protected virtual void Start()
     {
         spawned = false;
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        centerDistance = transform.localPosition;
         Invoke("Spawn", 0.1f);
     }
 
@@ -25,21 +26,21 @@ public class RoomSpawner : MonoBehaviour
         {
             switch (doorDirection)
             {
-                case DoorDirection.Left:
+                case Enums.Directions.Left:
                     random = Random.Range(0, templates.rightRooms.Length);
-                    Instantiate(templates.rightRooms[random], transform.position, Quaternion.identity);
+                    spawnedRoom = Instantiate(templates.rightRooms[random], transform.position, Quaternion.identity);
                     break;
-                case DoorDirection.Right:
+                case Enums.Directions.Right:
                     random = Random.Range(0, templates.leftRooms.Length);
-                    Instantiate(templates.leftRooms[random], transform.position, Quaternion.identity);
+                    spawnedRoom = Instantiate(templates.leftRooms[random], transform.position, Quaternion.identity);
                     break;
-                case DoorDirection.Top:
+                case Enums.Directions.Top:
                     random = Random.Range(0, templates.bottomRooms.Length);
-                    Instantiate(templates.bottomRooms[random], transform.position, Quaternion.identity);
+                    spawnedRoom = Instantiate(templates.bottomRooms[random], transform.position, Quaternion.identity);
                     break;
-                case DoorDirection.Bottom:
+                case Enums.Directions.Bottom:
                     random = Random.Range(0, templates.topRooms.Length);
-                    Instantiate(templates.topRooms[random], transform.position, Quaternion.identity);
+                    spawnedRoom = Instantiate(templates.topRooms[random], transform.position, Quaternion.identity);
                     break;
             }
 
@@ -53,7 +54,7 @@ public class RoomSpawner : MonoBehaviour
         {
             if(collision.GetComponent<RoomSpawner>().spawned == false && !spawned)
             {
-                switch (doorDirection)
+               /* switch (doorDirection)
                 {
                     case DoorDirection.Left:
                         switch (collision.GetComponent<RoomSpawner>().doorDirection)
@@ -111,13 +112,12 @@ public class RoomSpawner : MonoBehaviour
                                 break;
                         }
                         break;
-                }
+                }*/
 
                 Destroy(gameObject);
             }
 
             spawned = true;
         }
-        
     }
 }

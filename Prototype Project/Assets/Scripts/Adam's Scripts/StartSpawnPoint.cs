@@ -6,7 +6,8 @@ public class StartSpawnPoint : RoomSpawner
 {
     protected override void Spawn()
     {
-        Instantiate(templates.leftRooms[templates.leftRooms.Length-1], transform.position, Quaternion.identity);
+        spawnedRoom = Instantiate(templates.leftRooms[templates.leftRooms.Length-1], transform.position, Quaternion.identity);
+        spawnedRoom.GetComponent<DoorDistance>().directionSpawnedFrom = Enums.Directions.Left;
         spawned = true;
     }
 }
