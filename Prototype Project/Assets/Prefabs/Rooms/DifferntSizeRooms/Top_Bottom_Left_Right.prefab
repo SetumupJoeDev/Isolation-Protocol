@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955403155543300742}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2092507740439865311
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 0
+  doorDirection: 1
 --- !u!61 &1520981473535854436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955403155543300742}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3840034969441408364
 MonoBehaviour:
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 2
+  doorDirection: 0
 --- !u!61 &6914028273414476227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,10 +215,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6301214316571940441}
-  - {fileID: 3283776076630965154}
   - {fileID: 3829469389748114390}
-  - {fileID: 443152025544836335}
   - {fileID: 4260004990566754234}
+  - {fileID: 443152025544836335}
+  - {fileID: 3283776076630965154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,13 +234,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62225d3c2b7e54b932f3289142beea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftSpawnPoint: {fileID: 2643664915280671492}
-  rightSpawnPoint: {fileID: 7711793346529249358}
-  topSpawnPoint: {fileID: 3765410419892475384}
-  bottomSpawnPoint: {fileID: 9047594303180138419}
+  directionSpawnedFrom: 0
+  spawnPoints:
+  - {fileID: 3765410419892475384}
+  - {fileID: 2643664915280671492}
+  - {fileID: 7711793346529249358}
+  - {fileID: 9047594303180138419}
+  topDoorDistance: {x: 0, y: 0, z: 0}
   leftDoorDistance: {x: 0, y: 0, z: 0}
   rightDoorDistance: {x: 0, y: 0, z: 0}
-  topDoorDistance: {x: 0, y: 0, z: 0}
   bottomDoorDistance: {x: 0, y: 0, z: 0}
 --- !u!1 &3955403156551553774
 GameObject:
@@ -1591,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 1
+  doorDirection: 2
 --- !u!61 &978560742050600435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1670,7 +1672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955403155543300742}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6659775935740671345
 MonoBehaviour:

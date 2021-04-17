@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e7be3302e173b45bdd9bae4e89dab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 1
+  centerDistance: {x: 0, y: 0, z: 0}
+  doorDirection: 2
 --- !u!61 &4304078644982814267
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -737,7 +738,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4304078645342416287}
-  - component: {fileID: 5994967023659950420}
   m_Layer: 0
   m_Name: StartRoom
   m_TagString: Untagged
@@ -762,26 +762,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5994967023659950420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304078645342416286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f62225d3c2b7e54b932f3289142beea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftSpawnPoint: {fileID: 0}
-  rightSpawnPoint: {fileID: 4304078644982814264}
-  topSpawnPoint: {fileID: 0}
-  bottomSpawnPoint: {fileID: 0}
-  leftDoorDistance: {x: 0, y: 0, z: 0}
-  rightDoorDistance: {x: 0, y: 0, z: 0}
-  topDoorDistance: {x: 0, y: 0, z: 0}
-  bottomDoorDistance: {x: 0, y: 0, z: 0}
 --- !u!1 &4304078645389181765
 GameObject:
   m_ObjectHideFlags: 0

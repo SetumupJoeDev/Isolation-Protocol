@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class DoorDistance : MonoBehaviour
 {
-    [SerializeField]
+    [HideInInspector]
     public Enums.Directions directionSpawnedFrom;
-    public GameObject leftSpawnPoint;
-    public GameObject rightSpawnPoint;
-    public GameObject topSpawnPoint;
-    public GameObject bottomSpawnPoint;
+    public GameObject[] spawnPoints;
     protected Vector3 ajustedPosition;
 
+    [HideInInspector]
+    public Vector3 topDoorDistance;
     [HideInInspector]
     public Vector3 leftDoorDistance;
     [HideInInspector]
     public Vector3 rightDoorDistance;
     [HideInInspector]
-    public Vector3 topDoorDistance;
-    [HideInInspector]
     public Vector3 bottomDoorDistance;
 
     protected void Start()
     {
-        leftDoorDistance = leftSpawnPoint.transform.localPosition;
-        rightDoorDistance = rightSpawnPoint.transform.localPosition;
-        topDoorDistance = topSpawnPoint.transform.localPosition;
-        bottomDoorDistance = bottomSpawnPoint.transform.localPosition;
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            switch (spawnPoints[i].GetComponent<RoomSpawner>().doorDirection)
+            {
+                case Enums.Directions.Top:
+                    topDoorDistance = spawnPoints[i].transform.localPosition;
+                    break;
+                case Enums.Directions.Left:
+                    leftDoorDistance = spawnPoints[i].transform.localPosition;
+                    break;
+                case Enums.Directions.Right:
+                    rightDoorDistance = spawnPoints[i].transform.localPosition;
+                    break;
+                case Enums.Directions.Bottom:
+                    bottomDoorDistance = spawnPoints[i].transform.localPosition;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         switch (directionSpawnedFrom)
         {
@@ -45,6 +58,9 @@ public class DoorDistance : MonoBehaviour
             case Enums.Directions.Bottom:
                 ajustedPosition = transform.position - bottomDoorDistance;
                 transform.position = ajustedPosition;
+                break;
+            default:
+                Debug.Log("Went to default");
                 break;
         }
     }

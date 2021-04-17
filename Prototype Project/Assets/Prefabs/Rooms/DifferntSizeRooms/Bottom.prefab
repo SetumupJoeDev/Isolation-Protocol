@@ -848,10 +848,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62225d3c2b7e54b932f3289142beea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftSpawnPoint: {fileID: 0}
-  rightSpawnPoint: {fileID: 0}
-  topSpawnPoint: {fileID: 0}
-  bottomSpawnPoint: {fileID: 1870877234575982327}
+  directionSpawnedFrom: 0
+  spawnPoints:
+  - {fileID: 1870877234575982327}
   leftDoorDistance: {x: 0, y: 0, z: 0}
   rightDoorDistance: {x: 0, y: 0, z: 0}
   topDoorDistance: {x: 0, y: 0, z: 0}
