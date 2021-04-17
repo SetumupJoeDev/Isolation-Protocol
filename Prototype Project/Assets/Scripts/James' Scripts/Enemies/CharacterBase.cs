@@ -46,6 +46,12 @@ public class CharacterBase : MonoBehaviour
         
     }
 
+    public virtual void Die( )
+    {
+        //Death logic goes here!
+        Destroy( gameObject );
+    }
+
     protected virtual void Move( )
     {
         m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.fixedDeltaTime;

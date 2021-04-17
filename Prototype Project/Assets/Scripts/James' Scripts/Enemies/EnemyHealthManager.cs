@@ -10,7 +10,7 @@ public class EnemyHealthManager : HealthManager
         base.TakeDamage( damage );
         if( m_currentHealth <= 0 )
         {
-            Destroy( gameObject );
+            gameObject.GetComponent<EnemyBase>( ).Die( );
         }
     }
 

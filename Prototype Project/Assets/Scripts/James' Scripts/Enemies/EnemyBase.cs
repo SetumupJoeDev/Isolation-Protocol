@@ -83,6 +83,15 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
+    #region Sounds
+
+    [Header("Sounds")]
+
+    [Tooltip("The sound that plays when the enemy dies.")]
+    public AudioClip m_deathSound;
+
+    #endregion
+
     // Start is called before the first frame update
     protected override void Start()
     {

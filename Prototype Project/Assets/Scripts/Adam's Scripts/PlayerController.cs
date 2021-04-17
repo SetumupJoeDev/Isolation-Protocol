@@ -27,6 +27,24 @@ public class PlayerController : CharacterBase
     protected Vector2[]  m_directions;
     public float      m_slowness;
 
+    //James' Work
+    #region MutoSlug Attachments
+
+    [Header("MutoSlug Attachments")]
+
+    [Tooltip("An array of GameObjects that MutoSlugs can attach to.")]
+    public GameObject[] m_slugAttachmentPoints;
+
+    [Tooltip("Determines whether or not the player currently has any slugs attached to them.")]
+    public bool m_hasAttachedSlugs;
+
+    [Tooltip("The physics layer that the walls sit on, used to detect collisions during dodges.")]
+    public LayerMask m_wallLayer;
+
+    #endregion
+
+    //End of James' work
+
     protected override void Start()
     {
         m_dodgeTime = m_startDodgeTime;
@@ -77,6 +95,16 @@ public class PlayerController : CharacterBase
         if (m_isDodging)
         {
             m_characterRigidBody.velocity = m_dodgeDirection.normalized * m_dodgeSpeed * Time.deltaTime;
+
+            //James' work
+
+            if( Physics2D.Raycast( transform.position, m_dodgeDirection, 1.0f, m_wallLayer ) == true )
+            {
+                KillAttachedSlugs( );
+            }
+
+            //End of James' work
+
         }
         else
         {
@@ -150,4 +178,46 @@ public class PlayerController : CharacterBase
     {
         m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
     }
+
+    //James' Work
+    public bool AttachNewSlug( GameObject newSlug )
+    {
+
+        //Local boolean used to determine whether or not this slug has been attached to the player
+        bool hasAttached = false;
+
+        //Loops through all of the attachment points on the player. If one is free, the slug is attached to it and hasAttached is set to true
+        foreach( GameObject attachPoint in m_slugAttachmentPoints )
+        {
+            if( attachPoint.transform.childCount == 0 )
+            {
+                newSlug.transform.parent = attachPoint.transform;
+
+                hasAttached = true;
+
+                m_hasAttachedSlugs = true;
+
+            }
+        }
+
+        //Returns the value of hasAttached so that the slug can determine whether or not to run the next set of logic
+        return hasAttached;
+
+    }
+
+    private void KillAttachedSlugs( )
+    {
+        //Loops through each attachment point in the array, destroying the children of any of them
+        foreach( GameObject attachPoint in m_slugAttachmentPoints )
+        {
+            if( attachPoint.transform.childCount != 0 )
+            {
+                //Kills the slug attached to this point
+                attachPoint.transform.GetChild( 0 ).gameObject.GetComponent<MutoSlug>( ).Die( );
+            }
+        }
+    }
+
+    //End of James' work
+
 }

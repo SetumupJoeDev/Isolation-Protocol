@@ -21,12 +21,29 @@ public class MutoSlug : EnemyBase
     [Tooltip("The integer value referring to the Physics Layer that this object sits on when it attaches to the player.")]
     public int m_attachedLayerIndex;
 
+    [Tooltip("The player that this slug is attached to.")]
+    public PlayerController m_attachedPlayer;
+
     #endregion
+
+    #region Debuffs
+
+    [Header("Debuffs")]
+
+    [Range(-100, 0)]
+    [Tooltip("The value by which the player's slowness debuff is changed when a MutoSlug attaches to them.")]
+    public float m_playerSpeedDebuff;
+
+    #endregion
+
+    #region Collisions
 
     [Header("Collisions")]
 
     [Tooltip("The collider used to detect physical collisions and prevent the enmy from passing through walls.")]
     public GameObject m_colliderObject;
+
+    #endregion
 
     public override IEnumerator AttackTarget( )
     {
@@ -60,25 +77,47 @@ public class MutoSlug : EnemyBase
 
     private void AttachToPlayer( Collider2D playerCollider )
     {
-        transform.parent = playerCollider.gameObject.transform;
+        m_attachedPlayer = playerCollider.gameObject.GetComponent<PlayerController>( );
 
-        m_characterRigidBody.isKinematic = true;
+        if ( m_attachedPlayer.AttachNewSlug( gameObject ) )
+        {
 
-        m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            m_attachedPlayer.m_slowness += m_playerSpeedDebuff;
 
-        m_isAttachedToTarget = true;
+            m_characterRigidBody.isKinematic = true;
 
-        m_healthManager.m_isInvulnerable = true;
+            m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        gameObject.layer = 13;
+            m_isAttachedToTarget = true;
 
-        Destroy( m_colliderObject );
+            m_healthManager.m_isInvulnerable = true;
+
+            gameObject.layer = 13;
+
+            transform.position.Set( 0 , 0 , 0 );
+
+            Destroy( m_colliderObject );
+        }
+
+    }
+
+    public override void Die( )
+    {
+        if( m_isAttachedToTarget )
+        {
+            //Removes the value of the slowness debuff from the player
+            m_attachedPlayer.m_slowness -= m_playerSpeedDebuff;
+        }
+
+        AudioSource.PlayClipAtPoint( m_deathSound , transform.position );
+
+        Destroy( gameObject );
 
     }
 
     public void OnTriggerEnter2D( Collider2D collision )
     {
-        if( m_currentState == enemyStates.attacking && collision.gameObject.tag == "Player" )
+        if( m_currentState == enemyStates.attacking && collision.gameObject.tag == "Player" && !m_isAttachedToTarget )
         {
             AttachToPlayer( collision );
         }
