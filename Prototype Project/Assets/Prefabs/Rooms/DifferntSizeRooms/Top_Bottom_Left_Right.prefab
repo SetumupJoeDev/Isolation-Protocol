@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 1
+  m_doorDirection: 1
 --- !u!61 &1520981473535854436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 0
+  m_doorDirection: 0
 --- !u!61 &6914028273414476227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -234,16 +234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62225d3c2b7e54b932f3289142beea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionSpawnedFrom: 0
-  spawnPoints:
+  m_directionSpawnedFrom: 0
+  m_spawnPoints:
   - {fileID: 3765410419892475384}
   - {fileID: 2643664915280671492}
   - {fileID: 7711793346529249358}
   - {fileID: 9047594303180138419}
-  topDoorDistance: {x: 0, y: 0, z: 0}
-  leftDoorDistance: {x: 0, y: 0, z: 0}
-  rightDoorDistance: {x: 0, y: 0, z: 0}
-  bottomDoorDistance: {x: 0, y: 0, z: 0}
 --- !u!1 &3955403156551553774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 2
+  m_doorDirection: 2
 --- !u!61 &978560742050600435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1686,7 +1682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDirection: 3
+  m_doorDirection: 3
 --- !u!61 &6834210962170256423
 BoxCollider2D:
   m_ObjectHideFlags: 0

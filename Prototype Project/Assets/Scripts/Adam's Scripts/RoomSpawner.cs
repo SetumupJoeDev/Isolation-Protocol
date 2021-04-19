@@ -4,49 +4,49 @@ using UnityEngine;
 
 public class RoomSpawner : MonoBehaviour
 {
-    public Enums.Directions doorDirection;
+    public Enums.Directions m_doorDirection;
     
-    protected RoomTemplates templates;
-    protected int random;
-    protected bool spawned;
-    protected GameObject spawnedRoom;
+    protected RoomTemplates m_templates;
+    protected int           m_random;
+    protected bool          m_spawned;
+    protected GameObject    m_spawnedRoom;
 
     protected virtual void Start()
     {
-        spawned = false;
-        templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        m_spawned = false;
+        m_templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn", 0.1f);
     }
 
     protected virtual void Spawn()
     {
-        if (spawned == false)
+        if (m_spawned == false)
         {
-            switch (doorDirection)
+            switch (m_doorDirection)
             {
                 case Enums.Directions.Left:
-                    random = Random.Range(0, templates.rightRooms.Length);
-                    spawnedRoom = Instantiate(templates.rightRooms[random], transform.position, Quaternion.identity);
-                    spawnedRoom.GetComponent<DoorDistance>().directionSpawnedFrom = Enums.Directions.Right;
+                    m_random = Random.Range(0, m_templates.m_rightRooms.Length);
+                    m_spawnedRoom = Instantiate(m_templates.m_rightRooms[m_random], transform.position, Quaternion.identity);
+                    m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Right;
                     break;
                 case Enums.Directions.Right:
-                    random = Random.Range(0, templates.leftRooms.Length);
-                    spawnedRoom = Instantiate(templates.leftRooms[random], transform.position, Quaternion.identity);
-                    spawnedRoom.GetComponent<DoorDistance>().directionSpawnedFrom = Enums.Directions.Left;
+                    m_random = Random.Range(0, m_templates.m_leftRooms.Length);
+                    m_spawnedRoom = Instantiate(m_templates.m_leftRooms[m_random], transform.position, Quaternion.identity);
+                    m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Left;
                     break;
                 case Enums.Directions.Top:
-                    random = Random.Range(0, templates.bottomRooms.Length);
-                    spawnedRoom = Instantiate(templates.bottomRooms[random], transform.position, Quaternion.identity);
-                    spawnedRoom.GetComponent<DoorDistance>().directionSpawnedFrom = Enums.Directions.Bottom;
+                    m_random = Random.Range(0, m_templates.m_bottomRooms.Length);
+                    m_spawnedRoom = Instantiate(m_templates.m_bottomRooms[m_random], transform.position, Quaternion.identity);
+                    m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Bottom;
                     break;
                 case Enums.Directions.Bottom:
-                    random = Random.Range(0, templates.topRooms.Length);
-                    spawnedRoom = Instantiate(templates.topRooms[random], transform.position, Quaternion.identity);
-                    spawnedRoom.GetComponent<DoorDistance>().directionSpawnedFrom = Enums.Directions.Top;
+                    m_random = Random.Range(0, m_templates.m_topRooms.Length);
+                    m_spawnedRoom = Instantiate(m_templates.m_topRooms[m_random], transform.position, Quaternion.identity);
+                    m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Top;
                     break;
             }
 
-            spawned = true;
+            m_spawned = true;
         }
     }
 
@@ -54,12 +54,12 @@ public class RoomSpawner : MonoBehaviour
     {
         if(collision.CompareTag("SpawnPoint"))
         {
-            if(collision.GetComponent<RoomSpawner>().spawned == false && !spawned)
+            if(collision.GetComponent<RoomSpawner>().m_spawned == false && !m_spawned)
             {
                 Destroy(gameObject);
             }
 
-            spawned = true;
+            m_spawned = true;
         }
     }
 }

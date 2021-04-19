@@ -1221,13 +1221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62225d3c2b7e54b932f3289142beea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionSpawnedFrom: 0
-  spawnPoints:
+  m_directionSpawnedFrom: 0
+  m_spawnPoints:
   - {fileID: 8911193491103663916}
-  topDoorDistance: {x: 0, y: 0, z: 0}
-  leftDoorDistance: {x: 0, y: 0, z: 0}
-  rightDoorDistance: {x: 0, y: 0, z: 0}
-  bottomDoorDistance: {x: 0, y: 0, z: 0}
 --- !u!1 &8911193491103663916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,8 +1269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aac90ce197ba354191065d7f91a7df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerDistance: {x: 0, y: 0, z: 0}
-  doorDirection: 0
+  m_doorDirection: 0
 --- !u!61 &7701387270188491906
 BoxCollider2D:
   m_ObjectHideFlags: 0

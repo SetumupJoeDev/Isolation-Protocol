@@ -25,7 +25,7 @@ public class PlayerController : CharacterBase
     protected bool       m_isDodging;
     protected Vector2    m_dodgeDirection;
     protected Vector2[]  m_directions;
-    public float      m_slowness;
+    public float         m_slowness;
 
     //James' Work
     #region MutoSlug Attachments
