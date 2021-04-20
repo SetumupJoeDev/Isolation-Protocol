@@ -33,10 +33,10 @@ public class ConventionalWeapon : GunBase
         for ( int i = 0; i < m_projectilesPerShot; i++ )
         {
             //Instantiates a projectile at the barrel of the weapon 
-            projectile newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<projectile>();
+            ProjectileBase newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<ProjectileBase>();
 
             //Sets the projectiles velocity to the aiming direction of the weapon
-            newBullet.velocity = m_aimingDirection;
+            newBullet.m_projectileVelocity = m_aimingDirection;
 
             m_currentMagAmmo--;
 

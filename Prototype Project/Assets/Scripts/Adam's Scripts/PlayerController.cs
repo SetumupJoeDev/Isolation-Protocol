@@ -43,6 +43,24 @@ public class PlayerController : CharacterBase
 
     #endregion
 
+    #region Knockback
+
+    [Header("Knockback")]
+
+    [Tooltip("The duration of the knockback effect.")]
+    public float m_knockbackDuration;
+
+    [Tooltip("The direction in which the player has been knocked back.")]
+    public Vector3 m_knockbackDirection;
+
+    [Tooltip("The amount of force with which the player has been knocked back.")]
+    public float m_knockbackForce;
+
+    [Tooltip("Determines whether or not the player is currently being knocked back.")]
+    public bool m_knockedBack;
+
+    #endregion
+
     //End of James' work
 
     protected override void Start()
@@ -92,7 +110,7 @@ public class PlayerController : CharacterBase
 
     protected override void FixedUpdate()
     {
-        if (m_isDodging)
+        if (m_isDodging && !m_knockedBack )
         {
             m_characterRigidBody.velocity = m_dodgeDirection.normalized * m_dodgeSpeed * Time.deltaTime;
 
@@ -103,9 +121,12 @@ public class PlayerController : CharacterBase
                 KillAttachedSlugs( );
             }
 
-            //End of James' work
-
         }
+        else if( m_knockedBack )
+        {
+            m_characterRigidBody.velocity = m_knockbackDirection.normalized * m_knockbackForce * Time.deltaTime;
+        }
+        //End of James' work
         else
         {
             Move();
@@ -216,6 +237,16 @@ public class PlayerController : CharacterBase
                 attachPoint.transform.GetChild( 0 ).gameObject.GetComponent<MutoSlug>( ).Die( );
             }
         }
+    }
+
+    public IEnumerator KnockBack( )
+    {
+        m_knockedBack = true;
+
+        yield return new WaitForSeconds( m_knockbackDuration );
+
+        m_knockedBack = false;
+
     }
 
     //End of James' work
