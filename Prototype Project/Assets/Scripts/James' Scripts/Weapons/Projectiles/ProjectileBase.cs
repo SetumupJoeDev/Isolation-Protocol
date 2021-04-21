@@ -81,6 +81,10 @@ public class ProjectileBase : MonoBehaviour
             }
 
         }
+        else
+        {
+            Destroy( gameObject );
+        }
     }
 
     // Update is called once per frame
