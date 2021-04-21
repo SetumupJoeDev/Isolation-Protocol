@@ -66,6 +66,11 @@ public class GunBase : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+
+        m_magazineUIText = GameObject.Find( "Magazine" ).GetComponent<Text>( );
+
+        m_totalAmmoText = GameObject.Find( "TotalAmmo" ).GetComponent<Text>( );
+
         UpdateUIElements( );
 
         m_canWeaponFire = true;
@@ -73,7 +78,11 @@ public class GunBase : MonoBehaviour
 
     protected virtual void Awake( )
     {
-        UpdateUIElements( );
+
+        if ( m_magazineUIText != null && m_totalAmmoText != null )
+        {
+            UpdateUIElements( );
+        }
     }
 
     // Update is called once per frame

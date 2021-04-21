@@ -142,7 +142,7 @@ public class EnemyBase : CharacterBase
     {
         m_animator.SetFloat( "Horizontal" , m_directionalVelocity.normalized.x );
         m_animator.SetFloat( "Vertical" , m_directionalVelocity.normalized.y );
-        m_animator.SetFloat( "Speed" , m_directionalVelocity.sqrMagnitude );
+        m_animator.SetFloat( "Speed" , m_characterRigidBody.velocity.sqrMagnitude );
     }
 
     protected override void FixedUpdate( )

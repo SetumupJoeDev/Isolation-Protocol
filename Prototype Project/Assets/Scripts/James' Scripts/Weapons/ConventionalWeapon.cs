@@ -19,11 +19,15 @@ public class ConventionalWeapon : GunBase
     protected float m_fireInterval;
 
     [SerializeField]
+    [Tooltip("The delay between projectiles being fired in burst mode.")]
+    protected float m_burstFireDelay;
+
+    [SerializeField]
     [Tooltip("The projectile that the weapon will fire.")]
     protected GameObject m_projectilePrefab;
 
     [SerializeField]
-    [Tooltip("The number of projectiles fired each time this weapon fires.")]
+    [Tooltip("The number of projectiles fired each time this weapon fires. Should be left at 0 if this is not a burst fire weapon.")]
     protected int m_projectilesPerShot;
 
     #endregion
@@ -45,10 +49,12 @@ public class ConventionalWeapon : GunBase
             //Play's the weapon's firing sound
             m_fireSound.Play( );
 
-            //Adds a short delay between firing each projectile, so they aren't all fired at once
-            yield return new WaitForSeconds( m_fireInterval );
+            yield return new WaitForSeconds( m_burstFireDelay );
 
         }
+
+        //Adds a short delay between firing each projectile, so they aren't all fired at once
+        yield return new WaitForSeconds( m_fireInterval );
 
         m_canWeaponFire = true;
     }

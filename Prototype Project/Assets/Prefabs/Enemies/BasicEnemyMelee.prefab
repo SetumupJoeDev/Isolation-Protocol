@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 4177090954856053832, guid: b7a7b1f3848fabf4e9e32c906df95597,
+  m_Sprite: {fileID: -7091448460781815321, guid: d953867641df6614dadb1fe56219a5e8,
     type: 3}
   m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_FlipX: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_isAttacking: 0
   m_currentState: 0
   m_animator: {fileID: 5707961849273049072}
+  m_deathSound: {fileID: 0}
 --- !u!114 &3341951120311908520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,8 @@ MonoBehaviour:
   m_currentHealth: 5
   m_maxHealth: 5
   m_isInvulnerable: 0
+  m_damagedTime: 0.15
+  m_damagedAmount: 1
 --- !u!50 &5707961849273049076
 Rigidbody2D:
   serializedVersion: 4
