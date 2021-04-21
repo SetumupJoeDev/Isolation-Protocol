@@ -33,12 +33,23 @@ public class HealthManager : MonoBehaviour
     {
         if ( !m_isInvulnerable )
         {
+            StartCoroutine(PlayerDamageFeedBack());
             m_currentHealth -= damage;
+            
         }
     }
 
     public virtual void Heal(float healAmount)
     {
         m_currentHealth += healAmount;
+    }
+
+
+    IEnumerator PlayerDamageFeedBack()
+    {
+        GameObject blood = gameObject.transform.GetChild(3).gameObject;
+        blood.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.4f);
+        blood.SetActive(false);
     }
 }
