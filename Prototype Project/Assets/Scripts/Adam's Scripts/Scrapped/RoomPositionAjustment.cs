@@ -39,9 +39,6 @@ public class RoomPositionAjustment : MonoBehaviour
             }
         }
 
-        m_roomWidth = m_leftDoorDistance.magnitude + m_rightDoorDistance.magnitude;
-        m_roomHeight = m_topDoorDistance.magnitude + m_bottomDoorDistance.magnitude;
-
         switch (m_directionSpawnedFrom)
         {
             case Enums.Directions.Top:
