@@ -7,6 +7,8 @@ public class RoomPositionAjustment : MonoBehaviour
     [HideInInspector]
     public Enums.Directions m_directionSpawnedFrom;
     public GameObject[]     m_spawnPoints;
+    public float            m_roomWidth;
+    public float            m_roomHeight;
     
     protected Vector3       m_ajustedPosition;
     protected Vector3       m_topDoorDistance;
@@ -36,6 +38,9 @@ public class RoomPositionAjustment : MonoBehaviour
                     break;
             }
         }
+
+        m_roomWidth = m_leftDoorDistance.magnitude + m_rightDoorDistance.magnitude;
+        m_roomHeight = m_topDoorDistance.magnitude + m_bottomDoorDistance.magnitude;
 
         switch (m_directionSpawnedFrom)
         {

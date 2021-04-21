@@ -6,7 +6,7 @@ public class Destroyer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("SpawnPoint"))
+        if (collision.CompareTag("Destroyer"))
         {
             Destroy(collision.gameObject);
         }

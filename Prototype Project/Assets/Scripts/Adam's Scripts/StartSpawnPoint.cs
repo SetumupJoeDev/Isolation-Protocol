@@ -6,8 +6,10 @@ public class StartSpawnPoint : RoomSpawner
 {
     protected override void Spawn()
     {
-        m_spawnedRoom = Instantiate(m_templates.m_leftRooms[m_templates.m_leftRooms.Length-1], transform.position, Quaternion.identity);
-        m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Left;
+        m_random = Random.Range(1, m_templates.m_bottomRooms.Length);
+        m_spawnedRoom = Instantiate(m_templates.m_bottomRooms[m_random], transform.position, Quaternion.identity);
+        m_spawnedRoom.GetComponent<RoomPositionAjustment>().m_directionSpawnedFrom = Enums.Directions.Bottom;
         m_spawned = true;
+        m_levelController.m_numberOfRooms++;
     }
 }
