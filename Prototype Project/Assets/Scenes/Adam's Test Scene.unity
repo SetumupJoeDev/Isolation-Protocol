@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136870377}
   - component: {fileID: 136870376}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 655576316}
   - component: {fileID: 655576315}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30942,13 +30942,13 @@ GameObject:
   - component: {fileID: 983684663}
   - component: {fileID: 983684662}
   - component: {fileID: 983684661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &983684661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31152,13 +31152,13 @@ GameObject:
   - component: {fileID: 1003799663}
   - component: {fileID: 1003799662}
   - component: {fileID: 1003799661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1003799661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31357,7 +31357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035031126}
   - component: {fileID: 1035031128}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31451,7 +31451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131402508}
   - component: {fileID: 1131402507}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31691,7 +31691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1383967052}
   - component: {fileID: 1383967051}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34598,7 +34598,10 @@ GameObject:
   - component: {fileID: 1657334632}
   - component: {fileID: 1657334634}
   - component: {fileID: 1657334631}
-  m_Layer: 0
+  - component: {fileID: 1657334636}
+  - component: {fileID: 1657334635}
+  - component: {fileID: 1657334637}
+  m_Layer: 11
   m_Name: LargeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34702,30 +34705,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd939f2e94d7ee547a45993fa636bf1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 0
+  m_moveSpeed: 35
   m_directionalVelocity: {x: 0, y: 0}
-  m_characterRigidBody: {fileID: 0}
-  m_healthManager: {fileID: 0}
-  m_detectionRange: 0
+  m_characterRigidBody: {fileID: 1657334636}
+  m_healthManager: {fileID: 1657334635}
+  m_detectionRange: 10
   m_playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_currentTarget: {fileID: 0}
   m_searchingForTargets: 0
-  m_searchInterval: 0
-  m_chaseProximity: 0
-  m_attackRange: 0
-  m_attackDamage: 0
-  m_attackInterval: 0
+  m_searchInterval: 0.25
+  m_chaseProximity: 3
+  m_attackRange: 3
+  m_attackDamage: 20
+  m_attackInterval: 4
   m_isAttacking: 0
   m_currentState: 0
-  m_animator: {fileID: 0}
-  m_deathSound: {fileID: 0}
-  m_windupDuration: 0
-  m_aoeRange: 0
+  m_animator: {fileID: 1657334631}
+  m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}
+  m_windupDuration: 0.65
+  m_aoeRange: 4
+  m_attackLaunchForce: 500
+--- !u!114 &1657334635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657334630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f62ea8fa217a73459f4332a8506e5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentHealth: 60
+  m_maxHealth: 60
+  m_isInvulnerable: 0
+--- !u!50 &1657334636
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657334630}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1657334637
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657334630}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8125, y: 0.875}
+    newSize: {x: 0.8125, y: 0.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8125, y: 0.875}
+  m_EdgeRadius: 0
 --- !u!1 &1707438280
 GameObject:
   m_ObjectHideFlags: 0
@@ -34741,13 +34807,13 @@ GameObject:
   - component: {fileID: 1707438283}
   - component: {fileID: 1707438282}
   - component: {fileID: 1707438281}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1707438281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34936,6 +35002,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1751352060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1751352061}
+  - component: {fileID: 1751352062}
+  m_Layer: 14
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1751352061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751352060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1973551570}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1751352062
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751352060}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.024977088, y: -0.074931145}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.61701846, y: 0.8501377}
+  m_EdgeRadius: 0
 --- !u!1 &1928912869
 GameObject:
   m_ObjectHideFlags: 0
@@ -34951,13 +35074,13 @@ GameObject:
   - component: {fileID: 1928912872}
   - component: {fileID: 1928912871}
   - component: {fileID: 1928912870}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1928912870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35161,13 +35284,13 @@ GameObject:
   - component: {fileID: 1940428236}
   - component: {fileID: 1940428235}
   - component: {fileID: 1940428234}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1940428234
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35356,6 +35479,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1973551570 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5707961849273049075, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 5707961848326068310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977806564
 GameObject:
   m_ObjectHideFlags: 0
@@ -35366,7 +35495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977806566}
   - component: {fileID: 1977806565}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35423,7 +35552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2124580449}
   - component: {fileID: 2124580450}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ColliderObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35485,7 +35614,7 @@ GameObject:
   - component: {fileID: 2136840598}
   - component: {fileID: 2136840597}
   - component: {fileID: 2136840599}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ClingerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35592,7 +35721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136840593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.83, y: 12.39, z: 0}
+  m_LocalPosition: {x: 0.01, y: 16.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1035031126}
@@ -35689,14 +35818,50 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
+      propertyPath: m_magCapacity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_fireInterval
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
       propertyPath: m_totalAmmoText
       value: 
       objectReference: {fileID: 972080651}
     - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
+      propertyPath: m_currentMagAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
       propertyPath: m_magazineUIText
       value: 
       objectReference: {fileID: 399501964}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_maxAmmoCapacity
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_projectilePrefab
+      value: 
+      objectReference: {fileID: 5152891944520146787, guid: 4dab3a17bd1d5d74986f9b5e5f30b3bd,
+        type: 3}
+    - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_currentCarriedAmmo
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060928, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_knockbackDuration
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder
@@ -35710,7 +35875,7 @@ PrefabInstance:
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.44
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -35876,6 +36041,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicEnemyMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049086, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}

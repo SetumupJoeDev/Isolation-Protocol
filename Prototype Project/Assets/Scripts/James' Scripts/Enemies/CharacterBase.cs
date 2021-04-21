@@ -9,15 +9,15 @@ public class CharacterBase : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The speed at which the character moves.")]
-    protected float m_moveSpeed;
+    public float m_moveSpeed;
 
     [SerializeField]
     [Tooltip("The directional velocity of the character. Should be normalised when used to ensure move speed is accurate.")]
-    protected Vector2 m_directionalVelocity;
+    public Vector2 m_directionalVelocity;
 
     [SerializeField]
     [Tooltip("The rigidbody component attached to the character. Used to add physical forces.")]
-    protected Rigidbody2D m_characterRigidBody;
+    public Rigidbody2D m_characterRigidBody;
 
     [Space]
 

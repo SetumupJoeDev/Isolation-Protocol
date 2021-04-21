@@ -96,6 +96,8 @@ public class MutoSlug : EnemyBase
 
             transform.position.Set( 0 , 0 , 0 );
 
+            GetComponent<SpriteRenderer>( ).sortingOrder = 5;
+
             Destroy( m_colliderObject );
         }
 
