@@ -6,7 +6,7 @@ public class EnemyHealthManager : HealthManager
 {
     SpriteRenderer m_spriteRenderer;// Lewis' code
     public float m_damagedTime = 0.15f; // Lewis's code.
-    public float m_damagedAmount;
+    public float m_damagedAmount = 1f;
     
 
     private void Start()
@@ -20,10 +20,13 @@ public class EnemyHealthManager : HealthManager
     private void Update()
     {
 
+        if (m_currentHealth <= m_maxHealth && m_currentHealth >= m_maxHealth * 0.75)
+        {
+            m_damagedAmount =1f;
+        }
 
-       
-      
-        if(m_currentHealth >= m_maxHealth *0.75 && m_currentHealth <m_maxHealth)
+
+        if (m_currentHealth >= m_maxHealth *0.75 && m_currentHealth <m_maxHealth)
         {
             m_damagedAmount = 1.25f;
         }
