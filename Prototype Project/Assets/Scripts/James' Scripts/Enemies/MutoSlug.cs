@@ -50,6 +50,8 @@ public class MutoSlug : EnemyBase
         //If the enemy is not attached to its target, it will attempt to pounce on them and latch on
         if ( !m_isAttachedToTarget )
         {
+            gameObject.GetComponent<ParticleSystem>().Play(); // Lewis' code. Triggers particle system for feedback
+
             //Calculates the leap direction before "charging" the pounce, so that the player is able to dodge it
             Vector3 leapDirection = m_currentTarget.transform.position - transform.position;
 
