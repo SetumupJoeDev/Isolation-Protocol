@@ -33,7 +33,7 @@ public class HealthManager : MonoBehaviour
     {
         if ( !m_isInvulnerable )
         {
-            StartCoroutine(PlayerDamageFeedBack());
+            StartCoroutine(PlayerDamageFeedBack()); // Lewis' code. See co-routine below
             m_currentHealth -= damage;
             
         }
@@ -51,5 +51,5 @@ public class HealthManager : MonoBehaviour
         blood.SetActive(true);
         yield return new WaitForSecondsRealtime(0.4f);
         blood.SetActive(false);
-    }
+    } // Lewis' code. Activates a blood animation on the player when damaged
 }

@@ -6,7 +6,7 @@ public class EnemyHealthManager : HealthManager
 {
     SpriteRenderer m_spriteRenderer;// Lewis' code
     public float m_damagedTime = 0.15f; // Lewis's code.
-    public float m_damagedAmount = 1f;
+    public float m_damagedAmount ;
     
 
     private void Start()

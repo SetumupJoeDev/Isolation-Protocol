@@ -31586,6 +31586,11 @@ PrefabInstance:
       propertyPath: m_currentHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049074, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5707961849273049075, guid: d9aab9aff723c4e4ba48c9fba94504fe,
         type: 3}
       propertyPath: m_RootOrder
@@ -31640,6 +31645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5707961849273049077, guid: d9aab9aff723c4e4ba48c9fba94504fe,
         type: 3}
@@ -35080,7 +35090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1657334631
 Animator:
   serializedVersion: 3
@@ -35160,7 +35170,7 @@ Transform:
   m_GameObject: {fileID: 1657334630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.22581477, y: 10.80305, z: -0.6425781}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2124580449}
   m_Father: {fileID: 0}
@@ -35258,7 +35268,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8125, y: 0.875}
+    oldSize: {x: 1.8571428, y: 2}
     newSize: {x: 0.8125, y: 0.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
