@@ -45,6 +45,11 @@ public class MutoSlug : EnemyBase
 
     #endregion
 
+    protected override void FixedUpdate( )
+    {
+        base.FixedUpdate( );
+    }
+
     public override IEnumerator AttackTarget( )
     {
         //If the enemy is not attached to its target, it will attempt to pounce on them and latch on
