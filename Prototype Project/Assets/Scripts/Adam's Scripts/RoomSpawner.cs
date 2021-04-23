@@ -155,6 +155,7 @@ public class RoomSpawner : MonoBehaviour
                         break;
                 }
 
+                m_spawnedRoom.GetComponent<RoomOpenings>().m_spawnedFrom = this;
                 m_spawned = true;
                 m_levelController.m_numberOfRooms++;
                 collision.gameObject.SetActive(false);

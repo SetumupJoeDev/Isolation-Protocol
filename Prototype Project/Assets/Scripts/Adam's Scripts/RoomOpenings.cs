@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RoomOpenings : MonoBehaviour
 {
-    public bool             m_openTop;
-    public bool             m_openLeft;
-    public bool             m_openRight;
-    public bool             m_openBottom;
-    public LayerMask        m_wallLayer;
     public RoomSpawner[]    m_spawners;
     [HideInInspector]
     public RoomSpawner      m_spawnedFrom;
+    
+    [SerializeField]
+    protected LayerMask     m_wallLayer;
 
+    protected bool          m_openTop;
+    protected bool          m_openLeft;
+    protected bool          m_openRight;
+    protected bool          m_openBottom;
     protected bool          m_wallAbove;
     protected bool          m_wallBelow;
     protected bool          m_wallRight;
