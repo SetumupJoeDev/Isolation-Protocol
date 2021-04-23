@@ -128,50 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_topDoorRooms.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_leftDoorRooms.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_rightDoorRooms.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_bottomDoorRooms.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_topDoorRooms.Array.data[3]
-      value: 
-      objectReference: {fileID: 2441236871168476977, guid: 9cfd3622e0a796149889ad048b265d6e,
-        type: 3}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_leftDoorRooms.Array.data[3]
-      value: 
-      objectReference: {fileID: 2441236871168476977, guid: 9cfd3622e0a796149889ad048b265d6e,
-        type: 3}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_rightDoorRooms.Array.data[3]
-      value: 
-      objectReference: {fileID: 2441236871168476977, guid: 9cfd3622e0a796149889ad048b265d6e,
-        type: 3}
-    - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
-        type: 3}
-      propertyPath: m_bottomDoorRooms.Array.data[3]
-      value: 
-      objectReference: {fileID: 2441236871168476977, guid: 9cfd3622e0a796149889ad048b265d6e,
-        type: 3}
     - target: {fileID: 8207973853015630782, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
         type: 3}
       propertyPath: m_RootOrder
@@ -317,6 +273,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1032281400 stripped
+TilemapCollider2D:
+  m_CorrespondingSourceObject: {fileID: 881377689002326561, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064326238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1064326238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,6 +290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_doorDirection
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372013636629764821, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 4372013637956672262, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
         type: 3}
@@ -388,6 +355,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546555056988449873, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_Collider
+      value: 
+      objectReference: {fileID: 1032281400}
+    - target: {fileID: 8946654811430897864, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
+        type: 3}
+      propertyPath: m_aproxRoomLimit
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6, type: 3}

@@ -6,18 +6,13 @@ public class RoomSpawner : MonoBehaviour
 {
     [HideInInspector]
     public Enums.Directions     m_doorDirection;
-    public LayerMask            m_wallLayer;
+    [HideInInspector]
+    public LevelController      m_levelController;
+    public bool                 m_spawned;
 
     protected RoomTemplates     m_templates;
-    protected LevelController   m_levelController;
     protected int               m_random;
-    protected bool              m_spawned;
     protected GameObject        m_spawnedRoom;
-    protected bool              m_wallAbove;
-    protected bool              m_wallBelow;
-    protected bool              m_wallRight;
-    protected bool              m_wallLeft;
-
 
     protected virtual void Start()
     {
@@ -40,35 +35,55 @@ public class RoomSpawner : MonoBehaviour
         {
             m_doorDirection = Enums.Directions.Bottom;
         }
-
         Invoke("Spawn", 0.25f);
     }
 
-    protected virtual void Spawn()
+    public virtual void Spawn()
     {
-        if (!m_spawned && !m_levelController.m_reachedLimit)
+        if (!m_spawned)
         {
-            switch (m_doorDirection)
+            if (!m_levelController.m_reachedLimit)
             {
-                case Enums.Directions.Left:
-                    m_random = Random.Range(0, m_templates.m_rightDoorRooms.Length);
-                    //m_templates.m_rightDoorRooms[m_random].GetComponent
-                    m_spawnedRoom = Instantiate(m_templates.m_rightDoorRooms[m_random], transform.position, Quaternion.identity);
-                    break;
-                case Enums.Directions.Right:
-                    m_random = Random.Range(0, m_templates.m_leftDoorRooms.Length);
-                    m_spawnedRoom = Instantiate(m_templates.m_leftDoorRooms[m_random], transform.position, Quaternion.identity);
-                    break;
-                case Enums.Directions.Top:
-                    m_random = Random.Range(0, m_templates.m_bottomDoorRooms.Length);
-                    m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRooms[m_random], transform.position, Quaternion.identity);
-                    break;
-                case Enums.Directions.Bottom:
-                    m_random = Random.Range(0, m_templates.m_topDoorRooms.Length);
-                    m_spawnedRoom = Instantiate(m_templates.m_topDoorRooms[m_random], transform.position, Quaternion.identity);
-                    break;
+                switch (m_doorDirection)
+                {
+                    case Enums.Directions.Top:
+                        m_random = Random.Range(0, m_templates.m_bottomDoorRooms.Length);
+                        m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRooms[m_random], transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Left:
+                        m_random = Random.Range(0, m_templates.m_rightDoorRooms.Length);
+                        m_spawnedRoom = Instantiate(m_templates.m_rightDoorRooms[m_random], transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Right:
+                        m_random = Random.Range(0, m_templates.m_leftDoorRooms.Length);
+                        m_spawnedRoom = Instantiate(m_templates.m_leftDoorRooms[m_random], transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Bottom:
+                        m_random = Random.Range(0, m_templates.m_topDoorRooms.Length);
+                        m_spawnedRoom = Instantiate(m_templates.m_topDoorRooms[m_random], transform.position, Quaternion.identity);
+                        break;
+                }
+            }
+            else
+            {
+                switch (m_doorDirection)
+                {
+                    case Enums.Directions.Top:
+                        m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRoom, transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Left:
+                        m_spawnedRoom = Instantiate(m_templates.m_rightDoorRoom, transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Right:
+                        m_spawnedRoom = Instantiate(m_templates.m_leftDoorRoom, transform.position, Quaternion.identity);
+                        break;
+                    case Enums.Directions.Bottom:
+                        m_spawnedRoom = Instantiate(m_templates.m_topDoorRoom, transform.position, Quaternion.identity);
+                        break;
+                }
             }
 
+            m_spawnedRoom.GetComponent<RoomOpenings>().m_spawnedFrom = this;
             m_spawned = true;
             m_levelController.m_numberOfRooms++;
         }
@@ -80,30 +95,72 @@ public class RoomSpawner : MonoBehaviour
         {
             if(collision.GetComponent<RoomSpawner>().m_spawned == false && !m_spawned)
             {
-                Destroy(gameObject);
+                switch (m_doorDirection)
+                {
+                    case Enums.Directions.Top:
+                        switch (collision.GetComponent<RoomSpawner>().m_doorDirection)
+                        {
+                            case Enums.Directions.Left:
+                                m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRooms[2], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Right:
+                                m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRooms[1], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Bottom:
+                                m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRooms[0], transform.position, Quaternion.identity);
+                                break;
+                        }
+                        break;
+                    case Enums.Directions.Left:
+                        switch (collision.GetComponent<RoomSpawner>().m_doorDirection)
+                        {
+                            case Enums.Directions.Top:
+                                m_spawnedRoom = Instantiate(m_templates.m_rightDoorRooms[2], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Right:
+                                m_spawnedRoom = Instantiate(m_templates.m_rightDoorRooms[1], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Bottom:
+                                m_spawnedRoom = Instantiate(m_templates.m_rightDoorRooms[0], transform.position, Quaternion.identity);
+                                break;
+                        }
+                        break;
+                    case Enums.Directions.Right:
+                        switch (collision.GetComponent<RoomSpawner>().m_doorDirection)
+                        {
+                            case Enums.Directions.Top:
+                                m_spawnedRoom = Instantiate(m_templates.m_leftDoorRooms[2], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Left:
+                                m_spawnedRoom = Instantiate(m_templates.m_leftDoorRooms[1], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Bottom:
+                                m_spawnedRoom = Instantiate(m_templates.m_leftDoorRooms[0], transform.position, Quaternion.identity);
+                                break;
+                        }
+                        break;
+                    case Enums.Directions.Bottom:
+                        switch (collision.GetComponent<RoomSpawner>().m_doorDirection)
+                        {
+                            case Enums.Directions.Top:
+                                m_spawnedRoom = Instantiate(m_templates.m_topDoorRooms[2], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Left:
+                                m_spawnedRoom = Instantiate(m_templates.m_topDoorRooms[1], transform.position, Quaternion.identity);
+                                break;
+                            case Enums.Directions.Right:
+                                m_spawnedRoom = Instantiate(m_templates.m_topDoorRooms[0], transform.position, Quaternion.identity);
+                                break;
+                        }
+                        break;
+                }
+
+                m_spawned = true;
+                m_levelController.m_numberOfRooms++;
+                collision.gameObject.SetActive(false);
             }
 
             m_spawned = true;
-        }
-    }
-
-    protected void CheckSurroudings()
-    {
-        if(Physics2D.Raycast(transform.position, Vector2.up, 10f, m_wallLayer))
-        {
-            m_wallAbove = true;
-        }
-        if(Physics2D.Raycast(transform.position, Vector2.down, 10f, m_wallLayer))
-        {
-            m_wallBelow = true;
-        }
-        if(Physics2D.Raycast(transform.position, Vector2.left, 10f, m_wallLayer))
-        {
-            m_wallLeft = true;
-        }
-        if(Physics2D.Raycast(transform.position, Vector2.right, 10f, m_wallLayer))
-        {
-            m_wallRight = true;
         }
     }
 }
