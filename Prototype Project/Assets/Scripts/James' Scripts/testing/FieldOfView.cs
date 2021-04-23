@@ -44,56 +44,7 @@ public class FieldOfView : MonoBehaviour
 
     private void LateUpdate( )
     {
-        float angle = m_startingAngle;
-
-        float angleIncrease = m_fovWidth / m_rayCount;
-
-        Vector3[] verts = new Vector3[m_rayCount + 1 + 1];
-        Vector2[] uv    = new Vector2[verts.Length];
-        int[]     tris  = new int[m_rayCount * 3];
-
-        verts[0] = m_fovOrigin;
-
-        int vertexIndex = 1;
-
-        int triangleIndex = 0;
-
-        for(int i = 0; i <= m_rayCount; i++ )
-        {
-
-            Vector3 vertex;
-
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(m_fovOrigin, GetVectorFromAngle(angle), m_viewDistance, m_wallLayerMask);
-
-            if ( raycastHit2D.collider == null )
-            {
-                vertex = m_fovOrigin + GetVectorFromAngle( angle ) * m_viewDistance;
-            }
-            else
-            {
-                vertex = raycastHit2D.point;
-            }
-
-            verts[vertexIndex] = vertex;
-
-            if ( i > 0 )
-            {
-                tris[triangleIndex + 0] = 0;
-                tris[triangleIndex + 1] = vertexIndex - 1;
-                tris[triangleIndex + 2] = vertexIndex;
-
-                triangleIndex += 3;
-            }
-
-            vertexIndex++;
-
-            angle -= angleIncrease;
-
-        }
         
-        m_fieldOfViewMesh.vertices = verts;
-        m_fieldOfViewMesh.uv = uv;
-        m_fieldOfViewMesh.triangles = tris;
 
     }
 
@@ -119,9 +70,81 @@ public class FieldOfView : MonoBehaviour
 
     }
 
+    public GameObject DrawFOV( LayerMask targetLayer, bool checkingForTargets )
+    {
+        float angle = m_startingAngle;
+
+        float angleIncrease = m_fovWidth / m_rayCount;
+
+        Vector3[] verts = new Vector3[m_rayCount + 1 + 1];
+        Vector2[] uv    = new Vector2[verts.Length];
+        int[]     tris  = new int[m_rayCount * 3];
+
+        verts[0] = m_fovOrigin;
+
+        int vertexIndex = 1;
+
+        int triangleIndex = 0;
+
+        GameObject newTarget = null;
+
+        for ( int i = 0; i <= m_rayCount; i++ )
+        {
+
+            Vector3 vertex;
+
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(m_fovOrigin, GetVectorFromAngle(angle), m_viewDistance, m_wallLayerMask);
+
+            if ( raycastHit2D.collider == null )
+            {
+                vertex = m_fovOrigin + GetVectorFromAngle( angle ) * m_viewDistance;
+            }
+            else
+            {
+                vertex = raycastHit2D.point;
+            }
+
+            if ( checkingForTargets )
+            {
+
+                RaycastHit2D raycastHit = Physics2D.Raycast(m_fovOrigin, GetVectorFromAngle(angle), m_viewDistance, targetLayer);
+
+                if ( raycastHit.collider != null )
+                {
+                    newTarget = raycastHit.collider.gameObject;
+                }
+
+            }
+
+            verts[vertexIndex] = vertex;
+
+            if ( i > 0 )
+            {
+                tris[triangleIndex + 0] = 0;
+                tris[triangleIndex + 1] = vertexIndex - 1;
+                tris[triangleIndex + 2] = vertexIndex;
+
+                triangleIndex += 3;
+            }
+
+            vertexIndex++;
+
+            angle -= angleIncrease;
+
+        }
+
+        m_fieldOfViewMesh.vertices = verts;
+        m_fieldOfViewMesh.uv = uv;
+        m_fieldOfViewMesh.triangles = tris;
+        m_fieldOfViewMesh.bounds = new Bounds( m_fovOrigin , Vector3.one * 1000f );
+
+        return newTarget;
+
+    }
+
     public void SetOrigin( Vector3 origin )
     {
-        this.m_fovOrigin = origin; 
+        m_fovOrigin = origin; 
     }
 
     public void SetAimDirection( Vector3 aimDirection )

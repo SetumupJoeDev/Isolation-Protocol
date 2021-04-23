@@ -17,8 +17,10 @@ public class TurretBase : MonoBehaviour
 
     public turretStates m_currentTurretState;
 
+    [Range(0, 360)]
     public int m_minRotation;
 
+    [Range(0, 360)]
     public int m_maxRotation;
 
     public bool m_rotatingLeft;
@@ -46,11 +48,9 @@ public class TurretBase : MonoBehaviour
     void Start()
     {
 
-        m_aimingDirection = new Vector3( 0, 0, m_maxRotation - m_minRotation);
+        m_turretGun.transform.localEulerAngles = new Vector3( 0 , 0 , m_maxRotation - m_minRotation );
 
-        m_turretGun.transform.eulerAngles = m_aimingDirection;
-
-        m_fieldOfView.SetAimDirection( m_aimingDirection );
+        m_aimingDirection = m_turretGun.transform.up;
 
     }
 
@@ -65,6 +65,12 @@ public class TurretBase : MonoBehaviour
                     SearchForTargets( );
                 }
                 break;
+            case ( turretStates.attacking ):
+                {
+                    AimAtTarget( );
+                    m_fieldOfView.DrawFOV( m_targetLayer , false );
+                }
+                break;
         }
 
         m_fieldOfView.SetOrigin( transform.position );
@@ -77,7 +83,6 @@ public class TurretBase : MonoBehaviour
         m_aimingDirection = m_currentTarget.transform.position - m_turretGun.transform.position;
 
         m_fieldOfView.SetAimDirection( m_aimingDirection );
-        m_fieldOfView.SetOrigin( transform.position );
 
         //Calculates the angle using the x and y of the direction vector, converting it to degrees for use in a quaternion
         float angle = Mathf.Atan2( m_aimingDirection.x, m_aimingDirection.y ) * Mathf.Rad2Deg;
@@ -92,23 +97,19 @@ public class TurretBase : MonoBehaviour
 
     public void SearchForTargets( )
     {
-        if ( !m_rotatingLeft )
-        {
-            m_turretGun.transform.rotation = Quaternion.Lerp( transform.rotation , new Quaternion(0, 0, m_maxRotation, 0) , m_rotationSpeed * Time.deltaTime );
-            if( Mathf.Approximately( m_turretGun.transform.rotation.z, m_maxRotation ) )
-            {
-                m_rotatingLeft = true;
-            }
-        }
-        else
-        {
-            m_turretGun.transform.rotation = Quaternion.Lerp( transform.rotation , new Quaternion( 0 , 0 , m_minRotation , 0 ) , m_rotationSpeed * Time.deltaTime );
-            if ( Mathf.Approximately( m_turretGun.transform.rotation.z , m_minRotation ) )
-            {
-                m_rotatingLeft = false;
-            }
 
+        m_turretGun.transform.localEulerAngles = new Vector3( 0 , 0 , Mathf.PingPong( Time.time * m_rotationSpeed , m_maxRotation ) - m_minRotation );
+
+        m_aimingDirection = m_turretGun.transform.up;
+
+        m_fieldOfView.SetAimDirection( m_aimingDirection );
+
+        m_currentTarget = m_fieldOfView.DrawFOV( m_targetLayer , true );
+        if ( m_currentTarget != null )
+        {
+            m_currentTurretState = turretStates.attacking;
         }
+
     }
 
 }

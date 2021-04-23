@@ -30956,8 +30956,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_currentTurretState: 0
-  m_minRotation: -90
-  m_maxRotation: 90
+  m_minRotation: 90
+  m_maxRotation: 180
   m_rotatingLeft: 0
   m_rotationSpeed: 25
   m_turretGun: {fileID: 1992709888}
@@ -31021,7 +31021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971531642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1539304, y: 12.617831, z: 0}
+  m_LocalPosition: {x: 3.5, y: 12.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1992709889}
@@ -32464,7 +32464,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: cc3c1ee383c791e4fafc8065edf1f845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -32484,7 +32484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482386359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.48, y: 13.74, z: -5.4179688}
+  m_LocalPosition: {x: -4.48, y: 13.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35868,7 +35868,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
-  m_RendererPriority: 0
+  m_RendererPriority: 1
   m_Materials:
   - {fileID: 2100000, guid: 63c0c88fdb7d3a24ba94a0f246db4ba3, type: 2}
   m_StaticBatchInfo:
@@ -35918,7 +35918,7 @@ MonoBehaviour:
   m_fovOrigin: {x: 0, y: 0, z: 0}
   m_rayCount: 90
   m_fovWidth: 45
-  m_viewDistance: 10
+  m_viewDistance: 5
 --- !u!4 &1754342512
 Transform:
   m_ObjectHideFlags: 0
@@ -35927,7 +35927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754342508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1539304, y: -12.617831, z: -5}
+  m_LocalPosition: {x: -3.5, y: -12.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 971531645}
@@ -41641,12 +41641,12 @@ PrefabInstance:
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
