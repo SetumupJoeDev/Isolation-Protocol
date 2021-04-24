@@ -91,5 +91,8 @@ public class ProjectileBase : MonoBehaviour
     void Update()
     {
         transform.Translate( m_projectileVelocity.normalized * m_projectileSpeed * Time.deltaTime );
+
+        transform.rotation = Quaternion.LookRotation( m_projectileVelocity.normalized );
+
     }
 }

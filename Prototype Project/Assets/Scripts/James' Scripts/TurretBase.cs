@@ -42,6 +42,14 @@ public class TurretBase : MonoBehaviour
     [Tooltip("The current direction that the turret is aiming in.")]
     public Vector3 m_aimingDirection;
 
+    public AudioSource m_firingSound;
+
+    public AudioSource m_targetFoundSound;
+
+    public float m_fireInterval;
+
+    public bool m_isFiring;
+
     #endregion
 
     // Start is called before the first frame update
@@ -68,12 +76,23 @@ public class TurretBase : MonoBehaviour
             case ( turretStates.attacking ):
                 {
                     AimAtTarget( );
+                    if( !m_isFiring )
+                    {
+                        StartCoroutine( FireAtTarget( ) );
+                    }
                     m_fieldOfView.DrawFOV( m_targetLayer , false );
                 }
                 break;
         }
 
         m_fieldOfView.SetOrigin( transform.position );
+
+    }
+
+    public virtual IEnumerator FireAtTarget( )
+    {
+
+        yield return new WaitForSeconds( m_fireInterval );
 
     }
 
@@ -108,6 +127,7 @@ public class TurretBase : MonoBehaviour
         if ( m_currentTarget != null )
         {
             m_currentTurretState = turretStates.attacking;
+            m_targetFoundSound.Play( );
         }
 
     }

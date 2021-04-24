@@ -42,12 +42,6 @@ public class FieldOfView : MonoBehaviour
 
     }
 
-    private void LateUpdate( )
-    {
-        
-
-    }
-
     public static Vector3 GetVectorFromAngle( float angle )
     {
         float angleRad = angle * (Mathf.PI/180f);
