@@ -92,22 +92,21 @@ public class FieldOfView : MonoBehaviour
             if ( raycastHit2D.collider == null )
             {
                 vertex = m_fovOrigin + GetVectorFromAngle( angle ) * m_viewDistance;
+                if ( checkingForTargets )
+                {
+
+                    RaycastHit2D raycastHit = Physics2D.Raycast(m_fovOrigin, GetVectorFromAngle(angle), m_viewDistance, targetLayer);
+
+                    if ( raycastHit.collider != null )
+                    {
+                        newTarget = raycastHit.collider.gameObject;
+                    }
+
+                }
             }
             else
             {
                 vertex = raycastHit2D.point;
-            }
-
-            if ( checkingForTargets )
-            {
-
-                RaycastHit2D raycastHit = Physics2D.Raycast(m_fovOrigin, GetVectorFromAngle(angle), m_viewDistance, targetLayer);
-
-                if ( raycastHit.collider != null )
-                {
-                    newTarget = raycastHit.collider.gameObject;
-                }
-
             }
 
             verts[vertexIndex] = vertex;

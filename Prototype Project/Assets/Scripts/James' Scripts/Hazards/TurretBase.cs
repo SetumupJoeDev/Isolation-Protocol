@@ -27,6 +27,10 @@ public class TurretBase : MonoBehaviour
 
     public float m_rotationSpeed;
 
+    public bool m_hasLostPlayer;
+
+    public float m_timeUntilTargetLost;
+
     #endregion
 
     #region Aiming & Firing
@@ -76,11 +80,19 @@ public class TurretBase : MonoBehaviour
             case ( turretStates.attacking ):
                 {
                     AimAtTarget( );
-                    if( !m_isFiring )
+                    if( !m_isFiring && !m_hasLostPlayer )
                     {
                         StartCoroutine( FireAtTarget( ) );
                     }
-                    m_fieldOfView.DrawFOV( m_targetLayer , false );
+                    if( m_fieldOfView.DrawFOV( m_targetLayer , true ) == null )
+                    {
+                        m_hasLostPlayer = true;
+                        StartCoroutine( CheckIsTargetLost( ) );
+                    }
+                    else if ( m_hasLostPlayer )
+                    {
+                        StopCoroutine( CheckIsTargetLost( ) );
+                    }
                 }
                 break;
         }
@@ -93,6 +105,16 @@ public class TurretBase : MonoBehaviour
     {
 
         yield return new WaitForSeconds( m_fireInterval );
+
+    }
+
+    public virtual IEnumerator CheckIsTargetLost( )
+    {
+        yield return new WaitForSeconds( m_timeUntilTargetLost );
+
+        m_currentTarget = null;
+
+        m_currentTurretState = turretStates.searching;
 
     }
 
@@ -127,6 +149,7 @@ public class TurretBase : MonoBehaviour
         if ( m_currentTarget != null )
         {
             m_currentTurretState = turretStates.attacking;
+            m_hasLostPlayer = false;
             m_targetFoundSound.Play( );
         }
 
