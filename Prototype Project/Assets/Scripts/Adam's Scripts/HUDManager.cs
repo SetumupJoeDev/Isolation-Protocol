@@ -11,11 +11,14 @@ public class HUDManager : MonoBehaviour
     public Image[]              m_hearts;
     public Text                 m_dashCooldown;
     public Text                 m_weaponName;
+    public Text                 m_numberOfCigs;
+    public Text                 m_amountOfFuel;
     [HideInInspector]
     public bool                 m_dashOnCooldown;
 
     protected PlayerController  m_playerController;
     protected HealthManager     m_playerHealth;
+    protected CurrencyManager   m_playerCurrency;
     protected int               m_playerMaxHealth;
     protected int               m_playerCurrentHealth;
     protected float             m_cooldownCounter;
@@ -24,6 +27,7 @@ public class HUDManager : MonoBehaviour
     {
         m_playerController = GetComponentInParent<PlayerController>();
         m_playerHealth = GetComponentInParent<HealthManager>();
+        m_playerCurrency = GetComponentInParent<CurrencyManager>();
         m_playerMaxHealth = m_playerHealth.m_maxHealth;
         m_cooldownCounter = m_playerController.m_dashCooldown;
     }
@@ -34,6 +38,9 @@ public class HUDManager : MonoBehaviour
         m_dashCooldown.text = m_cooldownCounter.ToString("F2");
 
         m_weaponName.text = m_playerController.m_currentWeapon.name;
+
+        m_numberOfCigs.text = m_playerCurrency.m_cigarettePacksCount.ToString();
+        m_amountOfFuel.text = m_playerCurrency.m_fabricatorFuelCount.ToString();
 
         UpdateHearts(); 
         
