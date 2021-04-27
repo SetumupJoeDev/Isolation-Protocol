@@ -53,7 +53,7 @@ public class EnemyBase : CharacterBase
 
     [SerializeField]
     [Tooltip("The amount of damahe this enemy deals on each attack.")]
-    protected float m_attackDamage;
+    protected int m_attackDamage;
 
     [SerializeField]
     [Tooltip("The interval between this enemy's attacks.")]

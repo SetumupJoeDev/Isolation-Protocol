@@ -13,6 +13,8 @@ public class PlayerController : CharacterBase
     public Animator      m_animator;
 
     [Header("Dodge")]
+    public float      m_dodgeCooldown;
+    
     [SerializeField]
     protected Vector2    m_mouseDirection;
     [SerializeField]
@@ -191,7 +193,7 @@ public class PlayerController : CharacterBase
 
     IEnumerator DodgeCooldown()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(m_dodgeCooldown);
         m_canDodge = true;
     }
 

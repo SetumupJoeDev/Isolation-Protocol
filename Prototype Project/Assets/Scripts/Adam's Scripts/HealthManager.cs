@@ -6,14 +6,11 @@ public class HealthManager : MonoBehaviour
 {
     [Header("Health")]
 
-    [SerializeField]
     [Tooltip("The health this unit currently has")]
-    public float m_currentHealth;
-    [SerializeField]
+    public int  m_currentHealth;
     [Tooltip("The maximum amount of health this unit can have")]
-    protected float m_maxHealth;
+    public int  m_maxHealth;
 
-    [SerializeField]
     [Tooltip("Determines whether or not the player can currently take damage")]
     public bool m_isInvulnerable;
 
@@ -23,13 +20,7 @@ public class HealthManager : MonoBehaviour
         m_currentHealth = m_maxHealth;
     }
 
-    // Update is called once per frame
-    public virtual void Update()
-    {
-        
-    }
-
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(int damage)
     {
         if ( !m_isInvulnerable )
         {
@@ -39,7 +30,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public virtual void Heal(float healAmount)
+    public virtual void Heal(int healAmount)
     {
         m_currentHealth += healAmount;
     }

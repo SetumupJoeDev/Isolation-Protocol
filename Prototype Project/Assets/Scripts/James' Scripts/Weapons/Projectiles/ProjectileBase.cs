@@ -26,7 +26,7 @@ public class ProjectileBase : MonoBehaviour
 
     [Header("Damage")]
     [Tooltip("The amount of damage that this projectile will deal to enemies.")]
-    public float m_projectileDamage;
+    public int m_projectileDamage;
 
     [Tooltip("The total number of enemies that this projectile can damage.")]
     public int m_maxDamagedEnemies;

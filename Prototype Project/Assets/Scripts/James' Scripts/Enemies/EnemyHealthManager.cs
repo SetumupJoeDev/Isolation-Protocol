@@ -9,8 +9,9 @@ public class EnemyHealthManager : HealthManager
     public float m_damagedAmount ;
     
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         
         
@@ -43,7 +44,7 @@ public class EnemyHealthManager : HealthManager
             m_damagedAmount =  2f;
         } // whole Update method is Lewis' code. It determines how much the enemy should stretch depending on how damaged it is. 
     }
-    public override void TakeDamage( float damage )
+    public override void TakeDamage( int damage )
     {
         base.TakeDamage( damage );
         StartCoroutine(damageFeedback()); // Lewis' code
