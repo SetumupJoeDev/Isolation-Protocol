@@ -31678,6 +31678,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dac0cb59b5543c4f850260439a808c6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865920017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 9.89, z: -1.5582217}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971531642
 GameObject:
   m_ObjectHideFlags: 0
@@ -33453,7 +33464,7 @@ Transform:
   m_LocalScale: {x: 0.4632, y: 0.4632, z: 2.316}
   m_Children: []
   m_Father: {fileID: 2060857445}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1265816836
 Animator:
@@ -37204,6 +37215,13 @@ MonoBehaviour:
   m_maxFuelDrops: 6
   m_minFuelDrops: 2
   m_fabricatorFuelPrefab: {fileID: 1571228097}
+  m_lootBoostModifier: 0
+  m_maxCigaretteDrops: 0
+  m_minCigaretteDrops: 0
+  m_cigPackPrefab: {fileID: 0}
+  m_maxFuelDrops: 0
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 1657334631}
   m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}
@@ -43504,6 +43522,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2099287324317706099, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099287324317706099, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.334
       objectReference: {fileID: 0}
@@ -43511,6 +43534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333049591886652217, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3715704713655741233, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -43553,6 +43581,11 @@ PrefabInstance:
       propertyPath: m_currentCarriedAmmo
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 3715704713914371761, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060928, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_currentWeapon
@@ -43571,12 +43604,12 @@ PrefabInstance:
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -43633,10 +43666,20 @@ PrefabInstance:
       propertyPath: m_maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3715704714721768768, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895439640150114730, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8492173334297676752, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8872518404121529078, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
