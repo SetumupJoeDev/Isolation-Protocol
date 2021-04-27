@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : CharacterBase
@@ -7,25 +6,30 @@ public class PlayerController : CharacterBase
 
     [Header("Weapons")]
     [Tooltip("The weapon held by the player.")]
-    public GameObject   m_currentWeapon;
+    public GameObject    m_currentWeapon;
 
     [Header("Animation")]
     public Animator      m_animator;
 
-    [Header("Dodge")]
-    public float      m_dodgeCooldown;
+    [Header("HUD")]
+    public HUDManager    m_hud;
+
+    [Header("Dash")]
+    public float         m_dashCooldown;
     
     [SerializeField]
     protected Vector2    m_mouseDirection;
     [SerializeField]
-    protected float      m_dodgeSpeed;
-    protected float      m_dodgeTime;
+    protected float      m_dashSpeed;
+    protected float      m_dashTime;
     [SerializeField]
-    protected float      m_startDodgeTime;
+    protected float      m_startDashTime;
     protected float      m_directionTolerance;
-    protected bool       m_canDodge;
-    protected bool       m_isDodging;
-    protected Vector2    m_dodgeDirection;
+    [HideInInspector]
+    public bool          m_canDash;
+    [HideInInspector]
+    public bool          m_isDashing;
+    protected Vector2    m_dashDirection;
     protected Vector2[]  m_directions;
     public float         m_slowness;
 
@@ -73,9 +77,9 @@ public class PlayerController : CharacterBase
 
     protected override void Start()
     {
-        m_dodgeTime = m_startDodgeTime;
-        m_canDodge  = true;
-        m_isDodging = false;
+        m_dashTime = m_startDashTime;
+        m_canDash  = true;
+        m_isDashing = false;
         m_directionTolerance = 0.5f;
         m_directions = new Vector2[]
         {
@@ -102,7 +106,7 @@ public class PlayerController : CharacterBase
         m_mouseDirection = mousePos - transform.position;
 
         Animate();
-        Dodge();
+        Dash();
 
         if ( Input.GetMouseButton( 0 ) )
         {
@@ -118,13 +122,13 @@ public class PlayerController : CharacterBase
 
     protected override void FixedUpdate()
     {
-        if (m_isDodging && !m_knockedBack )
+        if (m_isDashing && !m_knockedBack )
         {
-            m_characterRigidBody.velocity = m_dodgeDirection.normalized * m_dodgeSpeed * Time.deltaTime;
+            m_characterRigidBody.velocity = m_dashDirection.normalized * m_dashSpeed * Time.deltaTime;
 
             //James' work
 
-            if( Physics2D.Raycast( transform.position, m_dodgeDirection, 1.0f, m_wallLayer ) == true )
+            if( Physics2D.Raycast( transform.position, m_dashDirection, 1.0f, m_wallLayer ) == true )
             {
                 KillAttachedSlugs( );
             }
@@ -159,48 +163,50 @@ public class PlayerController : CharacterBase
         m_animator.SetFloat("Speed", m_directionalVelocity.sqrMagnitude);
     }
 
-    protected void Dodge()
+    protected void Dash()
     {
         for (int i = 0; i < m_directions.Length; i++)
         {
             if (Mathf.Abs(m_directionalVelocity.normalized.x - m_directions[i].x) < m_directionTolerance && Mathf.Abs(m_directionalVelocity.normalized.y - m_directions[i].y) < m_directionTolerance)
             {
-                m_dodgeDirection = m_directions[i];
+                m_dashDirection = m_directions[i];
             }
         }
 
-        if (m_canDodge)
+        if (m_canDash)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                m_isDodging = true;
-                m_canDodge = false;
+                m_isDashing = true;
+                m_canDash = false;
                 m_healthManager.m_isInvulnerable = true;
             }
         }
 
-        if (m_isDodging)
+        if (m_isDashing)
         {
-            if (m_dodgeTime <= 0)
+            if (m_dashTime <= 0)
             {
-                StartCoroutine(DodgeCooldown());
-                m_isDodging = false;
-                m_dodgeTime = m_startDodgeTime;
+                m_isDashing = false;
+                m_dashTime = m_startDashTime;
                 m_characterRigidBody.velocity = Vector2.zero;
-                m_dodgeDirection = Vector2.zero;
+                m_dashDirection = Vector2.zero;
                 m_healthManager.m_isInvulnerable = false;
+                m_hud.DashCooldown();
+                StartCoroutine(DashCooldown());
             }
             else
             {
-                m_dodgeTime -= Time.deltaTime;
+                m_dashTime -= Time.deltaTime;
             }
         }
     }
 
-    IEnumerator DodgeCooldown()
+    IEnumerator DashCooldown()
     {
-        yield return new WaitForSeconds(m_dodgeCooldown);
-        m_canDodge = true;
+        yield return new WaitForSeconds(m_dashCooldown);
+        m_canDash = true;
+        m_hud.m_dashOnCooldown = false;
     }
 
     protected override void Move()

@@ -9,22 +9,42 @@ public class HUDManager : MonoBehaviour
     public Sprite               m_halfHeart;
     public Sprite               m_fullHeart;
     public Image[]              m_hearts;
+    public Text                 m_dashCooldown;
+    public Text                 m_weaponName;
+    [HideInInspector]
+    public bool                 m_dashOnCooldown;
 
     protected PlayerController  m_playerController;
     protected HealthManager     m_playerHealth;
     protected int               m_playerMaxHealth;
     protected int               m_playerCurrentHealth;
+    protected float             m_cooldownCounter;
 
     protected void Start()
     {
+        m_playerController = GetComponentInParent<PlayerController>();
         m_playerHealth = GetComponentInParent<HealthManager>();
         m_playerMaxHealth = m_playerHealth.m_maxHealth;
+        m_cooldownCounter = m_playerController.m_dashCooldown;
     }
 
     protected void Update()
     {
         m_playerCurrentHealth = m_playerHealth.m_currentHealth;
-        UpdateHearts();
+        m_dashCooldown.text = m_cooldownCounter.ToString("F2");
+
+        m_weaponName.text = m_playerController.m_currentWeapon.name;
+
+        UpdateHearts(); 
+        
+        if (m_dashOnCooldown)
+        {
+            m_cooldownCounter -= Time.deltaTime;
+        }
+        else
+        {
+            m_dashCooldown.gameObject.SetActive(false);
+        }
     }
 
     protected void UpdateHearts()
@@ -73,5 +93,12 @@ public class HUDManager : MonoBehaviour
                 m_hearts[i].sprite = m_emptyHeart;
             }
         }
+    }
+
+    public void DashCooldown()
+    {
+        m_cooldownCounter = m_playerController.m_dashCooldown;
+        m_dashOnCooldown = true;
+        m_dashCooldown.gameObject.SetActive(true);
     }
 }
