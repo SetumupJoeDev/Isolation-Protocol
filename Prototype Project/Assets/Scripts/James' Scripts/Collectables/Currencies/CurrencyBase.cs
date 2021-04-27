@@ -35,6 +35,11 @@ public class CurrencyBase : CollectableBase
 
     #endregion
 
+    public void Start( )
+    {
+        m_rigidBody = GetComponent<Rigidbody2D>( );
+    }
+
     // Update is called once per frame
     public virtual void Update()
     {
@@ -58,7 +63,7 @@ public class CurrencyBase : CollectableBase
     {
         Vector3 direction = m_playerObject.transform.position - transform.position;
 
-        m_rigidBody.AddForce( direction.normalized * m_gravitationalSpeed * Time.fixedDeltaTime );
+        m_rigidBody.velocity = direction.normalized * m_gravitationalSpeed * Time.fixedDeltaTime;
 
     }
 

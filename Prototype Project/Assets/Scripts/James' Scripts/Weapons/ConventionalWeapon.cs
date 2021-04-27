@@ -30,6 +30,9 @@ public class ConventionalWeapon : GunBase
     [Tooltip("The number of projectiles fired each time this weapon fires. Should be left at 0 if this is not a burst fire weapon.")]
     protected int m_projectilesPerShot;
 
+    [Tooltip("The muzzle flash particle system attached to this weapon.")]
+    public ParticleSystem m_muzzleFlash;
+
     #endregion
 
     private IEnumerator FireProjectiles( )
@@ -42,12 +45,16 @@ public class ConventionalWeapon : GunBase
             //Sets the projectiles velocity to the aiming direction of the weapon
             newBullet.m_projectileVelocity = m_aimingDirection;
 
+            newBullet.gameObject.layer = 9;
+
             m_currentMagAmmo--;
 
             UpdateUIElements( );
 
             //Play's the weapon's firing sound
             m_fireSound.Play( );
+
+            m_muzzleFlash.Play( );
 
             yield return new WaitForSeconds( m_burstFireDelay );
 
