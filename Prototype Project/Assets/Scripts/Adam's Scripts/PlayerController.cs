@@ -63,6 +63,12 @@ public class PlayerController : CharacterBase
 
     #endregion
 
+    #region Currency
+
+    public CurrencyManager m_currencyManager;
+
+    #endregion
+
     //End of James' work
 
     protected override void Start()
