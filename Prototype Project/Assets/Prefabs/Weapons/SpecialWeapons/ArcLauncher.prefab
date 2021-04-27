@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1311074505600363534}
   - component: {fileID: 1311074505600363535}
   m_Layer: 8
-  m_Name: TestWeapon (1)
+  m_Name: ArcLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,8 @@ MonoBehaviour:
   m_totalAmmoText: {fileID: 0}
   m_weaponFireMode: 1
   m_fireInterval: 0.175
-  m_projectilePrefab: {fileID: 748496678482046455, guid: bc4faa6f933a9a4468b60f3fd64f0da9,
+  m_burstFireDelay: 0
+  m_projectilePrefab: {fileID: 5152891944520146787, guid: 4dab3a17bd1d5d74986f9b5e5f30b3bd,
     type: 3}
   m_projectilesPerShot: 1
 --- !u!82 &1311074505600363534

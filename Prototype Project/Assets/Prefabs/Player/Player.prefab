@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 3715704714287060931}
   - component: {fileID: 3715704714287060928}
   - component: {fileID: 3715704714287060941}
+  - component: {fileID: 1822051857034256484}
   - component: {fileID: 3715704714287060929}
   - component: {fileID: 3715704714287060943}
   - component: {fileID: 3715704714287060942}
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
+  m_currencyManager: {fileID: 1822051857034256484}
 --- !u!114 &3715704714287060941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +299,20 @@ MonoBehaviour:
   m_currentHealth: 0
   m_maxHealth: 0
   m_isInvulnerable: 0
+--- !u!114 &1822051857034256484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715704714287060932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e1f6521c911154ca58ceba8759638a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cigarettePacksCount: 0
+  m_fabricatorFuelCount: 0
 --- !u!50 &3715704714287060929
 Rigidbody2D:
   serializedVersion: 4

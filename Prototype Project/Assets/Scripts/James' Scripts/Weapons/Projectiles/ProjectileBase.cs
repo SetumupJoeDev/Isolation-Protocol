@@ -18,6 +18,9 @@ public class ProjectileBase : MonoBehaviour
     [Tooltip("The lifetime of the projectile from the moment it is fired. If 0, the projectile will persist until destroyed externally or by damaging the max number of enemies.")]
     public float m_projectileLifetime;
 
+    [Tooltip("The RigidBody attached to this projectile.")]
+    public Rigidbody2D m_projectileRigidBody;
+
     #endregion
 
     [Space]
@@ -42,6 +45,8 @@ public class ProjectileBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+
+        m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
         if ( m_projectileLifetime != 0 )
         {
@@ -88,11 +93,11 @@ public class ProjectileBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate( m_projectileVelocity.normalized * m_projectileSpeed * Time.deltaTime );
+        m_projectileRigidBody.velocity = m_projectileVelocity.normalized * m_projectileSpeed * Time.fixedDeltaTime;
 
-        transform.rotation = Quaternion.LookRotation( m_projectileVelocity.normalized );
+        transform.up = m_projectileRigidBody.velocity;
 
     }
 }

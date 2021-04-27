@@ -65,6 +65,34 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
+    #region Loot
+
+    [Header("Loot")]
+
+    [Range(1, 3)]
+    [Tooltip("The modifier bonus to any loot drops this enemy has. Has a base of one, but can be increased.")]
+    public float m_lootBoostModifier;
+
+    [Tooltip("The maximum number of cigarette packs this enemy will drop when killed.")]
+    public int m_maxCigaretteDrops;
+
+    [Tooltip("The minimum number of cigarette packs this enemy will drop when killed.")]
+    public int m_minCigaretteDrops;
+
+    [Tooltip("The prefab for the cigarette pack gameobject.")]
+    public GameObject m_cigPackPrefab;
+
+    [Tooltip("The maximum number of fabricator fuel tanks this enemy will drop when killed.")]
+    public int m_maxFuelDrops;
+
+    [Tooltip("The minimum number of fabricator fuel tanks this enemy will drop when killed.")]
+    public int m_minFuelDrops;
+
+    [Tooltip("The prefab for the cigarette pack gameobject.")]
+    public GameObject m_fabricatorFuelPrefab;
+
+    #endregion
+
     #region EnemyStates
 
     public enum enemyStates { idle, chasing, attacking };
@@ -153,6 +181,12 @@ public class EnemyBase : CharacterBase
         }
     }
 
+    public override void Die( )
+    {
+        DropLoot( );
+        base.Die( );
+    }
+
     protected virtual void ChaseTarget( )
     {
 
@@ -238,6 +272,48 @@ public class EnemyBase : CharacterBase
 
         m_isAttacking = false;
 
+    }
+
+    public virtual void DropLoot( )
+    {
+        if ( m_maxCigaretteDrops > 0 )
+        {
+            float cigsToDrop = Random.Range(m_minCigaretteDrops * m_lootBoostModifier, m_maxCigaretteDrops * m_lootBoostModifier);
+
+            cigsToDrop = Mathf.Round( cigsToDrop );
+
+            for ( int i = 0; i < cigsToDrop; i++ )
+            {
+                Debug.Log( "Dropped cigarette " + ( i + 1 ) + " of " + cigsToDrop );
+
+                CurrencyBase newCigPack = Instantiate(m_cigPackPrefab, transform.position, Quaternion.identity).GetComponent<CurrencyBase>();
+
+                float randX = Random.Range(-100, 100);
+                float randY = Random.Range(-100, 100);
+
+                newCigPack.m_rigidBody.AddForce( new Vector2( randX , randY ).normalized * newCigPack.m_gravitationalSpeed * Time.fixedDeltaTime , ForceMode2D.Impulse );
+
+            }
+        }
+        if( m_maxFuelDrops > 0 )
+        {
+            float fuelToDrop = Random.Range(m_minFuelDrops * m_lootBoostModifier, m_maxFuelDrops * m_lootBoostModifier);
+
+            fuelToDrop = Mathf.Round( fuelToDrop );
+
+            for ( int i = 0; i < fuelToDrop; i++ )
+            {
+                Debug.Log( "Dropped fuel tank " + ( i + 1 ) + " of " + fuelToDrop );
+
+                CurrencyBase newFuelTank = Instantiate(m_fabricatorFuelPrefab, transform.position, Quaternion.identity).GetComponent<CurrencyBase>();
+
+                float randX = Random.Range(-100, 100);
+                float randY = Random.Range(-100, 100);
+
+                newFuelTank.m_rigidBody.AddForce( new Vector2( randX , randY ).normalized * newFuelTank.m_gravitationalSpeed * Time.fixedDeltaTime , ForceMode2D.Impulse );
+
+            }
+        }
     }
 
     public void OnDrawGizmosSelected( )
