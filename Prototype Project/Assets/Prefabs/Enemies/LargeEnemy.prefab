@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 5011560008744817111, guid: 77e1866d75500c8468f937ba29516227,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,16 +116,18 @@ MonoBehaviour:
   m_searchInterval: 0.25
   m_chaseProximity: 3
   m_attackRange: 3
-  m_attackDamage: 0
+  m_attackDamage: 2
   m_attackInterval: 4
   m_isAttacking: 0
-  m_lootBoostModifier: 2.5
-  m_maxCigaretteDrops: 0
-  m_minCigaretteDrops: 0
-  m_cigPackPrefab: {fileID: 0}
+  m_lootBoostModifier: 1
+  m_maxCigaretteDrops: 4
+  m_minCigaretteDrops: 2
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
   m_maxFuelDrops: 6
   m_minFuelDrops: 2
-  m_fabricatorFuelPrefab: {fileID: 0}
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
   m_currentState: 0
   m_animator: {fileID: 966570563917422953}
   m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}

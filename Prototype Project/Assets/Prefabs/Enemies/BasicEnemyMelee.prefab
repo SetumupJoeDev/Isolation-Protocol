@@ -103,7 +103,7 @@ MonoBehaviour:
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 5707961849273049076}
   m_healthManager: {fileID: 3341951120311908520}
-  m_detectionRange: 0
+  m_detectionRange: 4
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -115,19 +115,20 @@ MonoBehaviour:
   m_searchInterval: 0.25
   m_chaseProximity: 1
   m_attackRange: 2
-  m_attackDamage: 10
+  m_attackDamage: 1
   m_attackInterval: 1.75
   m_isAttacking: 0
-  m_lootBoostModifier: 0
-  m_maxCigaretteDrops: 0
-  m_minCigaretteDrops: 0
-  m_cigPackPrefab: {fileID: 0}
+  m_lootBoostModifier: 1
+  m_maxCigaretteDrops: 6
+  m_minCigaretteDrops: 2
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
   m_maxFuelDrops: 0
   m_minFuelDrops: 0
   m_fabricatorFuelPrefab: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 5707961849273049072}
-  m_deathSound: {fileID: 0}
+  m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}
 --- !u!114 &3341951120311908520
 MonoBehaviour:
   m_ObjectHideFlags: 0
