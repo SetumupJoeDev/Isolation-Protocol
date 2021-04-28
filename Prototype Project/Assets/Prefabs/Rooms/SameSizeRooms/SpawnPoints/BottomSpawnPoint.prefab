@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1886273258298775842}
   - component: {fileID: 1771845174038556788}
   - component: {fileID: 2080692471281161844}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BottomSpawnPoint
   m_TagString: SpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4309564894536371168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_doorDirection: 3
-  m_wallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  m_levelController: {fileID: 0}
+  m_spawned: 0
 --- !u!61 &1771845174038556788
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class RoomOpenings : MonoBehaviour
     protected bool          m_wallBelow;
     protected bool          m_wallRight;
     protected bool          m_wallLeft;
+    protected float         m_spawnerDistance;
 
     // Start is called before the first frame update
     protected void Start()
@@ -43,6 +44,8 @@ public class RoomOpenings : MonoBehaviour
                     break;
             }
         }
+
+        m_spawnerDistance = m_spawners[0].transform.localPosition.magnitude;
 
         switch (m_spawnedFrom.m_doorDirection)
         {
@@ -102,19 +105,19 @@ public class RoomOpenings : MonoBehaviour
 
     protected void CheckSurroudings()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.up, 10f, m_wallLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.up, m_spawnerDistance, m_wallLayer))
         {
             m_wallAbove = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.down, 10f, m_wallLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.down, m_spawnerDistance, m_wallLayer))
         {
             m_wallBelow = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.left, 10f, m_wallLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.left, m_spawnerDistance, m_wallLayer))
         {
             m_wallLeft = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.right, 10f, m_wallLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.right, m_spawnerDistance, m_wallLayer))
         {
             m_wallRight = true;
         }
