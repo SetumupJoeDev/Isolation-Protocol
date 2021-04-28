@@ -5,8 +5,19 @@ public class PlayerController : CharacterBase
 {
 
     [Header("Weapons")]
+
+    //James' Work
+
     [Tooltip("The weapon held by the player.")]
-    public GameObject    m_currentWeapon;
+    public GameObject   m_currentWeapon;
+
+    [Tooltip("The array index of the player's currently equipped weapon.")]
+    public int          m_currentWeaponIndex;
+
+    [Tooltip("The array containing the player's carried weapons.")]
+    public GameObject[] m_carriedWeapons;
+
+    //End of James' work
 
     [Header("Animation")]
     public Animator      m_animator;
@@ -112,7 +123,14 @@ public class PlayerController : CharacterBase
         {
             m_currentWeapon.GetComponent<GunBase>().FireWeapon( );
         }
-        
+
+        float scrollWheelValue = Input.GetAxis( "Mouse ScrollWheel" );
+
+        if ( scrollWheelValue != 0 )
+        {
+            float indexModifier = scrollWheelValue * 10;
+            SwapWeapon( (int)indexModifier );
+        }
 
         if( Input.GetKeyDown(KeyCode.R) )
         {
@@ -251,6 +269,27 @@ public class PlayerController : CharacterBase
                 attachPoint.transform.GetChild( 0 ).gameObject.GetComponent<MutoSlug>( ).Die( );
             }
         }
+    }
+
+    public void SwapWeapon( int indexModifier )
+    {
+        m_currentWeapon.SetActive( false );
+
+        m_currentWeaponIndex += indexModifier;
+
+        if( m_currentWeaponIndex < 0 )
+        {
+            m_currentWeaponIndex = m_carriedWeapons.Length - 1;
+        }
+        if( m_currentWeaponIndex >= m_carriedWeapons.Length )
+        {
+            m_currentWeaponIndex = 0;
+        }
+
+        m_currentWeapon = m_carriedWeapons[m_currentWeaponIndex];
+
+        m_currentWeapon.SetActive( true );
+
     }
 
     public IEnumerator KnockBack( )
