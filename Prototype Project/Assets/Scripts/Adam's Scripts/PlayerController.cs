@@ -6,6 +6,9 @@ public class PlayerController : CharacterBase
 
     [Header("Weapons")]
 
+    [Tooltip("The position of the weapon on the player.")]
+    public GameObject   m_weaponAttachPoint;
+
     //James' Work
 
     [Tooltip("The weapon held by the player.")]
@@ -179,6 +182,12 @@ public class PlayerController : CharacterBase
         m_animator.SetFloat("Horizontal", m_mouseDirection.x);
         m_animator.SetFloat("Vertical", m_mouseDirection.y);
         m_animator.SetFloat("Speed", m_directionalVelocity.sqrMagnitude);
+
+        if(m_mouseDirection.x > 0 && m_mouseDirection.y < 0)
+        {
+            m_weaponAttachPoint.transform.localPosition = new Vector3(0.3f, -0.25f, 0f);
+        }
+        // TODO: Finish weapon position ajustment
     }
 
     protected void Dash()
