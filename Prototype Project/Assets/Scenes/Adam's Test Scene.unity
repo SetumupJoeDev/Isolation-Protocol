@@ -394,44 +394,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1126218916}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &361104744
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites-Default (Instance)
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DecalTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &362077177
 GameObject:
   m_ObjectHideFlags: 0
@@ -32765,8 +32727,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_reloadTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_magCapacity
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_fireInterval
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_currentMagAmmo
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_maxAmmoCapacity
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_currentCarriedAmmo
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535695, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1669428981}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd8332aa3acd134da97c7bf68fc1048, type: 3}
+--- !u!114 &1098881602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7467944668168535694, guid: 2cd8332aa3acd134da97c7bf68fc1048,
+    type: 3}
+  m_PrefabInstance: {fileID: 1098881601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1126218916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33032,8 +33041,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535695, guid: 8f1e908f1c895ae469949e26e9f5ebc2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1236406216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f1e908f1c895ae469949e26e9f5ebc2, type: 3}
+--- !u!114 &1160064425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7467944668168535694, guid: 8f1e908f1c895ae469949e26e9f5ebc2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1160064424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163361308
 GameObject:
   m_ObjectHideFlags: 0
@@ -33187,6 +33213,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1236406216
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites-Default (Instance)
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1243621369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33601,7 +33665,7 @@ MonoBehaviour:
       - m_RequirementType: 0
         m_GroupID: 
         m_Tooltip: 
-        m_Name: TestParametre
+        m_Name: 'Player Health when room is finished '
         m_Value:
           m_EditingCustomValue: 0
           m_PopupIndex: 0
@@ -33611,11 +33675,11 @@ MonoBehaviour:
           m_EnumTypeIsCustomizable: 0
           m_CanDisable: 0
           m_PropertyType: 2
-          m_ValueType: System.String
+          m_ValueType: System.Int32
           m_Value: I've been created
           m_Target:
-            m_Target: {fileID: 2060857436}
-            m_Path: 
+            m_Target: {fileID: 3715704713558584904}
+            m_Path: m_currentHealth
             m_ValidTypeNames:
             - System.Int32
             - System.Boolean
@@ -33626,7 +33690,127 @@ MonoBehaviour:
             - System.Int16
             - System.String
             - enum
-            m_Type: System.String
+            m_Type: System.Int32
+            m_EnumType: 
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: 'Submachine gun bullets when room is finished '
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 2
+          m_ValueType: System.Int32
+          m_Value: 0
+          m_Target:
+            m_Target: {fileID: 1098881602}
+            m_Path: m_currentCarriedAmmo
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            - enum
+            m_Type: System.Int32
+            m_EnumType: 
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: 'Burst rifle  bullets when room is finished '
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 2
+          m_ValueType: System.Int32
+          m_Value: 0
+          m_Target:
+            m_Target: {fileID: 1331725703}
+            m_Path: m_currentCarriedAmmo
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            - enum
+            m_Type: System.Int32
+            m_EnumType: 
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: 'Sniper  bullets when room is finished '
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 2
+          m_ValueType: System.Int32
+          m_Value: 0
+          m_Target:
+            m_Target: {fileID: 1160064425}
+            m_Path: m_currentCarriedAmmo
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            - enum
+            m_Type: System.Int32
+            m_EnumType: 
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: Number of rooms crossed
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 2
+          m_ValueType: System.Int32
+          m_Value: 0
+          m_Target:
+            m_Target: {fileID: 3715704713558584905}
+            m_Path: roomsCrossed
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            - enum
+            m_Type: System.Int32
             m_EnumType: 
     m_Name: Test
 --- !u!4 &1269068212
@@ -33770,8 +33954,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7467944668168535695, guid: ce40d8351be2d2c4aa9882d098f14718,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1641940974}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce40d8351be2d2c4aa9882d098f14718, type: 3}
+--- !u!114 &1331725703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7467944668168535694, guid: ce40d8351be2d2c4aa9882d098f14718,
+    type: 3}
+  m_PrefabInstance: {fileID: 1331725702}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845913974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1364556828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37059,6 +37260,82 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!21 &1624092223
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites-Default (Instance) (Instance)
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!21 &1641940974
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites-Default (Instance)
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1657334630
 GameObject:
   m_ObjectHideFlags: 0
@@ -37274,6 +37551,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8125, y: 0.875}
   m_EdgeRadius: 0
+--- !u!21 &1669428981
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites-Default (Instance)
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1707438280
 GameObject:
   m_ObjectHideFlags: 0
@@ -38426,12 +38741,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
---- !u!1 &2060857436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3715704714287060932, guid: 10cf6b0107a9906478d418b3aceed83b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3715704713558584903}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2060857445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
@@ -43637,7 +43946,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 361104744}
+      objectReference: {fileID: 1624092223}
     - target: {fileID: 3715704714287060932, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_Name
@@ -43680,6 +43989,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10cf6b0107a9906478d418b3aceed83b, type: 3}
+--- !u!114 &3715704713558584904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3715704714287060941, guid: 10cf6b0107a9906478d418b3aceed83b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3715704713558584903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194fed5e297f2374c9e337414f669081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3715704713558584905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3715704714287060940, guid: 10cf6b0107a9906478d418b3aceed83b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3715704713558584903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b3f166b45febc428a1137b22645dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5707961848326068310
 PrefabInstance:
   m_ObjectHideFlags: 0
