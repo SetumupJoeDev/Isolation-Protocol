@@ -36,6 +36,8 @@ public class AmalgamEnemy : EnemyBase
 
             player.m_knockbackDirection = player.gameObject.transform.position - transform.position;
 
+            player.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
+
             StartCoroutine( player.KnockBack( ) );
 
         }

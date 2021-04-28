@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -4765374739045946619, guid: 1d1c8e0e5a6fa254cb37d5d9029fae74,
+  m_Sprite: {fileID: -3749442711084492227, guid: 57da2c4b0f5cb1a42aeaa903b9d26fc5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,6 +121,13 @@ MonoBehaviour:
   m_attackDamage: 5
   m_attackInterval: 2.5
   m_isAttacking: 0
+  m_lootBoostModifier: 0
+  m_maxCigaretteDrops: 0
+  m_minCigaretteDrops: 0
+  m_cigPackPrefab: {fileID: 0}
+  m_maxFuelDrops: 0
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 8691593258372746762}
   m_deathSound: {fileID: 8300000, guid: 1f95381544702c444bef8166f2d1a555, type: 3}
@@ -146,6 +153,8 @@ MonoBehaviour:
   m_currentHealth: 2
   m_maxHealth: 2
   m_isInvulnerable: 0
+  m_damagedTime: 0.15
+  m_damagedAmount: 0
 --- !u!95 &8691593258372746762
 Animator:
   serializedVersion: 3
