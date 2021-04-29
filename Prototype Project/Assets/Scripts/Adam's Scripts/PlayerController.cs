@@ -85,6 +85,10 @@ public class PlayerController : CharacterBase
 
     public CurrencyManager m_currencyManager;
 
+    public LayerMask m_interactiveLayer;
+
+    public float m_interactionRange;
+
     #endregion
 
     //End of James' work
@@ -121,6 +125,8 @@ public class PlayerController : CharacterBase
 
         Animate();
         Dash();
+
+        CheckForInteractables( );
 
         if ( Input.GetMouseButton( 0 ) )
         {
@@ -332,6 +338,30 @@ public class PlayerController : CharacterBase
 
     }
 
+    public void CheckForInteractables( )
+    {
+
+        RaycastHit2D interactableObject = Physics2D.Raycast(transform.position, m_mouseDirection, m_interactionRange, m_interactiveLayer);
+
+        Debug.DrawRay( transform.position , m_mouseDirection * m_interactionRange );
+
+        if ( interactableObject )
+        {
+            InteractableObject interactable = interactableObject.collider.gameObject.GetComponent<InteractableObject>( );
+
+            interactable.m_isBeingLookedAt = true;
+
+            interactable.m_playerController = this;
+
+            if ( Input.GetKeyDown( KeyCode.E ) )
+            {
+                interactable.Activated( );
+            }
+        }
+
+        
+
+    }
     //End of James' work
 
 }
