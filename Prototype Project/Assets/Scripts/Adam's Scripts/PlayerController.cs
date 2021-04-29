@@ -183,11 +183,32 @@ public class PlayerController : CharacterBase
         m_animator.SetFloat("Vertical", m_mouseDirection.y);
         m_animator.SetFloat("Speed", m_directionalVelocity.sqrMagnitude);
 
-        if(m_mouseDirection.x > 0 && m_mouseDirection.y < 0)
-        {
-            m_weaponAttachPoint.transform.localPosition = new Vector3(0.3f, -0.25f, 0f);
-        }
-        // TODO: Finish weapon position ajustment
+        //for (int i = 0; i < m_animator.GetCurrentAnimatorClipInfo(0).Length; i++)
+        //{
+            string clipName = m_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+
+            if (clipName == "IdleRight" || clipName == "WalkRight")
+            {
+                m_weaponAttachPoint.transform.localPosition = new Vector3(0f, 0f, 0f);
+                m_currentWeapon.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            }
+            else if (clipName == "IdleLeft" || clipName == "WalkLeft")
+            {
+                m_weaponAttachPoint.transform.localPosition = new Vector3(0f, -0.3f, 0f);
+                m_currentWeapon.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            }
+            else if (clipName == "IdleUp" || clipName == "WalkUp")
+            {
+                m_weaponAttachPoint.transform.localPosition = new Vector3(-0.3f, -0.25f, 0f);
+                m_currentWeapon.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            }
+            else if (clipName == "IdleDown" || clipName == "WalkDown")
+            {
+                m_weaponAttachPoint.transform.localPosition = new Vector3(0.3f, -0.25f, 0f);
+                m_currentWeapon.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            }
+        //}
     }
 
     protected void Dash()
