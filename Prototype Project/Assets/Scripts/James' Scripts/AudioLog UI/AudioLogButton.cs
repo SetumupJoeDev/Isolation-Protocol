@@ -14,6 +14,8 @@ public class AudioLogButton : MonoBehaviour
 
     public Text m_transcriptText;
 
+    public AudioSource m_audioLogPlayer;
+
     public void SetButtonLabelText( string labelText )
     {
         m_buttonLabel.text = labelText;
@@ -22,6 +24,9 @@ public class AudioLogButton : MonoBehaviour
     public void OnClick( )
     {
         m_transcriptText.text = m_logTranscriptContent.text;
+
+        m_audioLogPlayer.clip = m_audioLogClip;
+
     }
 
 }
