@@ -8,11 +8,14 @@ public class HealthManager : MonoBehaviour
 
     [Tooltip("The health this unit currently has")]
     public int  m_currentHealth;
+
     [Tooltip("The maximum amount of health this unit can have")]
     public int  m_maxHealth;
 
     [Tooltip("Determines whether or not the player can currently take damage")]
     public bool m_isInvulnerable;
+
+    public GameObject m_bloodEffect;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -38,9 +41,8 @@ public class HealthManager : MonoBehaviour
 
     IEnumerator PlayerDamageFeedBack()
     {
-        GameObject blood = gameObject.transform.GetChild(3).gameObject;
-        blood.SetActive(true);
+        m_bloodEffect.SetActive(true);
         yield return new WaitForSecondsRealtime(0.4f);
-        blood.SetActive(false);
+        m_bloodEffect.SetActive(false);
     } // Lewis' code. Activates a blood animation on the player when damaged
 }
