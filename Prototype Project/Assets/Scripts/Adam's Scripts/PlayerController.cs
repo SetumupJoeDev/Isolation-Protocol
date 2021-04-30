@@ -309,22 +309,28 @@ public class PlayerController : CharacterBase
 
     public void SwapWeapon( int indexModifier )
     {
-        m_currentWeapon.SetActive( false );
 
-        m_currentWeaponIndex += indexModifier;
+        int newIndex = m_currentWeaponIndex + indexModifier;
 
-        if( m_currentWeaponIndex < 0 )
+        if( newIndex < 0 )
         {
-            m_currentWeaponIndex = m_carriedWeapons.Length - 1;
+            newIndex = m_carriedWeapons.Length - 1;
         }
-        if( m_currentWeaponIndex >= m_carriedWeapons.Length )
+        if( newIndex >= m_carriedWeapons.Length )
         {
-            m_currentWeaponIndex = 0;
+            newIndex = 0;
         }
 
-        m_currentWeapon = m_carriedWeapons[m_currentWeaponIndex];
+        if ( m_carriedWeapons[newIndex] != null )
+        {
+            m_currentWeapon.SetActive( false );
 
-        m_currentWeapon.SetActive( true );
+            m_currentWeapon = m_carriedWeapons[newIndex];
+
+            m_currentWeaponIndex = newIndex;
+
+            m_currentWeapon.SetActive( true );
+        }
 
     }
 

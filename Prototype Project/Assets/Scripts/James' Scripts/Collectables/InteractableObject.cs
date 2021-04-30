@@ -10,8 +10,6 @@ public class InteractableObject : MonoBehaviour
     [HideInInspector]
     public bool m_highlightingActive;
 
-    public Light m_light;
-
     public PlayerController m_playerController;
 
     public virtual void Update( )

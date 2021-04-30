@@ -16,7 +16,7 @@ public class ShopItem : InteractableObject
     public int m_itemPrice;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         float modifiedPrice = m_basePrice * m_priceModifier;
 
@@ -37,17 +37,18 @@ public class ShopItem : InteractableObject
         base.Activated( );
     }
 
-    public virtual void BuyItem( CurrencyManager playerCurrency )
+    public virtual bool BuyItem( CurrencyManager playerCurrency )
     {
         if( playerCurrency.m_cigarettePacksCount >= m_itemPrice )
         {
             playerCurrency.m_cigarettePacksCount -= m_itemPrice;
             Debug.Log( "Cha-ching!" );
-            Destroy( gameObject );
+            return true;
         }
         else
         {
             Debug.Log( "Insufficient funds!" );
+            return false;
         }
     }
 

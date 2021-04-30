@@ -45,6 +45,8 @@ public class AudioLogListController : MonoBehaviour
 
             m_audioLogButtons.Add( newButton );
 
+            newButton.SetActive( false );
+
         }
     }
 
