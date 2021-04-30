@@ -287,7 +287,7 @@ PrefabInstance:
     - target: {fileID: 3715704714287060932, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714721768768, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -819,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &880640783
 AudioListener:
   m_ObjectHideFlags: 0
@@ -997,6 +997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 4372013637956672262, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4372013637956672263, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1051,11 +1056,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4372013638291281707, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4546555056988449873, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
         type: 3}

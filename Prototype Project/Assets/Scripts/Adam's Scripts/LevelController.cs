@@ -7,6 +7,9 @@ public class LevelController : MonoBehaviour
     public int  m_aproxRoomLimit;
     public int  m_numberOfRooms;
     public bool m_reachedLimit;
+    public bool m_hasShop;
+    public bool m_hasEndRoom;
+    public List<GameObject> m_roomList;
 
     protected void Start()
     {

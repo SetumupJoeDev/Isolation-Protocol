@@ -55,10 +55,7 @@ public class RoomOpenings : MonoBehaviour
                     m_openLeft && m_wallLeft ||
                     m_openRight && m_wallRight)
                 {
-                    m_spawnedFrom.m_spawned = false;
-                    m_spawnedFrom.m_levelController.m_numberOfRooms--;
-                    m_spawnedFrom.Spawn();
-                    Destroy(gameObject);
+                    SwitchSpawnedRoom();
                 }
                 break;
             case Enums.Directions.Left:
@@ -67,10 +64,7 @@ public class RoomOpenings : MonoBehaviour
                     m_openLeft && m_wallLeft ||
                     m_openBottom && m_wallBelow)
                 {
-                    m_spawnedFrom.m_spawned = false;
-                    m_spawnedFrom.m_levelController.m_numberOfRooms--;
-                    m_spawnedFrom.Spawn();
-                    Destroy(gameObject);
+                    SwitchSpawnedRoom();
                 }
                 break;
             case Enums.Directions.Right:
@@ -79,10 +73,7 @@ public class RoomOpenings : MonoBehaviour
                     m_openRight && m_wallRight ||
                     m_openBottom && m_wallBelow)
                 {
-                    m_spawnedFrom.m_spawned = false;
-                    m_spawnedFrom.m_levelController.m_numberOfRooms--;
-                    m_spawnedFrom.Spawn();
-                    Destroy(gameObject);
+                    SwitchSpawnedRoom();
                 }
                 break;
             case Enums.Directions.Bottom:
@@ -91,10 +82,7 @@ public class RoomOpenings : MonoBehaviour
                     m_openRight && m_wallRight ||
                     m_openBottom && m_wallBelow)
                 {
-                    m_spawnedFrom.m_spawned = false;
-                    m_spawnedFrom.m_levelController.m_numberOfRooms--;
-                    m_spawnedFrom.Spawn();
-                    Destroy(gameObject);
+                    SwitchSpawnedRoom();
                 }
                 break;
             default:
@@ -121,5 +109,14 @@ public class RoomOpenings : MonoBehaviour
         {
             m_wallRight = true;
         }
+    }
+
+    protected void SwitchSpawnedRoom()
+    {
+        m_spawnedFrom.m_spawned = false;
+        m_spawnedFrom.m_levelController.m_numberOfRooms--;
+        m_spawnedFrom.m_levelController.m_roomList.Remove(gameObject);
+        m_spawnedFrom.Spawn();
+        Destroy(gameObject);
     }
 }

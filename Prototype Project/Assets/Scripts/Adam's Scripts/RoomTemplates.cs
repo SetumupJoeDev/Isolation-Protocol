@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -16,15 +14,27 @@ public class RoomTemplates : MonoBehaviour
     public GameObject m_rightDoorRoom;
     public GameObject m_bottomDoorRoom;
 
-    [Header("Wall Connection Rooms")]
-    public GameObject[] m_topWallRooms;
-    public GameObject[] m_leftWallRooms;
-    public GameObject[] m_rightWallRooms;
-    public GameObject[] m_bottomWallRooms;
+    [Header("End Rooms")]
+    public GameObject m_topEndRoom;
+    public GameObject m_leftEndRoom;
+    public GameObject m_rightEndRoom;
+    public GameObject m_bottomEndRoom;
 
-    [Header("Dead End Wall Connection Rooms")]
-    public GameObject m_topWallRoom;
-    public GameObject m_leftWallRoom;
-    public GameObject m_rightWallRoom;
-    public GameObject m_bottomWallRoom;
+    [Header("Shop Rooms")]
+    public GameObject m_topShopRoom;
+    public GameObject m_leftShopRoom;
+    public GameObject m_rightShopRoom;
+    public GameObject m_bottomShopRoom;
+
+    //[Header("Wall Connection Rooms")]
+    //public GameObject[] m_topWallRooms;
+    //public GameObject[] m_leftWallRooms;
+    //public GameObject[] m_rightWallRooms;
+    //public GameObject[] m_bottomWallRooms;
+
+    //[Header("Dead End Wall Connection Rooms")]
+    //public GameObject m_topWallRoom;
+    //public GameObject m_leftWallRoom;
+    //public GameObject m_rightWallRoom;
+    //public GameObject m_bottomWallRoom;
 }
