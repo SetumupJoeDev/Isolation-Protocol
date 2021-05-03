@@ -19,4 +19,12 @@ public class HealingShopItem : ShopItem
 
     }
 
+    public override void SetUpPricePrompt( )
+    {
+        base.SetUpPricePrompt( );
+
+        m_itemPricePrompt.m_productName.text = "Heal Up";
+
+    }
+
 }

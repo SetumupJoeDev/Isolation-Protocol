@@ -15,6 +15,8 @@ public class ShopItem : InteractableObject
     [Tooltip("The price of this item.")]
     public int m_itemPrice;
 
+    public PricePromptController m_itemPricePrompt;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -22,12 +24,21 @@ public class ShopItem : InteractableObject
 
         m_itemPrice = (int)modifiedPrice;
 
+        SetUpPricePrompt( );
+
         Debug.Log( m_itemPrice );
 
     }
 
-    public virtual void DisplayPrice( )
+    public virtual void SetUpPricePrompt( )
     {
+        m_itemPricePrompt.m_productPrice.text = m_itemPrice.ToString( );
+    }
+
+    public virtual void DisplayPrice( bool priceDisplayed )
+    {
+
+        m_itemPricePrompt.gameObject.SetActive( priceDisplayed );
 
     }
 
@@ -35,6 +46,14 @@ public class ShopItem : InteractableObject
     {
         BuyItem( m_playerController.gameObject.GetComponent<CurrencyManager>( ) );
         base.Activated( );
+    }
+
+    public override void ToggleHighlighting( bool highlightActive )
+    {
+        base.ToggleHighlighting( highlightActive );
+
+        DisplayPrice( m_highlightingActive );
+
     }
 
     public virtual bool BuyItem( CurrencyManager playerCurrency )

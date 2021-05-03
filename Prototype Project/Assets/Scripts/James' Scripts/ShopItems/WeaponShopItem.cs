@@ -17,6 +17,14 @@ public class WeaponShopItem : ShopItem
 
     }
 
+    public override void SetUpPricePrompt( )
+    {
+        base.SetUpPricePrompt( );
+
+        m_itemPricePrompt.m_productName.text = m_weaponPrefab.name;
+
+    }
+
     public override void Activated( ) 
     {
 
@@ -33,6 +41,8 @@ public class WeaponShopItem : ShopItem
 
                     m_playerController.m_carriedWeapons[i].transform.parent = m_playerController.m_weaponAttachPoint.transform;
 
+                    m_playerController.m_carriedWeapons[i].name = m_weaponPrefab.name;
+
                     m_playerController.m_carriedWeapons[i].SetActive( false );
 
                     weaponAcquired = true;
@@ -42,9 +52,17 @@ public class WeaponShopItem : ShopItem
             }
             if ( !weaponAcquired )
             {
-                m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex] = m_weaponPrefab;
+                Destroy( m_playerController.m_currentWeapon );
+
+                m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex] = Instantiate( m_weaponPrefab , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+
+                m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex].transform.parent = m_playerController.m_weaponAttachPoint.transform;
+
+                m_playerController.m_currentWeapon = m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex];
+
             }
         }
+        Destroy( gameObject );
     }
 
 }
