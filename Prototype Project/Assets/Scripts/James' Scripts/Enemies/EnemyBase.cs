@@ -183,6 +183,7 @@ public class EnemyBase : CharacterBase
 
     public override void Die( )
     {
+        AudioSource.PlayClipAtPoint(m_deathSound, transform.position);
         DropLoot( );
         base.Die( );
     }

@@ -17,6 +17,8 @@ public class HealthManager : MonoBehaviour
 
     public GameObject m_bloodEffect;
 
+    public AudioClip m_playerDamagedFeedback;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -41,8 +43,12 @@ public class HealthManager : MonoBehaviour
 
     IEnumerator PlayerDamageFeedBack()
     {
-        m_bloodEffect.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.4f);
-        m_bloodEffect.SetActive(false);
+        if (gameObject.name == "Player")
+        {
+            AudioSource.PlayClipAtPoint(m_playerDamagedFeedback, transform.position);
+            m_bloodEffect.SetActive(true);
+            yield return new WaitForSecondsRealtime(0.4f);
+            m_bloodEffect.SetActive(false);
+        }
     } // Lewis' code. Activates a blood animation on the player when damaged
 }

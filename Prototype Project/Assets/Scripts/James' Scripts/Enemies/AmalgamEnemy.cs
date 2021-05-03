@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AmalgamEnemy : EnemyBase
 {
-
+    public AudioClip m_windupSound; // Lewis' code
+    public AudioClip m_attackSound;// Lewis' code
+  
     #region Attacking
 
     [Header("Attacking")]
@@ -19,23 +21,29 @@ public class AmalgamEnemy : EnemyBase
     public float m_attackLaunchForce;
 
     #endregion
-
+  
 
     public override IEnumerator AttackTarget( )
     {
 
-        yield return new WaitForSeconds( m_windupDuration );
+    
 
+
+        gameObject.transform.localScale = new Vector3(1.5f, 1.5f);// Lewis' code, Makes enemy larger to indicate windup
+        AudioSource.PlayClipAtPoint(m_windupSound, transform.position); // Lewis' code, play sound to indicate windup
+        yield return new WaitForSeconds( m_windupDuration );
+        gameObject.transform.localScale = new Vector3(1f, 1f); // Reset's enemy size 
         Collider2D playerHit = Physics2D.OverlapCircle( transform.position , m_aoeRange , m_playerLayer );
 
         if( playerHit != null )
         {
+            AudioSource.PlayClipAtPoint(m_attackSound, transform.position); // Lewis' code, play sound to indicate windup
             PlayerController player = playerHit.gameObject.GetComponent<PlayerController>();
 
             player.m_knockbackForce = m_attackLaunchForce;
 
             player.m_knockbackDirection = player.gameObject.transform.position - transform.position;
-
+            
             player.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
 
             StartCoroutine( player.KnockBack( ) );
