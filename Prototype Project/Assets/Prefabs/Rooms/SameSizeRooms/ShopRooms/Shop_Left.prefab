@@ -3177,11 +3177,6 @@ CompositeCollider2D:
       - {x: -0.93897474, y: -1.993965}
       - {x: -0.9389656, y: -2.9168048}
       - {x: -0.89794034, y: -2.957817}
-    - []
-    - - {x: 6.0302444, y: -6.0012355}
-      - {x: 6.0302444, y: -4.996352}
-      - {x: 5.004883, y: -4.9963813}
-      - {x: 5.004912, y: -6.0012355}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &3165423417906997443
@@ -3950,6 +3945,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3165423418384140574}
     m_Modifications:
+    - target: {fileID: 2948915591824448942, guid: 3e441f4e63450134c94be3ec3189312c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3837906995604119141, guid: 3e441f4e63450134c94be3ec3189312c,
         type: 3}
       propertyPath: m_RootOrder

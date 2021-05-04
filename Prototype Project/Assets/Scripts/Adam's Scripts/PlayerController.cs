@@ -91,6 +91,14 @@ public class PlayerController : CharacterBase
 
     #endregion
 
+    #region AudioLogs
+
+    [Header("AudioLogs")]
+
+    public AudioLogListController m_audioLogList;
+
+    #endregion
+
     //End of James' work
 
     protected override void Start()

@@ -136,11 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0bbb12e2a4deb479eb06aaa42264d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_tierDProbability: 0
-  m_tierCProbability: 0
-  m_tierBProbability: 0
-  m_tierAProbability: 0
-  m_tierSProbability: 0
+  m_tierDProbability: 45
+  m_tierCProbability: 25
+  m_tierBProbability: 15
+  m_tierAProbability: 10
+  m_tierSProbability: 5
+  m_totalProbability: 0
   m_tierDWeapons:
   - {fileID: 5104504200478145206, guid: 4f52142f0f02a4141aa05c9b401a8717, type: 3}
   m_tierCWeapons:
@@ -151,6 +152,8 @@ MonoBehaviour:
   - {fileID: 7467944668168535690, guid: 8f1e908f1c895ae469949e26e9f5ebc2, type: 3}
   m_tierSWeapons:
   - {fileID: 1311074505600363529, guid: 485da007e0859134d8e15abffbaf260a, type: 3}
+  m_purchasableWeaponPrefab: {fileID: 923695271591671070, guid: 9d660bb509efb67438f577a60389932c,
+    type: 3}
   m_weaponTransform: {fileID: 2948915591824448942}
   m_healthItemPrefab: {fileID: 6253229112602284224, guid: 472d0bc9c9deff44383d804d0d2e1383,
     type: 3}

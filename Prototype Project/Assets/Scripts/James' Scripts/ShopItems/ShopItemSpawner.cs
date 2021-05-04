@@ -7,26 +7,31 @@ public class ShopItemSpawner : MonoBehaviour
 
     [Header("Loot Table & Probabilities")]
 
-    public int m_tierDProbability;
+    [SerializeField]
+    private int m_tierDProbability;
+    
+    [SerializeField]
+    private int m_tierCProbability;
+    
+    [SerializeField]
+    private int m_tierBProbability;
 
-    public int m_tierCProbability;
+    [SerializeField]
+    private int m_tierAProbability;
 
-    public int m_tierBProbability;
-
-    public int m_tierAProbability;
-
-    public int m_tierSProbability;
-
-    public int m_numTiers;
+    [SerializeField]
+    private int m_tierSProbability;
 
     private int[] m_lootTable;
 
-    private int m_weaponTierIndex;
+    [SerializeField]
+    private int m_totalProbability;
 
-    private int m_weaponTypeIndex;
+    private enum weaponTier { dTier, cTier, bTier, aTier, sTier };
 
     [Header("Weapons")]
 
+    private weaponTier m_generatedWeaponTier;
 
     public GameObject[] m_tierDWeapons;
 
@@ -38,7 +43,8 @@ public class ShopItemSpawner : MonoBehaviour
     
     public GameObject[] m_tierSWeapons;
 
-    public GameObject[][] m_weaponPrefabs;
+    [SerializeField]
+    private GameObject m_purchasableWeaponPrefab;
 
     public Transform m_weaponTransform;
 
@@ -64,38 +70,53 @@ public class ShopItemSpawner : MonoBehaviour
 
         m_lootTable = new int[] { m_tierDProbability, m_tierCProbability, m_tierBProbability, m_tierAProbability, m_tierSProbability };
 
-        PopulateWeaponArray( );
+        CalculateTotalProbability( );
 
-        Instantiate( m_healthItemPrefab , m_healthItemTransform.position , Quaternion.identity );
+        GameObject newHealthItem  = Instantiate( m_healthItemPrefab , m_healthItemTransform.position , Quaternion.identity );
 
-        Instantiate( m_ammoItemPrefab , m_ammoItemTransform.position , Quaternion.identity );
+        newHealthItem.transform.parent = m_healthItemTransform;
 
-        SelectWeaponTier( );
+        GameObject newAmmoItem = Instantiate( m_ammoItemPrefab , m_ammoItemTransform.position , Quaternion.identity );
+
+        newAmmoItem.transform.parent = m_ammoItemTransform;
+
+        GenerateRandomWeapon( );
 
     }
 
-    private void PopulateWeaponArray( )
+    private void GenerateRandomWeapon( )
     {
-        for( int i = 0; i < m_numTiers; i++ )
+        SelectRandomWeaponTier( );
+    }
+
+    private void CalculateTotalProbability( )
+    {
+        foreach( int value in m_lootTable )
         {
-            for( int j = 0; j < m_tierDWeapons.Length; j++ )
-            {
-                m_weaponPrefabs[i][j] = m_tierDWeapons[j];
-            }
+            m_totalProbability += value;
         }
     }
 
-    private void SelectWeaponTier( )
+    private void SelectRandomWeaponTier( )
     {
 
-        int randInt = Random.Range(0, m_tierDProbability);
+        int randInt = Random.Range(1, m_totalProbability);
+
+        Debug.Log( randInt );
 
         for( int i = 0; i < m_lootTable.Length; i++ )
         {
-            if( randInt < m_lootTable[i] )
+            Debug.Log( randInt );
+
+            if( randInt <= m_lootTable[i] )
             {
-                m_weaponTierIndex = i;
+                m_generatedWeaponTier = ( weaponTier )i;
                 SelectWeaponFromTier( );
+                break;
+            }
+            else
+            {
+                randInt -= m_lootTable[i];
             }
         }
     }
@@ -103,10 +124,51 @@ public class ShopItemSpawner : MonoBehaviour
     private void SelectWeaponFromTier( )
     {
 
-        m_weaponTypeIndex = Random.Range( 0 , m_weaponPrefabs.Length );
+        int randInt = 0;
 
-        Instantiate( m_weaponPrefabs[m_weaponTierIndex][m_weaponTypeIndex] , m_weaponTransform.position , Quaternion.identity );
+        GameObject newWeapon = null;
 
+        switch ( m_generatedWeaponTier )
+        {
+            case weaponTier.dTier:
+                {
+                    randInt = Random.Range( 0 , m_tierDWeapons.Length - 1 );
+                    newWeapon = Instantiate( m_purchasableWeaponPrefab , m_weaponTransform.position , Quaternion.identity );
+                    newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab = m_tierDWeapons[randInt];
+                }
+                break;
+            case weaponTier.cTier:
+                {
+                    randInt = Random.Range( 0 , m_tierCWeapons.Length - 1 );
+                    newWeapon = Instantiate( m_purchasableWeaponPrefab , m_weaponTransform.position , Quaternion.identity );
+                    newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab = m_tierCWeapons[randInt];
+                }
+                break;
+            case weaponTier.bTier:
+                {
+                    randInt = Random.Range( 0 , m_tierBWeapons.Length - 1 );
+                    newWeapon = Instantiate( m_purchasableWeaponPrefab , m_weaponTransform.position , Quaternion.identity );
+                    newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab = m_tierBWeapons[randInt];
+                }
+                break;
+            case weaponTier.aTier:
+                {
+                    randInt = Random.Range( 0 , m_tierAWeapons.Length - 1 );
+                    newWeapon = Instantiate( m_purchasableWeaponPrefab , m_weaponTransform.position , Quaternion.identity );
+                    newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab = m_tierAWeapons[randInt];
+                }
+                break;
+            case weaponTier.sTier:
+                {
+                    randInt = Random.Range( 0 , m_tierSWeapons.Length - 1 );
+                    newWeapon = Instantiate( m_purchasableWeaponPrefab , m_weaponTransform.position , Quaternion.identity );
+                    newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab = m_tierSWeapons[randInt];
+                }
+                break;
+        }
+
+        newWeapon.transform.parent = m_weaponTransform;
+        Debug.Log( "Generated: " + newWeapon.GetComponent<WeaponShopItem>( ).m_weaponPrefab.name );
     }
 
 }

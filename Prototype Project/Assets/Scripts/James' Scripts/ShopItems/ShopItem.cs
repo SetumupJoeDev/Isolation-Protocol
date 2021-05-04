@@ -26,8 +26,6 @@ public class ShopItem : InteractableObject
 
         SetUpPricePrompt( );
 
-        Debug.Log( m_itemPrice );
-
     }
 
     public virtual void SetUpPricePrompt( )
