@@ -5,24 +5,23 @@ using UnityEngine;
 public class RoomOpenings : MonoBehaviour
 {
     public RoomSpawner[]    m_spawners;
-    [HideInInspector]
     public RoomSpawner      m_spawnedFrom;
     
     [SerializeField]
-    protected LayerMask     m_wallLayer;
+    private LayerMask     m_wallLayer;
 
-    protected bool          m_openTop;
-    protected bool          m_openLeft;
-    protected bool          m_openRight;
-    protected bool          m_openBottom;
-    protected bool          m_wallAbove;
-    protected bool          m_wallBelow;
-    protected bool          m_wallRight;
-    protected bool          m_wallLeft;
-    protected float         m_spawnerDistance;
+    private bool          m_openTop;
+    private bool          m_openLeft;
+    private bool          m_openRight;
+    private bool          m_openBottom;
+    private bool          m_wallAbove;
+    private bool          m_wallBelow;
+    private bool          m_wallRight;
+    private bool          m_wallLeft;
+    private float         m_spawnerDistance;
 
     // Start is called before the first frame update
-    protected void Start()
+    private void Start()
     {
         for (int i = 0; i < m_spawners.Length; i++)
         {
@@ -91,7 +90,7 @@ public class RoomOpenings : MonoBehaviour
         
     }
 
-    protected void CheckSurroudings()
+    private void CheckSurroudings()
     {
         if (Physics2D.Raycast(transform.position, Vector2.up, m_spawnerDistance, m_wallLayer))
         {
@@ -111,7 +110,7 @@ public class RoomOpenings : MonoBehaviour
         }
     }
 
-    protected void SwitchSpawnedRoom()
+    private void SwitchSpawnedRoom()
     {
         m_spawnedFrom.m_spawned = false;
         m_spawnedFrom.m_levelController.m_numberOfRooms--;

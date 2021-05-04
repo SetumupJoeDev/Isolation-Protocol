@@ -12,14 +12,14 @@ public class LevelController : MonoBehaviour
     public bool             m_hasEndRoom;
     public List<GameObject> m_roomList;
 
-    protected void Start()
+    private void Start()
     {
         m_reachedLimit = false;
     }
 
-    protected void Update()
+    private void Update()
     {
-        if(m_numberOfRooms >= m_aproxRoomLimit)
+        if(m_numberOfRooms >= m_aproxRoomLimit - 2)
         {
             m_reachedLimit = true;
         }

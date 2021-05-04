@@ -16,14 +16,14 @@ public class HUDManager : MonoBehaviour
     [HideInInspector]
     public bool                 m_dashOnCooldown;
 
-    protected PlayerController  m_playerController;
-    protected HealthManager     m_playerHealth;
-    protected CurrencyManager   m_playerCurrency;
-    protected int               m_playerMaxHealth;
-    protected int               m_playerCurrentHealth;
-    protected float             m_cooldownCounter;
+    private PlayerController  m_playerController;
+    private HealthManager     m_playerHealth;
+    private CurrencyManager   m_playerCurrency;
+    private int               m_playerMaxHealth;
+    private int               m_playerCurrentHealth;
+    private float             m_cooldownCounter;
 
-    protected void Start()
+    private void Start()
     {
         m_playerController = GetComponentInParent<PlayerController>();
         m_playerHealth = GetComponentInParent<HealthManager>();
@@ -32,7 +32,7 @@ public class HUDManager : MonoBehaviour
         m_cooldownCounter = m_playerController.m_dashCooldown;
     }
 
-    protected void Update()
+    private void Update()
     {
         m_playerCurrentHealth = m_playerHealth.m_currentHealth;
         m_dashCooldown.text = m_cooldownCounter.ToString("F2");
@@ -54,7 +54,7 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    protected void UpdateHearts()
+    private void UpdateHearts()
     {
         if (m_playerCurrentHealth == m_playerMaxHealth)
         {

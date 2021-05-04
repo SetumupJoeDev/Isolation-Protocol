@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
-    protected int m_currentLevelNumber;
-    protected void Start()
+    private int m_currentLevelNumber;
+    private void Start()
     {
         m_currentLevelNumber = GameObject.FindGameObjectWithTag("StartRoom").GetComponent<LevelController>().m_levelNumber;
     }

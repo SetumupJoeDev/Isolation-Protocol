@@ -10,11 +10,11 @@ public class RoomSpawner : MonoBehaviour
     public LevelController      m_levelController;
     public bool                 m_spawned;
 
-    protected RoomTemplates     m_templates;
-    protected int               m_random;
-    protected GameObject        m_spawnedRoom;
+    private RoomTemplates     m_templates;
+    private int               m_random;
+    private GameObject        m_spawnedRoom;
 
-    protected void Start()
+    private void Start()
     {
         m_spawned = false;
         m_templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
@@ -138,7 +138,7 @@ public class RoomSpawner : MonoBehaviour
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("SpawnPoint"))
         {
