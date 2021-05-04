@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Offset: {x: -0.08678162, y: 0.11281586}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     oldSize: {x: 2, y: 1}
     newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -125,11 +125,16 @@ MonoBehaviour:
   m_isBeingLookedAt: 0
   m_highlightingActive: 0
   m_playerController: {fileID: 0}
+  m_interactionPrompt: {fileID: 5231702630797857357}
   m_priceModifier: 1
   m_basePrice: 25
   m_itemPrice: 0
   m_itemPricePrompt: {fileID: 6603308663459645558}
   m_percentageOfAmmoToRestore: 0.25
+  m_spriteRenderer: {fileID: 2018051461410741483}
+  m_defaultSprite: {fileID: 21300000, guid: 8129cd8f616bcee45bb2c55bfa520284, type: 3}
+  m_highlightedSprite: {fileID: 21300000, guid: d7882044e8fc0bf4f82ac75fbc126ba6,
+    type: 3}
 --- !u!1001 &4577897503757443767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +259,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c07d43c903316847992705305e691b4, type: 3}
+--- !u!1 &5231702630797857357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8583095992846577914, guid: 3c07d43c903316847992705305e691b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4577897503757443767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1729975417558784186 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2847945120918272525, guid: 3c07d43c903316847992705305e691b4,
@@ -266,7 +277,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4577897503757443767}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5231702630797857357}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23298a56ff20df641bda3abdd495b825, type: 3}

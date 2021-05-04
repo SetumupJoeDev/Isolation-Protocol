@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
         if(m_numberOfDeadEnemies == m_numberOfEnemies)
         {
-            float random = Random.Range(0, 1);
+            float random = Random.Range(0.0f, 1.0f);
             if(random <= m_dropChance)
             {
                 DropLoot();

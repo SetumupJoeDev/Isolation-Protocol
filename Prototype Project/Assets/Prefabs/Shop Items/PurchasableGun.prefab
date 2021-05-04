@@ -125,11 +125,13 @@ MonoBehaviour:
   m_isBeingLookedAt: 0
   m_highlightingActive: 0
   m_playerController: {fileID: 0}
+  m_interactionPrompt: {fileID: 4906758766999812200}
   m_priceModifier: 1
   m_basePrice: 45
   m_itemPrice: 0
   m_itemPricePrompt: {fileID: 6278397166119936595}
-  m_weaponPrefab: {fileID: 0}
+  m_weaponPrefab: {fileID: 7467944668168535690, guid: ce40d8351be2d2c4aa9882d098f14718,
+    type: 3}
   m_weaponSprite: {fileID: 923695271591671067}
 --- !u!1001 &3676352700112193682
 PrefabInstance:
@@ -255,6 +257,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c07d43c903316847992705305e691b4, type: 3}
+--- !u!1 &4906758766999812200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8583095992846577914, guid: 3c07d43c903316847992705305e691b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3676352700112193682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1477437632502805151 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2847945120918272525, guid: 3c07d43c903316847992705305e691b4,
@@ -267,7 +275,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3676352700112193682}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4906758766999812200}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23298a56ff20df641bda3abdd495b825, type: 3}
