@@ -91,6 +91,16 @@ public class PlayerController : CharacterBase
 
     #endregion
 
+    #region AudioLogs
+
+    [Header("AudioLogs")]
+
+    public AudioLogListController m_audioLogList;
+
+    public CanvasController m_audioLogCanvas;
+
+    #endregion
+
     //End of James' work
 
     protected override void Start()
@@ -145,6 +155,12 @@ public class PlayerController : CharacterBase
         {
             m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
         }
+
+        if ( Input.GetKeyDown( KeyCode.Tab ) )
+        {
+            m_audioLogCanvas.ToggleCanvas( );
+        }
+
     }
 
     protected override void FixedUpdate()

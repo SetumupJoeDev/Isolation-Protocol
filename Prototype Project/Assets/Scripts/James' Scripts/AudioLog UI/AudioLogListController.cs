@@ -16,6 +16,8 @@ public class AudioLogListController : MonoBehaviour
 
     public GameObject m_buttonTemplate;
 
+    public int m_logsUnlocked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,15 @@ public class AudioLogListController : MonoBehaviour
             newButton.SetActive( false );
 
         }
+    }
+
+    public void UnlockNewLog( )
+    {
+
+        m_audioLogButtons[m_logsUnlocked].SetActive( true );
+
+        m_logsUnlocked++;
+
     }
 
 }

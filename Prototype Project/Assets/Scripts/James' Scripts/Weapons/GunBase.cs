@@ -61,6 +61,14 @@ public class GunBase : MonoBehaviour
     [Tooltip("The UI element for displaying the weapon's total ammo.")]
     protected Text m_totalAmmoText;
 
+    protected bool m_hasReloaded;
+
+    [SerializeField]
+    protected CanvasController m_reloadingCanvas;
+
+    [SerializeField]
+    protected Slider m_reloadingBar;
+
     #endregion
 
     // Start is called before the first frame update
@@ -74,6 +82,13 @@ public class GunBase : MonoBehaviour
         UpdateUIElements( );
 
         m_canWeaponFire = true;
+
+        m_reloadTime = m_reloadSound.clip.length;
+
+        m_reloadingCanvas = GameObject.Find("ReloadingBarCanvas").GetComponent<CanvasController>( );
+
+        m_reloadingBar = GameObject.Find("ReloadingBar").GetComponent<Slider>( );
+
     }
 
     protected virtual void Awake( )
@@ -91,6 +106,11 @@ public class GunBase : MonoBehaviour
 
         PointToMouse( );
 
+        if( m_reloadSound.isPlaying )
+        {
+            m_reloadingBar.value += ( ( Time.deltaTime / m_reloadTime ) * 100 );
+        }
+
     }
 
     public virtual void FireWeapon( )
@@ -103,31 +123,44 @@ public class GunBase : MonoBehaviour
     {
         if ( m_currentMagAmmo < m_magCapacity )
         {
-
-            if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
-            {
-
-                //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
-                m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
-
-                //Sets the current magazine ammo to its capacity
-                m_currentMagAmmo = m_magCapacity;
-
-            }
-            else
-            {
-
-                m_currentMagAmmo += m_currentCarriedAmmo;
-
-                m_currentCarriedAmmo = 0;
-            }
-
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
 
-            UpdateUIElements( );
+            m_reloadingCanvas.ToggleCanvas( );
+
+            StartCoroutine( ReloadWithDelay( ) );
 
         }
+    }
+
+    public IEnumerator ReloadWithDelay( )
+    {
+        yield return new WaitForSeconds( m_reloadTime );
+
+        if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
+        {
+
+            //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
+            m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
+
+            //Sets the current magazine ammo to its capacity
+            m_currentMagAmmo = m_magCapacity;
+
+        }
+        else
+        {
+
+            m_currentMagAmmo += m_currentCarriedAmmo;
+
+            m_currentCarriedAmmo = 0;
+        }
+
+        UpdateUIElements( );
+
+        m_reloadingCanvas.ToggleCanvas( );
+
+        m_reloadingBar.value = 0;
+
     }
 
     public virtual void UpdateUIElements( )
