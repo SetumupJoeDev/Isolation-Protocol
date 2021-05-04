@@ -15,6 +15,7 @@ public class NextLevel : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
             SceneManager.LoadScene("Level " + (m_currentLevelNumber + 1));
         }
     }
