@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69443de86836ad449a0782e240e962cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 150
+  m_moveSpeed: 250
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 3715704714287060929}
   m_healthManager: {fileID: 3715704714287060941}
@@ -862,6 +862,7 @@ MonoBehaviour:
   m_maxHealth: 6
   m_isInvulnerable: 0
   m_bloodEffect: {fileID: 0}
+  m_playerDamagedFeedback: {fileID: 0}
 --- !u!114 &1822051857034256484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,7 +911,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: -0.008323193}
+  m_Offset: {x: -0.000000059604645, y: -0.2466129}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -921,7 +922,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7522309, y: 0.9833536}
+  m_Size: {x: 0.7522309, y: 0.5067742}
   m_EdgeRadius: 0
 --- !u!95 &3715704714287060942
 Animator:
