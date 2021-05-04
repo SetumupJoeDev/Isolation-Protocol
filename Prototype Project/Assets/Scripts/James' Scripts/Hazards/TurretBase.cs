@@ -97,7 +97,7 @@ public class TurretBase : MonoBehaviour
                 break;
         }
 
-        m_fieldOfView.SetOrigin( transform.position );
+        //m_fieldOfView.SetOrigin( transform.position );
 
     }
 

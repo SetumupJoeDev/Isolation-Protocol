@@ -109,7 +109,9 @@ MonoBehaviour:
   m_currentCarriedAmmo: 15
   m_magazineUIText: {fileID: 0}
   m_totalAmmoText: {fileID: 0}
-  m_weaponFireMode: 1
+  m_reloadingCanvas: {fileID: 0}
+  m_reloadingBar: {fileID: 0}
+  m_weaponFireMode: 0
   m_fireInterval: 0.175
   m_burstFireDelay: 0
   m_projectilePrefab: {fileID: 5152891944520146787, guid: 4dab3a17bd1d5d74986f9b5e5f30b3bd,
@@ -224,7 +226,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f32d08c871c785c48adf8a901073823e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0

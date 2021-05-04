@@ -109,6 +109,8 @@ MonoBehaviour:
   m_currentCarriedAmmo: 999
   m_magazineUIText: {fileID: 0}
   m_totalAmmoText: {fileID: 0}
+  m_reloadingCanvas: {fileID: 0}
+  m_reloadingBar: {fileID: 0}
   m_weaponFireMode: 0
   m_fireInterval: 0.45
   m_burstFireDelay: 0
@@ -224,7 +226,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0

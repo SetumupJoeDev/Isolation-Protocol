@@ -37,7 +37,7 @@ public class FieldOfView : MonoBehaviour
         //Assigns the newly created mesh to this gameobject's mesh filter
         GetComponent<MeshFilter>( ).mesh = m_fieldOfViewMesh;
 
-        //Sets the origin of the object
+        //Sets the origin of the FOV
         m_fovOrigin = Vector3.zero;
 
     }
