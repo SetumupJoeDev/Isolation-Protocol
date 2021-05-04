@@ -74,6 +74,9 @@ public class GunBase : MonoBehaviour
         UpdateUIElements( );
 
         m_canWeaponFire = true;
+
+        m_reloadTime = m_reloadSound.clip.length;
+
     }
 
     protected virtual void Awake( )
@@ -103,31 +106,38 @@ public class GunBase : MonoBehaviour
     {
         if ( m_currentMagAmmo < m_magCapacity )
         {
-
-            if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
-            {
-
-                //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
-                m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
-
-                //Sets the current magazine ammo to its capacity
-                m_currentMagAmmo = m_magCapacity;
-
-            }
-            else
-            {
-
-                m_currentMagAmmo += m_currentCarriedAmmo;
-
-                m_currentCarriedAmmo = 0;
-            }
-
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
 
-            UpdateUIElements( );
+            StartCoroutine( ReloadWithDelay( ) );
 
         }
+    }
+
+    public IEnumerator ReloadWithDelay( )
+    {
+        yield return new WaitForSeconds( m_reloadTime );
+
+        if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
+        {
+
+            //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
+            m_currentCarriedAmmo -= m_magCapacity - m_currentMagAmmo;
+
+            //Sets the current magazine ammo to its capacity
+            m_currentMagAmmo = m_magCapacity;
+
+        }
+        else
+        {
+
+            m_currentMagAmmo += m_currentCarriedAmmo;
+
+            m_currentCarriedAmmo = 0;
+        }
+
+        UpdateUIElements( );
+
     }
 
     public virtual void UpdateUIElements( )
