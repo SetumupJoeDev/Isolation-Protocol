@@ -33,25 +33,10 @@ public class ShopItem : InteractableObject
         m_itemPricePrompt.m_productPrice.text = m_itemPrice.ToString( );
     }
 
-    public virtual void DisplayPrice( bool priceDisplayed )
-    {
-
-        m_itemPricePrompt.gameObject.SetActive( priceDisplayed );
-
-    }
-
     public override void Activated( )
     {
         BuyItem( m_playerController.gameObject.GetComponent<CurrencyManager>( ) );
         base.Activated( );
-    }
-
-    public override void ToggleHighlighting( bool highlightActive )
-    {
-        base.ToggleHighlighting( highlightActive );
-
-        DisplayPrice( m_highlightingActive );
-
     }
 
     public virtual bool BuyItem( CurrencyManager playerCurrency )

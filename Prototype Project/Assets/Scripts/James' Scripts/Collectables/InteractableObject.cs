@@ -12,6 +12,9 @@ public class InteractableObject : MonoBehaviour
 
     public PlayerController m_playerController;
 
+    [SerializeField]
+    private GameObject m_interactionPrompt;
+
     public virtual void Update( )
     {
         if( m_isBeingLookedAt && !m_highlightingActive )
@@ -37,7 +40,7 @@ public class InteractableObject : MonoBehaviour
     public virtual void ToggleHighlighting( bool highlightActive )
     {
 
-        Debug.Log( "Boop!" );
+        m_interactionPrompt.SetActive( highlightActive );
 
         m_highlightingActive = highlightActive;
 

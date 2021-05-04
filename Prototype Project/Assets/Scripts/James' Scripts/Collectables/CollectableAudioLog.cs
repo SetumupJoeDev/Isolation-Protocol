@@ -14,9 +14,14 @@ public class CollectableAudioLog : InteractableObject
     [SerializeField]
     private SpriteRenderer m_spriteRenderer;
 
+    [SerializeField]
+    private AudioClip m_logCollected;
+
     public override void Activated( )
     {
         m_playerController.m_audioLogList.UnlockNewLog( );
+
+        AudioSource.PlayClipAtPoint( m_logCollected , transform.position );
 
         Destroy( gameObject );
 

@@ -7,6 +7,15 @@ public class AmmoShopItem : ShopItem
     [Range(0, 1)]
     public float m_percentageOfAmmoToRestore;
 
+    [SerializeField]
+    private SpriteRenderer m_spriteRenderer;
+
+    [SerializeField]
+    private Sprite m_defaultSprite;
+
+    [SerializeField]
+    private Sprite m_highlightedSprite;
+
     public override void Activated( )
     {
 
@@ -30,6 +39,21 @@ public class AmmoShopItem : ShopItem
             }
             Destroy( gameObject );
         }
+    }
+
+    public override void ToggleHighlighting( bool highlightActive )
+    {
+
+        if ( !highlightActive )
+        {
+            m_spriteRenderer.sprite = m_defaultSprite;
+        }
+        else
+        {
+            m_spriteRenderer.sprite = m_highlightedSprite;
+        }
+
+        base.ToggleHighlighting( highlightActive );
     }
 
     public override void SetUpPricePrompt( )
