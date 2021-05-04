@@ -118,10 +118,7 @@ public class MutoSlug : EnemyBase
             m_attachedPlayer.m_slowness -= m_playerSpeedDebuff;
         }
 
-        AudioSource.PlayClipAtPoint( m_deathSound , transform.position );
-
-        Destroy( gameObject );
-
+        base.Die();
     }
 
     public void OnTriggerEnter2D( Collider2D collision )

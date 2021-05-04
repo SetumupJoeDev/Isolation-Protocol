@@ -37,7 +37,10 @@ public class HealthManager : MonoBehaviour
 
     public virtual void Heal(int healAmount)
     {
-        m_currentHealth += healAmount;
+        if(m_currentHealth < m_maxHealth)
+        {
+            m_currentHealth += healAmount;
+        }
     }
 
 

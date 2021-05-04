@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Spawning")]
     [SerializeField]
     protected int           m_minSpawns;
     [SerializeField]
@@ -13,11 +14,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     protected GameObject[]  m_enemyTypes;
     public List<GameObject> m_spawnedEnemies;
-    public bool             m_cleared;
 
-    protected int m_randomEnemy;
-    protected int m_numberOfEnemies;
-    protected int m_numberOfDeadEnemies;
+    [Header("Clearing")]
+    public bool             m_cleared;
+    [SerializeField]
+    protected GameObject[]  m_lootDrops;
+    public float            m_dropChance;
+
+    protected int           m_randomEnemy;
+    protected int           m_numberOfEnemies;
+    protected int           m_numberOfDeadEnemies;
 
     // Start is called before the first frame update
     void Start()
@@ -29,30 +35,32 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    protected void Update()
+    public void IncreaseDead(GameObject spawnedEnemy)
     {
-        for (int i = 0; i < m_spawnedEnemies.Count; i++)
-        {
-            if (m_spawnedEnemies[i] == null)
-            {
-                // IncreaseDead() 
-                m_numberOfDeadEnemies++;
-                m_spawnedEnemies.RemoveAt(i);
-            }
-        }
-         
-        // Include in IncreaseDead()
+        m_numberOfDeadEnemies++;
+        m_spawnedEnemies.Remove(spawnedEnemy);
+
         if(m_numberOfDeadEnemies == m_numberOfEnemies)
         {
-            m_cleared = true;
-            // TODO: Make reference to spawner in EnemyBase and call IncreaseDead()
-            // TODO: Spawn health/ammo upon cleared
+            float random = Random.Range(0, 1);
+            if(random <= m_dropChance)
+            {
+                DropLoot();
+            }
         }
+    }
+
+    protected void DropLoot()
+    {
+        int random = Random.Range(0, m_lootDrops.Length);
+        Instantiate(m_lootDrops[random], transform.position, Quaternion.identity);
     }
 
     protected void Spawn(Vector2 position)
     {
         m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
-        m_spawnedEnemies.Add(Instantiate(m_enemyTypes[m_randomEnemy], position, Quaternion.identity));
+        GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], position, Quaternion.identity);
+        spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+        m_spawnedEnemies.Add(spawnedEnemy);
     }
 }

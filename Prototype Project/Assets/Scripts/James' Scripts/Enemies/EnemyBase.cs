@@ -91,6 +91,13 @@ public class EnemyBase : CharacterBase
     [Tooltip("The prefab for the cigarette pack gameobject.")]
     public GameObject m_fabricatorFuelPrefab;
 
+    // Adam's Code
+
+    [Tooltip("The EnemySpawner that spawned this enemy")]
+    public EnemySpawner m_spawner;
+    
+    // End of Adam's Code
+
     #endregion
 
     #region EnemyStates
@@ -185,6 +192,7 @@ public class EnemyBase : CharacterBase
     {
         AudioSource.PlayClipAtPoint(m_deathSound, transform.position);
         DropLoot( );
+        m_spawner.IncreaseDead(gameObject);  // Adam's Code
         base.Die( );
     }
 
