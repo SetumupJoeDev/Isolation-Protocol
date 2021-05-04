@@ -17,6 +17,7 @@ public class NextLevel : MonoBehaviour
         {
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
             SceneManager.LoadScene("Level " + (m_currentLevelNumber + 1));
+            collision.gameObject.transform.position = Vector3.zero;
         }
     }
 }

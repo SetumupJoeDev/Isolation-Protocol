@@ -61,8 +61,8 @@ public class WeaponShopItem : ShopItem
                 m_playerController.m_currentWeapon = m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex];
 
             }
+            Destroy( gameObject );
         }
-        Destroy( gameObject );
     }
 
 }
