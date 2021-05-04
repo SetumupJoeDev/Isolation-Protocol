@@ -61,6 +61,14 @@ public class GunBase : MonoBehaviour
     [Tooltip("The UI element for displaying the weapon's total ammo.")]
     protected Text m_totalAmmoText;
 
+    protected bool m_hasReloaded;
+
+    [SerializeField]
+    protected CanvasController m_reloadingCanvas;
+
+    [SerializeField]
+    protected Slider m_reloadingBar;
+
     #endregion
 
     // Start is called before the first frame update
@@ -76,6 +84,10 @@ public class GunBase : MonoBehaviour
         m_canWeaponFire = true;
 
         m_reloadTime = m_reloadSound.clip.length;
+
+        m_reloadingCanvas = GameObject.Find("ReloadingBarCanvas").GetComponent<CanvasController>( );
+
+        m_reloadingBar = GameObject.Find("ReloadingBar").GetComponent<Slider>( );
 
     }
 
@@ -94,6 +106,11 @@ public class GunBase : MonoBehaviour
 
         PointToMouse( );
 
+        if( m_reloadSound.isPlaying )
+        {
+            m_reloadingBar.value += ( ( Time.deltaTime / m_reloadTime ) * 100 );
+        }
+
     }
 
     public virtual void FireWeapon( )
@@ -108,6 +125,8 @@ public class GunBase : MonoBehaviour
         {
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
+
+            m_reloadingCanvas.ToggleCanvas( );
 
             StartCoroutine( ReloadWithDelay( ) );
 
@@ -137,6 +156,10 @@ public class GunBase : MonoBehaviour
         }
 
         UpdateUIElements( );
+
+        m_reloadingCanvas.ToggleCanvas( );
+
+        m_reloadingBar.value = 0;
 
     }
 
