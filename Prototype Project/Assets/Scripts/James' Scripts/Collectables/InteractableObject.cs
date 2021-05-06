@@ -34,7 +34,7 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void Activated( )
     {
-        Debug.Log( "I was activated!" );
+        
     }
 
     public virtual void ToggleHighlighting( bool highlightActive )
