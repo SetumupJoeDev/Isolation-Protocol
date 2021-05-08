@@ -19,7 +19,7 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        if(m_numberOfRooms >= m_aproxRoomLimit - 2)
+        if(m_numberOfRooms >= m_aproxRoomLimit)
         {
             m_reachedLimit = true;
         }

@@ -9,13 +9,12 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] m_bottomDoorRooms;
 
     [Header("Dead End Door Rooms")]
-    public GameObject m_topDoorRoom;
-    public GameObject m_leftDoorRoom;
-    public GameObject m_rightDoorRoom;
-    public GameObject m_bottomDoorRoom;
+    public GameObject m_topDeadEndRoom;
+    public GameObject m_leftDeadEndRoom;
+    public GameObject m_rightDeadEndRoom;
+    public GameObject m_bottomDeadEndRoom;
 
     [Header("End Rooms")]
-    public GameObject m_topEndRoom;
     public GameObject m_leftEndRoom;
     public GameObject m_rightEndRoom;
     public GameObject m_bottomEndRoom;

@@ -74,19 +74,22 @@ public class RoomSpawner : MonoBehaviour
                     {
                         case Enums.Directions.Top:
                             m_spawnedRoom = Instantiate(m_templates.m_bottomEndRoom, transform.position, Quaternion.identity);
+                            m_levelController.m_hasEndRoom = true;
                             break;
                         case Enums.Directions.Left:
                             m_spawnedRoom = Instantiate(m_templates.m_rightEndRoom, transform.position, Quaternion.identity);
+                            m_levelController.m_hasEndRoom = true;
                             break;
                         case Enums.Directions.Right:
                             m_spawnedRoom = Instantiate(m_templates.m_leftEndRoom, transform.position, Quaternion.identity);
+                            m_levelController.m_hasEndRoom = true;
                             break;
                         case Enums.Directions.Bottom:
-                            m_spawnedRoom = Instantiate(m_templates.m_topEndRoom, transform.position, Quaternion.identity);
+                            m_spawnedRoom = Instantiate(m_templates.m_topDeadEndRoom, transform.position, Quaternion.identity);
+                            m_levelController.m_hasEndRoom = false;
                             break;
                     }
 
-                    m_levelController.m_hasEndRoom = true;
                 }
                 else
                 {
@@ -115,23 +118,23 @@ public class RoomSpawner : MonoBehaviour
                         switch (m_doorDirection)
                         {
                             case Enums.Directions.Top:
-                                m_spawnedRoom = Instantiate(m_templates.m_bottomDoorRoom, transform.position, Quaternion.identity);
+                                m_spawnedRoom = Instantiate(m_templates.m_bottomDeadEndRoom, transform.position, Quaternion.identity);
                                 break;
                             case Enums.Directions.Left:
-                                m_spawnedRoom = Instantiate(m_templates.m_rightDoorRoom, transform.position, Quaternion.identity);
+                                m_spawnedRoom = Instantiate(m_templates.m_rightDeadEndRoom, transform.position, Quaternion.identity);
                                 break;
                             case Enums.Directions.Right:
-                                m_spawnedRoom = Instantiate(m_templates.m_leftDoorRoom, transform.position, Quaternion.identity);
+                                m_spawnedRoom = Instantiate(m_templates.m_leftDeadEndRoom, transform.position, Quaternion.identity);
                                 break;
                             case Enums.Directions.Bottom:
-                                m_spawnedRoom = Instantiate(m_templates.m_topDoorRoom, transform.position, Quaternion.identity);
+                                m_spawnedRoom = Instantiate(m_templates.m_topDeadEndRoom, transform.position, Quaternion.identity);
                                 break;
                         }
                     }
                 }
             }
 
-            m_spawnedRoom.GetComponent<RoomOpenings>().m_spawnedFrom = this;
+            m_spawnedRoom.GetComponent<RoomController>().m_spawnedFrom = this;
             m_spawned = true;
             m_levelController.m_numberOfRooms++;
             m_levelController.m_roomList.Add(m_spawnedRoom);
@@ -204,7 +207,7 @@ public class RoomSpawner : MonoBehaviour
                         break;
                 }
 
-                m_spawnedRoom.GetComponent<RoomOpenings>().m_spawnedFrom = this;
+                m_spawnedRoom.GetComponent<RoomController>().m_spawnedFrom = this;
                 m_spawned = true;
                 m_levelController.m_numberOfRooms++;
                 m_levelController.m_roomList.Add(m_spawnedRoom);

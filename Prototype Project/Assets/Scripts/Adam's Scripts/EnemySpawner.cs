@@ -15,12 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private GameObject[]    m_enemyTypes;
     public List<GameObject> m_spawnedEnemies;
 
-    [Header("Clearing")]
-    public bool             m_cleared;
-    [SerializeField]
-    private GameObject[]    m_lootDrops;
-    public float            m_dropChance;
-
     private int             m_randomEnemy;
     private int             m_numberOfEnemies;
     private int             m_numberOfDeadEnemies;
@@ -42,18 +36,8 @@ public class EnemySpawner : MonoBehaviour
 
         if(m_numberOfDeadEnemies == m_numberOfEnemies)
         {
-            float random = Random.Range(0.0f, 1.0f);
-            if(random <= m_dropChance)
-            {
-                DropLoot();
-            }
+            gameObject.GetComponentInParent<RoomController>().Cleared();
         }
-    }
-
-    private void DropLoot()
-    {
-        int random = Random.Range(0, m_lootDrops.Length);
-        Instantiate(m_lootDrops[random], transform.position, Quaternion.identity);
     }
 
     private void Spawn(Vector2 position)
