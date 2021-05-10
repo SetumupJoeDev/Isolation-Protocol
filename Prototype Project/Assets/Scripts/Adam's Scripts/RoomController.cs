@@ -7,23 +7,28 @@ public class RoomController : MonoBehaviour
     [SerializeField]
     private LayerMask m_wallLayer;
 
-    public RoomSpawner[]  m_spawners;
-    public RoomSpawner    m_spawnedFrom;
-    public bool           m_cleared;
+    public RoomSpawner[]    m_spawners;
+    public RoomSpawner      m_spawnedFrom;
+    public bool             m_discovered;
+    public bool             m_cleared;
     [SerializeField]      
-    private GameObject[]  m_lootDrops;
+    private GameObject[]    m_lootDrops;
     [SerializeField]      
-    private float         m_dropChance;
+    private float           m_dropChance;
+    [SerializeField]
+    private Door[]          m_doors;
 
-    private bool          m_openTop;
-    private bool          m_openLeft;
-    private bool          m_openRight;
-    private bool          m_openBottom;
-    private bool          m_wallAbove;
-    private bool          m_wallBelow;
-    private bool          m_wallRight;
-    private bool          m_wallLeft;
-    private float         m_spawnerDistance;
+    private bool            m_openTop;
+    private bool            m_openLeft;
+    private bool            m_openRight;
+    private bool            m_openBottom;
+    private bool            m_wallAbove;
+    private bool            m_wallBelow;
+    private bool            m_wallRight;
+    private bool            m_wallLeft;
+    private float           m_spawnerDistance;
+    [HideInInspector]
+    public EnemySpawner     m_enemySpawner;
 
     // Start is called before the first frame update
     private void Start()
@@ -98,6 +103,10 @@ public class RoomController : MonoBehaviour
     public void Cleared()
     {
         m_cleared = true;
+        for (int i = 0; i < m_doors.Length; i++)
+        {
+            m_doors[i].Open();
+        }
         float random = Random.Range(0.0f, 1.0f);
         if (random <= m_dropChance)
         {
@@ -138,5 +147,18 @@ public class RoomController : MonoBehaviour
     {
         int random = Random.Range(0, m_lootDrops.Length);
         Instantiate(m_lootDrops[random], transform.position, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            m_discovered = true;
+            for (int i = 0; i < m_doors.Length; i++)
+            {
+                m_doors[i].Close();
+            }
+            m_enemySpawner.SpawnEnemies();
+        }
     }
 }

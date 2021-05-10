@@ -18,15 +18,13 @@ public class EnemySpawner : MonoBehaviour
     private int             m_randomEnemy;
     private int             m_numberOfEnemies;
     private int             m_numberOfDeadEnemies;
+    private RoomController  m_parentRoom;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_numberOfEnemies = Random.Range(m_minSpawns, m_maxSpawns);
-        for (int i = 0; i < m_numberOfEnemies; i++)
-        {
-            Spawn(m_spawnPoints[i].transform.position);
-        }
+        m_parentRoom = GetComponentInParent<RoomController>();
+        m_parentRoom.m_enemySpawner = this;
     }
 
     public void IncreaseDead(GameObject spawnedEnemy)
@@ -36,15 +34,20 @@ public class EnemySpawner : MonoBehaviour
 
         if(m_numberOfDeadEnemies == m_numberOfEnemies)
         {
-            gameObject.GetComponentInParent<RoomController>().Cleared();
+            m_parentRoom.Cleared();
         }
     }
 
-    private void Spawn(Vector2 position)
+    public void SpawnEnemies()
     {
-        m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
-        GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], position, Quaternion.identity);
-        spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
-        m_spawnedEnemies.Add(spawnedEnemy);
+        m_numberOfEnemies = Random.Range(m_minSpawns, m_maxSpawns + 1);
+        for (int i = 0; i < m_numberOfEnemies; i++)
+        {
+            m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
+            GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], m_spawnPoints[i].transform.position, Quaternion.identity);
+            spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+            spawnedEnemy.transform.parent = m_parentRoom.transform;
+            m_spawnedEnemies.Add(spawnedEnemy);
+        }
     }
 }
