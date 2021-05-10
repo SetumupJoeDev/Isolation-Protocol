@@ -71,6 +71,16 @@ public class GunBase : MonoBehaviour
 
     #endregion
 
+    #region ShopValues
+
+    [SerializeField]
+    private int m_baseShopValue;
+
+    [SerializeField]
+    private int m_fabricatorStorePrice;
+
+    #endregion
+
     // Start is called before the first frame update
     protected virtual void Start()
     {

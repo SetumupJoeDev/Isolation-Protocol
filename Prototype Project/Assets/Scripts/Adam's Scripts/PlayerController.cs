@@ -99,7 +99,7 @@ public class PlayerController : CharacterBase
 
     public CanvasController m_audioLogCanvas;
 
-    public bool m_isLogOpen = false;
+    public bool m_isInMenu = false;
 
     #endregion
 
@@ -140,7 +140,7 @@ public class PlayerController : CharacterBase
 
         CheckForInteractables( );
 
-        if ( Input.GetMouseButton( 0 ) && !m_isLogOpen )
+        if ( Input.GetMouseButton( 0 ) && !m_isInMenu )
         {
             m_currentWeapon.GetComponent<GunBase>().FireWeapon( );
         }
@@ -161,7 +161,7 @@ public class PlayerController : CharacterBase
         if ( Input.GetKeyDown( KeyCode.Tab ) )
         {
             m_audioLogCanvas.ToggleCanvas( );
-            m_isLogOpen = !m_isLogOpen;
+            m_isInMenu = !m_isInMenu;
         }
 
     }
@@ -387,6 +387,12 @@ public class PlayerController : CharacterBase
         
 
     }
+
+    public void ToggleHUD( bool hudActive )
+    {
+        m_hud.gameObject.SetActive( hudActive );
+    }
+
     //End of James' work
 
 }

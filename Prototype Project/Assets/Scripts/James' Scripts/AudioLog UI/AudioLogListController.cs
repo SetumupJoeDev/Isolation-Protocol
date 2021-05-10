@@ -29,7 +29,7 @@ public class AudioLogListController : MonoBehaviour
     {
         for( int i = 0; i < m_textTranscripts.Length; i++ )
         {
-            GameObject newButton = Instantiate(m_buttonTemplate) as GameObject;
+            GameObject newButton = Instantiate(m_buttonTemplate);
 
             newButton.SetActive( true );
 

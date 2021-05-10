@@ -22,6 +22,8 @@ public class FabrictatorModule : InteractableObject
 
         m_playerController.GetComponentInChildren<HUDManager>( ).gameObject.SetActive( false );
 
+        m_playerController.m_isInMenu = true;
+
     }
 
     public override void ToggleHighlighting( bool highlightActive )
