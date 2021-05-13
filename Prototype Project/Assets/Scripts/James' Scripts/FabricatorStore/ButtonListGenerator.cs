@@ -23,6 +23,11 @@ public class ButtonListGenerator : MonoBehaviour
         
     }
 
+    public FabricatorStoreProduct GetStoreProduct(int itemIndex )
+    {
+        return m_buttonObjectReferences[itemIndex];
+    }
+
     public void PopulateButtonList( )
     {
         for(int i = 0; i < m_buttonObjectReferences.Length; i++ )
@@ -34,6 +39,8 @@ public class ButtonListGenerator : MonoBehaviour
             newButton.transform.SetParent( m_buttonTemplate.transform.parent, false );
 
             FabricatorProductButton newButtonController = newButton.GetComponent<FabricatorProductButton>();
+
+            newButtonController.SetItemIndex( i );
 
             newButtonController.SetName( m_buttonObjectReferences[i].GetItemName( ) );
 

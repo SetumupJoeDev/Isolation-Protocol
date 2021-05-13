@@ -18,6 +18,14 @@ public class FabricatorStoreProduct : ScriptableObject
     [SerializeField]
     private TextAsset m_itemDescription;
 
+    [SerializeField]
+    private bool m_isUnlocked;
+
+    public void Start( )
+    {
+        m_isUnlocked = false;
+    }
+
     public string GetItemName( )
     {
         return m_itemName;
@@ -36,6 +44,16 @@ public class FabricatorStoreProduct : ScriptableObject
     public TextAsset GetItemDescription( )
     {
         return m_itemDescription;
+    }
+
+    public void SetIsUnlocked( bool isUnlocked )
+    {
+        m_isUnlocked = isUnlocked;
+    }
+
+    public bool GetIsUnlocked( )
+    {
+        return m_isUnlocked;
     }
 
 }

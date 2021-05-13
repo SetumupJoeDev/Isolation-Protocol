@@ -28,7 +28,7 @@ public class ConventionalWeapon : GunBase
 
     [SerializeField]
     [Tooltip("The number of projectiles fired each time this weapon fires. Should be left at 0 if this is not a burst fire weapon.")]
-    protected int m_projectilesPerShot;
+    protected uint m_projectilesPerShot;
 
     [Tooltip("The muzzle flash particle system attached to this weapon.")]
     public ParticleSystem m_muzzleFlash;

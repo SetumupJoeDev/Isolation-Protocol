@@ -7,6 +7,9 @@ public class FabricatorProductButton : MonoBehaviour
 {
 
     [SerializeField]
+    private FabricatorStoreBase m_storeController;
+
+    [SerializeField]
     private Image m_productImage;
 
     [SerializeField]
@@ -14,6 +17,8 @@ public class FabricatorProductButton : MonoBehaviour
 
     [SerializeField]
     private int m_productPrice;
+
+    private int m_productIndex;
 
     [SerializeField]
     private TextAsset m_productDescriptionFile;
@@ -34,6 +39,11 @@ public class FabricatorProductButton : MonoBehaviour
         m_productImage.sprite = newSprite;
     }
 
+    public void SetItemIndex(int newIndex )
+    {
+        m_productIndex = newIndex;
+    }
+
     public void SetItemPrice(int newPrice )
     {
         m_productPrice = newPrice;
@@ -47,6 +57,10 @@ public class FabricatorProductButton : MonoBehaviour
     public void OnClick( )
     {
         m_itemDescriptionUI.text = m_productDescriptionFile.text;
+
+        m_storeController.SetItemIndex( m_productIndex );
+
+        m_storeController.SetItemPrice( m_productPrice );
 
         m_itemPriceText.text = m_productPrice.ToString( );
     }

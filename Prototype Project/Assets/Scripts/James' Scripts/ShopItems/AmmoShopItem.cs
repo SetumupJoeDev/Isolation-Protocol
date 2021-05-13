@@ -29,7 +29,7 @@ public class AmmoShopItem : ShopItem
 
                     float restoredAmmo = currentWeapon.m_maxAmmoCapacity * m_percentageOfAmmoToRestore;
 
-                    currentWeapon.m_currentCarriedAmmo += ( int )restoredAmmo;
+                    currentWeapon.m_currentCarriedAmmo += ( uint )restoredAmmo;
 
                     if ( currentWeapon.m_currentCarriedAmmo > currentWeapon.m_maxAmmoCapacity )
                     {

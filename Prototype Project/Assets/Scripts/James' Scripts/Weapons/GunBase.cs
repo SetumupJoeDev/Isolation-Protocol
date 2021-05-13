@@ -39,19 +39,19 @@ public class GunBase : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The magazine capacity of this weapon.")]
-    protected int m_magCapacity;
+    protected uint m_magCapacity;
 
     [SerializeField]
     [Tooltip("The current amount of ammo loaded in the weapon.")]
-    protected int m_currentMagAmmo;
+    protected uint m_currentMagAmmo;
 
     [SerializeField]
     [Tooltip("The maximum amount of ammo that can be carried for this weapon.")]
-    public int m_maxAmmoCapacity;
+    public uint m_maxAmmoCapacity;
 
     [SerializeField]
     [Tooltip("The current amount of ammo for this weapon the player is carrying.")]
-    public int m_currentCarriedAmmo;
+    public uint m_currentCarriedAmmo;
 
     [SerializeField]
     [Tooltip("The UI element for displaying the weapon's current ammo.")]
