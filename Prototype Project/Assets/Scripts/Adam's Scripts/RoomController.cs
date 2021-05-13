@@ -151,7 +151,7 @@ public class RoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !m_discovered)
         {
             m_discovered = true;
             for (int i = 0; i < m_doors.Length; i++)
