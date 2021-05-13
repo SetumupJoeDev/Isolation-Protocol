@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SentryMode : DroneBehaviourBase
@@ -7,13 +8,22 @@ public class SentryMode : DroneBehaviourBase
 
     #region Behaviour Parameters
 
-    [Header("Behaviour Parameters")]
+    #region Cooldown
+
+    [Header("Cooldown")]
 
     [SerializeField]
     private bool m_isInCooldown;
 
     [SerializeField]
     private float m_cooldownDuration;
+
+    [SerializeField]
+    private Image m_cooldownOverlay;
+
+    #endregion
+
+    #region Combat
 
     [Header("Combat")]
 
@@ -44,6 +54,8 @@ public class SentryMode : DroneBehaviourBase
 
     #endregion
 
+    #endregion
+
     #region Sounds
 
     [Header("Sounds")]
@@ -67,13 +79,28 @@ public class SentryMode : DroneBehaviourBase
 
     public override void Update( )
     {
-        if ( !m_isInSentryMode && !m_isInCooldown )
+        if ( Input.GetKeyDown( KeyCode.Q ) )
         {
-            base.Update( );
+            if ( !m_isInSentryMode && !m_isInCooldown )
+            {
+                ActivateEffect( );
+            }
+            else if( m_isInSentryMode )
+            {
+
+                DisableModuleBehaviour( );
+
+                StartCoroutine( SentryModeCooldown( ) );
+
+            }
         }
-        else if( !m_isFiring && m_currentEnemy == null && CheckForTargets() )
+        if ( !m_isFiring && m_isInSentryMode && m_currentEnemy == null && CheckForTargets( ) )
         {
             StartCoroutine( FireAtEnemy( ) );
+        }
+        if( m_isInCooldown )
+        {
+            m_cooldownOverlay.fillAmount -= Time.deltaTime / m_cooldownDuration;
         }
     }
 
@@ -132,9 +159,27 @@ public class SentryMode : DroneBehaviourBase
 
     public IEnumerator SentryTimer( )
     {
+
         yield return new WaitForSeconds( m_sentryModeDuration );
 
         DisableModuleBehaviour( );
+
+        StartCoroutine( SentryModeCooldown( ) );
+
+    }
+
+    public IEnumerator SentryModeCooldown( )
+    {
+
+        m_isInCooldown = true;
+
+        m_cooldownOverlay.fillAmount = 1;
+
+        yield return new WaitForSeconds( m_cooldownDuration );
+
+        m_isInCooldown = false;
+
+        m_cooldownOverlay.fillAmount = 0;
 
     }
 

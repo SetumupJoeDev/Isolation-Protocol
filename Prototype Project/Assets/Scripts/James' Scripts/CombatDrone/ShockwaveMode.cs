@@ -11,7 +11,7 @@ public class ShockwaveMode : DroneBehaviourBase
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         
     }

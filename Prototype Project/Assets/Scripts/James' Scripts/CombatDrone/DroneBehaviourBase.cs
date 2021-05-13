@@ -8,7 +8,7 @@ public class DroneBehaviourBase : MonoBehaviour
     protected DroneController m_droneController;
 
     // Start is called before the first frame update
-    void Awake()
+    protected void Awake()
     {
         m_droneController = GetComponent<DroneController>( );
     }
@@ -18,9 +18,14 @@ public class DroneBehaviourBase : MonoBehaviour
     {
         if( Input.GetKeyDown(KeyCode.Q) )
         {
-            m_droneController.DisableBasicBehaviours( );
-            EnableModuleBehaviour( );
+            ActivateEffect( );
         }
+    }
+
+    public virtual void ActivateEffect( )
+    {
+        m_droneController.DisableBasicBehaviours( );
+        EnableModuleBehaviour( );
     }
 
     public virtual void EnableModuleBehaviour( )
