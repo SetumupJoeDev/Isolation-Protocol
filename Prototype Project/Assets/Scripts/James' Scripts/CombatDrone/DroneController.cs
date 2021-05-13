@@ -18,6 +18,8 @@ public class DroneController : MonoBehaviour
     [SerializeField]
     private float m_followDistance;
 
+    private bool m_canFollow;
+
     [SerializeField]
     private Rigidbody2D m_rigidBody;
 
@@ -72,16 +74,29 @@ public class DroneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_canFollow = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( !m_isFiring && EnemyInRange( ) )
+        if( m_canFire && !m_isFiring && EnemyInRange( ) )
         {
             StartCoroutine( WaitToFire( ) );
         }
+    }
+
+    public void DisableBasicBehaviours( )
+    {
+        StopAllCoroutines( );
+        m_canFire = false;
+        m_canFollow = false;
+    }
+
+    public void EnableBasicBehaviours( )
+    {
+        m_canFire = true;
+        m_canFollow = true;
     }
 
     private IEnumerator WaitToFire( )
@@ -108,7 +123,7 @@ public class DroneController : MonoBehaviour
 
     private void FixedUpdate( )
     {
-        if ( Vector3.Distance( transform.position , m_playerObject.transform.position ) > m_followDistance )
+        if ( Vector3.Distance( transform.position , m_playerObject.transform.position ) > m_followDistance && m_canFollow )
         {
             FollowPlayer( );
         }

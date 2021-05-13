@@ -71,7 +71,7 @@ public class CurrencyBase : CollectableBase
     {
         Collider2D player = Physics2D.OverlapCircle(transform.position, m_gravitationRange, m_playerLayer );
 
-        if( player != null )
+        if( player != null && player.gameObject.GetComponent<PlayerController>() )
         {
             m_playerObject = player.gameObject;
             m_playerEnteredRange = true;

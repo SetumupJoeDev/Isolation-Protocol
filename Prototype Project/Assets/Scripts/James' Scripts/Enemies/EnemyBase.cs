@@ -192,7 +192,12 @@ public class EnemyBase : CharacterBase
     {
         AudioSource.PlayClipAtPoint(m_deathSound, transform.position);
         DropLoot( );
-        m_spawner.IncreaseDead(gameObject);  // Adam's Code
+        // Adam's Code
+        if ( m_spawner != null )
+        {
+            m_spawner.IncreaseDead( gameObject );  
+        }
+        //End of Adam's code
         base.Die( );
     }
 
