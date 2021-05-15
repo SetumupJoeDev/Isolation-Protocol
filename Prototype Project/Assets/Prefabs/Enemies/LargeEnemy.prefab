@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 966570563917422951}
   - component: {fileID: 966570563917422950}
   - component: {fileID: 966570563917422948}
+  - component: {fileID: 966570563917422949}
   - component: {fileID: 966570563917422953}
   - component: {fileID: 966570563917422946}
-  - component: {fileID: 966570563917422949}
   - component: {fileID: 966570563917422947}
   m_Layer: 11
   m_Name: LargeEnemy
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_minFuelDrops: 2
   m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
     type: 3}
+  m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 966570563917422953}
   m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}
@@ -136,6 +137,25 @@ MonoBehaviour:
   m_windupDuration: 1
   m_aoeRange: 4
   m_attackLaunchForce: 500
+--- !u!114 &966570563917422949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966570563917422952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f62ea8fa217a73459f4332a8506e5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentHealth: 0
+  m_maxHealth: 16
+  m_isInvulnerable: 0
+  m_bloodEffect: {fileID: 0}
+  m_playerDamagedFeedback: {fileID: 0}
+  m_damagedTime: 0.5
+  m_damagedAmount: 0
 --- !u!95 &966570563917422953
 Animator:
   serializedVersion: 3
@@ -176,25 +196,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &966570563917422949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966570563917422952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f62ea8fa217a73459f4332a8506e5a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_currentHealth: 0
-  m_maxHealth: 16
-  m_isInvulnerable: 0
-  m_bloodEffect: {fileID: 0}
-  m_playerDamagedFeedback: {fileID: 0}
-  m_damagedTime: 0.5
-  m_damagedAmount: 0
 --- !u!61 &966570563917422947
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10458,6 +10458,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveMaterial
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveLineWidth
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveMaxRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_shockwaveVertCount
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343467, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_targetLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 631071484904343470, guid: dcb9951779e9b024b8c407bd0877dcf2,
         type: 3}
       propertyPath: m_playerObject
@@ -10465,9 +10505,19 @@ PrefabInstance:
       objectReference: {fileID: 1313672512}
     - target: {fileID: 631071484904343471, guid: dcb9951779e9b024b8c407bd0877dcf2,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343471, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
       propertyPath: m_cooldownOverlay
       value: 
       objectReference: {fileID: 757972871}
+    - target: {fileID: 631071484904343471, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_cooldownDuration
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb9951779e9b024b8c407bd0877dcf2, type: 3}
 --- !u!1001 &923695271842703271

@@ -8,7 +8,7 @@ public class DroneBehaviourBase : MonoBehaviour
     protected DroneController m_droneController;
 
     // Start is called before the first frame update
-    protected void Awake()
+    protected virtual void Awake()
     {
         m_droneController = GetComponent<DroneController>( );
     }
