@@ -37,6 +37,7 @@ public class CurrencyBase : CollectableBase
 
     public void Start( )
     {
+        //Sets the rigidBody variable to be the rigidbody attached to the gameObject
         m_rigidBody = GetComponent<Rigidbody2D>( );
     }
 
@@ -61,16 +62,20 @@ public class CurrencyBase : CollectableBase
 
     public virtual void GravitateToPlayer( )
     {
+        //Calculates the direction in which to move so that this object can gravitate towards the player
         Vector3 direction = m_playerObject.transform.position - transform.position;
 
+        //Sets the rigidbody's velocity so that this object will gravitate towards the player, avoiding the need for the player to collect them manually
         m_rigidBody.velocity = direction.normalized * m_gravitationalSpeed * Time.fixedDeltaTime;
 
     }
 
     public virtual void CheckIsPlayerInRange( )
     {
+        //Creates an overlap circle of a set radius to determine whether or not the player is currently in range
         Collider2D player = Physics2D.OverlapCircle(transform.position, m_gravitationRange, m_playerLayer );
 
+        //If the player is found, then the object is saved as a variable for use in direction calculations and playerEnteredRange is set to true so that GravitateToPlayer will be called
         if( player != null && player.gameObject.GetComponent<PlayerController>() )
         {
             m_playerObject = player.gameObject;

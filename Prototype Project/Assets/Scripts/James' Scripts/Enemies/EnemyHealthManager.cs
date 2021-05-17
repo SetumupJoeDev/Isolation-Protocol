@@ -6,16 +6,18 @@ public class EnemyHealthManager : HealthManager
 {
     SpriteRenderer m_spriteRenderer;// Lewis' code
     public float m_damagedTime = 0.15f; // Lewis's code.
+
     public float m_damagedAmount ;
     
 
     public override void Start()
     {
         base.Start();
+
+        //Sets the spriteRenderer to be that attached to the gameObject
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         
-        
-    } // Whole start method Lewis' code
+    } 
 
 
     private void Update()
@@ -47,7 +49,10 @@ public class EnemyHealthManager : HealthManager
     public override void TakeDamage( int damage )
     {
         base.TakeDamage( damage );
+
         StartCoroutine(damageFeedback()); // Lewis' code
+
+        //If the enemy's health reaches 0, they die
         if( m_currentHealth <= 0 )
         {
             gameObject.GetComponent<EnemyBase>( ).Die( );

@@ -11,6 +11,7 @@ public class CollectableBase : MonoBehaviour
 
     protected void OnTriggerEnter2D( Collider2D collision )
     {
+        //If the object has collided with the player, then a sound is played and GetCollected is called, with the player's script as a parameter
         if ( collision.gameObject.GetComponent<PlayerController>() != null )
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();

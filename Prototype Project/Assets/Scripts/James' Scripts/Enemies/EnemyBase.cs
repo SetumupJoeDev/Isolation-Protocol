@@ -127,18 +127,13 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-
+        //Switches through the enemy's current state and acts accordingly
         switch ( m_currentState )
         {
+            //If the enemy is idle and not searching for targets, the search coroutine is executed
             case ( enemyStates.idle ):
                 {
                     if( !m_searchingForTargets )
@@ -154,12 +149,15 @@ public class EnemyBase : CharacterBase
                     
                 }
                 break;
+                //If the enemy is in the attacking state, they attack the player or return to the chasing state
             case ( enemyStates.attacking ):
                 {
+                    //If the player is outside of the enemy's attack range, they return to the chasing state
                     if( Vector3.Distance(transform.position, m_currentTarget.transform.position) > m_attackRange )
                     {
                         m_currentState = enemyStates.chasing;
                     }
+                    //If the enemy is not attacking, their attack coroutine is started
                     else if( !m_isAttacking )
                     {
                         StartCoroutine( AttackTarget( ) );
@@ -169,12 +167,14 @@ public class EnemyBase : CharacterBase
                 break;
         }
 
+        //Animates the enemy to face the correct direction using the correct animation
         Animate( );
 
     }
 
     protected void Animate( )
     {
+        //Sets the value of the animator floats using the velocity of the enemy, so that the face the correct direction
         m_animator.SetFloat( "Horizontal" , m_directionalVelocity.normalized.x );
         m_animator.SetFloat( "Vertical" , m_directionalVelocity.normalized.y );
         m_animator.SetFloat( "Speed" , m_characterRigidBody.velocity.sqrMagnitude );
@@ -182,43 +182,57 @@ public class EnemyBase : CharacterBase
 
     protected override void FixedUpdate( )
     {
-        if( m_currentState == enemyStates.chasing )
+        //If the enemy is in the chasing state and isn't currently knocked back, they chase the player
+        if( m_currentState == enemyStates.chasing && !m_knockedBack )
         {
             ChaseTarget( );
+        }
+        //If the enemy is knocked back, their knockback force is simulated
+        if ( m_knockedBack )
+        {
+            SimulateKnockback( );
         }
     }
 
     public override void Die( )
     {
+        //Plays the enemy's death sound
         AudioSource.PlayClipAtPoint(m_deathSound, transform.position);
+
+        //Drops a random selection of loot/currency
         DropLoot( );
+
         // Adam's Code
         if ( m_spawner != null )
         {
             m_spawner.IncreaseDead( gameObject );  
         }
         //End of Adam's code
+
         base.Die( );
     }
 
     protected virtual void ChaseTarget( )
     {
-
+        //Calculates the directional velocity of the enemy using the position of their current target and the enemy
         m_directionalVelocity = m_currentTarget.transform.position - transform.position;
 
+        //Calculates the current distance between 
         float distanceToTarget = Vector3.Distance( transform.position , m_currentTarget.transform.position );
 
+        //If the enemy is further from the player than the chase proximity, then they move towards the player
         if ( distanceToTarget > m_chaseProximity )
         {
             m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.deltaTime;
         }
+        //Otherwise, if they are closer than the chase proximity, they enter the attacking state and have their velocity set to 0
         else if( distanceToTarget <= m_chaseProximity )
         {
             m_currentState = enemyStates.attacking;
             m_characterRigidBody.velocity = Vector3.zero;
             m_characterRigidBody.angularVelocity = 0;
         }
-
+        //If the player is further away than double the enemy's detection range, they lose sight of them and return to idle and have their velocity set to 0
         if ( distanceToTarget > m_detectionRange * 2 )
         {
             m_currentState = enemyStates.idle;
@@ -226,9 +240,6 @@ public class EnemyBase : CharacterBase
             m_characterRigidBody.velocity = Vector3.zero;
             m_characterRigidBody.angularVelocity = 0;
         }
-
-        Debug.DrawRay( transform.position , m_directionalVelocity );
-
     }
 
     protected virtual bool VisionObscured( Collider2D collider )
@@ -280,60 +291,67 @@ public class EnemyBase : CharacterBase
 
     public virtual IEnumerator AttackTarget( )
     {
+        //Damages the player using the value of attack damage
         m_currentTarget.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
 
+        //Waits for the duration of the attack interval before being able to attack again
         yield return new WaitForSecondsRealtime( m_attackInterval );
 
+        //IsAttacking is set to false so the enemy can attack again
         m_isAttacking = false;
 
     }
 
     public virtual void DropLoot( )
     {
+        //If the enemy is set to drop more than 0 cigarettes as their maximum, a random number of them is dropped
         if ( m_maxCigaretteDrops > 0 )
         {
+            //Generates a random number between the minimum and maximum drops multiplied by the loost boost modifier
             float cigsToDrop = Random.Range(m_minCigaretteDrops * m_lootBoostModifier, m_maxCigaretteDrops * m_lootBoostModifier);
 
+            //Rounds the number to an integer so it can be used in the for loop to generate drops
             cigsToDrop = Mathf.Round( cigsToDrop );
 
+            //Loops for the number generated above to generate currency drops
             for ( int i = 0; i < cigsToDrop; i++ )
             {
-                Debug.Log( "Dropped cigarette " + ( i + 1 ) + " of " + cigsToDrop );
-
+                //Instantiates a new cigarette packet and saves the base class as a local variable for later use
                 CurrencyBase newCigPack = Instantiate(m_cigPackPrefab, transform.position, Quaternion.identity).GetComponent<CurrencyBase>();
 
+                //Generates a random number between -100 and 100 to be used in adding force to the currency so that they are ejected from the enemy and scattered
                 float randX = Random.Range(-100, 100);
                 float randY = Random.Range(-100, 100);
 
+                //Adds force using the numbers generated above to scatter the cigarettes
                 newCigPack.m_rigidBody.AddForce( new Vector2( randX , randY ).normalized * newCigPack.m_gravitationalSpeed * Time.fixedDeltaTime , ForceMode2D.Impulse );
 
             }
         }
-        if( m_maxFuelDrops > 0 )
+        //If the enemy is set to drop more than 0 fuel as their maximum, a random number of them is dropped
+        if ( m_maxFuelDrops > 0 )
         {
+            //Generates a random number between the minimum and maximum drops multiplied by the loost boost modifier
             float fuelToDrop = Random.Range(m_minFuelDrops * m_lootBoostModifier, m_maxFuelDrops * m_lootBoostModifier);
 
+            //Rounds the number to an integer so it can be used in the for loop to generate drops
             fuelToDrop = Mathf.Round( fuelToDrop );
 
+            //Loops for the number generated above to generate currency drops
             for ( int i = 0; i < fuelToDrop; i++ )
             {
-                Debug.Log( "Dropped fuel tank " + ( i + 1 ) + " of " + fuelToDrop );
 
+                //Instantiates a new fabricator fuel and saves the base class as a local variable for later use
                 CurrencyBase newFuelTank = Instantiate(m_fabricatorFuelPrefab, transform.position, Quaternion.identity).GetComponent<CurrencyBase>();
 
+                //Generates a random number between -100 and 100 to be used in adding force to the currency so that they are ejected from the enemy and scattered
                 float randX = Random.Range(-100, 100);
                 float randY = Random.Range(-100, 100);
 
+                //Adds force using the numbers generated above to scatter the cigarettes
                 newFuelTank.m_rigidBody.AddForce( new Vector2( randX , randY ).normalized * newFuelTank.m_gravitationalSpeed * Time.fixedDeltaTime , ForceMode2D.Impulse );
 
             }
         }
     }
-
-    public void OnDrawGizmosSelected( )
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere( transform.position , m_detectionRange );
-    }
-
 }

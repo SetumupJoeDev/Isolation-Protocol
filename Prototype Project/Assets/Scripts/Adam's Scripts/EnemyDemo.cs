@@ -8,7 +8,7 @@ public class EnemyDemo : CharacterBase
     protected int health = 3;
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
         m_directionalVelocity.x = -1;
 

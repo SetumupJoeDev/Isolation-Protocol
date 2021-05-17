@@ -63,24 +63,6 @@ public class PlayerController : CharacterBase
 
     #endregion
 
-    #region Knockback
-
-    [Header("Knockback")]
-
-    [Tooltip("The duration of the knockback effect.")]
-    public float m_knockbackDuration;
-
-    [Tooltip("The direction in which the player has been knocked back.")]
-    public Vector3 m_knockbackDirection;
-
-    [Tooltip("The amount of force with which the player has been knocked back.")]
-    public float m_knockbackForce;
-
-    [Tooltip("Determines whether or not the player is currently being knocked back.")]
-    public bool m_knockedBack;
-
-    #endregion
-
     #region Currency
 
     public CurrencyManager m_currencyManager;
@@ -105,7 +87,7 @@ public class PlayerController : CharacterBase
 
     //End of James' work
 
-    protected override void Start()
+    void Start()
     {
         m_dashTime = m_startDashTime;
         m_canDash  = true;
@@ -125,7 +107,7 @@ public class PlayerController : CharacterBase
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
         m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
 
@@ -182,7 +164,7 @@ public class PlayerController : CharacterBase
         }
         else if( m_knockedBack )
         {
-            m_characterRigidBody.velocity = m_knockbackDirection.normalized * m_knockbackForce * Time.deltaTime;
+            SimulateKnockback( );
         }
         //End of James' work
         else
@@ -350,16 +332,6 @@ public class PlayerController : CharacterBase
 
             m_currentWeapon.SetActive( true );
         }
-
-    }
-
-    public IEnumerator KnockBack( )
-    {
-        m_knockedBack = true;
-
-        yield return new WaitForSeconds( m_knockbackDuration );
-
-        m_knockedBack = false;
 
     }
 

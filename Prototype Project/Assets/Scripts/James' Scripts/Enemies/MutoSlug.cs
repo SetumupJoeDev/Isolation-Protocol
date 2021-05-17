@@ -84,27 +84,37 @@ public class MutoSlug : EnemyBase
 
     private void AttachToPlayer( Collider2D playerCollider )
     {
+        //Sets the attachedPlayer to be the one passed in through parameters
         m_attachedPlayer = playerCollider.gameObject.GetComponent<PlayerController>( );
 
+        //If the player hasn't reached the limit of attached slugs, this slug attaches to it
         if ( m_attachedPlayer.AttachNewSlug( gameObject ) )
         {
-
+            //Adds the value of slowness to the player's speed debuff to slow their movement
             m_attachedPlayer.m_slowness += m_playerSpeedDebuff;
 
+            //Sets the rigidbody to kinematic so it doesn't move on its own
             m_characterRigidBody.isKinematic = true;
 
+            //Freezes all of the rigidbody's constrains so it can't move or rotate
             m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 
+            //Sets this to true so that it can attack while attached to the player
             m_isAttachedToTarget = true;
 
+            //Sets the enemy to be invulnerable so it can't be killed by the player unless they dodge into a wall
             m_healthManager.m_isInvulnerable = true;
 
+            //Sets the enemy's physics layer to 13, so that it doesn't collide with the player's projectiles
             gameObject.layer = 13;
 
+            //Sets the slug's position to 0 so that it stays on the attachment point
             transform.position.Set( 0 , 0 , 0 );
 
+            //Sets the slug's sorting order to 5 to render it above the player
             GetComponent<SpriteRenderer>( ).sortingOrder = 5;
 
+            //Destroys the slug's wall collider to prevent it from blocking the player's movement
             Destroy( m_colliderObject );
         }
 
@@ -114,7 +124,7 @@ public class MutoSlug : EnemyBase
     {
         if( m_isAttachedToTarget )
         {
-            //Removes the value of the slowness debuff from the player
+            //Removes the value of the slowness debuff from the player if it was attached
             m_attachedPlayer.m_slowness -= m_playerSpeedDebuff;
         }
 
@@ -123,6 +133,7 @@ public class MutoSlug : EnemyBase
 
     public void OnTriggerEnter2D( Collider2D collision )
     {
+        //If the slug collides with the player, it tries to attach to them
         if( m_currentState == enemyStates.attacking && collision.gameObject.tag == "Player" && !m_isAttachedToTarget )
         {
             AttachToPlayer( collision );

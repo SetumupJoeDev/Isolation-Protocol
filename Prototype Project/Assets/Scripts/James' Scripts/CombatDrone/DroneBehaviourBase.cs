@@ -10,22 +10,8 @@ public class DroneBehaviourBase : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Awake()
     {
+        //Sets the drone controller as the DroneController component of the gameObject
         m_droneController = GetComponent<DroneController>( );
-    }
-
-    // Update is called once per frame
-    public virtual void Update()
-    {
-        if( Input.GetKeyDown(KeyCode.Q) )
-        {
-            ActivateEffect( );
-        }
-    }
-
-    public virtual void ActivateEffect( )
-    {
-        m_droneController.DisableBasicBehaviours( );
-        EnableModuleBehaviour( );
     }
 
     public virtual void EnableModuleBehaviour( )

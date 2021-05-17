@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class AmmoPickup : CollectableBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void GetCollected( PlayerController player )
     {
+        //Replenishes the player's ammo before being destroyed
         player.ReplenishAmmo( );
         base.GetCollected( player );
     }

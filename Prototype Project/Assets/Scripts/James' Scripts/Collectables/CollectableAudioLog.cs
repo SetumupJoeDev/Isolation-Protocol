@@ -19,8 +19,10 @@ public class CollectableAudioLog : InteractableObject
 
     public override void Activated( )
     {
+        //Unlocks a new audiolog in the player's audilog list
         m_playerController.m_audioLogList.UnlockNewLog( );
 
+        //Plays a sound to indicate to the player that they have collected the log, before destroying the object
         AudioSource.PlayClipAtPoint( m_logCollected , transform.position );
 
         Destroy( gameObject );
@@ -29,7 +31,7 @@ public class CollectableAudioLog : InteractableObject
 
     public override void ToggleHighlighting( bool highlightActive )
     {
-
+        //Switches between the item's highlighted sprite depending on whether or not it is currently highlighted
         if( highlightActive )
         {
             m_spriteRenderer.sprite = m_highlightedSprite;

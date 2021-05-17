@@ -9,6 +9,7 @@ public class HealthPickup : CollectableBase
 
     public override void GetCollected( PlayerController player )
     {
+        //Heals the player by a set amount before being destroyed
         player.GetComponent<HealthManager>( ).Heal( m_healAmount );
         base.GetCollected( player );
     }
