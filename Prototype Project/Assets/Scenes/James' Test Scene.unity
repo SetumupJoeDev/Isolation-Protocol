@@ -2634,7 +2634,7 @@ GameObject:
   - component: {fileID: 587816273}
   - component: {fileID: 587816272}
   - component: {fileID: 587816271}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4028,7 +4028,7 @@ GameObject:
   - component: {fileID: 737746802}
   - component: {fileID: 737746801}
   - component: {fileID: 737746800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5226,6 +5226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicEnemyMelee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
@@ -7785,6 +7790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicEnemyMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}

@@ -18,17 +18,20 @@ public class FabrictatorModule : InteractableObject
 
     public override void Activated( )
     {
+        //Toggles the fabricator's canvas to make it visible to the player
         m_fabricatorCanvas.ToggleCanvas( );
 
+        //Deactivates the player's HUD so that it is not displayed over the fabricator UI
         m_playerController.GetComponentInChildren<HUDManager>( ).gameObject.SetActive( false );
 
+        //Sets the player as in a menu, so they cannot move or shoot
         m_playerController.m_isInMenu = true;
 
     }
 
     public override void ToggleHighlighting( bool highlightActive )
     {
-
+        //Toggles between the higlighted and default sprite depending on the value passed in
         if ( !highlightActive )
         {
             m_spriteRenderer.sprite = m_defaultSprite;

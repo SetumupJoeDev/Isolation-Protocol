@@ -17,10 +17,12 @@ public class FabricatorStoreBase : MonoBehaviour
 
     public bool PlayerCanAfford( )
     {
+        //If the player's fuel count is greater than or equal to the price of the selected product, they can afford it and this method returns true
         if( m_playerCurrency.m_fabricatorFuelCount >= m_selectedItemPrice )
         {
             return true;
         }
+        //Otherwise, they can't afford it and this method returns false
         else
         {
             return false;
@@ -30,6 +32,7 @@ public class FabricatorStoreBase : MonoBehaviour
 
     public virtual void BuySelectedItem( )
     {
+        //If the player can afford the product, and the item is within the bounds of the list, the product is bought
         if ( PlayerCanAfford( ) && m_selectedItemIndex < m_productList.m_buttons.Count )
         {
             Debug.Log( "Item bought!" );

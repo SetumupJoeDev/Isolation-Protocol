@@ -45,9 +45,10 @@ public class ProjectileBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-
+        //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
+        //If the projectile has a set lifetime, the WaitToDestroy coroutine is started
         if ( m_projectileLifetime != 0 )
         {
             StartCoroutine( WaitToDestroy( ) );
@@ -57,6 +58,7 @@ public class ProjectileBase : MonoBehaviour
 
     public IEnumerator WaitToDestroy()
     {
+        //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( m_projectileLifetime );
 
         Destroy(gameObject);
@@ -70,22 +72,27 @@ public class ProjectileBase : MonoBehaviour
 
     public virtual void CollideWithObject( Collider2D collision )
     {
+        //If the object the projectile collided with has a health manager and isn't the previously damaged enemy, then they take damage
         if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageEnemy )
         {
             collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
 
+            //The value of currentDamagedEnemies is incrememented to keep track of how many more enemies this projectile can damage
             m_currentDamagedEnemies++;
 
+            //If this projectile has reached its enemy limit, it is destroyed
             if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
             {
                 Destroy( gameObject );
             }
+            //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
             else
             {
                 m_previouslyDamageEnemy = collision.gameObject;
             }
 
         }
+        //Otherwise, the projectile is destroyed
         else
         {
             Destroy( gameObject );
@@ -95,8 +102,10 @@ public class ProjectileBase : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Moves the projectile by its speed value in the direction of its velocity
         m_projectileRigidBody.velocity = m_projectileVelocity.normalized * m_projectileSpeed * Time.fixedDeltaTime;
 
+        //Sets the upward transform of the projectile to its current velocity so that the projectile points in the direction it is moving
         transform.up = m_projectileRigidBody.velocity;
 
     }

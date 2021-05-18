@@ -85,25 +85,32 @@ public class GunBase : MonoBehaviour
     protected virtual void Start()
     {
 
+        //Finds and assigns the magazine text UI gameobject for use in displaying the values to the player
         m_magazineUIText = GameObject.Find( "Magazine" ).GetComponent<Text>( );
 
+        //Finds and assigns the total ammo text UI gameobject for use in displaying the values to the player
         m_totalAmmoText = GameObject.Find( "TotalAmmo" ).GetComponent<Text>( );
 
+        //Updates the newly assigned UI elements
         UpdateUIElements( );
 
+        //Sets the weapon to be able to fire on being awake
         m_canWeaponFire = true;
 
+        //Sets the duration of the reload time to be the duration of the reloading soundclip
         m_reloadTime = m_reloadSound.clip.length;
 
+        //Finds and assigns the reloading bar UI canvas for use in displaying reload progress to the player
         m_reloadingCanvas = GameObject.Find("ReloadingBarCanvas").GetComponent<CanvasController>( );
 
+        //Finds and assigns the reloading bar UI slider for use in displaying reload progress to the player
         m_reloadingBar = GameObject.Find("ReloadingBar").GetComponent<Slider>( );
 
     }
 
     protected virtual void Awake( )
     {
-
+        //Updates the UI elements to reflect the newly equipped weapon
         if ( m_magazineUIText != null && m_totalAmmoText != null )
         {
             UpdateUIElements( );
@@ -113,9 +120,10 @@ public class GunBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update( )
     {
-
+        //Points the weapon towards the player's mouse cursor
         PointToMouse( );
 
+        //If the reloading sound is playing, the reload bar's value is increased by the percentage of time that has passed since the last update
         if( m_reloadSound.isPlaying )
         {
             m_reloadingBar.value += ( ( Time.deltaTime / m_reloadTime ) * 100 );
@@ -136,8 +144,10 @@ public class GunBase : MonoBehaviour
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
 
+            //Toggles the reloading canvas on to 
             m_reloadingCanvas.ToggleCanvas( );
 
+            //Starts the reloading coroutine to reload over a course of time
             StartCoroutine( ReloadWithDelay( ) );
 
         }
@@ -160,6 +170,7 @@ public class GunBase : MonoBehaviour
         else
         {
 
+            //If the player doesn't have enough ammo for a full reload, their current ammo is increased to whatever is left and their carried ammo is set to 0
             m_currentMagAmmo += m_currentCarriedAmmo;
 
             m_currentCarriedAmmo = 0;
@@ -167,16 +178,21 @@ public class GunBase : MonoBehaviour
 
         UpdateUIElements( );
 
+        //Toggles the reloading bar canvas to turn it back off
         m_reloadingCanvas.ToggleCanvas( );
 
+        //Resets the value of the reload bar so it can be used again next time
         m_reloadingBar.value = 0;
 
     }
 
     public virtual void UpdateUIElements( )
     {
+
+        //Updates the text value of the TotalAmmo UI element to reflect the current value of currentCarriedAmmo
         m_totalAmmoText.text = m_currentCarriedAmmo.ToString( );
 
+        //Updates the text value of the Magazine UI element to reflect the current value of currentMagAmmo
         m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
     }
 
@@ -194,9 +210,6 @@ public class GunBase : MonoBehaviour
         //Sets the rotation of the weapon to the rotation calculated above
         transform.rotation = rotation;
 
-        Vector3 laserTarget = m_barrelTransform.position + ( m_aimingDirection.normalized * 1000 );
-
-        Debug.DrawRay( m_barrelTransform.position , laserTarget , Color.red );
     }
 
 }

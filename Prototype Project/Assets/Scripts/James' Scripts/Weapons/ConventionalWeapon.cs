@@ -45,17 +45,22 @@ public class ConventionalWeapon : GunBase
             //Sets the projectiles velocity to the aiming direction of the weapon
             newBullet.m_projectileVelocity = m_aimingDirection;
 
+            //Sets the new projectile's physics layer to 9, the PlayerProjectile layer, so that it will collide with enemies but not the player
             newBullet.gameObject.layer = 9;
 
+            //Reduces the current ammo in the magazine by one
             m_currentMagAmmo--;
 
+            //Updates the UI elements to reflect the new ammo levels
             UpdateUIElements( );
 
             //Play's the weapon's firing sound
             m_fireSound.Play( );
 
+            //Plays the muzzle flash visual effects
             m_muzzleFlash.Play( );
 
+            //Waits for the duration of the burst fire delay before firing again
             yield return new WaitForSeconds( m_burstFireDelay );
 
         }
@@ -63,11 +68,13 @@ public class ConventionalWeapon : GunBase
         //Adds a short delay between firing each projectile, so they aren't all fired at once
         yield return new WaitForSeconds( m_fireInterval );
 
+        //Sets this to true so that the weapon can fire again
         m_canWeaponFire = true;
     }
 
     public override void FireWeapon( )
     {
+        //If the weapon can fire and has sufficient ammo to do so, the firing coroutine is started
         if ( m_canWeaponFire && m_currentMagAmmo - m_projectilesPerShot >= 0 )
         {
             StartCoroutine( FireProjectiles( ) );

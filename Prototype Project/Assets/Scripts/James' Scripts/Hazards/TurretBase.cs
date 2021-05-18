@@ -59,9 +59,10 @@ public class TurretBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //Sets the starting rotation of the turret's gun to be half way between the maximum and minimum rotations
         m_turretGun.transform.localEulerAngles = new Vector3( 0 , 0 , m_maxRotation - m_minRotation );
 
+        //Sets the aiming direction of the turret to be the upward transform of the gun
         m_aimingDirection = m_turretGun.transform.up;
 
     }
@@ -69,47 +70,47 @@ public class TurretBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Switches through the different states and acts accordingly
         switch( m_currentTurretState )
         {
+            //If the turret is in the searching mode, it searches for any targets
             case ( turretStates.searching ):
                 {
                     SearchForTargets( );
                 }
                 break;
+                //If the target is in attack mode, it attempts to fire on the player
             case ( turretStates.attacking ):
                 {
+                    //Aims the turret towards the target
                     AimAtTarget( );
+                    //If the turret isn't firing and hasn't lost sight of the player, the firing coroutine is started
                     if( !m_isFiring && !m_hasLostPlayer )
                     {
                         StartCoroutine( FireAtTarget( ) );
                     }
-                    if( m_fieldOfView.DrawFOV( m_targetLayer , true ) == null )
+                    //If the FOV loses sight of the player, the turret begins to check if the player has been lost
+                    else if( m_fieldOfView.DrawFOV( m_targetLayer , true ) == null )
                     {
                         m_hasLostPlayer = true;
+                        StopCoroutine( FireAtTarget( ) );
                         StartCoroutine( CheckIsTargetLost( ) );
-                    }
-                    else if ( m_hasLostPlayer )
-                    {
-                        StopCoroutine( CheckIsTargetLost( ) );
                     }
                 }
                 break;
         }
-
-        //m_fieldOfView.SetOrigin( transform.position );
-
     }
 
     public virtual IEnumerator FireAtTarget( )
     {
-
+        //Waits for the duraction of the fire interval
         yield return new WaitForSeconds( m_fireInterval );
 
     }
 
     public virtual IEnumerator CheckIsTargetLost( )
     {
+        //Waits for the duration of the time until target lost before setting the current target as null and returning to search mode
         yield return new WaitForSeconds( m_timeUntilTargetLost );
 
         m_currentTarget = null;
@@ -138,14 +139,19 @@ public class TurretBase : MonoBehaviour
 
     public void SearchForTargets( )
     {
-
+        //Ping pongs the rotation of the turret gun between the maximum and minimum rotations using the rotation speed
         m_turretGun.transform.localEulerAngles = new Vector3( 0 , 0 , Mathf.PingPong( Time.time * m_rotationSpeed , m_maxRotation ) - m_minRotation );
 
+        //Sets the aiming direction as the upward transform of the turret gun
         m_aimingDirection = m_turretGun.transform.up;
 
+        //Passes the aiming direction of the turret into the FOV
         m_fieldOfView.SetAimDirection( m_aimingDirection );
 
+        //Sets the current target of the turret to whatever the FOV returns
         m_currentTarget = m_fieldOfView.DrawFOV( m_targetLayer , true );
+
+        //If it doesn't return as null, the turret enters attacking mode and the alert sound is played
         if ( m_currentTarget != null )
         {
             m_currentTurretState = turretStates.attacking;

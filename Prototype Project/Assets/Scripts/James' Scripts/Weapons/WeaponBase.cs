@@ -146,10 +146,12 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void FireWeapon( )
     {
+        //If the weapon can fire and has sufficient ammo to do so, the firing coroutine is started
         if ( m_canWeaponFire && m_currentMagAmmo - m_projectilesPerShot >= 0 )
         {
             StartCoroutine( LaunchProjectiles( ) );
 
+            //This is set to false so that the coroutine isn't started more than once before it ends
             m_canWeaponFire = false;
 
         }
@@ -175,14 +177,16 @@ public class WeaponBase : MonoBehaviour
             else
             {
 
+                //If the player doesn't have enough ammo for a full reload, their current ammo is increased to whatever is left and their carried ammo is set to 0
                 m_currentMagAmmo += m_currentCarriedAmmo;
 
-                m_currentCarriedAmmo = 0;
+                m_currentCarriedAmmo -= m_currentCarriedAmmo;
             }
 
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
 
+            //Updates all of the necessary UI elements to reflect the change in values
             UpdateUIElements( );
 
         }
