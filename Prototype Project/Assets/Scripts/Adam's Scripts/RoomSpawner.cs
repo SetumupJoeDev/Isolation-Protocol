@@ -37,7 +37,7 @@ public class RoomSpawner : MonoBehaviour
             m_doorDirection = Enums.Directions.Bottom;
         }
 
-        Invoke("Spawn", 0.25f);
+        Invoke("Spawn", 0.1f);
     }
 
     public void Spawn()

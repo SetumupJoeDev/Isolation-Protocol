@@ -2,7 +2,7 @@
 
 public class RoomTemplates : MonoBehaviour
 {
-    [Header("Door Rooms")]
+    [Header("Basic Door Rooms")]
     public GameObject[] m_topDoorRooms;
     public GameObject[] m_leftDoorRooms;
     public GameObject[] m_rightDoorRooms;

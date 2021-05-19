@@ -59,12 +59,6 @@ MonoBehaviour:
   - {fileID: 8691593258372746765, guid: 6967b129e483247429591adf563ef577, type: 3}
   - {fileID: 966570563917422952, guid: c1b719a22f6d11d48b0ed9fc7ecb50e5, type: 3}
   m_spawnedEnemies: []
-  m_cleared: 0
-  m_lootDrops:
-  - {fileID: 395475774317939712, guid: 2dde4f86e5759554395f317fdbd86538, type: 3}
-  - {fileID: 7386625985900479494, guid: f9750d89e6ff660458c55b9c9814a895, type: 3}
-  - {fileID: 8338654364327356435, guid: 11dcc332309d76e4991d0b81fe2554c7, type: 3}
-  m_dropChance: 0.2
 --- !u!1 &1949991511951788483
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949991511951788482}
   m_Layer: 17
-  m_Name: SpawnPoint Down
+  m_Name: SpawnPointDown-Left
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -89,7 +83,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949991511951788483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: -4, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1949991510870359627}
@@ -105,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949991512185354596}
   m_Layer: 17
-  m_Name: SpawnPointLeft
+  m_Name: SpawnPointUp-Left
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -119,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949991512185354597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1949991510870359627}
@@ -135,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949991512445022024}
   m_Layer: 17
-  m_Name: SpawnPoint Right
+  m_Name: SpawnPointDown-Right
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -149,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949991512445022025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1949991510870359627}
@@ -165,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949991512452216774}
   m_Layer: 17
-  m_Name: SpawnPointUp
+  m_Name: SpawnPointUp-Right
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -179,7 +173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949991512452216775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1949991510870359627}

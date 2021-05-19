@@ -12,26 +12,21 @@ public class HealthManager : MonoBehaviour
     [Tooltip("The maximum amount of health this unit can have")]
     public int  m_maxHealth;
 
-    [Tooltip("Determines whether or not the player can currently take damage")]
-    public bool m_isInvulnerable;
-
-    public GameObject m_bloodEffect;
-
-    public AudioClip m_playerDamagedFeedback;
+    [Tooltip("Determines whether or not the unit can currently take damage")]
+    public bool m_isVulnerable;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         m_currentHealth = m_maxHealth;
+        m_isVulnerable = true;
     }
 
     public virtual void TakeDamage(int damage)
     {
-        if ( !m_isInvulnerable )
+        if ( m_isVulnerable )
         {
-            StartCoroutine(PlayerDamageFeedBack()); // Lewis' code. See co-routine below
             m_currentHealth -= damage;
-            
         }
     }
 
@@ -42,16 +37,4 @@ public class HealthManager : MonoBehaviour
             m_currentHealth += healAmount;
         }
     }
-
-
-    IEnumerator PlayerDamageFeedBack()
-    {
-        if (gameObject.name == "Player")
-        {
-            AudioSource.PlayClipAtPoint(m_playerDamagedFeedback, transform.position);
-            m_bloodEffect.SetActive(true);
-            yield return new WaitForSecondsRealtime(0.4f);
-            m_bloodEffect.SetActive(false);
-        }
-    } // Lewis' code. Activates a blood animation on the player when damaged
 }

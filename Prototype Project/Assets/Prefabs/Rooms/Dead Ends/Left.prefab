@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4619523059713133653}
-  - component: {fileID: -3205902019052075811}
+  - component: {fileID: -4338219559143844924}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -78,7 +78,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3205902019052075811
+--- !u!114 &-4338219559143844924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,12 +90,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de7018f4bd3d843bba4aa0945b89b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawners:
-  - {fileID: 0}
-  m_spawnedFrom: {fileID: 0}
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
+  m_spawners: []
+  m_spawnedFrom: {fileID: 0}
+  m_discovered: 0
+  m_cleared: 0
+  m_lootDrops: []
+  m_dropChance: 0
+  m_doors: []
+  m_enemySpawner: {fileID: 0}
 --- !u!1 &6845482391856176531
 GameObject:
   m_ObjectHideFlags: 0

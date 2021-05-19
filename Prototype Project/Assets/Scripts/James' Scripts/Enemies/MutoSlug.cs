@@ -103,7 +103,7 @@ public class MutoSlug : EnemyBase
             m_isAttachedToTarget = true;
 
             //Sets the enemy to be invulnerable so it can't be killed by the player unless they dodge into a wall
-            m_healthManager.m_isInvulnerable = true;
+            m_healthManager.m_isVulnerable = true;
 
             //Sets the enemy's physics layer to 13, so that it doesn't collide with the player's projectiles
             gameObject.layer = 13;

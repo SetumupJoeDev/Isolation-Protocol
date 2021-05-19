@@ -23,7 +23,7 @@ public class ShieldMode : ActiveDroneBehaviourBase
         m_droneController.DisableBasicBehaviours( );
 
         //Makes the player invulnerable, so they cannot take any damage while shielded
-        m_playerObject.GetComponent<HealthManager>( ).m_isInvulnerable = true;
+        m_playerObject.GetComponent<HealthManager>( ).m_isVulnerable = true;
 
         //Starts the shield timer, which disables the shield after a certain amount of time
         StartCoroutine( ShieldTimer( ) );
@@ -58,7 +58,7 @@ public class ShieldMode : ActiveDroneBehaviourBase
         m_droneController.EnableBasicBehaviours( );
 
         //Sets the player to no longer be invulnerable
-        m_playerObject.GetComponent<HealthManager>( ).m_isInvulnerable = false;
+        m_playerObject.GetComponent<HealthManager>( ).m_isVulnerable = false;
 
         //Starts the cooldown timer
         StartCoroutine( CooldownTimer( ) );

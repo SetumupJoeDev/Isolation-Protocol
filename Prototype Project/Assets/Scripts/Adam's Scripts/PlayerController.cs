@@ -89,6 +89,7 @@ public class PlayerController : CharacterBase
 
     void Start()
     {
+        m_healthManager = GetComponent<PlayerHealthManager>();
         m_dashTime = m_startDashTime;
         m_canDash  = true;
         m_isDashing = false;
@@ -234,7 +235,7 @@ public class PlayerController : CharacterBase
             {
                 m_isDashing = true;
                 m_canDash = false;
-                m_healthManager.m_isInvulnerable = true;
+                m_healthManager.m_isVulnerable = false;
             }
         }
 
@@ -246,7 +247,7 @@ public class PlayerController : CharacterBase
                 m_dashTime = m_startDashTime;
                 m_characterRigidBody.velocity = Vector2.zero;
                 m_dashDirection = Vector2.zero;
-                m_healthManager.m_isInvulnerable = false;
+                m_healthManager.m_isVulnerable = true;
                 m_hud.DashCooldown();
                 StartCoroutine(DashCooldown());
             }
