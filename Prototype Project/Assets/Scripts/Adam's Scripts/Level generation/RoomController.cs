@@ -2,22 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Controls a room's functionality
 public class RoomController : MonoBehaviour
 {
+    [Header("Room Spawning")]
+    
+    [Tooltip("The room spawn points")]
+    public RoomSpawner[] m_spawners;
+
+    [Tooltip("The spawner that spawned this room")]
+    public RoomSpawner m_spawnedFrom;
+
+    [Tooltip("The layer for the walls")]
     [SerializeField]
     private LayerMask m_wallLayer;
 
-    public RoomSpawner[]    m_spawners;
-    public RoomSpawner      m_spawnedFrom;
-    public bool             m_discovered;
-    public bool             m_cleared;
+    [Header("Status")]
+
+    [Tooltip("Whether or not the player has come into this room")]
+    public bool m_discovered;
+
+    [Tooltip("Whether or not all the enemies spawned in this room have been killed")]
+    public bool m_cleared;
+
+    [Tooltip("All doors within this room")]
+    [SerializeField]
+    private Door[] m_doors;
+
+    [Header("Loot")]
+
+    [Tooltip("The possible loot that this room can drop when it is cleared")]
     [SerializeField]      
     private GameObject[]    m_lootDrops;
+
+    [Tooltip("How likely it is that loot will be dropped (0 to 1)")]
     [SerializeField]      
     private float           m_dropChance;
-    [SerializeField]
-    private Door[]          m_doors;
 
+    // Booleans to check for the openings of the room and whether or not those openings lead to a wall
     private bool            m_openTop;
     private bool            m_openLeft;
     private bool            m_openRight;
@@ -26,13 +48,18 @@ public class RoomController : MonoBehaviour
     private bool            m_wallBelow;
     private bool            m_wallRight;
     private bool            m_wallLeft;
+
+    // The distance of the room spawn points to the center of the room
     private float           m_spawnerDistance;
+
+    // The enemy spawner of this room
     [HideInInspector]
     public EnemySpawner     m_enemySpawner;
 
     // Start is called before the first frame update
     private void Start()
     {
+        // Determines what directions the room has doors in
         for (int i = 0; i < m_spawners.Length; i++)
         {
             switch (m_spawners[i].m_doorDirection)
@@ -54,8 +81,10 @@ public class RoomController : MonoBehaviour
             }
         }
 
+        // Gets spawn point distance from center
         m_spawnerDistance = m_spawners[0].transform.localPosition.magnitude;
 
+        // Changes the room that has been spawned if there are doors leading into other room's walls
         switch (m_spawnedFrom.m_doorDirection)
         {
             case Enums.Directions.Top:
@@ -100,6 +129,7 @@ public class RoomController : MonoBehaviour
         
     }
 
+    // Opens the doors and maybe drops loot when the room is cleared 
     public void Cleared()
     {
         m_cleared = true;
@@ -107,6 +137,7 @@ public class RoomController : MonoBehaviour
         {
             m_doors[i].Open();
         }
+
         float random = Random.Range(0.0f, 1.0f);
         if (random <= m_dropChance)
         {
@@ -114,6 +145,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    // Uses raycasts to check the surroundings of the room for walls 
     private void CheckSurroudings()
     {
         if (Physics2D.Raycast(transform.position, Vector2.up, m_spawnerDistance, m_wallLayer))
@@ -134,6 +166,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    // Access spawner spawned from to spawn another room and destroys itself
     private void SwitchSpawnedRoom()
     {
         m_spawnedFrom.m_spawned = false;
@@ -143,6 +176,7 @@ public class RoomController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Spawns a random loot object from the lootDrops pool
     private void DropLoot()
     {
         int random = Random.Range(0, m_lootDrops.Length);
@@ -151,6 +185,7 @@ public class RoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Closes the doors and spawns enemies when the player enters the room for the first time
         if (collision.CompareTag("Player") && !m_discovered)
         {
             m_discovered = true;

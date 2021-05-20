@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Template to access room prefabs in an organized form for level generation
 public class RoomTemplates : MonoBehaviour
 {
     [Header("Basic Door Rooms")]
@@ -14,16 +15,20 @@ public class RoomTemplates : MonoBehaviour
     public GameObject m_rightDeadEndRoom;
     public GameObject m_bottomDeadEndRoom;
 
-    [Header("End Rooms")]
-    public GameObject m_leftEndRoom;
-    public GameObject m_rightEndRoom;
-    public GameObject m_bottomEndRoom;
+    [Header("Exit Rooms")]
+    public GameObject m_leftExitRoom;
+    public GameObject m_rightExitRoom;
+    public GameObject m_bottomExitRoom;
 
     [Header("Shop Rooms")]
     public GameObject m_topShopRoom;
     public GameObject m_leftShopRoom;
     public GameObject m_rightShopRoom;
     public GameObject m_bottomShopRoom;
+
+
+    // Idea not yet implemented
+    // might be scrapped due to scope
 
     //[Header("Wall Connection Rooms")]
     //public GameObject[] m_topWallRooms;

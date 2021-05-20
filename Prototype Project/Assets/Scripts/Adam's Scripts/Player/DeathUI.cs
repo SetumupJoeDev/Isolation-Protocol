@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// Controls functionality for the death screen UI
 public class DeathUI : MonoBehaviour
 {
+    [Header("Buttons")]
     [SerializeField]
-    private Button retryButton;
+    private Button m_retryButton;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Button button = retryButton.GetComponent<Button>();
-        button.onClick.AddListener(Retry);
+        // Adds Retry() to retryButton's on click event
+        m_retryButton.onClick.AddListener(Retry);
     }
 
+    // Reloads game from the start of level 1
     private void Retry()
     {
         SceneManager.LoadScene("Level 1");
