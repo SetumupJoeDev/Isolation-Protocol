@@ -75,7 +75,7 @@ public class ConventionalWeapon : GunBase
     public override void FireWeapon( )
     {
         //If the weapon can fire and has sufficient ammo to do so, the firing coroutine is started
-        if ( m_canWeaponFire && m_currentMagAmmo - m_projectilesPerShot >= 0 )
+        if ( m_canWeaponFire && (int)m_currentMagAmmo - m_projectilesPerShot >= 0 )
         {
             StartCoroutine( FireProjectiles( ) );
 

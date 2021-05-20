@@ -139,7 +139,7 @@ public class GunBase : MonoBehaviour
 
     public virtual void ReloadWeapon( )
     {
-        if ( m_currentMagAmmo < m_magCapacity )
+        if ( m_currentMagAmmo < m_magCapacity && m_currentCarriedAmmo > 0 )
         {
             //Plays the weapon's reload sound
             m_reloadSound.Play( );
@@ -157,7 +157,7 @@ public class GunBase : MonoBehaviour
     {
         yield return new WaitForSeconds( m_reloadTime );
 
-        if ( m_currentCarriedAmmo - ( m_magCapacity - m_currentMagAmmo ) > 0 )
+        if ( (int)m_currentCarriedAmmo - ( (int)m_magCapacity - m_currentMagAmmo ) > 0 )
         {
 
             //Reduces the amount of ammo the player is carrying by the difference between the current magazine ammo and the magazine capacity
