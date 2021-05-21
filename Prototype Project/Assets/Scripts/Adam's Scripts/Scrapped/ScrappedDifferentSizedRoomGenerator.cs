@@ -5,14 +5,14 @@ using UnityEngine;
 /*
 public class RoomSpawner : MonoBehaviour
 {
-    public Enums.Directions m_doorDirection;
-    public LayerMask m_wallLayer;
+    public Enums.Directions     m_doorDirection;
+    public LayerMask            m_wallLayer;
 
-    protected RoomTemplates m_templates;
-    protected LevelController m_levelController;
-    protected int m_random;
-    protected bool m_spawned;
-    protected GameObject m_spawnedRoom;
+    protected RoomTemplates     m_templates;
+    protected LevelController   m_levelController;
+    protected int               m_random;
+    protected bool              m_spawned;
+    protected GameObject        m_spawnedRoom;
 
     protected virtual void Start()
     {
