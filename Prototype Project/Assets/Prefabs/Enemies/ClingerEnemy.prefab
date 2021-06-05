@@ -102,10 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ce081a2423c9c48a2768049188ccd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 150
+  m_moveSpeed: 10
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 8691593258372746761}
   m_healthManager: {fileID: 8691593258372746756}
+  m_knockbackDuration: 0
+  m_knockbackDirection: {x: 0, y: 0, z: 0}
+  m_knockbackForce: 0
+  m_knockedBack: 0
   m_detectionRange: 5.5
   m_playerLayer:
     serializedVersion: 2
@@ -116,10 +120,10 @@ MonoBehaviour:
   m_currentTarget: {fileID: 0}
   m_searchingForTargets: 0
   m_searchInterval: 0.5
-  m_chaseProximity: 2
-  m_attackRange: 5
+  m_chaseProximity: 7
+  m_attackRange: 3
   m_attackDamage: 1
-  m_attackInterval: 3.5
+  m_attackInterval: 1.5
   m_isAttacking: 0
   m_lootBoostModifier: 1
   m_maxCigaretteDrops: 0
@@ -128,11 +132,12 @@ MonoBehaviour:
   m_maxFuelDrops: 0
   m_minFuelDrops: 0
   m_fabricatorFuelPrefab: {fileID: 0}
+  m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 8691593258372746762}
   m_deathSound: {fileID: 8300000, guid: 1f95381544702c444bef8166f2d1a555, type: 3}
-  m_pouncePrepDuration: 0.75
-  m_leapForce: 300
+  m_pouncePrepDuration: 0.15
+  m_leapForce: 350
   m_isAttachedToTarget: 0
   m_attachedLayerIndex: 0
   m_attachedPlayer: {fileID: 0}
@@ -151,8 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentHealth: 2
-  m_maxHealth: 3
-  m_isInvulnerable: 0
+  m_maxHealth: 4
+  m_isVulnerable: 0
   m_damagedTime: 0.15
   m_damagedAmount: 0
 --- !u!95 &8691593258372746762
@@ -298,7 +303,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -307,7 +312,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2

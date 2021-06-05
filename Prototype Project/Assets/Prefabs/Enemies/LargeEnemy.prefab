@@ -100,10 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd939f2e94d7ee547a45993fa636bf1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 55
+  m_moveSpeed: 90
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 966570563917422946}
   m_healthManager: {fileID: 966570563917422949}
+  m_knockbackDuration: 0
+  m_knockbackDirection: {x: 0, y: 0, z: 0}
+  m_knockbackForce: 0
+  m_knockedBack: 0
   m_detectionRange: 10
   m_playerLayer:
     serializedVersion: 2
@@ -137,6 +141,7 @@ MonoBehaviour:
   m_windupDuration: 1
   m_aoeRange: 4
   m_attackLaunchForce: 500
+  m_knockbackTime: 0
 --- !u!114 &966570563917422949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentHealth: 0
-  m_maxHealth: 16
-  m_isInvulnerable: 0
-  m_bloodEffect: {fileID: 0}
-  m_playerDamagedFeedback: {fileID: 0}
+  m_maxHealth: 18
+  m_isVulnerable: 0
   m_damagedTime: 0.5
   m_damagedAmount: 0
 --- !u!95 &966570563917422953
