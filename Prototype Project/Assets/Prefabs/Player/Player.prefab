@@ -1041,11 +1041,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_mouseDirection: {x: 0, y: 0}
   m_hud: {fileID: 3773883969472527557}
   m_dashCooldown: 1
   m_dashSpeed: 1250
-  m_startDashTime: 0.1
+  m_dashDuration: 0
   m_canDash: 0
   m_isDashing: 0
   m_slowness: 0
@@ -1082,9 +1081,11 @@ MonoBehaviour:
   m_currentHealth: 0
   m_maxHealth: 6
   m_isVulnerable: 1
-  m_playerHUD: {fileID: 0}
-  m_deathUI: {fileID: 0}
-  m_deathCamera: {fileID: 0}
+  m_playerHUD: {fileID: 1068616569810411678}
+  m_deathUI: {fileID: 1018406728422210792, guid: bd83be7e79715f645ac58d3ed3d9b641,
+    type: 3}
+  m_deathCamera: {fileID: 1518023365689302929, guid: 5bb9ba98f763b874d911cdae9d98615c,
+    type: 3}
   m_bloodEffect: {fileID: 2015217535207012955}
   m_playerDamagedFeedback: {fileID: 8300000, guid: b403670b43adcbe4db84364aefc9d6eb,
     type: 3}
