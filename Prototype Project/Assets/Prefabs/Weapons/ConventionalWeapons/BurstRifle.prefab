@@ -111,6 +111,8 @@ MonoBehaviour:
   m_totalAmmoText: {fileID: 0}
   m_reloadingCanvas: {fileID: 0}
   m_reloadingBar: {fileID: 0}
+  m_baseShopValue: 0
+  m_fabricatorStorePrice: 0
   m_weaponFireMode: 0
   m_fireInterval: 0.65
   m_burstFireDelay: 0.1
@@ -118,6 +120,8 @@ MonoBehaviour:
     type: 3}
   m_projectilesPerShot: 3
   m_muzzleFlash: {fileID: 748220906709682952}
+  m_maxSpreadValue: 0.25
+  m_minSpreadValue: -0.25
 --- !u!82 &7467944668168535693
 AudioSource:
   m_ObjectHideFlags: 0

@@ -33,6 +33,12 @@ public class ConventionalWeapon : GunBase
     [Tooltip("The muzzle flash particle system attached to this weapon.")]
     public ParticleSystem m_muzzleFlash;
 
+    [Tooltip("The maximum spread in the X or Y direction.")]
+    public float m_maxSpreadValue;
+
+    [Tooltip("The minimum spread in the X or Y direction.")]
+    public float m_minSpreadValue;
+
     #endregion
 
     private IEnumerator FireProjectiles( )
@@ -41,6 +47,9 @@ public class ConventionalWeapon : GunBase
         {
             //Instantiates a projectile at the barrel of the weapon 
             ProjectileBase newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<ProjectileBase>();
+
+            //Alters the value of the aiming direction vector slightly to simulate spread
+            m_aimingDirection = GenerateBulletSpread( );
 
             //Sets the projectiles velocity to the aiming direction of the weapon
             newBullet.m_projectileVelocity = m_aimingDirection;
@@ -70,6 +79,17 @@ public class ConventionalWeapon : GunBase
 
         //Sets this to true so that the weapon can fire again
         m_canWeaponFire = true;
+    }
+
+    public virtual Vector3 GenerateBulletSpread( )
+    {
+        float randX = Random.Range(m_minSpreadValue, m_maxSpreadValue);
+        float randY = Random.Range(m_minSpreadValue, m_maxSpreadValue);
+
+        Vector3 returnVector = new Vector3(m_aimingDirection.x + randX, m_aimingDirection.y + randY);
+
+        return returnVector;
+
     }
 
     public override void FireWeapon( )
