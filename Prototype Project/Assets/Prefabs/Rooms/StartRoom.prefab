@@ -2119,6 +2119,7 @@ GameObject:
   - component: {fileID: 4372013637956672263}
   - component: {fileID: 8946654811430897864}
   - component: {fileID: 6470534229498715188}
+  - component: {fileID: 4685519903720837747}
   m_Layer: 0
   m_Name: StartRoom
   m_TagString: StartRoom
@@ -2160,7 +2161,7 @@ MonoBehaviour:
   m_numberOfRooms: 0
   m_reachedLimit: 0
   m_hasShop: 0
-  m_hasEndRoom: 0
+  m_hasExitRoom: 0
   m_roomList: []
 --- !u!114 &6470534229498715188
 MonoBehaviour:
@@ -2174,17 +2175,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de7018f4bd3d843bba4aa0945b89b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spawners: []
+  m_spawnedFrom: {fileID: 0}
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
-  m_spawners: []
-  m_spawnedFrom: {fileID: 0}
   m_discovered: 0
   m_cleared: 0
+  m_doors: []
   m_lootDrops: []
   m_dropChance: 0
-  m_doors: []
   m_enemySpawner: {fileID: 0}
+--- !u!114 &4685519903720837747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372013637956672262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5714133b61750564f9f80897a17ce3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  randomizeSeed: 1
 --- !u!1 &4372013638273122159
 GameObject:
   m_ObjectHideFlags: 0
