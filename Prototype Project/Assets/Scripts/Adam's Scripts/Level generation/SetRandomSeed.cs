@@ -6,18 +6,18 @@ using UnityEngine;
 public class SetRandomSeed : MonoBehaviour
 {
     [Tooltip("The seed value")]
-    public int seed;
+    public int  m_seed;
 
     [Tooltip("Whether or not the seed value is random")]
-    public bool randomizeSeed;
+    public bool m_randomizeSeed;
 
     private void Awake()
     {
-        if (randomizeSeed)
+        if (m_randomizeSeed)
         {
-            seed = Random.Range(0, 99999);
+            m_seed = Random.Range(0, 99999);
         }
 
-        Random.InitState(seed);
+        Random.InitState(m_seed);
     }
 }
