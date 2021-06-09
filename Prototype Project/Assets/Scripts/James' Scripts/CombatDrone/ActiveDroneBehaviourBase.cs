@@ -41,10 +41,11 @@ public class ActiveDroneBehaviourBase : DroneBehaviourBase
 
     public virtual IEnumerator CooldownTimer( )
     {
-        //Sets isInCooldown to true and that cooldownOverlay fill amount to 1 to visualise that the ability is in cooldown
-        m_isInCooldown = true;
 
         m_cooldownOverlay.fillAmount = 1;
+
+        //Sets isInCooldown to true and that cooldownOverlay fill amount to 1 to visualise that the ability is in cooldown
+        m_isInCooldown = true;
 
         //Waits for the cooldown duration to end before setting isInCooldown to false and the fill amount to 0 to visualise that the ability can be used again
         yield return new WaitForSeconds( m_cooldownDuration );

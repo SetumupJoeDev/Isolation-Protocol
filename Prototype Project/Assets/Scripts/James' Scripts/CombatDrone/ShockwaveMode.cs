@@ -5,29 +5,15 @@ using UnityEngine;
 public class ShockwaveMode : ActiveDroneBehaviourBase
 {
 
-    #region Shockwave Drawing
+    #region Shockwave Settings
 
-    [Header("Shockwave Drawing")]
-
-    [SerializeField]
-    private LineRenderer m_shockwaveRenderer;
-
-    [SerializeField]
-    private int m_shockwaveVertCount;
+    [Header("Shockwave Settings")]
 
     [SerializeField]
     private float m_shockwaveLineWidth;
 
     [SerializeField]
     private Material m_shockwaveMaterial;
-
-    [Space]
-
-    #endregion
-
-    #region Shockwave Logic
-
-    [Header("Shockwave Attack")]
 
     [SerializeField]
     private float m_knockbackForce;
@@ -45,27 +31,32 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
     private float m_shockwaveSpeed;
 
     [SerializeField]
-    private float m_currentShockwaveRadius;
+    private int m_shockwaveVertices;
 
     [SerializeField]
     private LayerMask m_targetLayer;
 
     #endregion
 
+    private Shockwave m_shockwave;
+
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake( );
 
-        //Sets up the shockwave's line renderer so it can be used to visualise the effect
-        SetUpRenderer( );
+        m_shockwave = gameObject.AddComponent( typeof( Shockwave ) ) as Shockwave;
+
+        InitialiseShockwaveValues( );
+
+        m_shockwave.enabled = false;
 
     }
 
     private void OnDisable( )
     {
         //Destroys the shockwave renderer component as it is no longer needed while this upgrade is inactive
-        Destroy( m_shockwaveRenderer );
+        m_shockwave.enabled = false;
     }
 
     public override void Update( )
@@ -73,94 +64,39 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
 
         base.Update( );
 
+        if ( m_shockwave.m_shockwaveEnded )
+        {
+            DisableModuleBehaviour( );
+
+            m_shockwave.m_shockwaveEnded = false;
+
+        }
+
         //If the behaviour is active, the shockwave is grown from the center, checking for enemies, and drawn
-        if( m_behaviourActive )
+        if ( m_behaviourActive && !m_shockwave.isActiveAndEnabled )
         {
-            GrowShockwave( );
-            DrawShockwave( );
+            m_shockwave.enabled = true;
         }
+
     }
 
-    private void SetUpRenderer( )
+    public void InitialiseShockwaveValues( )
     {
-        //Adds a LineRenderer component to the drone, saving it to shockwaveRenderer so that the shockwave circle can be drawn
-        m_shockwaveRenderer = gameObject.AddComponent( typeof( LineRenderer ) ) as LineRenderer;
+        m_shockwave.m_shockwaveDamage = m_shockwaveDamage;
 
-        //Sets this to true so that the first and last points in the line can be connected to form a circle
-        m_shockwaveRenderer.loop = true;
+        m_shockwave.m_shockwaveLineWidth = m_shockwaveLineWidth;
 
-        //Sets the material so that the line can be rendered with a graphic
-        m_shockwaveRenderer.material = m_shockwaveMaterial;
+        m_shockwave.m_knockbackForce = m_knockbackForce;
 
-        //Sets the sorting order so that the shockwave will be rendered over the floor and walls
-        m_shockwaveRenderer.sortingOrder = 5;
+        m_shockwave.m_knockbackDuration = m_knockbackDuration;
 
-        //Sets the line width of the line renderer so that the shockwave will have a set thickness
-        m_shockwaveRenderer.widthMultiplier = m_shockwaveLineWidth;
-    }
+        m_shockwave.m_shockwaveMaterial = m_shockwaveMaterial;
 
-    public void GrowShockwave( )
-    {
-        //Uses an overlap circle to find all enemies within the current radius and adds them to an array
-        Collider2D[] affectedEnemies = Physics2D.OverlapCircleAll(transform.position, m_currentShockwaveRadius, m_targetLayer );
+        m_shockwave.m_shockwaveMaxRadius = m_shockwaveMaxRadius;
 
-        //Checks to see if there are any enemies in the array
-        if ( affectedEnemies.Length >= 1 )
-        {
-            //Loops through the array of enemies, starting their knockback coroutines, and damaging them
-            for ( int i = 0; i < affectedEnemies.Length; i++ )
-            {
-                StartCoroutine( affectedEnemies[i].GetComponent<CharacterBase>( ).KnockBack( m_knockbackForce, m_knockbackDuration , gameObject ) );
+        m_shockwave.m_shockwaveSpeed = m_shockwaveSpeed;
 
-                affectedEnemies[i].gameObject.GetComponent<HealthManager>( ).TakeDamage( m_shockwaveDamage );
-
-            }
-        }
-
-        //Increases the radius of the shockwave by shockwaveSpeed multiplied by deltaTime, so that the shockwave grows over time
-        m_currentShockwaveRadius += m_shockwaveSpeed * Time.deltaTime;
-
-        //If the radius is greater than or equal to the maximum radius, then the shockwave stops
-        if ( m_currentShockwaveRadius >= m_shockwaveMaxRadius )
-        {
-            //The drone's default behaviours are reactivated so it can follow the player and shoot at enemies
-            m_droneController.EnableBasicBehaviours( );
-
-            //Resets the current radius of the shockwave so it can be used again
-            m_currentShockwaveRadius = 0.0f;
-
-            //Disables the shockwave renderer to stop rendering the shockwave circle
-            m_shockwaveRenderer.enabled = false;
-
-            //Disables the behaviour so it can be used again after cooldown
-            m_behaviourActive = false;
-
-            //Starts the cooldown coroutine
-            StartCoroutine( CooldownTimer( ) );
-
-        }
-    }
-
-    public void DrawShockwave( )
-    {
-
-        //Calculates the distance between each vertex in the circle
-        float deltaTheta = (2f * Mathf.PI) / m_shockwaveVertCount;
-        float theta = 0.0f;
-
-        //Sets the number of positions in the line to equal the vertex count
-        m_shockwaveRenderer.positionCount = m_shockwaveVertCount;
-
-        //Loops for the number of vertices in the line, positioning each around in a circle
-        for( int i = 0; i < m_shockwaveRenderer.positionCount; i++ )
-        {
-            //Positions the current vertex using the values previously calculated, adding the transform positions so that they follow the drone
-            Vector3 pos = new Vector3( m_currentShockwaveRadius * Mathf.Cos( theta ) + transform.position.x , m_currentShockwaveRadius * Mathf.Sin( theta ) + transform.position.y , 0.0f );
-            m_shockwaveRenderer.SetPosition( i , pos );
-
-            //Increases the value of theta by the distance between points
-            theta += deltaTheta;
-        }
+        m_shockwave.m_shockwaveVertCount = m_shockwaveVertices;
 
     }
 
@@ -170,11 +106,20 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
         m_droneController.DisableBasicBehaviours( );
 
         //Enables the shockwave line renderer
-        m_shockwaveRenderer.enabled = true;
+        m_shockwave.enabled = true;
 
         //Enables the behaviour so that the necessary logic is executed
         m_behaviourActive = true;
     }
 
+    public override void DisableModuleBehaviour( )
+    {
+        m_behaviourActive = false;
+
+        m_droneController.EnableBasicBehaviours( );
+
+        StartCoroutine( CooldownTimer( ) );
+
+    }
 
 }
