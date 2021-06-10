@@ -25,24 +25,18 @@ public class Shockwave : MonoBehaviour
 
     [Header("Shockwave Attack")]
 
-    [HideInInspector]
     public float m_knockbackForce;
 
-    [HideInInspector]
     public int m_shockwaveDamage;
 
-    [HideInInspector]
     public float m_knockbackDuration;
 
-    [HideInInspector]
     public float m_shockwaveMaxRadius;
 
-    [HideInInspector]
     public float m_shockwaveSpeed;
 
     public float m_currentShockwaveRadius;
 
-    [HideInInspector]
     public LayerMask m_targetLayer;
 
     public bool m_shockwaveEnded;
@@ -97,17 +91,25 @@ public class Shockwave : MonoBehaviour
     public void GrowShockwave( )
     {
         //Uses an overlap circle to find all enemies within the current radius and adds them to an array
-        Collider2D[] affectedEnemies = Physics2D.OverlapCircleAll(transform.position, m_currentShockwaveRadius, m_targetLayer );
+        Collider2D[] affectedTargets = Physics2D.OverlapCircleAll(transform.position, m_currentShockwaveRadius, m_targetLayer );
 
         //Checks to see if there are any enemies in the array
-        if ( affectedEnemies.Length >= 1 )
+        if ( affectedTargets.Length >= 1 )
         {
             //Loops through the array of enemies, starting their knockback coroutines, and damaging them
-            for ( int i = 0; i < affectedEnemies.Length; i++ )
+            for ( int i = 0; i < affectedTargets.Length; i++ )
             {
-                StartCoroutine( affectedEnemies[i].GetComponent<CharacterBase>( ).KnockBack( m_knockbackForce , m_knockbackDuration , gameObject ) );
 
-                affectedEnemies[i].gameObject.GetComponent<HealthManager>( ).TakeDamage( m_shockwaveDamage );
+                float distanceToTarget = Vector3.Distance(transform.position, affectedTargets[i].transform.position);
+
+                if ( affectedTargets[i].GetComponent<HealthManager>( ).m_isVulnerable && distanceToTarget >= m_currentShockwaveRadius )
+                {
+
+                    StartCoroutine( affectedTargets[i].GetComponent<CharacterBase>( ).KnockBack( m_knockbackForce , m_knockbackDuration , gameObject ) );
+
+                    affectedTargets[i].gameObject.GetComponent<HealthManager>( ).TakeDamage( m_shockwaveDamage );
+
+                }
 
             }
         }
