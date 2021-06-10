@@ -81,7 +81,10 @@ public class HUDManager : MonoBehaviour
         // Updates text on text objects
         m_dashCooldown.text = m_cooldownTimer.ToString("F2");
 
-        m_weaponName.text = m_playerController.m_currentWeapon.name;
+        if(m_weaponName != null)
+        {
+            m_weaponName.text = m_playerController.m_currentWeapon.name;
+        }
 
         m_numberOfCigs.text = m_playerCurrency.m_cigarettePacksCount.ToString();
         m_amountOfFuel.text = m_playerCurrency.m_fabricatorFuelCount.ToString();

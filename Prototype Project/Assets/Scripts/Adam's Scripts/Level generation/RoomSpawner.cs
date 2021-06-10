@@ -48,7 +48,7 @@ public class RoomSpawner : MonoBehaviour
         }
 
         // Calls Spawn with a slight delay to avoid rooms spawning on top of each other
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 0.25f);
     }
 
     // Determines correct template to use and spawns a room from it
