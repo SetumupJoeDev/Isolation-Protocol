@@ -21,6 +21,8 @@ public class PlayerController : CharacterBase
     [Tooltip("The array containing the player's carried weapons.")]
     public GameObject[] m_carriedWeapons;
 
+    public PlayerHealthManager m_playerHealthManager;
+
     //End of James' work
 
     [Header("Animation")]
@@ -121,6 +123,7 @@ public class PlayerController : CharacterBase
     // Sets up initial values of variables and references not set in inspector
     private void Start()
     {
+        m_playerHealthManager = GetComponent<PlayerHealthManager>();
         m_healthManager = GetComponent<PlayerHealthManager>();
         m_animator      = GetComponent<Animator>();
         m_dashTimer      = m_dashDuration;
@@ -143,48 +146,53 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     private void Update()
     {
-        // Assigns directional velocity to correct input axes
-        m_directionalVelocity.x = Input.GetAxisRaw("Horizontal");
-        m_directionalVelocity.y = Input.GetAxisRaw("Vertical");
 
-        // Gets mouse position within screen space
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        // Calculates mouse direction relative to the player's position
-        m_mouseDirection = mousePos - transform.position;
-
-        Animate();
-        Dash();
-
-        // James' work
-
-        CheckForInteractables( );
-
-        if ( Input.GetMouseButton( 0 ) && !m_isInMenu )
+        if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
-            m_currentWeapon.GetComponent<GunBase>().FireWeapon( );
+
+            // Assigns directional velocity to correct input axes
+            m_directionalVelocity.x = Input.GetAxisRaw( "Horizontal" );
+            m_directionalVelocity.y = Input.GetAxisRaw( "Vertical" );
+
+            // Gets mouse position within screen space
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // Calculates mouse direction relative to the player's position
+            m_mouseDirection = mousePos - transform.position;
+
+            Animate( );
+            Dash( );
+
+            // James' work
+
+            CheckForInteractables( );
+
+            if ( Input.GetMouseButton( 0 ) && !m_isInMenu )
+            {
+                m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
+            }
+
+            float scrollWheelValue = Input.GetAxis( "Mouse ScrollWheel" );
+
+            if ( scrollWheelValue != 0 )
+            {
+                float indexModifier = scrollWheelValue * 10;
+                SwapWeapon( ( int )indexModifier );
+            }
+
+            if ( Input.GetKeyDown( KeyCode.R ) )
+            {
+                m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
+            }
+
+            if ( Input.GetKeyDown( KeyCode.Tab ) )
+            {
+                m_audioLogCanvas.ToggleCanvas( );
+                m_isInMenu = !m_isInMenu;
+            }
+
+            // End of James' work
         }
-
-        float scrollWheelValue = Input.GetAxis( "Mouse ScrollWheel" );
-
-        if ( scrollWheelValue != 0 )
-        {
-            float indexModifier = scrollWheelValue * 10;
-            SwapWeapon( (int)indexModifier );
-        }
-
-        if( Input.GetKeyDown(KeyCode.R) )
-        {
-            m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
-        }
-
-        if ( Input.GetKeyDown( KeyCode.Tab ) )
-        {
-            m_audioLogCanvas.ToggleCanvas( );
-            m_isInMenu = !m_isInMenu;
-        }
-
-        // End of James' work
     }
 
     // Handles updating physical interactions

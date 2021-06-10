@@ -5,10 +5,12 @@ using UnityEngine;
 public class DefibMode : PassiveDroneBehaviourBase
 {
 
-    private bool m_canDefibPlayer;
+    public bool m_canDefibPlayer;
 
     [SerializeField]
     private int m_defibTime;
+
+    public PlayerHealthManager m_playerHealthManager;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -16,6 +18,14 @@ public class DefibMode : PassiveDroneBehaviourBase
         base.Awake( );
         //Sets this to true so that the drone starts off with the ability to revive the player
         m_canDefibPlayer = true;
+    }
+
+    private void Start( )
+    {
+        m_canDefibPlayer = true;
+
+        m_droneController = GetComponent<DroneController>( );
+
     }
 
     public void AttemptDefibrillation( )
@@ -32,7 +42,9 @@ public class DefibMode : PassiveDroneBehaviourBase
         //Waits for the defib timer to run out before reviving the player and setting canDefibPlayer to false, as this can only be used once per run
         yield return new WaitForSeconds( m_defibTime );
 
-        Debug.Log( "Player defibrillated!" );
+        m_playerHealthManager.m_currentPlayerState = PlayerHealthManager.playerState.alive;
+
+        m_playerHealthManager.m_currentHealth = m_playerHealthManager.m_maxHealth;
 
         m_canDefibPlayer = false;
 

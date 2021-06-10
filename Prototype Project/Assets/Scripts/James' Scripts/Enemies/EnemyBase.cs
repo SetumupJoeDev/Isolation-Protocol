@@ -163,6 +163,17 @@ public class EnemyBase : CharacterBase
                         StartCoroutine( AttackTarget( ) );
                         m_isAttacking = true;
                     }
+
+                    if(m_currentTarget.GetComponent<PlayerHealthManager>().m_currentPlayerState != PlayerHealthManager.playerState.alive )
+                    {
+                        m_currentTarget = null;
+
+                        m_currentState = enemyStates.idle;
+
+                        m_searchingForTargets = false;
+
+                    }
+
                 }
                 break;
         }
@@ -274,7 +285,7 @@ public class EnemyBase : CharacterBase
         Collider2D collider = Physics2D.OverlapCircle( transform.position , m_detectionRange , m_playerLayer );
 
         //If the overlap circle finds a target, and the enemy's vision is not obscured, then the enemy enters chase mode and ceasing searching for targets
-        if ( collider != null && !VisionObscured( collider ) )
+        if ( collider != null && !VisionObscured( collider ) && collider.GetComponent<PlayerHealthManager>().m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
             m_currentTarget = collider.gameObject;
             m_currentState = enemyStates.chasing;
