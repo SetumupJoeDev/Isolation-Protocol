@@ -110,7 +110,7 @@ MonoBehaviour:
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
-  m_detectionRange: 5.5
+  m_detectionRange: 13
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_chaseProximity: 7
   m_attackRange: 3
   m_attackDamage: 1
-  m_attackInterval: 1.5
+  m_attackInterval: 1
   m_isAttacking: 0
   m_lootBoostModifier: 1
   m_maxCigaretteDrops: 0
@@ -160,6 +160,8 @@ MonoBehaviour:
   m_isVulnerable: 0
   m_damagedTime: 0.15
   m_damagedAmount: 0
+  m_maxHealthFloat: 0
+  m_currentHealthFloat: 0
 --- !u!95 &8691593258372746762
 Animator:
   serializedVersion: 3

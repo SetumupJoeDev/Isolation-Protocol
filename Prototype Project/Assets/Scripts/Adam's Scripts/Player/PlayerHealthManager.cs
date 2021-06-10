@@ -20,6 +20,10 @@ public class PlayerHealthManager : HealthManager
     public GameObject   m_bloodEffect;            // Lewis' code.
     public AudioClip    m_playerDamagedFeedback;   // Lewis' code.
 
+    public enum playerState { alive, dead, downed}
+
+    public playerState m_currentPlayerState;
+
     // Lowers player health by amount given if vulnerable
     public override void TakeDamage(int damage)
     {
@@ -34,10 +38,19 @@ public class PlayerHealthManager : HealthManager
         }
 
         // Call player death method when out of health
-        if(m_currentHealth <= 0)
+        if( m_currentHealth <= 0 )
         {
-            Die();
+            if ( !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
+            {
+                Die( );
+            }
+            else if ( gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
+            {
+                m_currentPlayerState = playerState.downed;
+                gameObject.GetComponentInChildren<DefibMode>( ).AttemptDefibrillation( );
+            }
         }
+        
     }
 
     // Deactivates player and sets up death screen

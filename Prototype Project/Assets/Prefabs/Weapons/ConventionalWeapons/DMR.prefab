@@ -81,9 +81,9 @@ MonoBehaviour:
   m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 1.75
   m_reloadSound: {fileID: 0}
-  m_magCapacity: 18
+  m_magCapacity: 30
   m_currentMagAmmo: 0
-  m_maxAmmoCapacity: 42
+  m_maxAmmoCapacity: 90
   m_currentCarriedAmmo: 0
   m_magazineUIText: {fileID: 0}
   m_totalAmmoText: {fileID: 0}
@@ -92,12 +92,14 @@ MonoBehaviour:
   m_baseShopValue: 0
   m_fabricatorStorePrice: 0
   m_weaponFireMode: 0
-  m_fireInterval: 0.4
+  m_fireInterval: 1
   m_burstFireDelay: 0
   m_projectilePrefab: {fileID: 748496678482046455, guid: 6ff51748b4e6b5243ad23c387ddf91dc,
     type: 3}
   m_projectilesPerShot: 0
   m_muzzleFlash: {fileID: 0}
+  m_maxSpreadValue: 0
+  m_minSpreadValue: 0
 --- !u!1001 &7033357604870550118
 PrefabInstance:
   m_ObjectHideFlags: 0

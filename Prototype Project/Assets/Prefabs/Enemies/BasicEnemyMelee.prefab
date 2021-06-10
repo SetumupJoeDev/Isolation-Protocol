@@ -104,7 +104,11 @@ MonoBehaviour:
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 5707961849273049076}
   m_healthManager: {fileID: 3341951120311908520}
-  m_detectionRange: 4
+  m_knockbackDuration: 0
+  m_knockbackDirection: {x: 0, y: 0, z: 0}
+  m_knockbackForce: 0
+  m_knockedBack: 0
+  m_detectionRange: 13
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -145,11 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentHealth: 5
   m_maxHealth: 9
-  m_isInvulnerable: 0
-  m_bloodEffect: {fileID: 0}
-  m_playerDamagedFeedback: {fileID: 0}
+  m_isVulnerable: 0
   m_damagedTime: 0.15
   m_damagedAmount: 1
+  m_maxHealthFloat: 0
+  m_currentHealthFloat: 0
 --- !u!50 &5707961849273049076
 Rigidbody2D:
   serializedVersion: 4

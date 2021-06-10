@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 966570563917422951}
   - component: {fileID: 966570563917422950}
   - component: {fileID: 966570563917422948}
+  - component: {fileID: 7822461044899087985}
   - component: {fileID: 966570563917422949}
   - component: {fileID: 966570563917422953}
   - component: {fileID: 966570563917422946}
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
-  m_detectionRange: 10
+  m_detectionRange: 13
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -142,6 +143,33 @@ MonoBehaviour:
   m_aoeRange: 4
   m_attackLaunchForce: 500
   m_knockbackTime: 0
+--- !u!114 &7822461044899087985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966570563917422952}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a3c3c39b1faeb4ea378cf216205990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shockwaveRenderer: {fileID: 0}
+  m_shockwaveVertCount: 50
+  m_shockwaveLineWidth: 0.2
+  m_shockwaveMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_knockbackForce: 1200
+  m_shockwaveDamage: 2
+  m_knockbackDuration: 1.75
+  m_shockwaveMaxRadius: 4.5
+  m_shockwaveSpeed: 5
+  m_currentShockwaveRadius: 0
+  m_targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  m_shockwaveEnded: 0
+  m_shockwaveActive: 0
 --- !u!114 &966570563917422949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +187,8 @@ MonoBehaviour:
   m_isVulnerable: 0
   m_damagedTime: 0.5
   m_damagedAmount: 0
+  m_maxHealthFloat: 0
+  m_currentHealthFloat: 0
 --- !u!95 &966570563917422953
 Animator:
   serializedVersion: 3

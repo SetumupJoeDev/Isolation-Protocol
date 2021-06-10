@@ -23,8 +23,14 @@ public class AmalgamEnemy : EnemyBase
     [SerializeField]
     private float m_knockbackTime;
 
+    private Shockwave m_shockwave;
+
     #endregion
-  
+
+    private void Start( )
+    {
+        m_shockwave = GetComponent<Shockwave>( );
+    }
 
     public override IEnumerator AttackTarget( )
     {
@@ -38,23 +44,7 @@ public class AmalgamEnemy : EnemyBase
 
         gameObject.transform.localScale = new Vector3(1f, 1f); // Reset's enemy size 
 
-        //Uses an overlap circle to determine whether or not the player has been hit
-        Collider2D playerHit = Physics2D.OverlapCircle( transform.position , m_aoeRange , m_playerLayer );
-
-        //If the player has been hit, then they take damage and have their Knockback coroutine executed
-        if( playerHit != null )
-        {
-            AudioSource.PlayClipAtPoint(m_attackSound, transform.position); // Lewis' code, play sound to indicate windup
-
-            PlayerController player = playerHit.gameObject.GetComponent<PlayerController>();
-            
-            //Damages the player by the value of attackDamage
-            player.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
-
-            //Knocks the player back using the launchForce, for the duration of knockbackTime
-            StartCoroutine( player.KnockBack( m_attackLaunchForce, m_knockbackTime , gameObject ) );
-
-        }
+        m_shockwave.enabled = true;
 
         //Waits for the duration of the attack interval before having the opportunity to attack again
         yield return new WaitForSeconds( m_attackInterval );

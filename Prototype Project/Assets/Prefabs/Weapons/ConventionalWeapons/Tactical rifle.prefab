@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &-9148378751088363406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 9189407892275106025}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3602907724065667244}
+  m_Layer: 0
+  m_Name: SniperRound (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3602907724065667244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 9189407892275106025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -9148378751088363406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2555298759374527969}
+  m_Father: {fileID: 4841011838006084189}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2349582926289939135
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +91,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2862843233581088750}
+  - {fileID: 3602907724065667244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,6 +130,39 @@ MonoBehaviour:
     type: 3}
   m_projectilesPerShot: 0
   m_muzzleFlash: {fileID: 0}
+  m_maxSpreadValue: 0.3
+  m_minSpreadValue: -0.3
+--- !u!1 &6546923916990955624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 9189407892275106025}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2555298759374527969}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2555298759374527969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9189407892275106025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546923916990955624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3602907724065667244}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2100433008935917769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,3 +273,72 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2100433008935917769}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9189407892275106025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4841011838006084189}
+    m_Modifications:
+    - target: {fileID: 5653206848280501931, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_Name
+      value: SniperRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.2574196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.297883
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.040039062
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697252200344276232, guid: 5d42f22b70d879f41b70f707a6aa9f9d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d42f22b70d879f41b70f707a6aa9f9d, type: 3}
