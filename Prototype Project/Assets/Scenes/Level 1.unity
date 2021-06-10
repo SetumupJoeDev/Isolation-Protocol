@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -229,6 +229,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 5104504200478145201, guid: 4f52142f0f02a4141aa05c9b401a8717,
+        type: 3}
+      propertyPath: m_projectilePrefab
+      value: 
+      objectReference: {fileID: 5594480870787268503, guid: 63cc2177408f6494a8f398d59dcb87be,
+        type: 3}
     - target: {fileID: 5104504200478145202, guid: 4f52142f0f02a4141aa05c9b401a8717,
         type: 3}
       propertyPath: m_audioClip
@@ -312,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 5104504200478145206, guid: 4f52142f0f02a4141aa05c9b401a8717,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5104504200478145229, guid: 4f52142f0f02a4141aa05c9b401a8717,
         type: 3}
