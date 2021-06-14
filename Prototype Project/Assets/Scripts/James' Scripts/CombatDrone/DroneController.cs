@@ -10,7 +10,7 @@ public class DroneController : MonoBehaviour
     [Header("Movement")]
 
     [SerializeField]
-    private float m_moveSpeed;
+    public float m_moveSpeed;
 
     [SerializeField]
     private Vector3 m_moveDirection;
@@ -111,7 +111,10 @@ public class DroneController : MonoBehaviour
         //Waits for the fire interval to pass before firing a projectile at the enemy
         yield return new WaitForSeconds( m_fireInterval );
 
-        FireAtEnemy( );
+        if ( m_currentTarget != null )
+        {
+            FireAtEnemy( );
+        }
 
         m_isFiring = false;
 
