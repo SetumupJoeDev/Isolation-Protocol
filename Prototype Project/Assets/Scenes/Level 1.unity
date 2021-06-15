@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2085,7 +2085,7 @@ PrefabInstance:
     - target: {fileID: 3715704714721768769, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: orthographic size
-      value: 3.77
+      value: 6.059624
       objectReference: {fileID: 0}
     - target: {fileID: 5636462271164767425, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -2405,7 +2405,7 @@ PrefabInstance:
     - target: {fileID: 631071484904343466, guid: dcb9951779e9b024b8c407bd0877dcf2,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 631071484904343466, guid: dcb9951779e9b024b8c407bd0877dcf2,
         type: 3}
@@ -2426,6 +2426,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_searchNodeLayer.m_Bits
       value: 1048576
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343469, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343469, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_defibTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 631071484904343469, guid: dcb9951779e9b024b8c407bd0877dcf2,
+        type: 3}
+      propertyPath: m_canDefibPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 631071484904343470, guid: dcb9951779e9b024b8c407bd0877dcf2,
         type: 3}
