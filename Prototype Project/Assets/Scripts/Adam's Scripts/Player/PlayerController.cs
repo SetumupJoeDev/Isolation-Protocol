@@ -428,5 +428,4 @@ public class PlayerController : CharacterBase
     }
 
     //End of James' work
-
 }

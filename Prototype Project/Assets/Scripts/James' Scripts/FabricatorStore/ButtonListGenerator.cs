@@ -9,9 +9,8 @@ public class ButtonListGenerator : MonoBehaviour
     [Tooltip("The template button that all generated buttons will be based off of.")]
     private GameObject m_buttonTemplate;
 
-    [SerializeField]
     [Tooltip("The list of objects that each button in the list will be referencing.")]
-    private FabricatorStoreProduct[] m_buttonObjectReferences;
+    public FabricatorStoreProduct[] m_buttonObjectReferences;
 
     public List<GameObject> m_buttons;
 
