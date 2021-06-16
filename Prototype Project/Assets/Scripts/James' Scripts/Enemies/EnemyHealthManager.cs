@@ -24,9 +24,9 @@ public class EnemyHealthManager : HealthManager
 
     private void Update()
     {
-        Debug.Log(m_damagedAmount);
-        Debug.Log(m_currentHealthFloat + "current health float");
-        Debug.Log(m_maxHealthFloat + "max health float");
+        //Debug.Log(m_damagedAmount);
+        //Debug.Log(m_currentHealthFloat + "current health float");
+        //Debug.Log(m_maxHealthFloat + "max health float");
 
         m_currentHealthFloat = (float)m_currentHealth;
     
@@ -45,7 +45,14 @@ public class EnemyHealthManager : HealthManager
         //If the enemy's health reaches 0, they die
         if( m_currentHealth <= 0 )
         {
-            gameObject.GetComponent<EnemyBase>( ).Die( );
+            if ( gameObject.GetComponent<EnemyBase>( ) != null )
+            {
+                gameObject.GetComponent<EnemyBase>( ).Die( );
+            }
+            else
+            {
+                Destroy( gameObject );
+            }
         }
     }
 
