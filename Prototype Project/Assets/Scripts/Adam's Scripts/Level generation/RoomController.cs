@@ -137,7 +137,7 @@ public class RoomController : MonoBehaviour
         {
             m_doors[i].Open();
         }
-
+        
         float random = Random.Range(0.0f, 1.0f);
         if (random <= m_dropChance)
         {
