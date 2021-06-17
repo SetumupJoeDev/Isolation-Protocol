@@ -11,6 +11,10 @@ public class FabricatorData
 
     public FabricatorData(ButtonListGenerator droneList, ButtonListGenerator exoSuitList, ButtonListGenerator weaponList)
     {
+        m_droneUpgradesUnlocks = new bool[droneList.m_buttonObjectReferences.Length];
+        m_exoSuitUpgradesUnlocks = new bool[exoSuitList.m_buttonObjectReferences.Length];
+        m_weaponUnlocks = new bool[weaponList.m_buttonObjectReferences.Length];
+
         for (int i = 0; i < droneList.m_buttonObjectReferences.Length; i++)
         {
             m_droneUpgradesUnlocks[i] = droneList.m_buttonObjectReferences[i].GetIsUnlocked();
