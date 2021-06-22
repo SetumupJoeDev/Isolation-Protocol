@@ -5,8 +5,16 @@ using UnityEngine;
 // Spawns random enemies in a room depending on spawn points and enemy pool
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Spawning")]
+    [Header("Randomization")]
     
+    [Tooltip("Whether or not to randomize which enemy types to be spawned")]
+    [SerializeField]
+    private bool            m_randomizeEnemies;
+
+    [Tooltip("Whether or not to randomize spawning positions")]
+    [SerializeField]
+    private bool            m_randomizePositions;
+
     [Tooltip("The minimum number of enemies to spawn")]
     [SerializeField]
     private int             m_minSpawns;
@@ -15,13 +23,25 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private int             m_maxSpawns;
 
+    [Header("Positions")]
+
     [Tooltip("The positions at which to spawn the enemies")]
     [SerializeField]
     private GameObject[]    m_spawnPoints;
 
-    [Tooltip("The different enemies to be spawned")]
+    [Tooltip("The radius of the circle around the spawner in which enemies can spawn randomly")]
+    [SerializeField]
+    private float           m_randomSpawnRadius;
+
+    [Header("Enemies")]
+
+    [Tooltip("The different enemies that can be spawned")]
     [SerializeField]
     private GameObject[]    m_enemyTypes;
+
+    [Tooltip("The different enemy layouts that can be spawned")]
+    [SerializeField]
+    private EnemyLayout[]   m_enemyLayouts;
 
     [Tooltip("A list of the enemies that have been spawned")]
     public List<GameObject> m_spawnedEnemies;
@@ -29,13 +49,7 @@ public class EnemySpawner : MonoBehaviour
     // A random value to pick an enemy type out of the enemy pool
     private int             m_randomEnemy;
 
-    // A random number of enemies to be spawned
-    private int             m_numberOfEnemies;
-
-    // The number of enemies that havev been killed
-    private int             m_numberOfDeadEnemies;
-
-    // The room the spawner is attached to
+    //The room the spawner is attached to
     private RoomController  m_parentRoom;
 
     // Start is called before the first frame update
@@ -43,43 +57,126 @@ public class EnemySpawner : MonoBehaviour
     {
         m_parentRoom = GetComponentInParent<RoomController>();
         m_parentRoom.m_enemySpawner = this;
+
+        if (m_randomizeEnemies)
+        {
+            SpawnRandomEnemies();
+        }
+        else
+        {
+            SpawnRandomEnemyLayout();
+        }
     }
 
     // Increases number of dead enemies and removes them from the list
     public void IncreaseDead(GameObject spawnedEnemy)
     {
-        m_numberOfDeadEnemies++;
         m_spawnedEnemies.Remove(spawnedEnemy);
 
         // Checks if all enemies are dead and marks the room as cleared
-        if(m_numberOfDeadEnemies == m_numberOfEnemies)
+        if(m_spawnedEnemies.Count <= 0)
         {
             m_parentRoom.Cleared();
         }
     }
 
-    // Spawns the enemies
-    public void SpawnEnemies()
+    public void SpawnRandomEnemyLayout()
+    {
+        int randomLayout = Random.Range(0, m_enemyLayouts.Length);
+        
+        if (m_randomizePositions)
+        {
+            for (int i = 0; i < m_enemyLayouts[randomLayout].m_enemies.Length; i++)
+            {
+                float randomX = Random.Range(-m_randomSpawnRadius, m_randomSpawnRadius);
+                float randomY = Random.Range(-m_randomSpawnRadius, m_randomSpawnRadius);
+
+                Vector3 randomSpawnPosition = new Vector3(transform.position.x + randomX,transform.position.y + randomY, 0);
+
+                // Spawns enemy at target position
+                GameObject spawnedEnemy = Instantiate(m_enemyLayouts[randomLayout].m_enemies[i], randomSpawnPosition, Quaternion.identity);
+
+                // Assigns enemy to this spawner 
+                spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+
+                // Attaches enemy to the room it was spawned in
+                spawnedEnemy.transform.parent = m_parentRoom.transform;
+
+                // Adds enemy to list
+                m_spawnedEnemies.Add(spawnedEnemy);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < m_enemyLayouts[randomLayout].m_enemies.Length; i++)
+            {
+                Vector3 spawnPosition = transform.position + m_enemyLayouts[randomLayout].m_localPositions[i];
+
+                // Spawns enemy at target position
+                GameObject spawnedEnemy = Instantiate(m_enemyLayouts[randomLayout].m_enemies[i], spawnPosition, Quaternion.identity);
+
+                // Assigns enemy to this spawner 
+                spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+
+                // Attaches enemy to the room it was spawned in
+                spawnedEnemy.transform.parent = m_parentRoom.transform;
+
+                // Adds enemy to list
+                m_spawnedEnemies.Add(spawnedEnemy);
+            }
+        }
+    }
+
+    // Spawns a random assortment of enemies within set limitations
+    public void SpawnRandomEnemies()
     {
         // Assigns a random value within range to number of enemies
-        m_numberOfEnemies = Random.Range(m_minSpawns, m_maxSpawns + 1);
+        int numberOfEnemies = Random.Range(m_minSpawns, m_maxSpawns + 1);
 
-        for (int i = 0; i < m_numberOfEnemies; i++)
+        if (m_randomizePositions)
         {
-            // Picks a random enemy type from enemy pool
-            m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
-            
-            // Spawns enemy at target position
-            GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], m_spawnPoints[i].transform.position, Quaternion.identity);
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                // Picks a random enemy type from enemy pool
+                m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
 
-            // Assigns enemy to this spawner 
-            spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+                float randomX = Random.Range(-m_randomSpawnRadius, m_randomSpawnRadius);
+                float randomY = Random.Range(-m_randomSpawnRadius, m_randomSpawnRadius);
 
-            // Attaches enemy to the room it was spawned in
-            spawnedEnemy.transform.parent = m_parentRoom.transform;
+                Vector3 randomSpawnPosition = new Vector3(transform.position.x + randomX, transform.position.y + randomY, 0);
 
-            // Adds enemy to list
-            m_spawnedEnemies.Add(spawnedEnemy);
+                // Spawns enemy at target position
+                GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], randomSpawnPosition, Quaternion.identity);
+
+                // Assigns enemy to this spawner 
+                spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+
+                // Attaches enemy to the room it was spawned in
+                spawnedEnemy.transform.parent = m_parentRoom.transform;
+
+                // Adds enemy to list
+                m_spawnedEnemies.Add(spawnedEnemy);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                // Picks a random enemy type from enemy pool
+                m_randomEnemy = Random.Range(0, m_enemyTypes.Length);
+
+                // Spawns enemy at target position
+                GameObject spawnedEnemy = Instantiate(m_enemyTypes[m_randomEnemy], m_spawnPoints[i].transform.position, Quaternion.identity);
+
+                // Assigns enemy to this spawner 
+                spawnedEnemy.GetComponent<EnemyBase>().m_spawner = this;
+
+                // Attaches enemy to the room it was spawned in
+                spawnedEnemy.transform.parent = m_parentRoom.transform;
+
+                // Adds enemy to list
+                m_spawnedEnemies.Add(spawnedEnemy);
+            }
         }
     }
 }

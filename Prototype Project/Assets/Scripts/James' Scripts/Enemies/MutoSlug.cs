@@ -63,7 +63,7 @@ public class MutoSlug : EnemyBase
             //"Charges" the dodge to telegraph the attack to the player
             yield return new WaitForSeconds( m_pouncePrepDuration );
 
-            gameObject.GetComponent<ParticleSystem>().Play(); // Lewis' code. Triggers particle system for feedback
+          //  gameObject.GetComponent<ParticleSystem>().Play(); // Lewis' code. Triggers particle system for feedback
 
             //Leaps towards the player using the leap force
             m_characterRigidBody.velocity = leapDirection * m_leapForce * Time.deltaTime;

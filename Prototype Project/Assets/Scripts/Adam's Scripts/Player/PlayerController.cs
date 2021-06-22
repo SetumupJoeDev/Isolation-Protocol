@@ -1,10 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 // Controls most player functions and interactions
 // (Anything not marked as someone else's work via comments is Adam's work)
 public class PlayerController : CharacterBase
 {
+public AnalyticsEventTracker playTestData;
+    public DictionaryBase dictionary;
     //James' Work
 
     [Header("Weapons")]
@@ -123,6 +127,7 @@ public class PlayerController : CharacterBase
     // Sets up initial values of variables and references not set in inspector
     private void Start()
     {
+        playTestData = GetComponent<AnalyticsEventTracker>();
         m_playerHealthManager = GetComponent<PlayerHealthManager>();
         m_healthManager = GetComponent<PlayerHealthManager>();
         m_animator      = GetComponent<Animator>();
@@ -146,6 +151,10 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     private void Update()
     {
+
+     //   Analytics.CustomEvent("hello",)
+
+          
 
         if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
@@ -428,5 +437,4 @@ public class PlayerController : CharacterBase
     }
 
     //End of James' work
-
 }

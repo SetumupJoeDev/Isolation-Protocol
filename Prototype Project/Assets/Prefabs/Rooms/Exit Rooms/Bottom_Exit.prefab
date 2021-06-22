@@ -2241,7 +2241,7 @@ GameObject:
   - component: {fileID: 5424493664182608062}
   - component: {fileID: -3857024024009329244}
   m_Layer: 0
-  m_Name: Bottom_End
+  m_Name: Bottom_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,16 +2275,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de7018f4bd3d843bba4aa0945b89b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spawners: []
+  m_spawnedFrom: {fileID: 0}
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
-  m_spawners: []
-  m_spawnedFrom: {fileID: 0}
   m_discovered: 0
   m_cleared: 0
+  m_doors: []
   m_lootDrops: []
   m_dropChance: 0
-  m_doors: []
   m_enemySpawner: {fileID: 0}
 --- !u!1 &4540449948569571175
 GameObject:
@@ -2298,6 +2298,7 @@ GameObject:
   - component: {fileID: 4540449948569571168}
   - component: {fileID: 4540449948569571169}
   - component: {fileID: 1563335516131587442}
+  - component: {fileID: 4935626163315819949}
   m_Layer: 0
   m_Name: Tilemap_Open
   m_TagString: Untagged
@@ -2506,6 +2507,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4935626163315819949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540449948569571175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d7c87435444ff4383009f90819d71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4540449949605104200
 GameObject:
   m_ObjectHideFlags: 0
