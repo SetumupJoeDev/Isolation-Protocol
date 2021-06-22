@@ -3357,7 +3357,7 @@ GameObject:
   - component: {fileID: 2673814474721910295}
   - component: {fileID: 5419478841104594234}
   m_Layer: 12
-  m_Name: Bottom_Left_Right
+  m_Name: Bottom_Left_Right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3378,7 +3378,7 @@ Transform:
   - {fileID: 1395389688712331851}
   - {fileID: 6801337460664398143}
   - {fileID: 2634674554489455523}
-  - {fileID: 7903188751080201225}
+  - {fileID: 1429057189612728750}
   - {fileID: 6639462904775692610}
   - {fileID: 6693518912321353807}
   - {fileID: 3715626595208326657}
@@ -3930,11 +3930,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7311313928978322412, guid: 0575718eb62032245ac8f0dc70ed50fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0575718eb62032245ac8f0dc70ed50fa, type: 3}
---- !u!4 &7903188751080201225 stripped
+--- !u!4 &1429057189612728750 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1949991510870359627, guid: 0575718eb62032245ac8f0dc70ed50fa,
+  m_CorrespondingSourceObject: {fileID: 7311313928978322412, guid: 0575718eb62032245ac8f0dc70ed50fa,
     type: 3}
   m_PrefabInstance: {fileID: 8548402435625574978}
   m_PrefabAsset: {fileID: 0}

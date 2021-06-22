@@ -8,26 +8,26 @@ public class RoomController : MonoBehaviour
     [Header("Room Spawning")]
     
     [Tooltip("The room spawn points")]
-    public RoomSpawner[] m_spawners;
+    public RoomSpawner[]    m_spawners;
 
     [Tooltip("The spawner that spawned this room")]
-    public RoomSpawner m_spawnedFrom;
+    public RoomSpawner      m_spawnedFrom;
 
     [Tooltip("The layer for the walls")]
     [SerializeField]
-    private LayerMask m_wallLayer;
+    private LayerMask       m_wallLayer;
 
     [Header("Status")]
 
     [Tooltip("Whether or not the player has come into this room")]
-    public bool m_discovered;
+    public bool             m_discovered;
 
     [Tooltip("Whether or not all the enemies spawned in this room have been killed")]
-    public bool m_cleared;
+    public bool             m_cleared;
 
     [Tooltip("All doors within this room")]
     [SerializeField]
-    private Door[] m_doors;
+    private Door[]          m_doors;
 
     [Header("Loot")]
 
@@ -52,6 +52,9 @@ public class RoomController : MonoBehaviour
     // The distance of the room spawn points to the center of the room
     private float           m_spawnerDistance;
 
+    // The posistions from which to project the raycasts from
+    private Vector3[]       m_raycastPositions;
+
     // The enemy spawner of this room
     [HideInInspector]
     public EnemySpawner     m_enemySpawner;
@@ -59,6 +62,15 @@ public class RoomController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        m_raycastPositions = new Vector3[]
+        {
+            new Vector3(0,5,0),     // up
+            new Vector3(0,-5,0),    // down
+            new Vector3(5,0,0),     // right
+            new Vector3(-5,0,0)     // left
+
+        };
+
         // Determines what directions the room has doors in
         for (int i = 0; i < m_spawners.Length; i++)
         {
@@ -148,19 +160,19 @@ public class RoomController : MonoBehaviour
     // Uses raycasts to check the surroundings of the room for walls 
     private void CheckSurroudings()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.up, m_spawnerDistance, m_wallLayer))
+        if (Physics2D.Raycast(transform.position + m_raycastPositions[0], Vector2.up, m_spawnerDistance, m_wallLayer))
         {
             m_wallAbove = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.down, m_spawnerDistance, m_wallLayer))
+        if (Physics2D.Raycast(transform.position + m_raycastPositions[1], Vector2.down, m_spawnerDistance, m_wallLayer))
         {
             m_wallBelow = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.left, m_spawnerDistance, m_wallLayer))
+        if (Physics2D.Raycast(transform.position + m_raycastPositions[2], Vector2.left, m_spawnerDistance, m_wallLayer))
         {
             m_wallLeft = true;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.right, m_spawnerDistance, m_wallLayer))
+        if (Physics2D.Raycast(transform.position + m_raycastPositions[3], Vector2.right, m_spawnerDistance, m_wallLayer))
         {
             m_wallRight = true;
         }
@@ -193,7 +205,6 @@ public class RoomController : MonoBehaviour
             {
                 m_doors[i].Close();
             }
-            m_enemySpawner.SpawnEnemies();
         }
     }
 }
