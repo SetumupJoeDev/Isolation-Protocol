@@ -152,28 +152,7 @@ public class EnemyBase : CharacterBase
                 //If the enemy is in the attacking state, they attack the player or return to the chasing state
             case ( enemyStates.attacking ):
                 {
-                    //If the player is outside of the enemy's attack range, they return to the chasing state
-                    if( Vector3.Distance(transform.position, m_currentTarget.transform.position) > m_attackRange )
-                    {
-                        m_currentState = enemyStates.chasing;
-                    }
-                    //If the enemy is not attacking, their attack coroutine is started
-                    else if( !m_isAttacking )
-                    {
-                        StartCoroutine( AttackTarget( ) );
-                        m_isAttacking = true;
-                    }
-
-                    if(m_currentTarget.GetComponent<PlayerHealthManager>().m_currentPlayerState != PlayerHealthManager.playerState.alive )
-                    {
-                        m_currentTarget = null;
-
-                        m_currentState = enemyStates.idle;
-
-                        m_searchingForTargets = false;
-
-                    }
-
+                    AttackMode( );
                 }
                 break;
         }
@@ -189,6 +168,31 @@ public class EnemyBase : CharacterBase
         m_animator.SetFloat( "Horizontal" , m_directionalVelocity.normalized.x );
         m_animator.SetFloat( "Vertical" , m_directionalVelocity.normalized.y );
         m_animator.SetFloat( "Speed" , m_characterRigidBody.velocity.sqrMagnitude );
+    }
+
+    public virtual void AttackMode( )
+    {
+        //If the player is outside of the enemy's attack range, they return to the chasing state
+        if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange )
+        {
+            m_currentState = enemyStates.chasing;
+        }
+        //If the enemy is not attacking, their attack coroutine is started
+        else if ( !m_isAttacking )
+        {
+            StartCoroutine( AttackTarget( ) );
+            m_isAttacking = true;
+        }
+
+        if ( m_currentTarget.GetComponent<PlayerHealthManager>( ).m_currentPlayerState != PlayerHealthManager.playerState.alive )
+        {
+            m_currentTarget = null;
+
+            m_currentState = enemyStates.idle;
+
+            m_searchingForTargets = false;
+
+        }
     }
 
     protected override void FixedUpdate( )

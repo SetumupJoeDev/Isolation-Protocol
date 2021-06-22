@@ -51,17 +51,17 @@ public class ProjectileBase : MonoBehaviour
         //If the projectile has a set lifetime, the WaitToDestroy coroutine is started
         if ( m_projectileLifetime != 0 )
         {
-            StartCoroutine( WaitToDestroy( ) );
+            StartCoroutine( WaitToDisable( ) );
         }
 
     }
 
-    public IEnumerator WaitToDestroy()
+    public IEnumerator WaitToDisable()
     {
         //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( m_projectileLifetime );
 
-        Destroy(gameObject);
+        gameObject.SetActive( false );
 
     }
 
@@ -83,7 +83,7 @@ public class ProjectileBase : MonoBehaviour
             //If this projectile has reached its enemy limit, it is destroyed
             if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
             {
-                Destroy( gameObject );
+                gameObject.SetActive( false );
             }
             //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
             else
@@ -92,10 +92,10 @@ public class ProjectileBase : MonoBehaviour
             }
 
         }
-        //Otherwise, the projectile is destroyed
+        //Otherwise, the projectile is disabled
         else
         {
-            Destroy( gameObject );
+            gameObject.SetActive( false );
         }
     }
 
