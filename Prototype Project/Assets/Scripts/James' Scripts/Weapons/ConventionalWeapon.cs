@@ -24,7 +24,7 @@ public class ConventionalWeapon : GunBase
 
     [SerializeField]
     [Tooltip("The projectile that the weapon will fire.")]
-    protected GameObject m_projectilePrefab;
+    protected GameObject[] m_projectileArray;
 
     [SerializeField]
     [Tooltip("The number of projectiles fired each time this weapon fires. Should be left at 0 if this is not a burst fire weapon.")]
@@ -45,8 +45,22 @@ public class ConventionalWeapon : GunBase
     {
         for ( int i = 0; i < m_projectilesPerShot; i++ )
         {
-            //Instantiates a projectile at the barrel of the weapon 
-            ProjectileBase newBullet = Instantiate( m_projectilePrefab, m_barrelTransform.position, Quaternion.identity ).GetComponent<ProjectileBase>();
+
+            ProjectileBase newBullet = null;
+
+            foreach( GameObject projectile in m_projectileArray )
+            {
+                if( !projectile.activeSelf )
+                {
+                    newBullet = projectile.GetComponent<ProjectileBase>( );
+
+                    projectile.transform.position = m_barrelTransform.position;
+
+                    projectile.SetActive( true );
+
+                    break;
+                }
+            }
 
             //Alters the value of the aiming direction vector slightly to simulate spread
             m_aimingDirection = GenerateBulletSpread( );
