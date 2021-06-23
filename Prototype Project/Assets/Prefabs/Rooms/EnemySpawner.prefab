@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329317227565325260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: -3.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7311313928978322412}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2732896993753540608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7311313928978322412}
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4804112922891636069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 3.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7311313928978322412}
@@ -151,8 +151,15 @@ MonoBehaviour:
   - {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
   - {fileID: 8691593258372746765, guid: 6967b129e483247429591adf563ef577, type: 3}
   - {fileID: 966570563917422952, guid: c1b719a22f6d11d48b0ed9fc7ecb50e5, type: 3}
+  - {fileID: 1368252334955682932, guid: 720243304ef07fa4e827904d9a71df6d, type: 3}
+  - {fileID: 707556317688852800, guid: 14c13173c68699942b51b2a00ec46add, type: 3}
+  - {fileID: 3883301828414324665, guid: 5518b1817e49f2f4abe6edb28bbaed87, type: 3}
+  - {fileID: 5320534695325496833, guid: 2707bb7680326eb46b7673b707a7e809, type: 3}
   m_enemyLayouts:
   - {fileID: 11400000, guid: b9702390bcc77134a92011e08985fc21, type: 2}
+  - {fileID: 11400000, guid: 7c1d131eba346744dbc3a2f2b52221f3, type: 2}
+  - {fileID: 11400000, guid: a06665ed214a4b5468e7ccb656bade44, type: 2}
+  - {fileID: 11400000, guid: 5d2270c4343594f4dba7581e2d023b26, type: 2}
   m_spawnedEnemies: []
 --- !u!1 &6065115907997520965
 GameObject:
@@ -178,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6065115907997520965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 3.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7311313928978322412}
