@@ -45,7 +45,7 @@ public class ProjectileBase : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void OnEnable()
     {
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
@@ -56,6 +56,8 @@ public class ProjectileBase : MonoBehaviour
             StartCoroutine( WaitToDisable( ) );
         }
 
+        Debug.Log( transform.parent.name );
+
         m_parentTransform = transform.parent;
 
     }
@@ -65,7 +67,8 @@ public class ProjectileBase : MonoBehaviour
         //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( m_projectileLifetime );
 
-        transform.parent = m_parentTransform;
+        transform.SetParent( m_parentTransform );
+
         gameObject.SetActive( false );
 
     }
@@ -88,7 +91,8 @@ public class ProjectileBase : MonoBehaviour
             //If this projectile has reached its enemy limit, it is destroyed
             if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
             {
-                transform.parent = m_parentTransform;
+                transform.SetParent( m_parentTransform );
+
                 gameObject.SetActive( false );
             }
             //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
@@ -101,7 +105,8 @@ public class ProjectileBase : MonoBehaviour
         //Otherwise, the projectile is disabled
         else
         {
-            transform.parent = m_parentTransform;
+            transform.SetParent( m_parentTransform );
+
             gameObject.SetActive( false );
         }
     }

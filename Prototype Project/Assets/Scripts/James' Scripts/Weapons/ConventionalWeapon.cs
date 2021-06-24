@@ -56,9 +56,9 @@ public class ConventionalWeapon : GunBase
 
                     projectile.transform.position = m_barrelTransform.position;
 
-                    projectile.transform.parent = null;
-
                     projectile.SetActive( true );
+
+                    projectile.transform.parent = null;
 
                     break;
                 }
