@@ -2071,7 +2071,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      objectReference: {fileID: 1807733697}
     - target: {fileID: 3715704714287060932, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_Name
@@ -2081,6 +2081,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Name
+      value: Rooms player crossed when died
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_ValueType
+      value: System.Int32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_PropertyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_Target.m_Path
+      value: roomsCrossed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_Target.m_Type
+      value: System.Int32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_Target.m_Target
+      value: 
+      objectReference: {fileID: 1597429230}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_Target.m_ValidTypeNames.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060939, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_EventPayload.m_Parameters.m_Parameters.Array.data[0].m_Value.m_Target.m_ValidTypeNames.Array.data[8]
+      value: enum
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714721768769, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -2147,6 +2187,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1597429230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3715704714287060928, guid: 10cf6b0107a9906478d418b3aceed83b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1597429227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69443de86836ad449a0782e240e962cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1628702150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2237,6 +2289,47 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1597429227}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1807733697
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprite-Lit-Default (Instance)
+  m_Shader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1820724467
 PrefabInstance:
   m_ObjectHideFlags: 0

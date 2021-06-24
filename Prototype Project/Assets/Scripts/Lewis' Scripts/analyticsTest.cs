@@ -68,7 +68,7 @@ public class analyticsTest : MonoBehaviour
             if (collision.gameObject.layer == 12) // checks for doorcollider
             {
 
-                collision.gameObject.GetComponent<AnalyticsEventTracker>().enabled = true; // creates an event on that gameobject, can send off data here
+                
 
 
                 roomsCrossed++; // adds 1 onto rooms crossed
