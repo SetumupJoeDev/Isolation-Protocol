@@ -18,9 +18,9 @@ public class ChainLightningProjectile : ProjectileBase
     [Tooltip("The physics layer that the enemies sit on, used to detect enemies to leap to.")]
     public LayerMask m_enemyLayer;
 
-    public override void Start( )
+    public override void OnEnable( )
     {
-        base.Start( );
+        base.OnEnable( );
 
         //Sets the length of the previouslyDamagedEnemies array to the maximum number of enemies this projectile can damage
         m_previouslyDamagedEnemies = new GameObject[m_maxDamagedEnemies];

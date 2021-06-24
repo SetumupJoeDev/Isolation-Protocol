@@ -382,26 +382,41 @@ public AnalyticsEventTracker playTestData;
     public void SwapWeapon( int indexModifier )
     {
 
+        bool swappedWeapon = false;
+
         int newIndex = m_currentWeaponIndex + indexModifier;
 
-        if( newIndex < 0 )
+        while ( !swappedWeapon )
         {
-            newIndex = m_carriedWeapons.Length - 1;
-        }
-        if( newIndex >= m_carriedWeapons.Length )
-        {
-            newIndex = 0;
-        }
 
-        if ( m_carriedWeapons[newIndex] != null )
-        {
-            m_currentWeapon.SetActive( false );
+            if ( newIndex < 0 )
+            {
+                newIndex = m_carriedWeapons.Length - 1;
+            }
+            else if ( newIndex >= m_carriedWeapons.Length )
+            {
+                newIndex = 0;
+            }
 
-            m_currentWeapon = m_carriedWeapons[newIndex];
+            if ( m_carriedWeapons[newIndex] != null )
+            {
+                m_currentWeapon.SetActive( false );
 
-            m_currentWeaponIndex = newIndex;
+                m_currentWeapon = m_carriedWeapons[newIndex];
 
-            m_currentWeapon.SetActive( true );
+                m_currentWeaponIndex = newIndex;
+
+                m_currentWeapon.SetActive( true );
+
+                swappedWeapon = true;
+
+            }
+
+            if ( !swappedWeapon )
+            {
+                newIndex += indexModifier;
+            }
+
         }
 
     }
