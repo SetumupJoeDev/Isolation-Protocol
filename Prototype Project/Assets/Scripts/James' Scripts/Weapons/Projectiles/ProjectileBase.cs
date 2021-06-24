@@ -21,6 +21,8 @@ public class ProjectileBase : MonoBehaviour
     [Tooltip("The RigidBody attached to this projectile.")]
     public Rigidbody2D m_projectileRigidBody;
 
+    private Transform m_parentTransform;
+
     #endregion
 
     [Space]
@@ -54,6 +56,8 @@ public class ProjectileBase : MonoBehaviour
             StartCoroutine( WaitToDisable( ) );
         }
 
+        m_parentTransform = transform.parent;
+
     }
 
     public IEnumerator WaitToDisable()
@@ -61,6 +65,7 @@ public class ProjectileBase : MonoBehaviour
         //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( m_projectileLifetime );
 
+        transform.parent = m_parentTransform;
         gameObject.SetActive( false );
 
     }
@@ -83,6 +88,7 @@ public class ProjectileBase : MonoBehaviour
             //If this projectile has reached its enemy limit, it is destroyed
             if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
             {
+                transform.parent = m_parentTransform;
                 gameObject.SetActive( false );
             }
             //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
@@ -95,6 +101,7 @@ public class ProjectileBase : MonoBehaviour
         //Otherwise, the projectile is disabled
         else
         {
+            transform.parent = m_parentTransform;
             gameObject.SetActive( false );
         }
     }
