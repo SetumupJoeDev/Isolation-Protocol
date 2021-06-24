@@ -13,6 +13,8 @@ public class GunBase : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Determines whether or not the weapon can currently fire.")]
+    protected bool m_isWeaponFiring;
+
     protected bool m_canWeaponFire;
 
     [SerializeField]
@@ -95,7 +97,7 @@ public class GunBase : MonoBehaviour
         UpdateUIElements( );
 
         //Sets the weapon to be able to fire on being awake
-        m_canWeaponFire = true;
+        m_isWeaponFiring = true;
 
         //Sets the duration of the reload time to be the duration of the reloading soundclip
         m_reloadTime = m_reloadSound.clip.length;

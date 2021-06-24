@@ -60,7 +60,7 @@ public class Minigun : ConventionalWeapon
                 case ( firingState.windingUp ):
                     {
 
-                        if ( m_canWeaponFire && ( int )m_currentMagAmmo - m_projectilesPerShot >= 0 )
+                        if ( m_isWeaponFiring && ( int )m_currentMagAmmo - m_projectilesPerShot >= 0 )
                         {
 
                             m_fireSound.clip = m_minigunFireLoop;
@@ -74,7 +74,7 @@ public class Minigun : ConventionalWeapon
 
                             StartCoroutine( FireProjectiles( ) );
                         }
-                        else if( m_canWeaponFire )
+                        else if( m_isWeaponFiring )
                         {
 
                             m_fireSound.clip = m_minigunSpinLoop;

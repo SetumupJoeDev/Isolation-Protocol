@@ -44,7 +44,7 @@ public class ConventionalWeapon : GunBase
     protected virtual IEnumerator FireProjectiles( )
     {
 
-        m_canWeaponFire = false;
+        m_isWeaponFiring = false;
 
         for ( int i = 0; i < m_projectilesPerShot; i++ )
         {
@@ -100,7 +100,7 @@ public class ConventionalWeapon : GunBase
         yield return new WaitForSeconds( m_fireInterval );
 
         //Sets this to true so that the weapon can fire again
-        m_canWeaponFire = true;
+        m_isWeaponFiring = true;
     }
 
     public virtual Vector3 GenerateBulletSpread( )
@@ -117,7 +117,7 @@ public class ConventionalWeapon : GunBase
     public override void FireWeapon( )
     {
         //If the weapon can fire and has sufficient ammo to do so, the firing coroutine is started
-        if ( m_canWeaponFire && (int)m_currentMagAmmo - m_projectilesPerShot >= 0 )
+        if ( m_isWeaponFiring && (int)m_currentMagAmmo - m_projectilesPerShot >= 0 )
         {
             StartCoroutine( FireProjectiles( ) );
         }
