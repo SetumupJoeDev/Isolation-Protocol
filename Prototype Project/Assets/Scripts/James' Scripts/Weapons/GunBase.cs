@@ -137,6 +137,11 @@ public class GunBase : MonoBehaviour
         Debug.Log( "Weapon fired!" );
     }
 
+    public virtual void StopFiring( )
+    {
+        //Stops the weapon from firing
+    }
+
     public virtual void ReloadWeapon( )
     {
         if ( m_currentMagAmmo < m_magCapacity && m_currentCarriedAmmo > 0 )

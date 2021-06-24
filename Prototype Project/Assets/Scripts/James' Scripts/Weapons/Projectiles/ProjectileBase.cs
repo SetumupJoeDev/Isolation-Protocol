@@ -56,8 +56,6 @@ public class ProjectileBase : MonoBehaviour
             StartCoroutine( WaitToDisable( ) );
         }
 
-        Debug.Log( transform.parent.name );
-
         m_parentTransform = transform.parent;
 
     }

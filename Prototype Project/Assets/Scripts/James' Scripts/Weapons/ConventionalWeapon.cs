@@ -41,8 +41,11 @@ public class ConventionalWeapon : GunBase
 
     #endregion
 
-    private IEnumerator FireProjectiles( )
+    protected virtual IEnumerator FireProjectiles( )
     {
+
+        m_canWeaponFire = false;
+
         for ( int i = 0; i < m_projectilesPerShot; i++ )
         {
 
@@ -79,8 +82,11 @@ public class ConventionalWeapon : GunBase
             //Updates the UI elements to reflect the new ammo levels
             UpdateUIElements( );
 
-            //Play's the weapon's firing sound
-            m_fireSound.Play( );
+            if ( !m_fireSound.loop && !m_fireSound.isPlaying )
+            {
+                //Play's the weapon's firing sound
+                m_fireSound.Play( );
+            }
 
             //Plays the muzzle flash visual effects
             m_muzzleFlash.Play( );
@@ -114,9 +120,6 @@ public class ConventionalWeapon : GunBase
         if ( m_canWeaponFire && (int)m_currentMagAmmo - m_projectilesPerShot >= 0 )
         {
             StartCoroutine( FireProjectiles( ) );
-
-            m_canWeaponFire = false;
-
         }
     }
 

@@ -180,6 +180,10 @@ public AnalyticsEventTracker playTestData;
             {
                 m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
             }
+            if(Input.GetMouseButtonUp( 0 ) && !m_isInMenu )
+            {
+                m_currentWeapon.GetComponent<GunBase>( ).StopFiring( );
+            }
 
             float scrollWheelValue = Input.GetAxis( "Mouse ScrollWheel" );
 
