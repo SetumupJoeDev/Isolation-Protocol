@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 // Manages the player character's health and specific methods needed
 public class PlayerHealthManager : HealthManager
@@ -24,6 +25,9 @@ public class PlayerHealthManager : HealthManager
 
     public playerState m_currentPlayerState;
 
+    public AnalyticsEventTracker playTestData;
+
+
     // Lowers player health by amount given if vulnerable
     public override void TakeDamage(int damage)
     {
@@ -42,6 +46,12 @@ public class PlayerHealthManager : HealthManager
         {
             if ( !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
             {
+                if (playTestData != null)
+                {
+                    playTestData = GetComponent<AnalyticsEventTracker>(); // Lewis' code
+                    playTestData.enabled = true; // Lewis' code. When the player dies, if the analytics component isn't attached, don't run this code. 
+                } // when this code is ran, it enables the component sending off the important playtest data. 
+            
                 Die( );
             }
             else if ( gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )

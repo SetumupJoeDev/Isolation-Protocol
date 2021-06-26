@@ -7,7 +7,7 @@ using UnityEngine.Analytics;
 // (Anything not marked as someone else's work via comments is Adam's work)
 public class PlayerController : CharacterBase
 {
-public AnalyticsEventTracker playTestData;
+
     public DictionaryBase dictionary;
     //James' Work
 
@@ -124,24 +124,12 @@ public AnalyticsEventTracker playTestData;
 
     //End of James' work
 
-    #region analytics
-    [Header("analytics")]
-    public int roomsCrossed = 0;
-    public int basicMeleeKilled = 0;
-    public int basicRangedKilled = 0;
-    public int faceHuggerKilled = 0;
-    public int LargeKilled = 0;
-    public int sporeBomberKilled = 0;
-    public int wallGrowthKilled = 0;
-    public int droidKilled = 0;
-
-
-    #endregion
+   
 
     // Sets up initial values of variables and references not set in inspector
     private void Start()
     {
-        playTestData = GetComponent<AnalyticsEventTracker>();
+        
         m_playerHealthManager = GetComponent<PlayerHealthManager>();
         m_healthManager = GetComponent<PlayerHealthManager>();
         m_animator      = GetComponent<Animator>();
@@ -166,9 +154,7 @@ public AnalyticsEventTracker playTestData;
     private void Update()
     {
 
-     //   Analytics.CustomEvent("hello",)
-
-          
+     
 
         if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
@@ -219,7 +205,17 @@ public AnalyticsEventTracker playTestData;
             }
 
             // End of James' work
+
+            if (m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.dead)
+            {
+                gameObject.GetComponent<AnalyticsEventTracker>().enabled = true; // enables the event tracker, it'll send the playtest data to the server
+
+
+            }
+
+
         }
+       
     }
 
     // Handles updating physical interactions
@@ -469,18 +465,7 @@ public AnalyticsEventTracker playTestData;
         m_hud.gameObject.SetActive( hudActive );
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // Lewis' code
-    {
-        {
-            if (collision.gameObject.layer == 12) // checks for doorcollider
-            {
+   
 
-
-
-
-                roomsCrossed++; // adds 1 onto rooms crossed for analytics 
-            }
-        }
-    } // Lewis' code
     //End of James' work
 }
