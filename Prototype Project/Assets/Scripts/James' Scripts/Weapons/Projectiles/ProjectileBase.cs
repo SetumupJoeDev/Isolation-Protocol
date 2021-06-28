@@ -44,9 +44,21 @@ public class ProjectileBase : MonoBehaviour
 
     #endregion
 
+
+
+
+
+    enemyCounter  m_enemyCounter;
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
+        // if(parentGameObject !== enemy){ increment bullets, and pass the parentgameobject as a string into enemyCounter
+       
+        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
+        if (transform.parent.gameObject.transform.parent.tag == "Weapon")
+        {
+            m_enemyCounter.bulletCounter(1, transform.parent.gameObject.transform.parent.name);
+        }
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
@@ -74,6 +86,13 @@ public class ProjectileBase : MonoBehaviour
     public void OnTriggerEnter2D( Collider2D collision )
     {
         CollideWithObject( collision );
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            m_enemyCounter.bulletHitCounter(transform.parent.gameObject.transform.parent.name,collision.gameObject.name);
+        }
+       
     }
 
     public virtual void CollideWithObject( Collider2D collision )
@@ -81,7 +100,11 @@ public class ProjectileBase : MonoBehaviour
         //If the object the projectile collided with has a health manager and isn't the previously damaged enemy, then they take damage
         if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageEnemy )
         {
+            
+            
+
             collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
+           
 
             //The value of currentDamagedEnemies is incrememented to keep track of how many more enemies this projectile can damage
             m_currentDamagedEnemies++;
