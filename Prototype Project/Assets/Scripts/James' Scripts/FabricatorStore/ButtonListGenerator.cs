@@ -14,6 +14,8 @@ public class ButtonListGenerator : MonoBehaviour
 
     public List<GameObject> m_buttons;
 
+    public FabricatorProductButton m_activeButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,10 @@ public class ButtonListGenerator : MonoBehaviour
 
             //Sets the description of the button to reflect the product it represents
             newButtonController.SetItemDescription( m_buttonObjectReferences[i].GetItemDescription( ) );
+
+            newButtonController.m_buttonList = this;
+
+            newButtonController.m_storeProduct = m_buttonObjectReferences[i];
 
             //Adds the button to the list so it can be referenced by index later
             m_buttons.Add( newButton );

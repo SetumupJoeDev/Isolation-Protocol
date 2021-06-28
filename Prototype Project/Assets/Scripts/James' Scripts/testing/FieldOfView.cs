@@ -38,7 +38,7 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>( ).mesh = m_fieldOfViewMesh;
 
         //Sets the origin of the FOV
-        m_fovOrigin = Vector3.zero;
+        m_fovOrigin = transform.parent.position;
 
     }
 

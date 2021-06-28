@@ -9,6 +9,12 @@ public class FabricatorProductButton : MonoBehaviour
     [SerializeField]
     private FabricatorStoreBase m_storeController;
 
+    public ButtonListGenerator m_buttonList;
+
+    public FabricatorStoreProduct m_storeProduct;
+
+    public bool m_isSelected;
+
     [SerializeField]
     private Image m_productImage;
 
@@ -56,6 +62,31 @@ public class FabricatorProductButton : MonoBehaviour
 
     public void OnClick( )
     {
+
+        if ( m_buttonList.m_activeButton != this )
+        {
+
+            if ( m_buttonList.m_activeButton != null )
+            {
+                m_buttonList.m_activeButton.m_isSelected = false;
+            }
+
+            m_buttonList.m_activeButton = this;
+
+            UpdateProductInfo( );
+
+        }
+        else if ( m_storeController.PlayerCanAfford( ) )
+        {
+            m_storeProduct.SetIsUnlocked( true );
+
+            UpdateProductInfo( );
+
+        }
+    }
+
+    public void UpdateProductInfo( )
+    {
         //Sets the text of the itemDescription UI element to that contained within the button's product description file
         m_itemDescriptionUI.text = m_productDescriptionFile.text;
 
@@ -65,8 +96,15 @@ public class FabricatorProductButton : MonoBehaviour
         //Sets the price of the selected item in the store controller to that of the button, so the player will be charged correctly
         m_storeController.SetItemPrice( m_productPrice );
 
-        //Sets the text of the buy button's price text element to the value stored in the button so the correct price is displayed to the player
-        m_itemPriceText.text = m_productPrice.ToString( );
+        if ( !m_storeProduct.GetIsUnlocked( ) )
+        {
+            //Sets the text of the buy button's price text element to the value stored in the button so the correct price is displayed to the player
+            m_itemPriceText.text = m_productPrice.ToString( );
+        }
+        else
+        {
+            m_itemPriceText.text = "Out Of Stock";
+        }
     }
 
 }
