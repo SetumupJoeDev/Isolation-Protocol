@@ -465,7 +465,21 @@ public class PlayerController : CharacterBase
         m_hud.gameObject.SetActive( hudActive );
     }
 
-   
+
 
     //End of James' work
+
+
+    private void OnTriggerEnter2D(Collider2D collision) // Lewis' code
+    {
+        {
+            if (collision.gameObject.layer == 12) // checks for doorcollider
+            {
+
+
+
+                enemyCounter.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
+            }
+        }
+    }
 }

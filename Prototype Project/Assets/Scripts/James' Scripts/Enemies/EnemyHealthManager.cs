@@ -13,6 +13,7 @@ public class EnemyHealthManager : HealthManager
     public int number =5;
 
     public enemyCounter m_enemyCounter; // Lewis' and James' code
+    public PlayerController m_playerController;
 
 
     public override void Start()
@@ -43,6 +44,10 @@ public class EnemyHealthManager : HealthManager
     }
     public override void TakeDamage( int damage )
     {
+        m_enemyCounter.bulletsHit++;
+       // m_playerController.m_currentWeapon.name
+        // pass in the gameobject which is active 
+
         base.TakeDamage( damage );
 
         StartCoroutine(damageFeedback()); // Lewis' code
@@ -52,7 +57,7 @@ public class EnemyHealthManager : HealthManager
         {
             if ( gameObject.GetComponent<EnemyBase>( ) != null )
             {
-                if(m_enemyCounter != null) // important thing about code, needs to be able to run independetly
+                if(m_enemyCounter != null) // important thing about code, needs to be able to run independetly 
                 {
                     m_enemyCounter.incrementKilledNewEnemy(gameObject.name);
 
