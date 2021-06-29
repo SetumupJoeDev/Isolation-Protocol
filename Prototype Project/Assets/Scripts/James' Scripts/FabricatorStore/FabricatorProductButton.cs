@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 public class FabricatorProductButton : MonoBehaviour
@@ -30,10 +31,10 @@ public class FabricatorProductButton : MonoBehaviour
     private TextAsset m_productDescriptionFile;
 
     [SerializeField]
-    private Text m_itemDescriptionUI;
+    private TextMeshProUGUI m_itemDescriptionUI;
 
     [SerializeField]
-    private Text m_itemPriceText;
+    private TextMeshProUGUI m_itemPriceText;
 
     public void SetName(string newName )
     {
@@ -53,6 +54,14 @@ public class FabricatorProductButton : MonoBehaviour
     public void SetItemPrice(int newPrice )
     {
         m_productPrice = newPrice;
+        if ( !m_storeProduct.GetIsUnlocked( ) )
+        {
+            m_itemPriceText.text = m_productPrice.ToString();
+        }
+        else
+        {
+            m_itemPriceText.text = "Out Of Stock";
+        }
     }
 
     public void SetItemDescription( TextAsset newDescription )

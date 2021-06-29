@@ -35,6 +35,7 @@ public class ButtonListGenerator : MonoBehaviour
         //Loops through for the length of product references and creates a new button for each
         for(int i = 0; i < m_buttonObjectReferences.Length; i++ )
         {
+
             //Instatiates a new button based on the button template
             GameObject newButton = Instantiate(m_buttonTemplate);
 
@@ -46,6 +47,10 @@ public class ButtonListGenerator : MonoBehaviour
 
             //Saves the button's script as a local variable for later use
             FabricatorProductButton newButtonController = newButton.GetComponent<FabricatorProductButton>();
+
+            newButtonController.m_buttonList = this;
+
+            newButtonController.m_storeProduct = m_buttonObjectReferences[i];
 
             //Sets the item index of the button so it can be used to control the storefront
             newButtonController.SetItemIndex( i );
@@ -61,10 +66,6 @@ public class ButtonListGenerator : MonoBehaviour
 
             //Sets the description of the button to reflect the product it represents
             newButtonController.SetItemDescription( m_buttonObjectReferences[i].GetItemDescription( ) );
-
-            newButtonController.m_buttonList = this;
-
-            newButtonController.m_storeProduct = m_buttonObjectReferences[i];
 
             //Adds the button to the list so it can be referenced by index later
             m_buttons.Add( newButton );
