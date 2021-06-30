@@ -79,11 +79,6 @@ public class PlayerController : CharacterBase
 
     #endregion
 
-    [Header("Status Effects")]
-
-    [Tooltip("The amount by which the player is slowed")]
-    public float        m_slowness;
-
     //James' Work
     #region MutoSlug Attachments
 
@@ -153,9 +148,6 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     private void Update()
     {
-
-     
-
         if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
 
@@ -166,21 +158,26 @@ public class PlayerController : CharacterBase
             // Gets mouse position within screen space
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // Calculates mouse direction relative to the player's position
-            m_mouseDirection = mousePos - transform.position;
+            
 
-            Animate( );
-            Dash( );
+            if (!m_stunned)
+            {
+                // Calculates mouse direction relative to the player's position
+                m_mouseDirection = mousePos - transform.position;
+
+                Animate();
+                Dash();
+            }
 
             // James' work
 
             CheckForInteractables( );
 
-            if ( Input.GetMouseButton( 0 ) && !m_isInMenu )
+            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_stunned)
             {
                 m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
             }
-            if(Input.GetMouseButtonUp( 0 ) && !m_isInMenu )
+            if(Input.GetMouseButtonUp( 0 ) && !m_isInMenu)
             {
                 m_currentWeapon.GetComponent<GunBase>( ).StopFiring( );
             }
@@ -193,7 +190,7 @@ public class PlayerController : CharacterBase
                 SwapWeapon( ( int )indexModifier );
             }
 
-            if ( Input.GetKeyDown( KeyCode.R ) )
+            if ( Input.GetKeyDown( KeyCode.R ) && !m_stunned )
             {
                 m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
             }
@@ -209,19 +206,14 @@ public class PlayerController : CharacterBase
             if (m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.dead)
             {
                 gameObject.GetComponent<AnalyticsEventTracker>().enabled = true; // enables the event tracker, it'll send the playtest data to the server
-
-
             }
-
-
         }
-       
     }
 
     // Handles updating physical interactions
     protected override void FixedUpdate()
     {
-        if (m_isDashing && !m_knockedBack )
+        if (m_isDashing && !m_knockedBack)
         {
             // Moves rigidbody with dash parameters when player is dashing
             m_characterRigidBody.velocity = m_dashDirection.normalized * m_dashSpeed * Time.deltaTime;
@@ -346,12 +338,6 @@ public class PlayerController : CharacterBase
         yield return new WaitForSeconds(m_dashCooldown);
         m_canDash = true;
         m_hud.m_dashOnCooldown = false;
-    }
-
-    // Moves player's rigidbody according to directional velocity, movement speed and slowness status effect
-    protected override void Move()
-    {
-        m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
     }
 
     //James' Work

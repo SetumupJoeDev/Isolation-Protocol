@@ -53,23 +53,43 @@ public class CharacterBase : MonoBehaviour
 
     #endregion
 
+    // Adam's code
+    #region Status Effects
+
+    [Header("Status Effects")]
+
+    [Tooltip("The amount by which the player is slowed")]
+    public float    m_slowness;
+    
+    [SerializeField]
+    [Tooltip("Whether or not character is stunned")]
+    protected bool  m_stunned;
+    [SerializeField]
+    [Tooltip("Amount of time character is stunned for in seconds")]
+    protected float m_stunDuration;
+    [SerializeField]
+    [Tooltip("Sprite that appears while character is stunned")]
+    protected GameObject m_stunIcon;
+
+    #endregion
+    // End of Adam's code
 
     protected virtual void FixedUpdate()
     {
         //If the character is currently knocked back, then their knockback force is simulated
-        if ( m_knockedBack )
+        if (m_knockedBack)
         {
-            SimulateKnockback( );
+            SimulateKnockback();
         }
     }
 
-    public void SimulateKnockback( )
+    public void SimulateKnockback()
     {
         //Moves the character using the directional vector knockbackDirection and the speed of knockbackForce
         m_characterRigidBody.velocity = m_knockbackDirection.normalized * m_knockbackForce * Time.deltaTime;
     }
 
-    public IEnumerator KnockBack( float knockbackForce, float knockbackDuration , GameObject knockbackSource )
+    public IEnumerator KnockBack(float knockbackForce, float knockbackDuration, GameObject knockbackSource)
     {
         //Sets the value of knockbackDirection using the value passed in
         m_knockbackDirection = transform.position - knockbackSource.transform.position;
@@ -84,7 +104,7 @@ public class CharacterBase : MonoBehaviour
         m_knockedBack = true;
 
         //Waits for the duration of the knockback before setting the character's velocity to 0 and setting them as no longer being knocked back
-        yield return new WaitForSeconds( m_knockbackDuration );
+        yield return new WaitForSeconds(m_knockbackDuration);
 
         m_characterRigidBody.velocity = Vector3.zero;
 
@@ -92,16 +112,32 @@ public class CharacterBase : MonoBehaviour
 
     }
 
-    public virtual void Die( )
+    public virtual void Die()
     {
         //Death logic goes here!
-        Destroy( gameObject );
+        Destroy(gameObject);
     }
 
-    protected virtual void Move( )
+    protected virtual void Move()
     {
-        //Moves the character by their directional velocity and speed
-        m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.fixedDeltaTime;
+        if (!m_stunned)
+        {
+            //Moves the character by their directional velocity and speed
+            m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
+        }
     }
 
+    // Adam's code
+     public IEnumerator Stun()
+    {
+        m_characterRigidBody.velocity = Vector3.zero;
+        m_stunned = true;
+        m_stunIcon.SetActive(true);
+
+        yield return new WaitForSeconds(m_stunDuration);
+        
+        m_stunned = false;
+        m_stunIcon.SetActive(false);
+    }
+    // End of Adam's code
 }

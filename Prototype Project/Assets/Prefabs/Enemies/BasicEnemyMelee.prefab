@@ -108,6 +108,10 @@ MonoBehaviour:
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
+  m_slowness: 0
+  m_stunned: 0
+  m_stunDuration: 1.5
+  m_stunIcon: {fileID: 0}
   m_detectionRange: 13
   m_playerLayer:
     serializedVersion: 2
@@ -154,6 +158,9 @@ MonoBehaviour:
   m_damagedAmount: 1
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
+  number: 5
+  m_enemyCounter: {fileID: 0}
+  m_playerController: {fileID: 0}
 --- !u!50 &5707961849273049076
 Rigidbody2D:
   serializedVersion: 4
