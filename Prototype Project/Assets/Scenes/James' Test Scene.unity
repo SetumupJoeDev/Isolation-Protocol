@@ -2541,13 +2541,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_storeController: {fileID: 2028234069}
+  m_buttonList: {fileID: 0}
   m_storeProduct: {fileID: 0}
+  m_isSelected: 0
   m_productImage: {fileID: 907115550}
   m_productName: {fileID: 1512515613}
   m_productPrice: 0
   m_productDescriptionFile: {fileID: 0}
-  m_itemDescriptionUI: {fileID: 596598880}
-  m_itemPriceText: {fileID: 253521386}
+  m_itemDescriptionUI: {fileID: 0}
+  m_itemPriceText: {fileID: 0}
 --- !u!1 &548908401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5579,13 +5581,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_storeController: {fileID: 2047421146}
+  m_buttonList: {fileID: 0}
   m_storeProduct: {fileID: 0}
+  m_isSelected: 0
   m_productImage: {fileID: 862626955}
   m_productName: {fileID: 13843437}
   m_productPrice: 0
   m_productDescriptionFile: {fileID: 0}
-  m_itemDescriptionUI: {fileID: 706506507}
-  m_itemPriceText: {fileID: 1720460660}
+  m_itemDescriptionUI: {fileID: 0}
+  m_itemPriceText: {fileID: 0}
 --- !u!1 &1092461471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,7 +6342,7 @@ PrefabInstance:
     - target: {fileID: 6652428113391180011, guid: 45e8a2c9d7488574b99ba989b5ae0c51,
         type: 3}
       propertyPath: m_currentMagAmmo
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6652428113391180013, guid: 45e8a2c9d7488574b99ba989b5ae0c51,
         type: 3}
@@ -8319,13 +8323,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_storeController: {fileID: 0}
+  m_buttonList: {fileID: 0}
   m_storeProduct: {fileID: 0}
+  m_isSelected: 0
   m_productImage: {fileID: 222720100}
   m_productName: {fileID: 835613675}
   m_productPrice: 0
   m_productDescriptionFile: {fileID: 0}
-  m_itemDescriptionUI: {fileID: 1400269156}
-  m_itemPriceText: {fileID: 1565062969}
+  m_itemDescriptionUI: {fileID: 0}
+  m_itemPriceText: {fileID: 0}
 --- !u!1 &1752558332
 GameObject:
   m_ObjectHideFlags: 0
@@ -8620,7 +8626,7 @@ PrefabInstance:
     - target: {fileID: 8492173334297676752, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8883967282890948375, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}

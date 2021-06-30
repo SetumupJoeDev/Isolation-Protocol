@@ -82,7 +82,7 @@ public class ConventionalWeapon : GunBase
             //Updates the UI elements to reflect the new ammo levels
             UpdateUIElements( );
 
-            if ( !m_fireSound.loop && !m_fireSound.isPlaying )
+            if ( m_fireSound.loop && !m_fireSound.isPlaying || !m_fireSound.loop )
             {
                 //Play's the weapon's firing sound
                 m_fireSound.Play( );
