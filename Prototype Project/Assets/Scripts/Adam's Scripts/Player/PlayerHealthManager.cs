@@ -25,7 +25,7 @@ public class PlayerHealthManager : HealthManager
 
     public playerState m_currentPlayerState;
 
-    public AnalyticsEventTracker playTestData;
+    public analyticsManager analytics;
 
 
     // Lowers player health by amount given if vulnerable
@@ -44,14 +44,20 @@ public class PlayerHealthManager : HealthManager
         // Call player death method when out of health
         if( m_currentHealth <= 0 )
         {
+            if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null)
+            {
+
+                analytics = GameObject.Find("easyName").GetComponent<analyticsManager>();
+
+                analytics.onDeath();
+            }
+
+
             if ( !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
             {
-                if (playTestData != null)
-                {
-                    playTestData = GetComponent<AnalyticsEventTracker>(); // Lewis' code
-                    playTestData.enabled = true; // Lewis' code. When the player dies, if the analytics component isn't attached, don't run this code. 
-                } // when this code is ran, it enables the component sending off the important playtest data. 
-            
+               
+                
+
                 Die( );
             }
             else if ( gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
@@ -66,6 +72,10 @@ public class PlayerHealthManager : HealthManager
     // Deactivates player and sets up death screen
     private void Die()
     {
+       
+       
+
+
         Instantiate(m_deathCamera);
         Instantiate(m_deathUI);
         

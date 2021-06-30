@@ -464,7 +464,7 @@ public class PlayerController : CharacterBase
 
 
 
-                enemyCounter.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
+                analyticsManager.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
             }
         }
     }

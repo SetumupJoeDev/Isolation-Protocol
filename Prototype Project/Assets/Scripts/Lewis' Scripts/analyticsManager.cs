@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyCounter : MonoBehaviour
+public class analyticsManager : MonoBehaviour
 {
     public int basicMeleeKilled = 0;
     public int basicRangedKilled = 0;
@@ -18,8 +18,14 @@ public class enemyCounter : MonoBehaviour
 
 
     public int boltBulletsShot = 0;
-    public int boltBulletsHit = 0;
+    public int boltHits = 0;
     public int subMachineGunBulletsShot = 0;
+    public int subMachineGunBulletsHit = 0;
+
+    public int allBulletsShot;
+
+    public float currentTime = 0f;
+    public string timeInGame;
 
     public email email;
  
@@ -27,14 +33,24 @@ public class enemyCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        email = GameObject.Find("easyName").GetComponent<email>();
         DontDestroyOnLoad(gameObject);
+        if (GameObject.Find("easyName").GetComponent<email>() != null)
+        {
+            email = GameObject.Find("easyName").GetComponent<email>();
+            
+        }
         
     }
 
-    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
+
+
+
+
+
+public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
     {
-        email.writeEmail(roomsCrossed, basicMeleeKilled, basicRangedKilled,faceHuggerKilled,LargeKilled,sporeBomberKilled,wallGrowthKilled,parasiteEggKilled,droidKilled);
+        email.superiorMethod(this);
+        Debug.Log("death works");
     }
 
     public void bulletCounter(int number, string name)
@@ -61,9 +77,14 @@ public class enemyCounter : MonoBehaviour
         switch (name)
         {
             case "BoltM4250":
-                boltBulletsHit++;
-                Debug.Log("bolt hit!" + boltBulletsHit);
+                boltHits++;
+                Debug.Log("bolt hit!" + boltHits);
                 break;
+
+            case "SubmachineGun":
+                subMachineGunBulletsHit++;
+                break;
+                
         }
 
     }
@@ -71,6 +92,11 @@ public class enemyCounter : MonoBehaviour
     // Update is called once per frame
     void Update() // whole update method is a test to see if the email system works. 
     {
+
+        currentTime += 1 * Time.deltaTime;
+        timeInGame = currentTime.ToString();
+        allBulletsShot = subMachineGunBulletsShot + boltBulletsShot;
+
         if (Input.GetKeyDown(KeyCode.T)) 
         {
             onDeath();

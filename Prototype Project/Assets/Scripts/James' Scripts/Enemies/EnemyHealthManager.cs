@@ -12,15 +12,18 @@ public class EnemyHealthManager : HealthManager
     public float m_currentHealthFloat;
     public int number =5;
 
-    public enemyCounter m_enemyCounter; // Lewis' and James' code
+    public analyticsManager m_enemyCounter; // Lewis' and James' code
     public PlayerController m_playerController;
 
 
     public override void Start()
     {
         base.Start();
+        if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null)
+        {
+            m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // Playtest data collection
+        }
 
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
         //Sets the spriteRenderer to be that attached to the gameObject
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         

@@ -10,45 +10,66 @@ public class email : MonoBehaviour
 {
 
     string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScryss7QVf9Vv5Ab45uzcHDfjKaihY-efWtNNcIrtUwpbmI6A/formResponse";
- public enemyCounter m_enemyCounter;
+ public analyticsManager m_enemyCounter;
     int testValue = 5;
 
+    float currentTime = 0;
+    string timeInGame;
+   public WWWForm Workingform; 
     
     void Start()
     {
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>(); // finds the gameobject that stores important game data 
+        if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null)
+        {
 
+            m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // finds the gameobject that stores important game data 
+        }
 
 
         //StartCoroutine(Post(testValue)); // Begins the process to send off the important game data 
     }
 
-
-
-   public void writeEmail(int roomsCrossed, int basicMeleeKilled, int basicRangedKilled, int faceHuggerKilled, int LargeKilled, int sporeBomberKilled, int wallGrowthKilled, int droidKilled,int parasiteEggKilled) // arguments are the important data 
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("entry.420162231", roomsCrossed); // finds the appropriate form for the data typed passed into this code
-        form.AddField("entry.100712115", basicMeleeKilled);
-        form.AddField("entry.4744759", basicRangedKilled);
-        form.AddField("entry.1063026462", faceHuggerKilled);
-        form.AddField("entry.1558735003", LargeKilled);
-        form.AddField("entry.756172493", sporeBomberKilled);
-        form.AddField("entry.1109825951", wallGrowthKilled);
-        form.AddField("entry.1896346647", droidKilled);
-        form.AddField("entry.1456948801",parasiteEggKilled);
-        UnityWebRequest www = UnityWebRequest.Post(URL, form); // packs data up nicely 
-
-        www.SendWebRequest(); // sends data off 
-
-        ;
-    }
-
-
-    public void sendEmail(WWWForm form)
+     void Update()
     {
        
     }
+
+
+    public void superiorMethod(analyticsManager analyticData)
+    {
+      
+        WWWForm form = new WWWForm();
+        Debug.Log(analyticData.basicMeleeKilled);
+        form.AddField("entry.420162231", analyticsManager.roomsCrossed); // finds the appropriate form for the data typed passed into this code
+        form.AddField("entry.100712115", analyticData.basicMeleeKilled);
+        form.AddField("entry.4744759", analyticData.basicRangedKilled);
+        form.AddField("entry.1063026462", analyticData.faceHuggerKilled);
+        form.AddField("entry.1558735003", analyticData.LargeKilled);
+        form.AddField("entry.756172493", analyticData.sporeBomberKilled);
+        form.AddField("entry.1109825951", analyticData.wallGrowthKilled);
+        form.AddField("entry.1896346647", analyticData.droidKilled);
+        form.AddField("entry.1456948801", analyticData.parasiteEggKilled);
+        form.AddField("entry.426456186", analyticData.timeInGame);
+        form.AddField("entry.1975649807", analyticData.allBulletsShot);
+        form.AddField("entry.1218885744", analyticData.boltHits);
+        form.AddField("entry.1493791387", analyticData.subMachineGunBulletsHit);
+        form.AddField("entry.1928014227", analyticData.boltBulletsShot);
+        form.AddField("entry.978007937", analyticData.subMachineGunBulletsShot);
+
+
+       
+
+        UnityWebRequest www = UnityWebRequest.Post(URL, form); // packs data up nicely 
+        www.SendWebRequest();
+       // send(form, www);
+
+         // sends data off 
+    }
+
+
+
+   
+
 
    
 

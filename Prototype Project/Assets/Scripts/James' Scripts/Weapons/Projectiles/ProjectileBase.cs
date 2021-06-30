@@ -48,16 +48,22 @@ public class ProjectileBase : MonoBehaviour
 
 
 
-    enemyCounter  m_enemyCounter;
+    analyticsManager  m_enemyCounter;
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
-        // if(parentGameObject !== enemy){ increment bullets, and pass the parentgameobject as a string into enemyCounter
+    
        
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
-        if (transform.parent.gameObject.transform.parent.tag == "Weapon")
+     
+
+        if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null) // if the analytics manage doesn't exist in the scene doesn't cause an issue
         {
-            m_enemyCounter.bulletCounter(1, transform.parent.gameObject.transform.parent.name);
+            m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // assigns enemycounter to the analytics manager 
+
+            if (transform.parent.gameObject.transform.parent.tag == "Weapon") // checks if the weapon that this projectile is shooting is player controlled
+            {
+                m_enemyCounter.bulletCounter(1, transform.parent.gameObject.transform.parent.name); // increments the counter for bullets shot for specific weapon
+            }
         }
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );

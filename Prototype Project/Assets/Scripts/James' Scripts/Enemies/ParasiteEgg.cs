@@ -10,12 +10,12 @@ public class ParasiteEgg : MonoBehaviour
 
     public AudioClip m_hatchingSound;
 
-    public enemyCounter m_enemyCounter; // Lewis' and James' code
+    public analyticsManager m_enemyCounter; // Lewis' and James' code
 
 
     public void Start()
     {
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
+        m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>();
     }
 
 
