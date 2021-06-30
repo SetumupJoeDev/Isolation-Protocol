@@ -178,7 +178,7 @@ public class EnemyBase : CharacterBase
             m_currentState = enemyStates.chasing;
         }
         //If the enemy is not attacking, their attack coroutine is started
-        else if ( !m_isAttacking )
+        else if ( !m_isAttacking && !m_stunned)
         {
             StartCoroutine( AttackTarget( ) );
             m_isAttacking = true;
@@ -236,9 +236,9 @@ public class EnemyBase : CharacterBase
         float distanceToTarget = Vector3.Distance( transform.position , m_currentTarget.transform.position );
 
         //If the enemy is further from the player than the chase proximity, then they move towards the player
-        if ( distanceToTarget > m_chaseProximity )
+        if ( distanceToTarget > m_chaseProximity && !m_stunned )
         {
-            m_characterRigidBody.velocity = m_directionalVelocity.normalized * m_moveSpeed * Time.deltaTime;
+            m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.deltaTime;
         }
         //Otherwise, if they are closer than the chase proximity, they enter the attacking state and have their velocity set to 0
         else if( distanceToTarget <= m_chaseProximity )

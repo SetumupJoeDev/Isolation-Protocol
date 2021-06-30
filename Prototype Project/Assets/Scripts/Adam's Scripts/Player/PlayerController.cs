@@ -158,11 +158,13 @@ public class PlayerController : CharacterBase
             // Gets mouse position within screen space
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // Calculates mouse direction relative to the player's position
-            m_mouseDirection = mousePos - transform.position;
+            
 
-            if (m_stunned)
+            if (!m_stunned)
             {
+                // Calculates mouse direction relative to the player's position
+                m_mouseDirection = mousePos - transform.position;
+
                 Animate();
                 Dash();
             }
