@@ -53,8 +53,11 @@ public class ProjectileBase : MonoBehaviour
     public virtual void OnEnable()
     {
         // if(parentGameObject !== enemy){ increment bullets, and pass the parentgameobject as a string into enemyCounter
-       
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
+
+        if ( GameObject.Find( "easyName" ).GetComponent<enemyCounter>( ) != null )
+        {
+            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<enemyCounter>( );
+        }
         if (transform.parent.gameObject.transform.parent.tag == "Weapon")
         {
             m_enemyCounter.bulletCounter(1, transform.parent.gameObject.transform.parent.name);

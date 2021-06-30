@@ -20,7 +20,10 @@ public class EnemyHealthManager : HealthManager
     {
         base.Start();
 
-        m_enemyCounter = GameObject.Find("easyName").GetComponent<enemyCounter>();
+        if ( GameObject.Find( "easyName" ).GetComponent<enemyCounter>( ) != null )
+        {
+            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<enemyCounter>( );
+        }
         //Sets the spriteRenderer to be that attached to the gameObject
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         
