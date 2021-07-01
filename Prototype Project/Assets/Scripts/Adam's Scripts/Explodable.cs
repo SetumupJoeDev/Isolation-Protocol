@@ -28,14 +28,24 @@ public class Explodable : MonoBehaviour
     protected void Explode()
     {
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, m_explosionRadius);
-        for (int i = 0; i < hit.Length; i++)
+        if (hit.Length != 0)
         {
-            if(hit[i].CompareTag("Player") || hit[i].CompareTag("Enemy"))
+            for (int i = 0; i < hit.Length; i++)
             {
-                hit[i].gameObject.GetComponent<HealthManager>().TakeDamage(m_damage);
+                if (hit[i].CompareTag("Player") || hit[i].CompareTag("Enemy"))
+                {
+                    hit[i].gameObject.GetComponent<HealthManager>().TakeDamage(m_damage);
+                }
+                else if (hit[i].CompareTag("Explosive"))
+                {
+                    Destroy(gameObject);
+                    hit[i].gameObject.GetComponent<Explodable>().Explode();
+                }
             }
         }
 
+        m_vfx.transform.SetParent(null);
+        m_vfx.Play();
         Destroy(gameObject);
     }
 
@@ -47,7 +57,7 @@ public class Explodable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(CompareTag("Projectile") && m_explodeWhenShot)
+        if(collision.CompareTag("Projectile") && m_explodeWhenShot)
         {
             Explode();
         }
