@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyHealthManager : HealthManager
@@ -12,7 +13,7 @@ public class EnemyHealthManager : HealthManager
     public float m_currentHealthFloat;
     public int number =5;
 
-    public enemyCounter m_enemyCounter; // Lewis' and James' code
+    public analyticsManager m_enemyCounter; // Lewis' and James' code
     public PlayerController m_playerController;
 
 
@@ -20,9 +21,13 @@ public class EnemyHealthManager : HealthManager
     {
         base.Start();
 
-        if ( GameObject.Find( "easyName" ).GetComponent<enemyCounter>( ) != null )
+        try
         {
-            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<enemyCounter>( );
+            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<analyticsManager>( );
+        }
+        catch(NullReferenceException e )
+        {
+            Debug.LogWarning( "Couldn't find an Analytics Manager in the scene." );
         }
         //Sets the spriteRenderer to be that attached to the gameObject
         m_spriteRenderer = GetComponent<SpriteRenderer>();
@@ -47,7 +52,10 @@ public class EnemyHealthManager : HealthManager
     }
     public override void TakeDamage( int damage )
     {
-        m_enemyCounter.bulletsHit++;
+        if ( m_enemyCounter != null )
+        {
+            m_enemyCounter.bulletsHit++;
+        }
        // m_playerController.m_currentWeapon.name
         // pass in the gameobject which is active 
 

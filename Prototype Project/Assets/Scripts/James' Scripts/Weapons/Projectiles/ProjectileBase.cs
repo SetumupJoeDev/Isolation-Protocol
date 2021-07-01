@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
@@ -48,15 +49,20 @@ public class ProjectileBase : MonoBehaviour
 
 
 
-    enemyCounter  m_enemyCounter;
+    public analyticsManager  m_enemyCounter;
+
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
         // if(parentGameObject !== enemy){ increment bullets, and pass the parentgameobject as a string into enemyCounter
 
-        if ( GameObject.Find( "easyName" ).GetComponent<enemyCounter>( ) != null )
+        try
         {
-            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<enemyCounter>( );
+            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<analyticsManager>( );
+        }
+        catch(NullReferenceException e)
+        {
+
         }
         if (transform.parent.gameObject.transform.parent.tag == "Weapon")
         {
