@@ -13,6 +13,8 @@ public class SporeBomber : EnemyBase
     [Tooltip("The GameObject with an attached particle system that will play the spore explosion effect.")]
     public GameObject m_explosionParticles;
 
+    public bool m_isDetonating;
+
     public override IEnumerator AttackTarget( )
     {
         Die( );
@@ -25,13 +27,21 @@ public class SporeBomber : EnemyBase
     public override void Die( )
     {
 
-        Detonate( );
+        if ( !m_isDetonating )
+        {
 
-        base.Die( );
+            Detonate( );
+
+            base.Die( );
+
+        }
     }
 
     public void Detonate( )
     {
+
+        m_isDetonating = true;
+
         //Sets the transform parent of the particle explosion to null so that the object isn't destroyed with the enemy itself
         m_explosionParticles.transform.SetParent( null );
 

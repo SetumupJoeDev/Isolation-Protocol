@@ -86,9 +86,7 @@ public class ProjectileBase : MonoBehaviour
         //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( m_projectileLifetime );
 
-        transform.SetParent( m_parentTransform );
-
-        gameObject.SetActive( false );
+        DisableProjectile( );
 
     }
 
@@ -121,9 +119,7 @@ public class ProjectileBase : MonoBehaviour
             //If this projectile has reached its enemy limit, it is destroyed
             if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
             {
-                transform.SetParent( m_parentTransform );
-
-                gameObject.SetActive( false );
+                DisableProjectile( );
             }
             //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
             else
@@ -135,10 +131,18 @@ public class ProjectileBase : MonoBehaviour
         //Otherwise, the projectile is disabled
         else
         {
-            transform.SetParent( m_parentTransform );
-
-            gameObject.SetActive( false );
+            DisableProjectile( );
         }
+    }
+
+    public void DisableProjectile( )
+    {
+
+        m_previouslyDamageEnemy = null;
+
+        transform.SetParent( m_parentTransform );
+
+        gameObject.SetActive( false );
     }
 
     // Update is called once per frame
