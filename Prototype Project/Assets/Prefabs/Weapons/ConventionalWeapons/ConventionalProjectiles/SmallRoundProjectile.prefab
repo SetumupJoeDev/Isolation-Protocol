@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 495836718986814286}
   m_Layer: 0
   m_Name: SmallRoundProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   m_maxDamagedEnemies: 1
   m_currentDamagedEnemies: 0
   m_previouslyDamageEnemy: {fileID: 0}
+  m_enemyCounter: {fileID: 0}
 --- !u!212 &4335226205753139954
 SpriteRenderer:
   m_ObjectHideFlags: 0

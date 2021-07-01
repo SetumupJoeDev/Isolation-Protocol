@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7532727169299217457}
   m_Layer: 9
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,10 +98,12 @@ MonoBehaviour:
   m_projectileVelocity: {x: 0, y: 0}
   m_projectileSpeed: 65
   m_projectileLifetime: 5
+  m_projectileRigidBody: {fileID: 0}
   m_projectileDamage: 5
   m_maxDamagedEnemies: 1
   m_currentDamagedEnemies: 0
   m_previouslyDamageEnemy: {fileID: 0}
+  m_enemyCounter: {fileID: 0}
 --- !u!61 &7532727169299217457
 BoxCollider2D:
   m_ObjectHideFlags: 0
