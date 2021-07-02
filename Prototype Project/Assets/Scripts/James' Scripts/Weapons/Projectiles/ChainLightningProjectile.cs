@@ -23,7 +23,7 @@ public class ChainLightningProjectile : ProjectileBase
         base.OnEnable( );
 
         //Sets the length of the previouslyDamagedEnemies array to the maximum number of enemies this projectile can damage
-        m_previouslyDamagedEnemies = new GameObject[m_maxDamagedEnemies];
+        m_previouslyDamagedEnemies = new GameObject[m_maxDamagedTargets];
 
     }
 
@@ -51,7 +51,7 @@ public class ChainLightningProjectile : ProjectileBase
         Collider2D[] foundTargets = Physics2D.OverlapCircleAll(transform.position, m_leapRange, m_enemyLayer );
 
         //If the circle finds an enemy and it is not the previously damaged enemy, or if it finds more than one enemy, it filters to find the closest
-        if ( foundTargets.Length == 1 && foundTargets[0].gameObject != m_previouslyDamageEnemy || foundTargets.Length > 1 ) 
+        if ( foundTargets.Length == 1 && foundTargets[0].gameObject != m_previouslyDamageTarget || foundTargets.Length > 1 ) 
         {
             FilterPreviousTargets( foundTargets ); 
         }
@@ -94,7 +94,7 @@ public class ChainLightningProjectile : ProjectileBase
         }
 
         //If the list has one entry that isn't the previously damaged enemy, or there are multiple targets, then the closest target is found
-        if ( refinedTargetList.Count == 1 && refinedTargetList[0] != m_previouslyDamageEnemy || refinedTargetList.Count > 1 )
+        if ( refinedTargetList.Count == 1 && refinedTargetList[0] != m_previouslyDamageTarget || refinedTargetList.Count > 1 )
         {
             FindClosestTarget( refinedTargetList );
         }

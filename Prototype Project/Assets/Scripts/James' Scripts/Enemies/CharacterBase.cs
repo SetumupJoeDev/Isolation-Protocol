@@ -21,6 +21,8 @@ public class CharacterBase : MonoBehaviour
     [Tooltip("The rigidbody component attached to the character. Used to add physical forces.")]
     public Rigidbody2D m_characterRigidBody;
 
+    public bool m_slowedByHazard;
+
     [Space]
 
     #endregion
@@ -125,6 +127,21 @@ public class CharacterBase : MonoBehaviour
             //Moves the character by their directional velocity and speed
             m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
         }
+    }
+
+    public virtual IEnumerator TemporarySlowness( float slownessDuration = 1.0f, float slownessAmount = -100.0f )
+    {
+
+        m_slowedByHazard = true;
+
+        m_slowness += slownessAmount;
+
+        yield return new WaitForSeconds( slownessDuration );
+
+        m_slowness -= slownessAmount;
+
+        m_slowedByHazard = false;
+
     }
 
     // Adam's code

@@ -35,13 +35,13 @@ public class ProjectileBase : MonoBehaviour
     public int m_projectileDamage;
 
     [Tooltip("The total number of enemies that this projectile can damage.")]
-    public int m_maxDamagedEnemies;
+    public int m_maxDamagedTargets;
 
     [Tooltip("The current number of enemies that this projectile has damaged.")]
-    public int m_currentDamagedEnemies;
+    public int m_currentDamagedTargets;
 
     [Tooltip("The previously damaged enemy. Used to prevent multiple damage calls on one enemy.")]
-    public GameObject m_previouslyDamageEnemy;
+    public GameObject m_previouslyDamageTarget;
 
     #endregion
 
@@ -104,27 +104,24 @@ public class ProjectileBase : MonoBehaviour
 
     public virtual void CollideWithObject( Collider2D collision )
     {
-        //If the object the projectile collided with has a health manager and isn't the previously damaged enemy, then they take damage
-        if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageEnemy )
+        //If the object the projectile collided with has a health manager and isn't the previously damaged object, then they take damage
+        if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageTarget )
         {
             
-            
-
             collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
            
+            //The value of currentDamagedTargets is incrememented to keep track of how many more objects this projectile can damage
+            m_currentDamagedTargets++;
 
-            //The value of currentDamagedEnemies is incrememented to keep track of how many more enemies this projectile can damage
-            m_currentDamagedEnemies++;
-
-            //If this projectile has reached its enemy limit, it is destroyed
-            if ( m_currentDamagedEnemies >= m_maxDamagedEnemies )
+            //If this projectile has reached its target limit, it is destroyed
+            if ( m_currentDamagedTargets >= m_maxDamagedTargets )
             {
                 DisableProjectile( );
             }
-            //Otherwise, the previouslyDamagedEnemy is set as the enemy the projectile just collided with
+            //Otherwise, the previouslyDamagedTarget is set as the object the projectile just collided with
             else
             {
-                m_previouslyDamageEnemy = collision.gameObject;
+                m_previouslyDamageTarget = collision.gameObject;
             }
 
         }
@@ -135,10 +132,10 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
-    public void DisableProjectile( )
+    public virtual void DisableProjectile( )
     {
 
-        m_previouslyDamageEnemy = null;
+        m_previouslyDamageTarget = null;
 
         transform.SetParent( m_parentTransform );
 
