@@ -9,7 +9,7 @@ public class GameStartDoor : InteractableObject
     public override void Activated( )
     {
         //Loads the 1st level
-        SceneManager.LoadScene( "Level 1" );
+        SceneManager.LoadScene( "Player Name Screen" );
     }
 
 }

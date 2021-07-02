@@ -11,11 +11,12 @@ public class email : MonoBehaviour
 
     string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScryss7QVf9Vv5Ab45uzcHDfjKaihY-efWtNNcIrtUwpbmI6A/formResponse";
  public analyticsManager m_enemyCounter;
+    public playTestEnable m_playTestEnable;
     int testValue = 5;
 
     float currentTime = 0;
     string timeInGame;
-   public WWWForm Workingform; 
+
     
     void Start()
     {
@@ -25,6 +26,10 @@ public class email : MonoBehaviour
             m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // finds the gameobject that stores important game data 
         }
 
+        if (GameObject.Find("playTesterName").GetComponent<playTestEnable>() != null)
+        {
+            m_playTestEnable = GameObject.Find("playTesterName").GetComponent<playTestEnable>();
+        }
 
         //StartCoroutine(Post(testValue)); // Begins the process to send off the important game data 
     }
@@ -55,6 +60,7 @@ public class email : MonoBehaviour
         form.AddField("entry.1493791387", analyticData.subMachineGunBulletsHit);
         form.AddField("entry.1928014227", analyticData.boltBulletsShot);
         form.AddField("entry.978007937", analyticData.subMachineGunBulletsShot);
+        form.AddField("entry.1613226958",playTestEnable.m_playerName);
 
 
        
