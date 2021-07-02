@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class analyticsManager : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class analyticsManager : MonoBehaviour
     public string timeInGame;
 
     public email email;
- 
+    
+
+    public bool isPlaytester = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -37,20 +40,32 @@ public class analyticsManager : MonoBehaviour
         if (GameObject.Find("easyName").GetComponent<email>() != null)
         {
             email = GameObject.Find("easyName").GetComponent<email>();
-            
+           
         }
+
+     
         
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+         
+    
+        isPlaytester = true;
+        playTestEnable.m_isPlaytester = true;
 
 
+    }
 
 
 
 public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
     {
-        email.superiorMethod(this);
-        Debug.Log("death works");
+        if (isPlaytester == true)
+        {
+            email.superiorMethod(this);
+            Debug.Log("death works");
+        }
     }
 
     public void bulletCounter(int number, string name)
