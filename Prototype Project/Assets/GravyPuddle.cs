@@ -23,7 +23,7 @@ public class GravyPuddle : MonoBehaviour
 
         if ( affectedCharacter != null && !affectedCharacter.m_slowedByHazard )
         {
-            StartCoroutine( collision.GetComponent<CharacterBase>( ).TemporarySlowness( m_slownessDuration , m_speedDebuff ) );
+            StartCoroutine( affectedCharacter.TemporarySlowness( m_slownessDuration , m_speedDebuff ) );
         }
     }
 
