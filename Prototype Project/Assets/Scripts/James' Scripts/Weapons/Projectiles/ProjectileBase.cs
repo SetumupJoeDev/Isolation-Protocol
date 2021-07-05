@@ -94,7 +94,7 @@ public class ProjectileBase : MonoBehaviour
     {
         CollideWithObject( collision );
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && m_enemyCounter != null )
         {
 
             m_enemyCounter.bulletHitCounter(transform.parent.gameObject.transform.parent.name,collision.gameObject.name);

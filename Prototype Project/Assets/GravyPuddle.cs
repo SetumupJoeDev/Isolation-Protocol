@@ -24,6 +24,12 @@ public class GravyPuddle : MonoBehaviour
         if ( affectedCharacter != null && !affectedCharacter.m_slowedByHazard )
         {
             StartCoroutine( affectedCharacter.TemporarySlowness( m_slownessDuration , m_speedDebuff ) );
+
+            if( affectedCharacter.GetComponent<PlayerController>() != null )
+            {
+                StartCoroutine( affectedCharacter.GetComponent<PlayerController>( ).DisableDash( m_slownessDuration ) );
+            }
+
         }
     }
 

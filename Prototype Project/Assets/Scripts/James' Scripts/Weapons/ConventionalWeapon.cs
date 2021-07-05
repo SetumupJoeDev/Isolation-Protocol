@@ -30,6 +30,10 @@ public class ConventionalWeapon : GunBase
     [Tooltip("The number of projectiles fired each time this weapon fires. Should be left at 0 if this is not a burst fire weapon.")]
     protected uint m_projectilesPerShot;
 
+    [SerializeField]
+    [Tooltip("The amount of ammo consumed by the weapon each time it fires. For burst fire weapons, this should be equal to Projectiles Per Shot.")]
+    protected uint m_ammoConsumedPerShot;
+
     [Tooltip("The muzzle flash particle system attached to this weapon.")]
     public ParticleSystem m_muzzleFlash;
 
@@ -76,11 +80,6 @@ public class ConventionalWeapon : GunBase
             //Sets the new projectile's physics layer to 9, the PlayerProjectile layer, so that it will collide with enemies but not the player
             newBullet.gameObject.layer = 9;
 
-            //Reduces the current ammo in the magazine by one
-            m_currentMagAmmo--;
-
-            //Updates the UI elements to reflect the new ammo levels
-            UpdateUIElements( );
 
             if ( m_fireSound.loop && !m_fireSound.isPlaying || !m_fireSound.loop )
             {
@@ -95,6 +94,12 @@ public class ConventionalWeapon : GunBase
             yield return new WaitForSeconds( m_burstFireDelay );
 
         }
+
+        //Reduces the amount of ammo in the weapon by the value of ammoConsumedPerShot
+        m_currentMagAmmo -= m_ammoConsumedPerShot;
+
+        //Updates the UI elements to reflect the new ammo levels
+        UpdateUIElements( );
 
         //Adds a short delay between firing each projectile, so they aren't all fired at once
         yield return new WaitForSeconds( m_fireInterval );
@@ -117,7 +122,7 @@ public class ConventionalWeapon : GunBase
     public override void FireWeapon( )
     {
         //If the weapon can fire and has sufficient ammo to do so, the firing coroutine is started
-        if ( m_isWeaponFiring && (int)m_currentMagAmmo - m_projectilesPerShot >= 0 )
+        if ( m_isWeaponFiring && (int)m_currentMagAmmo - m_ammoConsumedPerShot >= 0 )
         {
             StartCoroutine( FireProjectiles( ) );
         }

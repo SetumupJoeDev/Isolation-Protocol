@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fireSound: {fileID: 7467944668168535693}
-  m_canWeaponFire: 1
+  m_isWeaponFiring: 0
   m_barrelTransform: {fileID: 7467944668607615446}
   m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 1.5
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_magCapacity: 5
   m_currentMagAmmo: 5
   m_maxAmmoCapacity: 20
-  m_currentCarriedAmmo: 20
+  m_currentCarriedAmmo: 7
   m_magazineUIText: {fileID: 0}
   m_totalAmmoText: {fileID: 0}
   m_reloadingCanvas: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 3636057078485371506}
   - {fileID: 3550493419211201099}
   m_projectilesPerShot: 1
+  m_ammoConsumedPerShot: 1
   m_muzzleFlash: {fileID: 4779349708384708156}
   m_maxSpreadValue: 0.1
   m_minSpreadValue: -0.1
@@ -822,6 +823,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2464270427748468649}
     m_Modifications:
+    - target: {fileID: -4263929676417262245, guid: 6ff51748b4e6b5243ad23c387ddf91dc,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 748496678482046455, guid: 6ff51748b4e6b5243ad23c387ddf91dc,
         type: 3}
       propertyPath: m_Name

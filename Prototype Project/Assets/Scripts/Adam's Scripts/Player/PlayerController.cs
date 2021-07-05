@@ -340,6 +340,16 @@ public class PlayerController : CharacterBase
         m_hud.m_dashOnCooldown = false;
     }
 
+    public IEnumerator DisableDash( float disableDuration )
+    {
+        m_canDash = false;
+
+        yield return new WaitForSeconds( disableDuration );
+
+        m_canDash = true;
+
+    }
+
     //James' Work
     public bool AttachNewSlug( GameObject newSlug )
     {

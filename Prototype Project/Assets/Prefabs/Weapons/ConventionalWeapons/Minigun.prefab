@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6652428113391180010
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6652428113391180013}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5609808, y: 0.66600704, z: -5.3632812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,13 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fireSound: {fileID: 6652428113391180022}
-  m_canWeaponFire: 1
+  m_isWeaponFiring: 0
   m_barrelTransform: {fileID: 6652428114070059205}
   m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 0
   m_reloadSound: {fileID: 6652428113391180009}
   m_magCapacity: 500
-  m_currentMagAmmo: 500
+  m_currentMagAmmo: 100
   m_maxAmmoCapacity: 500
   m_currentCarriedAmmo: 500
   m_magazineUIText: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   - {fileID: 1293019806196654591}
   - {fileID: 1293019806728383370}
   m_projectilesPerShot: 1
+  m_ammoConsumedPerShot: 1
   m_muzzleFlash: {fileID: 5054079212754128574}
   m_maxSpreadValue: 0.75
   m_minSpreadValue: -0.75
