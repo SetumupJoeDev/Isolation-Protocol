@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class Explodable : MonoBehaviour
 {
+    [Tooltip("Damage to be applied to whatever is hit")]
     [SerializeField]
     protected int            m_damage;
+    
+    [Tooltip("Whether or not it should explode when hit by a projectile")]
     [SerializeField]
     protected bool           m_explodeWhenShot;
+    
+    [Tooltip("Whether or not it should explode on a timer")]
     [SerializeField]
     protected bool           m_timed;
+    
+    [Tooltip("The amount of time after which it will explode in seconds")]
     [SerializeField]
     protected float          m_timer;
+    
+    [Tooltip("The radius of the explosion")]
     [SerializeField]
     protected float          m_explosionRadius;
+    
+    [Tooltip("The explosion effect particle system")]
     [SerializeField]
     protected ParticleSystem m_vfx;
 
