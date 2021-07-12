@@ -243,7 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5669d3293b136c54684cc3f305a1db99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActivated: 0
+  m_playerNameScreenText: {fileID: 0}
+  m_finalDisplayPlayerName: {fileID: 0}
+  m_isActivated: 0
 --- !u!114 &212548990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,12 +349,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5104504200478145206, guid: 4f52142f0f02a4141aa05c9b401a8717,
     type: 3}
   m_PrefabInstance: {fileID: 503715748}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &329616735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7467944668168535690, guid: 2cd8332aa3acd134da97c7bf68fc1048,
-    type: 3}
-  m_PrefabInstance: {fileID: 1628702150}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &479734844
 PrefabInstance:
@@ -2515,7 +2511,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_carriedWeapons.Array.data[1]
       value: 
-      objectReference: {fileID: 329616735}
+      objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder

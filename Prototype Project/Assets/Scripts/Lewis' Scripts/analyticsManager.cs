@@ -28,8 +28,14 @@ public class analyticsManager : MonoBehaviour
     public float currentTime = 0f;
     public string timeInGame;
 
+    public int ciggiesTotal;
+    public int fabricatorFuelTotal;
+    public int ciggiesCurrent;
+    public int fabricatorFuelCurrent;
+
     public email email;
-    
+
+    public CurrencyManager currencyManager; 
 
     public bool isPlaytester = false; 
 
@@ -42,7 +48,10 @@ public class analyticsManager : MonoBehaviour
             email = GameObject.Find("easyName").GetComponent<email>();
            
         }
-
+        if (GameObject.Find("Player").GetComponent<CurrencyManager>() != null)
+        {
+            currencyManager = GameObject.Find("Player").GetComponent<CurrencyManager>();
+        }
      
         
     }
@@ -61,6 +70,10 @@ public class analyticsManager : MonoBehaviour
 
 public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
     {
+        ciggiesCurrent = currencyManager.m_cigarettePacksCount;
+        ciggiesTotal = currencyManager.m_TotalCigarettePacksCount;
+        fabricatorFuelCurrent = currencyManager.m_fabricatorFuelCount;
+        fabricatorFuelTotal = currencyManager.m_totalFabricatorFuelCount;
         if (isPlaytester == true)
         {
             email.superiorMethod(this);

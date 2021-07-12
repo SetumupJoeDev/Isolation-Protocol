@@ -9,6 +9,7 @@ public class CigarettePacket : CurrencyBase
     {
         //Increases the player's cigarette count by one and destroys the gameObject
         player.m_currencyManager.m_cigarettePacksCount++;
+        player.m_currencyManager.m_TotalCigarettePacksCount++;
         base.GetCollected( player );
     }
 
