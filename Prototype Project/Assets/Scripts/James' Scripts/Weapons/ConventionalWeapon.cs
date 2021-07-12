@@ -71,27 +71,32 @@ public class ConventionalWeapon : GunBase
                 }
             }
 
-            //Alters the value of the aiming direction vector slightly to simulate spread
-            m_aimingDirection = GenerateBulletSpread( );
-
-            //Sets the projectiles velocity to the aiming direction of the weapon
-            newBullet.m_projectileVelocity = m_aimingDirection;
-
-            //Sets the new projectile's physics layer to 9, the PlayerProjectile layer, so that it will collide with enemies but not the player
-            newBullet.gameObject.layer = 9;
-
-
-            if ( m_fireSound.loop && !m_fireSound.isPlaying || !m_fireSound.loop )
+            if ( newBullet != null )
             {
-                //Play's the weapon's firing sound
-                m_fireSound.Play( );
+
+                //Alters the value of the aiming direction vector slightly to simulate spread
+                m_aimingDirection = GenerateBulletSpread( );
+
+                //Sets the projectiles velocity to the aiming direction of the weapon
+                newBullet.m_projectileVelocity = m_aimingDirection;
+
+                //Sets the new projectile's physics layer to 9, the PlayerProjectile layer, so that it will collide with enemies but not the player
+                newBullet.gameObject.layer = 9;
+
+
+                if ( m_fireSound.loop && !m_fireSound.isPlaying || !m_fireSound.loop )
+                {
+                    //Play's the weapon's firing sound
+                    m_fireSound.Play( );
+                }
+
+                //Plays the muzzle flash visual effects
+                m_muzzleFlash.Play( );
+
+                //Waits for the duration of the burst fire delay before firing again
+                yield return new WaitForSeconds( m_burstFireDelay );
+
             }
-
-            //Plays the muzzle flash visual effects
-            m_muzzleFlash.Play( );
-
-            //Waits for the duration of the burst fire delay before firing again
-            yield return new WaitForSeconds( m_burstFireDelay );
 
         }
 

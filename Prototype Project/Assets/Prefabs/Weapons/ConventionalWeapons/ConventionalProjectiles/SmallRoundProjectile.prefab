@@ -51,9 +51,12 @@ MonoBehaviour:
   m_projectileLifetime: 0
   m_projectileRigidBody: {fileID: 495836718986814286}
   m_projectileDamage: 1
-  m_maxDamagedEnemies: 1
-  m_currentDamagedEnemies: 0
-  m_previouslyDamageEnemy: {fileID: 0}
+  m_maxDamagedTargets: 0
+  m_currentDamagedTargets: 0
+  m_previouslyDamageTarget: {fileID: 0}
+  m_wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   m_enemyCounter: {fileID: 0}
 --- !u!212 &4335226205753139954
 SpriteRenderer:

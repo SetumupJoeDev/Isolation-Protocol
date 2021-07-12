@@ -43,10 +43,9 @@ public class ProjectileBase : MonoBehaviour
     [Tooltip("The previously damaged enemy. Used to prevent multiple damage calls on one enemy.")]
     public GameObject m_previouslyDamageTarget;
 
+    public LayerMask m_wallLayer;
+
     #endregion
-
-
-
 
 
     public analyticsManager  m_enemyCounter;
@@ -74,17 +73,17 @@ public class ProjectileBase : MonoBehaviour
         //If the projectile has a set lifetime, the WaitToDestroy coroutine is started
         if ( m_projectileLifetime != 0 )
         {
-            StartCoroutine( WaitToDisable( ) );
+            StartCoroutine( WaitToDisable( m_projectileLifetime ) );
         }
 
         m_parentTransform = transform.parent;
 
     }
 
-    public IEnumerator WaitToDisable()
+    public virtual IEnumerator WaitToDisable( float lifetime )
     {
         //Waits for the duration of the projectile's lifetime before being destroyed
-        yield return new WaitForSeconds( m_projectileLifetime );
+        yield return new WaitForSeconds( lifetime );
 
         DisableProjectile( );
 
@@ -107,29 +106,43 @@ public class ProjectileBase : MonoBehaviour
         //If the object the projectile collided with has a health manager and isn't the previously damaged object, then they take damage
         if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageTarget )
         {
-            
-            collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
-           
-            //The value of currentDamagedTargets is incrememented to keep track of how many more objects this projectile can damage
-            m_currentDamagedTargets++;
 
-            //If this projectile has reached its target limit, it is destroyed
-            if ( m_currentDamagedTargets >= m_maxDamagedTargets )
-            {
-                DisableProjectile( );
-            }
-            //Otherwise, the previouslyDamagedTarget is set as the object the projectile just collided with
-            else
-            {
-                m_previouslyDamageTarget = collision.gameObject;
-            }
+            CollideWithTarget( collision );
 
+        }
+        else if( LayerMask.LayerToName( collision.gameObject.layer ) == "Walls" )
+        {
+            CollideWithWall( collision );
         }
         //Otherwise, the projectile is disabled
         else
         {
+            Debug.LogWarning( "No logic written for current collision. " + collision.gameObject.name + " was hit by " + gameObject.name );
+        }
+    }
+
+    public virtual void CollideWithTarget( Collider2D collision )
+    {
+        collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
+
+        //The value of currentDamagedTargets is incrememented to keep track of how many more objects this projectile can damage
+        m_currentDamagedTargets++;
+
+        //If this projectile has reached its target limit, it is destroyed
+        if ( m_currentDamagedTargets >= m_maxDamagedTargets )
+        {
             DisableProjectile( );
         }
+        //Otherwise, the previouslyDamagedTarget is set as the object the projectile just collided with
+        else
+        {
+            m_previouslyDamageTarget = collision.gameObject;
+        }
+    }
+
+    public virtual void CollideWithWall( Collider2D collision )
+    {
+        DisableProjectile( );
     }
 
     public virtual void DisableProjectile( )

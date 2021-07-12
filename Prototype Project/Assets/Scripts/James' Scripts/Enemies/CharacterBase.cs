@@ -129,14 +129,18 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
-    public virtual IEnumerator TemporarySlowness( float slownessDuration = 1.0f, float slownessAmount = -100.0f )
+    public virtual IEnumerator TemporarySlowness( float slownessDuration, float slownessAmount )
     {
+
+        Debug.Log( "Entering slowness! Duration: " + slownessDuration + "Amount: " + slownessAmount );
 
         m_slowedByHazard = true;
 
         m_slowness += slownessAmount;
 
         yield return new WaitForSeconds( slownessDuration );
+
+        Debug.Log( "Leaving slowness!" );
 
         m_slowness -= slownessAmount;
 

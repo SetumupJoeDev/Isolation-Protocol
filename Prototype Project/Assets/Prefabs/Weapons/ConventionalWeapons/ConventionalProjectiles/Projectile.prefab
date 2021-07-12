@@ -100,9 +100,12 @@ MonoBehaviour:
   m_projectileLifetime: 5
   m_projectileRigidBody: {fileID: 0}
   m_projectileDamage: 5
-  m_maxDamagedEnemies: 1
-  m_currentDamagedEnemies: 0
-  m_previouslyDamageEnemy: {fileID: 0}
+  m_maxDamagedTargets: 0
+  m_currentDamagedTargets: 0
+  m_previouslyDamageTarget: {fileID: 0}
+  m_wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   m_enemyCounter: {fileID: 0}
 --- !u!61 &7532727169299217457
 BoxCollider2D:
