@@ -29,6 +29,7 @@ public class AmalgamEnemy : EnemyBase
 
     private void Start( )
     {
+
         m_shockwave = GetComponent<Shockwave>( );
     }
 

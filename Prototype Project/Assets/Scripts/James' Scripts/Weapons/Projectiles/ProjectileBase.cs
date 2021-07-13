@@ -53,7 +53,6 @@ public class ProjectileBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
-        // if(parentGameObject !== enemy){ increment bullets, and pass the parentgameobject as a string into enemyCounter
 
         try
         {
@@ -65,7 +64,7 @@ public class ProjectileBase : MonoBehaviour
         }
         if (transform.parent.gameObject.transform.parent.tag == "Weapon")
         {
-            m_enemyCounter.bulletCounter(1, transform.parent.gameObject.transform.parent.name);
+            m_enemyCounter.bulletCounter (transform.parent.gameObject.transform.parent.name);
         }
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
@@ -96,7 +95,7 @@ public class ProjectileBase : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && m_enemyCounter != null )
         {
 
-            m_enemyCounter.bulletHitCounter(transform.parent.gameObject.transform.parent.name,collision.gameObject.name);
+            m_enemyCounter.bulletHitCounter(transform.parent.gameObject.transform.parent.name);
         }
        
     }
