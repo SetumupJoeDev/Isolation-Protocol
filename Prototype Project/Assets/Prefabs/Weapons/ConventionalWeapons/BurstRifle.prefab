@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fireSound: {fileID: 7467944668168535693}
-  m_canWeaponFire: 0
+  m_isWeaponFiring: 0
   m_barrelTransform: {fileID: 7467944668607615446}
   m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 1.5
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_totalAmmoText: {fileID: 0}
   m_reloadingCanvas: {fileID: 0}
   m_reloadingBar: {fileID: 0}
-  m_baseShopValue: 0
+  m_baseShopValue: 30
   m_fabricatorStorePrice: 0
   m_weaponFireMode: 0
   m_fireInterval: 0.65
@@ -173,6 +173,7 @@ MonoBehaviour:
   - {fileID: 8563497350208999256}
   - {fileID: 5635906264727486792}
   m_projectilesPerShot: 3
+  m_ammoConsumedPerShot: 0
   m_muzzleFlash: {fileID: 748220906709682952}
   m_maxSpreadValue: 0.5
   m_minSpreadValue: -0.5

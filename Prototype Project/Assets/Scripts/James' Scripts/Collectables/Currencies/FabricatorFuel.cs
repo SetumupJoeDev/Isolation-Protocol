@@ -9,6 +9,7 @@ public class FabricatorFuel : CurrencyBase
     {
         //Increases the number of fabricator fuel the player has collected and then destroys the object
         player.m_currencyManager.m_fabricatorFuelCount++;
+        player.m_currencyManager.m_totalFabricatorFuelCount++;
         base.GetCollected( player );
     }
 

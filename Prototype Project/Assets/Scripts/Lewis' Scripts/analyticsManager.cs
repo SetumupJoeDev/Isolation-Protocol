@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
+
+// TODO -- Gun switch statements need to be updated with new weapons, add shop and drone feedback, add enemyCounter values, 
 public class analyticsManager : MonoBehaviour
 {
     public int basicMeleeKilled = 0;
@@ -28,10 +31,18 @@ public class analyticsManager : MonoBehaviour
     public float currentTime = 0f;
     public string timeInGame;
 
-    public email email;
-    
+    public int ciggiesTotal;
+    public int fabricatorFuelTotal;
+    public int ciggiesCurrent;
+    public int fabricatorFuelCurrent;
 
-    public bool isPlaytester = false; 
+    public email email;
+
+    public CurrencyManager currencyManager; 
+
+    public bool isPlaytester = false;
+
+    public string activeScene; 
 
     // Start is called before the first frame update
     void Start()
@@ -42,33 +53,70 @@ public class analyticsManager : MonoBehaviour
             email = GameObject.Find("easyName").GetComponent<email>();
            
         }
+        if (GameObject.Find("Player").GetComponent<CurrencyManager>() != null)
+        {
+            currencyManager = GameObject.Find("Player").GetComponent<CurrencyManager>();
+        }
 
-     
+        SceneManager.sceneLoaded += onSceneLoaded; 
+    }
+   
+    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        packInformation();
+
+        if (isPlaytester == true)
+        {
+            email.superiorMethod(this);
+        }
         
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-         
+        
     
         isPlaytester = true;
         playTestEnable.m_isPlaytester = true;
 
+        // call countenemy();
 
     }
 
 
+    public void packInformation()
+    {
+        ciggiesCurrent = currencyManager.m_cigarettePacksCount;
+        ciggiesTotal = currencyManager.m_TotalCigarettePacksCount;
+        fabricatorFuelCurrent = currencyManager.m_fabricatorFuelCount;
+        fabricatorFuelTotal = currencyManager.m_totalFabricatorFuelCount;
+        activeScene = SceneManager.GetActiveScene().name;
+    }
+
 
 public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
     {
+       
+
+
         if (isPlaytester == true)
         {
+            packInformation();
+
             email.superiorMethod(this);
             Debug.Log("death works");
         }
     }
 
-    public void bulletCounter(int number, string name)
+    public void itemBroughtCounter (string name)
+    {
+        // fabricatorStoreBase.buyselecteditem() runs this switch statement, passes in m_selectedItemIndex and increments this item brought
+    }
+
+
+
+    public void bulletCounter(string name) // ProjectileBase script passes values into this switch statemtent and calls it whenever it's enabled
     {
        
         switch (name)
@@ -87,7 +135,8 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         }
     }
 
-    public void bulletHitCounter(string name, string enemyName)
+    public void bulletHitCounter(string name)
+    // ProjectileBase script passes values into this switch statemtent and calls it whenever it's collides with an enemy
     {
         switch (name)
         {
@@ -104,8 +153,19 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
 
     }
 
+    public void enemyCounterSwitch(string name)
+    {
+        switch (name)
+        {
+            case "BasicRangedEnemy(Clone)":
+                Debug.Log(name);
+                break;
+        }
+    }
+
+    
     // Update is called once per frame
-    void Update() // whole update method is a test to see if the email system works. 
+    void Update()  
     {
 
         currentTime += 1 * Time.deltaTime;
@@ -161,4 +221,7 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
 
         }
     }
+
+   
+   
 }

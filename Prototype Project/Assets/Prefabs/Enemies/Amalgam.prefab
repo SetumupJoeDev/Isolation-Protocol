@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 966570563917422946}
   - component: {fileID: 966570563917422947}
   m_Layer: 11
-  m_Name: LargeEnemy
+  m_Name: Amalgam
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,14 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd939f2e94d7ee547a45993fa636bf1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 90
+  m_moveSpeed: 80
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 966570563917422946}
+  m_slowedByHazard: 0
   m_healthManager: {fileID: 966570563917422949}
   m_knockbackDuration: 0
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
+  m_slowness: 0
+  m_stunned: 0
+  m_stunDuration: 0
+  m_stunIcon: {fileID: 0}
   m_detectionRange: 13
   m_playerLayer:
     serializedVersion: 2
@@ -189,6 +194,9 @@ MonoBehaviour:
   m_damagedAmount: 0
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
+  number: 5
+  m_enemyCounter: {fileID: 0}
+  m_playerController: {fileID: 0}
 --- !u!95 &966570563917422953
 Animator:
   serializedVersion: 3

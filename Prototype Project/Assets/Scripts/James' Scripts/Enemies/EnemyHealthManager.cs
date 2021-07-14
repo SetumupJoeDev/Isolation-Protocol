@@ -19,13 +19,15 @@ public class EnemyHealthManager : HealthManager
 
     public override void Start()
     {
-        base.Start();
+       
 
         try
         {
             m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<analyticsManager>( );
+            m_enemyCounter.enemyCounterSwitch(gameObject.name);
+
         }
-        catch(NullReferenceException e )
+        catch (NullReferenceException e )
         {
             Debug.LogWarning( "Couldn't find an Analytics Manager in the scene." );
         }

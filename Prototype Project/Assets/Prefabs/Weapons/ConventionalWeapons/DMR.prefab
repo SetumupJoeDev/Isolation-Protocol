@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7033357605847292055}
-  - component: {fileID: 7033357605847292054}
+  - component: {fileID: 2773790075437603379}
   m_Layer: 0
   m_Name: DMR
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7033357605847292054
+--- !u!114 &2773790075437603379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,31 +75,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fireSound: {fileID: 0}
-  m_canWeaponFire: 0
-  m_barrelTransform: {fileID: 0}
+  m_fireSound: {fileID: 2865293942160903461, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_isWeaponFiring: 0
+  m_barrelTransform: {fileID: 6944894975935554581, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
   m_aimingDirection: {x: 0, y: 0, z: 0}
-  m_reloadTime: 1.75
-  m_reloadSound: {fileID: 0}
-  m_magCapacity: 30
-  m_currentMagAmmo: 0
-  m_maxAmmoCapacity: 90
-  m_currentCarriedAmmo: 0
+  m_reloadTime: 2
+  m_reloadSound: {fileID: 7121476458050459420, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_magCapacity: 8
+  m_currentMagAmmo: 8
+  m_maxAmmoCapacity: 80
+  m_currentCarriedAmmo: 80
   m_magazineUIText: {fileID: 0}
   m_totalAmmoText: {fileID: 0}
   m_reloadingCanvas: {fileID: 0}
   m_reloadingBar: {fileID: 0}
-  m_baseShopValue: 0
-  m_fabricatorStorePrice: 0
+  m_baseShopValue: 250
+  m_fabricatorStorePrice: 350
   m_weaponFireMode: 0
-  m_fireInterval: 1
+  m_fireInterval: 0.8
   m_burstFireDelay: 0
-  m_projectilePrefab: {fileID: 748496678482046455, guid: 6ff51748b4e6b5243ad23c387ddf91dc,
+  m_projectileArray:
+  - {fileID: 5411246737611443505, guid: ac16c5c5b3ed11f448f466c025ad9a25, type: 3}
+  - {fileID: 5411246737611443505, guid: ac16c5c5b3ed11f448f466c025ad9a25, type: 3}
+  - {fileID: 5411246737611443505, guid: ac16c5c5b3ed11f448f466c025ad9a25, type: 3}
+  - {fileID: 5411246737611443505, guid: ac16c5c5b3ed11f448f466c025ad9a25, type: 3}
+  - {fileID: 5411246737611443505, guid: ac16c5c5b3ed11f448f466c025ad9a25, type: 3}
+  m_projectilesPerShot: 1
+  m_ammoConsumedPerShot: 1
+  m_muzzleFlash: {fileID: 3966185849602002507, guid: a6126ae557e5d2a44892993960202a1d,
     type: 3}
-  m_projectilesPerShot: 0
-  m_muzzleFlash: {fileID: 0}
-  m_maxSpreadValue: 0
-  m_minSpreadValue: 0
+  m_maxSpreadValue: 0.3
+  m_minSpreadValue: -0.3
 --- !u!1001 &7033357604870550118
 PrefabInstance:
   m_ObjectHideFlags: 0

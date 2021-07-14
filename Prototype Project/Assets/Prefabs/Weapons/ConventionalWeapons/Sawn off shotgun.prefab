@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 997017224771558496}
+  - component: {fileID: 8956417545265112004}
   m_Layer: 0
   m_Name: Sawn off shotgun
   m_TagString: Untagged
@@ -31,6 +32,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8956417545265112004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751432412602429621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fireSound: {fileID: 2865293942160903461, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_isWeaponFiring: 0
+  m_barrelTransform: {fileID: 6944894975935554581, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_aimingDirection: {x: 0, y: 0, z: 0}
+  m_reloadTime: 2
+  m_reloadSound: {fileID: 7121476458050459420, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_magCapacity: 2
+  m_currentMagAmmo: 8
+  m_maxAmmoCapacity: 16
+  m_currentCarriedAmmo: 80
+  m_magazineUIText: {fileID: 0}
+  m_totalAmmoText: {fileID: 0}
+  m_reloadingCanvas: {fileID: 0}
+  m_reloadingBar: {fileID: 0}
+  m_baseShopValue: 60
+  m_fabricatorStorePrice: 0
+  m_weaponFireMode: 0
+  m_fireInterval: 0.134
+  m_burstFireDelay: 0
+  m_projectileArray:
+  - {fileID: 2830605762065954661, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4959928274325480559, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 2161058498648093265, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 1172756371228785928, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 8729816939217737910, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4673039392916927225, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 6822673074274839170, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 9180607241424755719, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 1908587302667841982, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 3265171255465668900, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 3798229087825030966, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4343981940832323374, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 377559590328824244, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 7342986312336986070, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 7867380454483939926, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 3358408222972094072, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 2572267934155896753, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 1165560417272366649, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 1326769055696613725, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4141517819567035662, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4578221325552427248, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 7472287902061169269, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 2343255878258621304, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 3909529402398272809, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 1706065946818770605, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 8260543040953385310, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 7087247837426130614, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 6272505813461978470, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 8787066960294514256, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 2425215113485846121, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 4422983575166703398, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  - {fileID: 7352168155022431661, guid: a6126ae557e5d2a44892993960202a1d, type: 3}
+  m_projectilesPerShot: 3
+  m_ammoConsumedPerShot: 1
+  m_muzzleFlash: {fileID: 3966185849602002507, guid: a6126ae557e5d2a44892993960202a1d,
+    type: 3}
+  m_maxSpreadValue: 1.2
+  m_minSpreadValue: -1.2
 --- !u!1 &5827196958056381470
 GameObject:
   m_ObjectHideFlags: 0

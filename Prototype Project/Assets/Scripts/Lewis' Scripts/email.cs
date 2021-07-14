@@ -61,12 +61,19 @@ public class email : MonoBehaviour
         form.AddField("entry.1928014227", analyticData.boltBulletsShot);
         form.AddField("entry.978007937", analyticData.subMachineGunBulletsShot);
         form.AddField("entry.1613226958",playTestEnable.m_playerName);
+        form.AddField("entry.1240865199", analyticData.ciggiesTotal);
+        form.AddField("entry.1902725297", analyticData.ciggiesCurrent);
+        form.AddField("entry.1360343214", analyticData.fabricatorFuelTotal);
+        form.AddField("entry.441036039", analyticData.fabricatorFuelCurrent);
+        form.AddField("entry.538467984", analyticData.activeScene);
 
 
        
 
         UnityWebRequest www = UnityWebRequest.Post(URL, form); // packs data up nicely 
         www.SendWebRequest();
+
+        Debug.Log("I worked!");
        // send(form, www);
 
          // sends data off 

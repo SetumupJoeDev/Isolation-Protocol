@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+// Lewis' code. 
 public class playTestEnable : MonoBehaviour
 {
 
@@ -12,7 +12,7 @@ public class playTestEnable : MonoBehaviour
     public Text m_playerNameScreenText;
     public Text m_finalDisplayPlayerName;
     public static bool m_isPlaytester; 
-    public static string m_playerName = "hello";
+    public static string m_playerName;
     public bool m_isActivated; 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,12 @@ public class playTestEnable : MonoBehaviour
         DontDestroyOnLoad(gameObject); 
          
         text = gameObject.GetComponent<TextMeshProUGUI>();
-         m_finalDisplayPlayerName = GameObject.Find("Feedback scene Canvas").GetComponent<Text>(); 
-        m_finalDisplayPlayerName.text = "your player name is " + m_playerName; // Displays the player name to them, so they remember for the feedback form
 
+        if (GameObject.Find("Feedback scene Canvas") != null)
+        {
+            m_finalDisplayPlayerName = GameObject.Find("Feedback scene Canvas").GetComponent<Text>();
+            m_finalDisplayPlayerName.text = "your player name is " + m_playerName; // Displays the player name to them, so they remember for the feedback form
+        }
     }
 
     // Update is called once per frame
@@ -50,7 +53,7 @@ public class playTestEnable : MonoBehaviour
             m_playerNameScreenText.text = "Please press *Enter* before continuing";
         }
     }
-public    void playerName(string name)
+    public void playerName(string name)
     {
         m_playerName = name;
         Debug.Log(m_playerName);
