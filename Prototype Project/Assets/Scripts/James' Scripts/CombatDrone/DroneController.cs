@@ -175,6 +175,13 @@ public class DroneController : MonoBehaviour
 
     }
 
+    public void EnableUpgrade( int upgradeToEnable )
+    {
+        DisableAllUpgrades( );
+
+        m_droneUpgrades[upgradeToEnable].enabled = true;
+    }
+
     public void DisableAllUpgrades( )
     {
         //Loops through all of the entries in the droneUpgrades array and disables them
