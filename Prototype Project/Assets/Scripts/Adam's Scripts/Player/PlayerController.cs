@@ -37,10 +37,14 @@ public class PlayerController : CharacterBase
     // Mouse direction relative to player position
     private Vector2     m_mouseDirection;
 
-    [Header("HUD")]
+    [Header("UI")]
 
     [Tooltip("The HUD Manager")]
     public HUDManager   m_hud;
+
+    [Tooltip("The pause menu canvas")]
+    [SerializeField]
+    private GameObject m_pauseMenu;
 
     #region Dash
 
@@ -148,7 +152,7 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     private void Update()
     {
-        if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive )
+        if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive && Time.timeScale != 0 )
         {
 
             // Assigns directional velocity to correct input axes
@@ -160,7 +164,7 @@ public class PlayerController : CharacterBase
 
             
 
-            if (!m_stunned)
+            if ( !m_stunned )
             {
                 // Calculates mouse direction relative to the player's position
                 m_mouseDirection = mousePos - transform.position;
@@ -173,11 +177,11 @@ public class PlayerController : CharacterBase
 
             CheckForInteractables( );
 
-            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_stunned)
+            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_stunned )
             {
                 m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
             }
-            if(Input.GetMouseButtonUp( 0 ) && !m_isInMenu)
+            if( Input.GetMouseButtonUp( 0 ) && !m_isInMenu )
             {
                 m_currentWeapon.GetComponent<GunBase>( ).StopFiring( );
             }
@@ -201,9 +205,15 @@ public class PlayerController : CharacterBase
                 m_isInMenu = !m_isInMenu;
             }
 
+            if ( Input.GetKeyDown( KeyCode.Escape ) )
+            {
+                m_pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+
             // End of James' work
 
-            if (m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.dead)
+            if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.dead )
             {
                 gameObject.GetComponent<AnalyticsEventTracker>().enabled = true; // enables the event tracker, it'll send the playtest data to the server
             }

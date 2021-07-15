@@ -6,31 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField]
-    private Button m_playButton;
-
-    [SerializeField]
-    private Button m_quitButton;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
         SceneManager.LoadScene("Ship Hub");
+        Time.timeScale = 1;
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        gameObject.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1;
     }
 }
