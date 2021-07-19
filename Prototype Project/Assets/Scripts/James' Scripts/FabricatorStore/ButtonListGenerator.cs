@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ButtonListGenerator : MonoBehaviour
 {
-    [SerializeField]
+    
     [Tooltip("The template button that all generated buttons will be based off of.")]
-    private GameObject m_buttonTemplate;
+    public GameObject m_buttonTemplate;
 
     [Tooltip("The list of objects that each button in the list will be referencing.")]
     public FabricatorStoreProduct[] m_buttonObjectReferences;
@@ -60,6 +60,8 @@ public class ButtonListGenerator : MonoBehaviour
         newButtonController.m_productName.text = m_buttonObjectReferences[newButtonIndex].GetItemName( );
 
         newButtonController.m_productImage.sprite = m_buttonObjectReferences[newButtonIndex].GetItemSprite( );
+
+        newButtonController.m_buttonID = newButtonIndex;
 
     }
 

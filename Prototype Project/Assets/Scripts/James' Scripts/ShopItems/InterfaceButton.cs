@@ -12,4 +12,11 @@ public class InterfaceButton : MonoBehaviour
     [SerializeField]
     public Text m_productName;
 
+    public int m_buttonID;
+
+    public virtual void OnClick( )
+    {
+
+    }
+
 }
