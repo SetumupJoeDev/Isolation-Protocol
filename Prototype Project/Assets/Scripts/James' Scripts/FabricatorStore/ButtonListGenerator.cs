@@ -14,8 +14,6 @@ public class ButtonListGenerator : MonoBehaviour
 
     public List<GameObject> m_buttons;
 
-    public FabricatorProductButton m_activeButton;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +28,7 @@ public class ButtonListGenerator : MonoBehaviour
         return m_buttonObjectReferences[itemIndex];
     }
 
-    public void PopulateButtonList( )
+    public virtual void PopulateButtonList( )
     {
         //Loops through for the length of product references and creates a new button for each
         for(int i = 0; i < m_buttonObjectReferences.Length; i++ )
@@ -45,32 +43,24 @@ public class ButtonListGenerator : MonoBehaviour
             //Sets the transform parent of the new button to be the same as the template, so it uses the scroll area
             newButton.transform.SetParent( m_buttonTemplate.transform.parent, false );
 
-            //Saves the button's script as a local variable for later use
-            FabricatorProductButton newButtonController = newButton.GetComponent<FabricatorProductButton>();
-
-            newButtonController.m_buttonList = this;
-
-            newButtonController.m_storeProduct = m_buttonObjectReferences[i];
-
-            //Sets the item index of the button so it can be used to control the storefront
-            newButtonController.SetItemIndex( i );
-
-            //Sets the name of the button to reflect the product it represents
-            newButtonController.SetName( m_buttonObjectReferences[i].GetItemName( ) );
-
-            //Sets the sprite of the button to reflect the product it represents
-            newButtonController.SetImageSprite( m_buttonObjectReferences[i].GetItemSprite( ) );
-
-            //Sets the price of the button to reflect the product it represents
-            newButtonController.SetItemPrice( m_buttonObjectReferences[i].GetItemPrice( ) );
-
-            //Sets the description of the button to reflect the product it represents
-            newButtonController.SetItemDescription( m_buttonObjectReferences[i].GetItemDescription( ) );
+            SetupNewButton( newButton, i );
 
             //Adds the button to the list so it can be referenced by index later
             m_buttons.Add( newButton );
 
         }
+    }
+
+    public virtual void SetupNewButton( GameObject newButton, int newButtonIndex )
+    {
+        //Set up the different necessary variables of the button here, ie name text, image, object references etc.
+
+        InterfaceButton newButtonController = newButton.GetComponent<InterfaceButton>();
+
+        newButtonController.m_productName.text = m_buttonObjectReferences[newButtonIndex].GetItemName( );
+
+        newButtonController.m_productImage.sprite = m_buttonObjectReferences[newButtonIndex].GetItemSprite( );
+
     }
 
 }

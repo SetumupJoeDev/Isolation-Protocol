@@ -930,8 +930,6 @@ GameObject:
   - component: {fileID: 3715704714287060929}
   - component: {fileID: 3715704714287060943}
   - component: {fileID: 3715704714287060942}
-  - component: {fileID: 3715704714287060940}
-  - component: {fileID: 3715704714287060939}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1029,6 +1027,7 @@ MonoBehaviour:
   m_moveSpeed: 250
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 3715704714287060929}
+  m_slowedByHazard: 0
   m_healthManager: {fileID: 6337423104324772008}
   m_knockbackDuration: 0.65
   m_knockbackDirection: {x: 0, y: 0, z: 0}
@@ -1095,7 +1094,7 @@ MonoBehaviour:
   m_playerDamagedFeedback: {fileID: 8300000, guid: b403670b43adcbe4db84364aefc9d6eb,
     type: 3}
   m_currentPlayerState: 0
-  playTestData: {fileID: 0}
+  analytics: {fileID: 0}
 --- !u!114 &1822051857034256484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cigarettePacksCount: 0
   m_fabricatorFuelCount: 0
+  m_totalFabricatorFuelCount: 0
+  m_TotalCigarettePacksCount: 0
 --- !u!50 &3715704714287060929
 Rigidbody2D:
   serializedVersion: 4
@@ -1176,80 +1177,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3715704714287060940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715704714287060932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b3f166b45febc428a1137b22645dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  roomsCrossed: 0
---- !u!114 &3715704714287060939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715704714287060932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Trigger:
-    m_IsTriggerExpanded: 1
-    m_Type: 0
-    m_LifecycleEvent: 3
-    m_ApplyRules: 0
-    m_Rules:
-      m_Rules: []
-    m_TriggerBool: 0
-    m_InitTime: 5
-    m_RepeatTime: 5
-    m_Repetitions: 0
-    repetitionCount: 0
-  m_EventPayload:
-    m_IsEventExpanded: 1
-    m_StandardEventType: CustomEvent
-    m_Parameters:
-      m_Parameters:
-      - m_RequirementType: 0
-        m_GroupID: 
-        m_Tooltip: 
-        m_Name: Rooms player crossed when died
-        m_Value:
-          m_EditingCustomValue: 0
-          m_PopupIndex: 0
-          m_CustomValue: 
-          m_FixedType: 0
-          m_EnumType: 
-          m_EnumTypeIsCustomizable: 0
-          m_CanDisable: 0
-          m_PropertyType: 2
-          m_ValueType: System.Int32
-          m_Value: 
-          m_Target:
-            m_Target: {fileID: 3715704714287060928}
-            m_Path: roomsCrossed
-            m_ValidTypeNames:
-            - System.Int32
-            - System.Boolean
-            - System.Decimal
-            - System.Double
-            - System.Single
-            - System.Int64
-            - System.Int16
-            - System.String
-            - enum
-            m_Type: System.Int32
-            m_EnumType: 
-    m_Name: 
 --- !u!1 &3715704714588695192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,10 +3056,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8558605027567899103, guid: ab768921b26078649bf3103a9f723384,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8558605027878179751, guid: ab768921b26078649bf3103a9f723384,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558605028187207648, guid: ab768921b26078649bf3103a9f723384,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 419.99988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab768921b26078649bf3103a9f723384, type: 3}
