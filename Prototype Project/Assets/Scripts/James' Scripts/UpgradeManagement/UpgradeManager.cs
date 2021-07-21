@@ -11,10 +11,14 @@ public class UpgradeManager : InteractableObject
 
     public FabricatorStoreProduct[] m_availableUpgrades;
 
+    public ButtonListGenerator m_buttonGenerator;
+
     public GameObject[] m_upgradeButtons;
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
+
+        base.Activated( playerController );
 
         m_playerController.m_isInMenu = !m_playerController.m_isInMenu;
 
@@ -29,15 +33,18 @@ public class UpgradeManager : InteractableObject
 
         bool anyUpgradesUnlocked = false;
 
-        for ( int i = 0; i < m_availableUpgrades.Length; i++ )
+        for ( int i = 0; i < m_buttonGenerator.m_buttonObjectReferences.Length; i++ )
         {
-            if ( m_availableUpgrades[i].GetIsUnlocked( ) )
+            if ( m_buttonGenerator.m_buttonObjectReferences[i].GetIsUnlocked( ) )
             {
-                m_upgradeButtons[i].SetActive( true );
 
                 anyUpgradesUnlocked = true;
 
             }
+
+            m_buttonGenerator.ClearList( );
+            m_buttonGenerator.PopulateButtonList( );
+
         }
 
         if ( !anyUpgradesUnlocked )

@@ -65,4 +65,12 @@ public class ButtonListGenerator : MonoBehaviour
 
     }
 
+    public void ClearList( )
+    {
+        foreach(GameObject button in m_buttons )
+        {
+            Destroy( button );
+        }
+    }
+
 }

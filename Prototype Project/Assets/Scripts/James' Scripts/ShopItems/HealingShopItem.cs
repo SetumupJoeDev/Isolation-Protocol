@@ -7,7 +7,7 @@ public class HealingShopItem : ShopItem
 
     public int m_healAmount;
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //If the player can afford the item, it is bought and their health is restored
         if ( BuyItem( m_playerController.m_currencyManager ) )

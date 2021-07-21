@@ -27,7 +27,7 @@ public class WeaponShopItem : ShopItem
 
     }
 
-    public override void Activated( ) 
+    public override void Activated( PlayerController playerController ) 
     {
         //If the player cann afford the weapon, it is bought
         if ( BuyItem( m_playerController.m_currencyManager ) )

@@ -1016,9 +1016,11 @@ MonoBehaviour:
   m_highlightingActive: 0
   m_playerController: {fileID: 0}
   m_interactionPrompt: {fileID: 1534985863196402775}
+  m_isActivated: 0
   m_upgradeUI: {fileID: 3217835900417763206}
   m_noUpgradesText: {fileID: 3217835899668836516}
   m_availableUpgrades: []
+  m_buttonGenerator: {fileID: 0}
   m_upgradeButtons: []
   m_drone: {fileID: 0}
 --- !u!61 &3217835900880092843
@@ -1174,7 +1176,6 @@ GameObject:
   - component: {fileID: 4273570241507543504}
   - component: {fileID: 4273570241507543505}
   - component: {fileID: 4273570241507543507}
-  - component: {fileID: 4273570241507543512}
   m_Layer: 5
   m_Name: DroneUpgradeList
   m_TagString: Untagged
@@ -1270,27 +1271,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4273570241507543512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4273570241507543511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 444b73c62a6bca142883fa67a2db02fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_buttonTemplate: {fileID: 4273570242204768136}
-  m_buttonObjectReferences:
-  - {fileID: 11400000, guid: 7dda25b636c5e744c9877270e341b55d, type: 2}
-  - {fileID: 11400000, guid: b41c1cfd9a5bec441910e5b0fa190c81, type: 2}
-  - {fileID: 11400000, guid: 49de06ba9111076499fdc7f9acc34cbb, type: 2}
-  - {fileID: 11400000, guid: fd06548e4da76d345830960fdfb73785, type: 2}
-  - {fileID: 11400000, guid: 47dc4fbf3013462498cd8365cbbfe7ad, type: 2}
-  - {fileID: 11400000, guid: 8b25602db9a83a949ae53005b81915d4, type: 2}
-  m_buttons: []
 --- !u!1 &4273570241790831633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_productImage: {fileID: 693206621}
   m_productName: {fileID: 4273570243399728865}
+  m_buttonID: 0
+  m_droneWorkbench: {fileID: 0}
 --- !u!1 &4273570242391280172
 GameObject:
   m_ObjectHideFlags: 0

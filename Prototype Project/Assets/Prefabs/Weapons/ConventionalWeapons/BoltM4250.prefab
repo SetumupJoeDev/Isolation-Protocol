@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fireSound: {fileID: 5104504200478145229}
-  m_canWeaponFire: 1
+  m_isWeaponFiring: 0
   m_barrelTransform: {fileID: 5104504201496880167}
   m_aimingDirection: {x: 0, y: 0, z: 0}
   m_reloadTime: 2.5
@@ -255,6 +255,7 @@ MonoBehaviour:
   - {fileID: 8729285497387539090}
   - {fileID: 4806377508911901355}
   m_projectilesPerShot: 1
+  m_ammoConsumedPerShot: 1
   m_muzzleFlash: {fileID: 6676386187326806731}
   m_maxSpreadValue: 0
   m_minSpreadValue: 0

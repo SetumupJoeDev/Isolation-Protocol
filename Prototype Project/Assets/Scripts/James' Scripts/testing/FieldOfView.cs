@@ -38,7 +38,10 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>( ).mesh = m_fieldOfViewMesh;
 
         //Sets the origin of the FOV
-        m_fovOrigin = transform.parent.position;
+        m_fovOrigin = Vector3.zero;
+
+        //Sets the position of the FOV so that it sits centered on the turret
+        transform.localPosition = transform.parent.position * -1.0f;
 
     }
 

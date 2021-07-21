@@ -458,7 +458,7 @@ public class PlayerController : CharacterBase
 
             if ( Input.GetKeyDown( KeyCode.E ) )
             {
-                interactable.Activated( );
+                interactable.Activated( this );
             }
         }
 

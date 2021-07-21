@@ -37,11 +37,11 @@ public class ShopItem : InteractableObject
         m_itemPricePrompt.m_productPrice.text = m_itemPrice.ToString( );
     }
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //Removes currency from the player's inventory and activates the item
         BuyItem( m_playerController.gameObject.GetComponent<CurrencyManager>( ) );
-        base.Activated( );
+        base.Activated( playerController );
     }
 
     public virtual bool BuyItem( CurrencyManager playerCurrency )
