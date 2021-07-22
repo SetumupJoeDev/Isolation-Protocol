@@ -164,7 +164,7 @@ public class PlayerController : CharacterBase
 
             
 
-            if ( !m_stunned )
+            if ( !m_isStunned )
             {
                 // Calculates mouse direction relative to the player's position
                 m_mouseDirection = mousePos - transform.position;
@@ -177,7 +177,7 @@ public class PlayerController : CharacterBase
 
             CheckForInteractables( );
 
-            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_stunned )
+            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_isStunned )
             {
                 m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
             }
@@ -194,7 +194,7 @@ public class PlayerController : CharacterBase
                 SwapWeapon( ( int )indexModifier );
             }
 
-            if ( Input.GetKeyDown( KeyCode.R ) && !m_stunned )
+            if ( Input.GetKeyDown( KeyCode.R ) && !m_isStunned )
             {
                 m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
             }
@@ -319,6 +319,13 @@ public class PlayerController : CharacterBase
                 m_isDashing = true;
                 m_canDash = false;
                 m_healthManager.m_isVulnerable = false;     // Makes player invulnerable while dashing
+
+                // Puts player out if they are burning
+                if (m_isBurning)
+                {
+                    StopCoroutine(this.Burn());
+                    m_isBurning = false;
+                }
             }
         }
 

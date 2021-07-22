@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ElectricPuddle : MonoBehaviour
 {
-    public ParticleSystem m_particles;
-    public bool m_electrified;
+    public ParticleSystem   m_particles;
+    public bool             m_electrified;
 
-    private bool m_caught;
-    private CharacterBase m_caughtThing;
+    private bool            m_caught;
+    private CharacterBase   m_caughtThing;
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class ElectricPuddle : MonoBehaviour
         StartCoroutine(Electrified());
     }
 
+    // TODO: Make into OnTriggerStay and m_caughtThing into an array 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player") || collision.CompareTag("Enemy"))

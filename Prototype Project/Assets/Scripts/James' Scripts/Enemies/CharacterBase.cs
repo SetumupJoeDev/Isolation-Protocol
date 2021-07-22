@@ -61,14 +61,16 @@ public class CharacterBase : MonoBehaviour
     [Header("Status Effects")]
 
     [Tooltip("The amount by which the player is slowed")]
-    public float    m_slowness;
+    public float         m_slowness;
+
+    // Whether or not the character is on fire and burning
+    public bool          m_isBurning;
     
-    [SerializeField]
-    [Tooltip("Whether or not character is stunned")]
-    protected bool  m_stunned;
+    // Whether or not character is stunned
+    protected bool       m_isStunned;
     [SerializeField]
     [Tooltip("Amount of time character is stunned for in seconds")]
-    protected float m_stunDuration;
+    protected float      m_stunDuration;
     [SerializeField]
     [Tooltip("Sprite that appears while character is stunned")]
     protected GameObject m_stunIcon;
@@ -122,7 +124,7 @@ public class CharacterBase : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (!m_stunned)
+        if (!m_isStunned)
         {
             //Moves the character by their directional velocity and speed
             m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.fixedDeltaTime;
@@ -152,13 +154,19 @@ public class CharacterBase : MonoBehaviour
      public IEnumerator Stun()
     {
         m_characterRigidBody.velocity = Vector3.zero;
-        m_stunned = true;
+        m_isStunned = true;
         m_stunIcon.SetActive(true);
 
         yield return new WaitForSeconds(m_stunDuration);
         
-        m_stunned = false;
+        m_isStunned = false;
         m_stunIcon.SetActive(false);
+    }
+
+    public IEnumerator Burn()
+    {
+        m_healthManager.TakeDamage(1);
+        yield return new WaitForSeconds(1.5f);
     }
     // End of Adam's code
 }
