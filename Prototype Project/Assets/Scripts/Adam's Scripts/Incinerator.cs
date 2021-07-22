@@ -47,9 +47,9 @@ public class Incinerator : MonoBehaviour
         {
             CharacterBase collisionChar = collision.GetComponent<CharacterBase>();
             
-            if (m_on /*&& !collisionChar.m_isBurning*/)
+            if (m_on && !collisionChar.m_isBurning)
             {
-                //collisionChar.m_isBurning = true;
+                collisionChar.m_isBurning = true;
                 StartCoroutine(collisionChar.Burn());
             }
         }

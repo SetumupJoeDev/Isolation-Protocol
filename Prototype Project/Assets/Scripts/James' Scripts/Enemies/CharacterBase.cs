@@ -167,6 +167,7 @@ public class CharacterBase : MonoBehaviour
     {
         m_healthManager.TakeDamage(1);
         yield return new WaitForSeconds(1.5f);
+        StartCoroutine(Burn());
     }
     // End of Adam's code
 }

@@ -326,7 +326,7 @@ public class PlayerController : CharacterBase
                 // Puts player out if they are burning
                 if (m_isBurning)
                 {
-                    StopCoroutine(this.Burn());
+                    StopCoroutine(Burn());
                     m_isBurning = false;
                 }
             }
