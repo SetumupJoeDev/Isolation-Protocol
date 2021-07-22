@@ -61,6 +61,8 @@ public class ButtonListGenerator : MonoBehaviour
 
         newButtonController.m_productImage.sprite = m_buttonObjectReferences[newButtonIndex].GetItemSprite( );
 
+        newButtonController.m_productImage.preserveAspect = true;
+
         newButtonController.m_buttonID = newButtonIndex;
 
     }
