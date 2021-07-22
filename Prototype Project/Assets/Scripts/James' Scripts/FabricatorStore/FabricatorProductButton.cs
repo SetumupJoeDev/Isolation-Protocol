@@ -4,23 +4,17 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
-public class FabricatorProductButton : MonoBehaviour
+public class FabricatorProductButton : InterfaceButton
 {
 
     [SerializeField]
     private FabricatorStoreBase m_storeController;
 
-    public ButtonListGenerator m_buttonList;
+    public FabricatorUpgradeListGenerator m_buttonList;
 
     public FabricatorStoreProduct m_storeProduct;
 
     public bool m_isSelected;
-
-    [SerializeField]
-    private Image m_productImage;
-
-    [SerializeField]
-    private Text m_productName;
 
     [SerializeField]
     private int m_productPrice;

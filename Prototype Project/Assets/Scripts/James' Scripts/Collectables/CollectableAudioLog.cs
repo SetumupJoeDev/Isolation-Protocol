@@ -17,7 +17,7 @@ public class CollectableAudioLog : InteractableObject
     [SerializeField]
     private AudioClip m_logCollected;
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //Unlocks a new audiolog in the player's audilog list
         m_playerController.m_audioLogList.UnlockNewLog( );

@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameStartDoor : InteractableObject
 {
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //Loads the 1st level
         SceneManager.LoadScene( "Player Name Screen" );

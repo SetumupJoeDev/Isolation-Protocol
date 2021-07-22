@@ -16,7 +16,7 @@ public class FabrictatorModule : InteractableObject
     [SerializeField]
     private Sprite m_highlightedSprite;
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //Toggles the fabricator's canvas to make it visible to the player
         m_fabricatorCanvas.ToggleCanvas( );

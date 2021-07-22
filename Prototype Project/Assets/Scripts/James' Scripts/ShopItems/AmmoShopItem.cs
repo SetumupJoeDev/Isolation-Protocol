@@ -16,7 +16,7 @@ public class AmmoShopItem : ShopItem
     [SerializeField]
     private Sprite m_highlightedSprite;
 
-    public override void Activated( )
+    public override void Activated( PlayerController playerController )
     {
         //If the player can afford the item, their weapons' ammo is refilled
         if ( BuyItem( m_playerController.m_currencyManager ) )

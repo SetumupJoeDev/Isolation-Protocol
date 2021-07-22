@@ -103,6 +103,7 @@ MonoBehaviour:
   m_moveSpeed: 100
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 5707961849273049076}
+  m_slowedByHazard: 0
   m_healthManager: {fileID: 3341951120311908520}
   m_knockbackDuration: 0
   m_knockbackDirection: {x: 0, y: 0, z: 0}
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentHealth: 5
   m_maxHealth: 9
-  m_isVulnerable: 0
+  m_isVulnerable: 1
   m_damagedTime: 0.15
   m_damagedAmount: 1
   m_maxHealthFloat: 0

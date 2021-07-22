@@ -409,43 +409,70 @@ public class PlayerController : CharacterBase
     public void SwapWeapon( int indexModifier )
     {
 
-        bool swappedWeapon = false;
-
-        int newIndex = m_currentWeaponIndex + indexModifier;
-
-        while ( !swappedWeapon )
+        if ( CanSwapWeapon( ) )
         {
 
-            if ( newIndex < 0 )
+            bool swappedWeapon = false;
+
+            int newIndex = m_currentWeaponIndex + indexModifier;
+
+            while ( !swappedWeapon )
             {
-                newIndex = m_carriedWeapons.Length - 1;
+
+                if ( newIndex < 0 )
+                {
+                    newIndex = m_carriedWeapons.Length - 1;
+                }
+                else if ( newIndex >= m_carriedWeapons.Length )
+                {
+                    newIndex = 0;
+                }
+
+                if ( m_carriedWeapons[newIndex] != null )
+                {
+                    m_currentWeapon.SetActive( false );
+
+                    m_currentWeapon = m_carriedWeapons[newIndex];
+
+                    m_currentWeaponIndex = newIndex;
+
+                    m_currentWeapon.SetActive( true );
+
+                    swappedWeapon = true;
+
+                }
+
+                if ( !swappedWeapon )
+                {
+                    newIndex += indexModifier;
+                }
+
             }
-            else if ( newIndex >= m_carriedWeapons.Length )
-            {
-                newIndex = 0;
-            }
-
-            if ( m_carriedWeapons[newIndex] != null )
-            {
-                m_currentWeapon.SetActive( false );
-
-                m_currentWeapon = m_carriedWeapons[newIndex];
-
-                m_currentWeaponIndex = newIndex;
-
-                m_currentWeapon.SetActive( true );
-
-                swappedWeapon = true;
-
-            }
-
-            if ( !swappedWeapon )
-            {
-                newIndex += indexModifier;
-            }
-
         }
 
+    }
+
+    private bool CanSwapWeapon( )
+    {
+
+        int numWeapons = 0;
+
+        for(int i = 0; i < m_carriedWeapons.Length; i++ )
+        {
+            if(m_carriedWeapons[i] != null )
+            {
+                numWeapons++;
+            }
+        }
+
+        if(numWeapons > 1 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void CheckForInteractables( )
@@ -465,7 +492,7 @@ public class PlayerController : CharacterBase
 
             if ( Input.GetKeyDown( KeyCode.E ) )
             {
-                interactable.Activated( );
+                interactable.Activated( this );
             }
         }
 
