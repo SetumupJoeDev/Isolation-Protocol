@@ -147,6 +147,9 @@ public class PlayerController : CharacterBase
             new Vector2(-1, -1),    // down-left
             new Vector2(1, -1)      // down-right
         };
+
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Update is called once per frame
@@ -502,7 +505,7 @@ public class PlayerController : CharacterBase
 
     public void ToggleHUD( bool hudActive )
     {
-        m_hud.gameObject.SetActive( hudActive );
+        m_hud.GetComponent<CanvasController>().ToggleCanvas();
     }
 
 

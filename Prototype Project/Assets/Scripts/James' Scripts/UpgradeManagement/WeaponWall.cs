@@ -15,14 +15,15 @@ public class WeaponWall : UpgradeManager
         Destroy( m_playerController.m_carriedWeapons[chosenSlot] );
 
         //Instantiates a new weapon at the player's weapon hold point using the weapon prefab
-        m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex] = Instantiate( m_selectedWeapon , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+        m_playerController.m_carriedWeapons[chosenSlot] = Instantiate( m_selectedWeapon , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
 
         //Sets the new weapon's transform parent to the player's weapon hold point
-        m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex].transform.parent = m_playerController.m_weaponAttachPoint.transform;
+        m_playerController.m_carriedWeapons[chosenSlot].transform.parent = m_playerController.m_weaponAttachPoint.transform;
 
         //Sets the player's current weapon as the newly created weapon, making it look as though they had swapped weapons for it
         m_playerController.m_currentWeapon = m_playerController.m_carriedWeapons[m_playerController.m_currentWeaponIndex];
 
+        //Disables the weapon so it can't be used in the hub area
         m_playerController.m_currentWeapon.SetActive( false );
 
     }

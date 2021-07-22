@@ -1397,7 +1397,6 @@ GameObject:
   - component: {fileID: 3715704714287060929}
   - component: {fileID: 3715704714287060943}
   - component: {fileID: 3715704714287060942}
-  - component: {fileID: 3715704714287060939}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1503,7 +1502,7 @@ MonoBehaviour:
   m_knockbackForce: 0
   m_knockedBack: 0
   m_slowness: 0
-  m_stunned: 0
+  m_isBurning: 0
   m_stunDuration: 1
   m_stunIcon: {fileID: 8643384899043593351}
   m_weaponAttachPoint: {fileID: 674755762734062565}
@@ -1647,66 +1646,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3715704714287060939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715704714287060932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Trigger:
-    m_IsTriggerExpanded: 1
-    m_Type: 0
-    m_LifecycleEvent: 3
-    m_ApplyRules: 0
-    m_Rules:
-      m_Rules: []
-    m_TriggerBool: 0
-    m_InitTime: 5
-    m_RepeatTime: 5
-    m_Repetitions: 0
-    repetitionCount: 0
-  m_EventPayload:
-    m_IsEventExpanded: 1
-    m_StandardEventType: CustomEvent
-    m_Parameters:
-      m_Parameters:
-      - m_RequirementType: 0
-        m_GroupID: 
-        m_Tooltip: 
-        m_Name: Rooms player crossed when died
-        m_Value:
-          m_EditingCustomValue: 0
-          m_PopupIndex: 0
-          m_CustomValue: 
-          m_FixedType: 0
-          m_EnumType: 
-          m_EnumTypeIsCustomizable: 0
-          m_CanDisable: 0
-          m_PropertyType: 2
-          m_ValueType: System.Int32
-          m_Value: 
-          m_Target:
-            m_Target: {fileID: 3715704714287060928}
-            m_Path: roomsCrossed
-            m_ValidTypeNames:
-            - System.Int32
-            - System.Boolean
-            - System.Decimal
-            - System.Double
-            - System.Single
-            - System.Int64
-            - System.Int16
-            - System.String
-            - enum
-            m_Type: System.Int32
-            m_EnumType: 
-    m_Name: 
 --- !u!1 &3715704714588695192
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,24 +4530,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab768921b26078649bf3103a9f723384, type: 3}
---- !u!224 &202122000004335435 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8558605026932740150, guid: ab768921b26078649bf3103a9f723384,
-    type: 3}
-  m_PrefabInstance: {fileID: 8361021830542006141}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3564418196065137491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5007732824390280238, guid: ab768921b26078649bf3103a9f723384,
-    type: 3}
-  m_PrefabInstance: {fileID: 8361021830542006141}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 861dd868b428a8d48893c3440d85fe9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &202121999249777504 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8558605027251139613, guid: ab768921b26078649bf3103a9f723384,
@@ -4621,3 +4542,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06934b7951e592b43ab9bf2a5cbeecdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3564418196065137491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5007732824390280238, guid: ab768921b26078649bf3103a9f723384,
+    type: 3}
+  m_PrefabInstance: {fileID: 8361021830542006141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861dd868b428a8d48893c3440d85fe9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &202122000004335435 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8558605026932740150, guid: ab768921b26078649bf3103a9f723384,
+    type: 3}
+  m_PrefabInstance: {fileID: 8361021830542006141}
+  m_PrefabAsset: {fileID: 0}
