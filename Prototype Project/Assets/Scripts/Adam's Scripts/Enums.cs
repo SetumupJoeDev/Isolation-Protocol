@@ -7,4 +7,6 @@ public class Enums : MonoBehaviour
 {
     // Possible door directions in rooms for level generation
     public enum Directions { Top, Left, Right, Bottom};
+
+    public enum EnemyTypes { BasicMelee, BasicRanged, FaceHugger, Large, SporeBomber, WallGrowth, ParasiteEgg, Droid};
 }

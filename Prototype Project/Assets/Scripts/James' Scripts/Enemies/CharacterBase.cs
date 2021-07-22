@@ -63,8 +63,14 @@ public class CharacterBase : MonoBehaviour
     [Tooltip("The amount by which the player is slowed")]
     public float         m_slowness;
 
-    // Whether or not the character is on fire and burning
+    [Tooltip("Wherer or not the the character is on fire")]
+    public bool          m_isOnFire;
+
+    [Tooltip("Whether or not the character is currently burning")]
     public bool          m_isBurning;
+
+    [Tooltip("Particle System for when character on fire")]
+    public ParticleSystem    m_onFireParticles;
     
     // Whether or not character is stunned
     protected bool       m_isStunned;
@@ -84,6 +90,14 @@ public class CharacterBase : MonoBehaviour
         if (m_knockedBack)
         {
             SimulateKnockback();
+        }
+    }
+
+    protected virtual void Update()
+    {
+        if (m_isOnFire && !m_isBurning)
+        {
+            StartCoroutine(Burn());
         }
     }
 
@@ -165,9 +179,10 @@ public class CharacterBase : MonoBehaviour
 
     public IEnumerator Burn()
     {
+        m_isBurning = true;
         m_healthManager.TakeDamage(1);
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(Burn());
+        m_isBurning = false;
     }
     // End of Adam's code
 }

@@ -49,8 +49,8 @@ public class Incinerator : MonoBehaviour
             
             if (m_on && !collisionChar.m_isBurning)
             {
-                collisionChar.m_isBurning = true;
-                StartCoroutine(collisionChar.Burn());
+                collisionChar.m_isOnFire = true;
+                collisionChar.m_onFireParticles.Play();
             }
         }
     }

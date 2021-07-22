@@ -72,6 +72,11 @@ public class EnemySpawner : MonoBehaviour
     public void IncreaseDead(GameObject spawnedEnemy)
     {
         m_spawnedEnemies.Remove(spawnedEnemy);
+        switch (spawnedEnemy)
+        {
+            default:
+                break;
+        }
 
         // Checks if all enemies are dead and marks the room as cleared
         if(m_spawnedEnemies.Count <= 0)

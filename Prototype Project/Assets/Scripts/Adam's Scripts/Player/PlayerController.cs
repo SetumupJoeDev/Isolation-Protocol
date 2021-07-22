@@ -149,12 +149,13 @@ public class PlayerController : CharacterBase
         };
 
         DontDestroyOnLoad(this.gameObject);
-
     }
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.alive && Time.timeScale != 0 )
         {
 
@@ -324,10 +325,10 @@ public class PlayerController : CharacterBase
                 m_healthManager.m_isVulnerable = false;     // Makes player invulnerable while dashing
 
                 // Puts player out if they are burning
-                if (m_isBurning)
+                if (m_isOnFire)
                 {
-                    StopCoroutine(Burn());
-                    m_isBurning = false;
+                    m_isOnFire = false;
+                    m_onFireParticles.Stop();
                 }
             }
         }

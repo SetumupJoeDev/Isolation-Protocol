@@ -9,13 +9,21 @@ using UnityEngine.SceneManagement;
 public class analyticsManager : MonoBehaviour
 {
     public int basicMeleeKilled = 0;
+    public int basicMeleeKilledFirst;
     public int basicRangedKilled = 0;
+    public int basicRangedKilledFirst;
     public int faceHuggerKilled = 0;
+    public int faceHuggerKilledFirst;
     public int LargeKilled = 0;
+    public int LargeKilledFirst;
     public int sporeBomberKilled = 0;
+    public int sporeBomberKilledFirst;
     public int wallGrowthKilled = 0;
+    public int wallGrowthKilledFirst;
     public int parasiteEggKilled = 0;
+    public int parasiteEggKilledFirst;
     public int droidKilled = 0;
+    public int droidKilledFirst;
     public static int roomsCrossed = 0;
     public int bulletsHit = 0;
 
