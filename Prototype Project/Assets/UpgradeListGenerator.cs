@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneUpgradeList : ButtonListGenerator
+public class UpgradeListGenerator : ButtonListGenerator
 {
-
-    public DroneWorkbench m_droneWorkbench;
 
     public override void PopulateButtonList( )
     {
-
-        bool upgradesUnlocked = false;
 
         //Loops through for the length of product references and creates a new button for each
         for ( int i = 0; i < m_buttonObjectReferences.Length; i++ )
@@ -18,8 +14,6 @@ public class DroneUpgradeList : ButtonListGenerator
 
             if ( m_buttonObjectReferences[i].GetIsUnlocked( ) )
             {
-
-                upgradesUnlocked = true;
 
                 //Instatiates a new button based on the button template
                 GameObject newButton = Instantiate(m_buttonTemplate);
@@ -37,15 +31,6 @@ public class DroneUpgradeList : ButtonListGenerator
 
             }
 
-        }
-
-        if ( !upgradesUnlocked )
-        {
-            m_droneWorkbench.m_noUpgradesText.SetActive( true );
-        }
-        else
-        {
-            m_droneWorkbench.m_noUpgradesText.SetActive( false );
         }
 
     }

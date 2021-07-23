@@ -41,10 +41,6 @@ public class UpgradeManager : InteractableObject
                 anyUpgradesUnlocked = true;
 
             }
-
-            m_buttonGenerator.ClearList( );
-            m_buttonGenerator.PopulateButtonList( );
-
         }
 
         if ( !anyUpgradesUnlocked )
@@ -54,6 +50,11 @@ public class UpgradeManager : InteractableObject
         else if ( m_noUpgradesText.activeSelf )
         {
             m_noUpgradesText.SetActive( false );
+        }
+        else
+        {
+            m_buttonGenerator.ClearList();
+            m_buttonGenerator.PopulateButtonList();
         }
 
     }

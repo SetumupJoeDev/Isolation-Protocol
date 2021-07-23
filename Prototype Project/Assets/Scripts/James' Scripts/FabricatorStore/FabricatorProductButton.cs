@@ -63,7 +63,7 @@ public class FabricatorProductButton : InterfaceButton
         m_productDescriptionFile = newDescription;
     }
 
-    public void OnClick( )
+    public override void OnClick( )
     {
 
         if ( m_buttonList.m_activeButton != this )

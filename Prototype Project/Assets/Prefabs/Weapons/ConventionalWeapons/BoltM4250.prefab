@@ -45,8 +45,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5104504200478145203}
   - component: {fileID: 5104504200478145200}
-  - component: {fileID: 5104504200478145229}
   - component: {fileID: 5104504200478145201}
+  - component: {fileID: 5104504200478145229}
   - component: {fileID: 5104504200478145202}
   m_Layer: 0
   m_Name: BoltM4250
@@ -121,6 +121,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5104504200478145201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104504200478145206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fireSound: {fileID: 5104504200478145229}
+  m_isWeaponFiring: 0
+  m_barrelTransform: {fileID: 5104504201496880167}
+  m_aimingDirection: {x: 0, y: 0, z: 0}
+  m_reloadTime: 2.5
+  m_reloadSound: {fileID: 5104504200478145202}
+  m_magCapacity: 25
+  m_currentMagAmmo: 25
+  m_maxAmmoCapacity: 999
+  m_currentCarriedAmmo: 999
+  m_magazineUIText: {fileID: 0}
+  m_totalAmmoText: {fileID: 0}
+  m_reloadingCanvas: {fileID: 0}
+  m_reloadingBar: {fileID: 0}
+  m_baseShopValue: 0
+  m_fabricatorStorePrice: 0
+  m_weaponFireMode: 0
+  m_fireInterval: 0.45
+  m_burstFireDelay: 0
+  m_projectileArray:
+  - {fileID: 2663485960255416202}
+  - {fileID: 1505872874542509068}
+  - {fileID: 407837790643374953}
+  - {fileID: 8729285497387539090}
+  - {fileID: 4806377508911901355}
+  m_projectilesPerShot: 1
+  m_ammoConsumedPerShot: 1
+  m_muzzleFlash: {fileID: 6676386187326806731}
+  m_maxSpreadValue: 0
+  m_minSpreadValue: 0
 --- !u!82 &5104504200478145229
 AudioSource:
   m_ObjectHideFlags: 0
@@ -217,48 +259,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5104504200478145201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5104504200478145206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52d33827befa334faa41d26a9cf3311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fireSound: {fileID: 5104504200478145229}
-  m_isWeaponFiring: 0
-  m_barrelTransform: {fileID: 5104504201496880167}
-  m_aimingDirection: {x: 0, y: 0, z: 0}
-  m_reloadTime: 2.5
-  m_reloadSound: {fileID: 5104504200478145202}
-  m_magCapacity: 25
-  m_currentMagAmmo: 25
-  m_maxAmmoCapacity: 999
-  m_currentCarriedAmmo: 999
-  m_magazineUIText: {fileID: 0}
-  m_totalAmmoText: {fileID: 0}
-  m_reloadingCanvas: {fileID: 0}
-  m_reloadingBar: {fileID: 0}
-  m_baseShopValue: 0
-  m_fabricatorStorePrice: 0
-  m_weaponFireMode: 0
-  m_fireInterval: 0.45
-  m_burstFireDelay: 0
-  m_projectileArray:
-  - {fileID: 2663485960255416202}
-  - {fileID: 1505872874542509068}
-  - {fileID: 407837790643374953}
-  - {fileID: 8729285497387539090}
-  - {fileID: 4806377508911901355}
-  m_projectilesPerShot: 1
-  m_ammoConsumedPerShot: 1
-  m_muzzleFlash: {fileID: 6676386187326806731}
-  m_maxSpreadValue: 0
-  m_minSpreadValue: 0
 --- !u!82 &5104504200478145202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 14d636e9891a49549be480e32815dd79, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.35
   m_Pitch: 1

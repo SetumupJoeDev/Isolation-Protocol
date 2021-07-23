@@ -22,7 +22,7 @@ public class FabrictatorModule : InteractableObject
         m_fabricatorCanvas.ToggleCanvas( );
 
         //Deactivates the player's HUD so that it is not displayed over the fabricator UI
-        m_playerController.GetComponentInChildren<HUDManager>( ).gameObject.SetActive( false );
+        m_playerController.ToggleHUD( );
 
         //Sets the player as in a menu, so they cannot move or shoot
         m_playerController.m_isInMenu = true;

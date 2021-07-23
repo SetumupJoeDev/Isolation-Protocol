@@ -9,6 +9,7 @@ public class PlayerController : CharacterBase
 {
 
     public DictionaryBase dictionary;
+
     //James' Work
 
     [Header("Weapons")]
@@ -504,7 +505,7 @@ public class PlayerController : CharacterBase
 
     }
 
-    public void ToggleHUD( bool hudActive )
+    public void ToggleHUD( )
     {
         m_hud.GetComponent<CanvasController>().ToggleCanvas();
     }

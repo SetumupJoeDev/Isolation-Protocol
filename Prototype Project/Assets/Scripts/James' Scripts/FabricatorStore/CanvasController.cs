@@ -7,7 +7,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField]
     private CanvasGroup m_canvasGroup;
 
-    private bool m_isCanvasActive = false;
+    public bool m_isCanvasActive = false;
 
     public void ToggleCanvas( )
     {
