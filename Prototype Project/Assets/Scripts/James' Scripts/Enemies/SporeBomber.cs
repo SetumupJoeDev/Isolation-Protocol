@@ -65,7 +65,6 @@ public class SporeBomber : EnemyBase
                 entityHealthManager.TakeDamage( m_attackDamage );
             }
         }
-
     }
 
 }
