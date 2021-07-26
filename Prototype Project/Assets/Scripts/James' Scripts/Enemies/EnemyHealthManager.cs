@@ -16,6 +16,8 @@ public class EnemyHealthManager : HealthManager
     public analyticsManager m_enemyCounter; // Lewis' and James' code
     public PlayerController m_playerController;
 
+    public float m_timeAlive; 
+
 
     public override void Start()
     {
@@ -43,6 +45,8 @@ public class EnemyHealthManager : HealthManager
         //Debug.Log(m_damagedAmount);
         //Debug.Log(m_currentHealthFloat + "current health float");
         //Debug.Log(m_maxHealthFloat + "max health float");
+
+        m_timeAlive += Time.deltaTime * 1f;
 
         m_currentHealthFloat = (float)m_currentHealth;
     

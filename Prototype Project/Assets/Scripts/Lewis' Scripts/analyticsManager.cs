@@ -28,12 +28,40 @@ public class analyticsManager : MonoBehaviour
     public int bulletsHit = 0;
 
 
+    public int basicRangedSpawned;
+    public int basicMeleeSpawned;
+    public int faceHuggerSpawned;
+    public int LargeSpawned;
+    public int sporeBomberSpawned;
+    public int wallGrowthSpawned;
+    public int parasiteEggSpawned;
+    public int droidSpawned;
+    public int stunDroidSpawned;
+
+
+
+   
+
 
     public int boltBulletsShot = 0;
     public int boltHits = 0;
     public int subMachineGunBulletsShot = 0;
     public int subMachineGunBulletsHit = 0;
-
+    public int burstRifleShot;
+    public int burstRifleHit;
+    public int DMRshot;
+    public int DMRHit;
+    public int minigunShot;
+    public int minigunHit;
+    public int SawnOffShotgunShot;
+    public int SawnOffShotgunHit;
+    public int SniperRifleShot;
+    public int SniperRifleHit;
+    public int TacticalRifleShot;
+    public int TacticalRifleHit;
+    public int TacticalShotgunShot;
+    public int TacticalShotgunHit;
+   
     public int allBulletsShot;
 
     public float currentTime = 0f;
@@ -80,6 +108,16 @@ public class analyticsManager : MonoBehaviour
         }
         
     }
+
+
+    public void AverageNumber()
+    {
+        // List(enemyEnum + complete list of times that enemy died)
+        // Sum list, divide by number in list
+
+    }
+
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -131,15 +169,41 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         {
             case "BoltM4250":
                 boltBulletsShot++;
-                Debug.Log("bolt missed!" + boltBulletsShot);
+               
+
                 break;
 
             case "SubmachineGun":
                 subMachineGunBulletsShot++;
                 break;
 
+            case "BurstRifle":
+                burstRifleShot++;
+                break;
 
+            case "DMR":
+                DMRshot++;
+                break;
 
+            case "Minigun":
+                minigunShot++;
+                break;
+
+            case "Sawn off shotgun":
+                SawnOffShotgunShot++;
+                break;
+
+            case "SniperRifle":
+                SniperRifleShot++;
+                break;
+
+            case "Tactical rifle":
+                TacticalRifleShot++;
+                break;
+
+            case "Tactical Shotgun":
+                TacticalShotgunShot++;
+                break;
         }
     }
 
@@ -156,7 +220,34 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
             case "SubmachineGun":
                 subMachineGunBulletsHit++;
                 break;
-                
+
+            case "BurstRifle":
+                burstRifleHit++;
+                break;
+
+            case "DMR":
+                DMRHit++;
+                break;
+
+            case "Minigun":
+                minigunHit++;
+                break;
+
+            case "Sawn off shotgun":
+                SawnOffShotgunHit++;
+                break;
+
+            case "SniperRifle":
+                SniperRifleHit++;
+                break;
+
+            case "Tactical rifle":
+                TacticalRifleHit++;
+                break;
+
+            case "Tactical Shotgun":
+                TacticalShotgunHit++;
+                break;
         }
 
     }
@@ -166,7 +257,35 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         switch (name)
         {
             case "BasicRangedEnemy(Clone)":
-                Debug.Log(name);
+                basicRangedSpawned++;
+                break;
+            case "BasicEnemyMelee(Clone)":
+                basicMeleeSpawned++;
+                break;
+            case "GravyDroid(Clone)":
+                droidSpawned++;
+                break;
+            case "MutoSlug(Clone)":
+                faceHuggerSpawned++;
+                break;
+            case "ParasiteEgg(Clone)":
+                parasiteEggSpawned++;
+                break;
+
+            case "SporeBomber(Clone)":
+                sporeBomberSpawned++;
+                break;
+
+            case "Amalgam(Clone)":
+                LargeSpawned++;
+                break;
+
+            case "SporeHealer(Clone)":
+                wallGrowthSpawned++;
+                break;
+
+            case "GuardDroid(Clone)":
+                stunDroidSpawned++;
                 break;
         }
     }

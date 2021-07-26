@@ -64,6 +64,7 @@ public class ProjectileBase : MonoBehaviour
         }
         if (transform.parent.gameObject.transform.parent.tag == "Weapon")
         {
+            Debug.Log(transform.parent.gameObject.transform.parent.name);
             m_enemyCounter.bulletCounter (transform.parent.gameObject.transform.parent.name);
         }
         //Assigns the rigidbody attached to this object as the projectileRigidBody
