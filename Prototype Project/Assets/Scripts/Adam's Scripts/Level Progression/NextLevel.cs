@@ -9,6 +9,8 @@ public class NextLevel : MonoBehaviour
     // The number of the level that is currently loaded
     private int m_currentLevelNumber;
 
+    private int m_levelCounter;
+
     private void Start()
     {
         // Gets level number from Level Controller
@@ -20,14 +22,23 @@ public class NextLevel : MonoBehaviour
         // Checks for collision with player
         if (collision.CompareTag("Player"))
         {
-            // Saves player state in between levels
-            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
+            if (m_levelCounter >= 3)
+            {
+                SceneManager.LoadScene("Ship Hub");
+            }
+            else
+            {
+                // Saves player state in between levels
+                DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
 
-            // Loads next level based on current level number
-            SceneManager.LoadScene("Level " + (m_currentLevelNumber + 1));
+                // Loads next level based on current level number
+                SceneManager.LoadScene("Level " + (m_currentLevelNumber + 1));
 
-            // Repositions player to start room
-            collision.gameObject.transform.position = Vector3.zero;
+                m_levelCounter++;
+
+                // Repositions player to start room
+                collision.gameObject.transform.position = Vector3.zero;
+            }
         }
     }
 }
