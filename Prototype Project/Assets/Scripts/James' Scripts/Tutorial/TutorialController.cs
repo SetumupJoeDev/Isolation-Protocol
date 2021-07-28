@@ -6,7 +6,7 @@ using TMPro;
 public class TutorialController : MonoBehaviour
 {
 
-    public TutorialTask[] m_tutorialTasks;
+    public List<TutorialTask> m_tutorialTasks;
 
     public TutorialTask m_currentTask;
 
@@ -21,6 +21,11 @@ public class TutorialController : MonoBehaviour
 
     private void Start( )
     {
+
+        m_tutorialTasks.Add( new MovementTask() );
+
+        m_tutorialTasks.Add( new DodgeTask( ) );
+
         foreach(TutorialTask task in m_tutorialTasks )
         {
             task.Initialise( );
@@ -44,6 +49,9 @@ public class TutorialController : MonoBehaviour
 
     public void Update( )
     {
+
+        m_currentTask.m_taskGoal.CheckObjectiveProgress( );
+
         m_taskCounter.text = m_currentTask.m_taskGoal.m_currentAmount.ToString( );
 
         if ( m_currentTask.m_taskGoal.GoalAchieved( ) )

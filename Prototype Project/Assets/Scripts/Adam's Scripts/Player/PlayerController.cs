@@ -268,6 +268,11 @@ public class PlayerController : CharacterBase
 
     }
 
+    public void ToggleIsInMenu( )
+    {
+        m_isInMenu = !m_isInMenu;
+    }
+
     // End of James' work
 
     protected void Animate()

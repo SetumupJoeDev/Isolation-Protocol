@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 3145342820313458547, guid: f73cf0b1ce0c6a843a6ddcde5d6b727e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,13 +102,16 @@ MonoBehaviour:
   m_moveSpeed: 45
   m_directionalVelocity: {x: 0, y: 0}
   m_characterRigidBody: {fileID: 1691778104812726232}
+  m_slowedByHazard: 0
   m_healthManager: {fileID: 1691778104812726239}
   m_knockbackDuration: 0
   m_knockbackDirection: {x: 0, y: 0, z: 0}
   m_knockbackForce: 0
   m_knockedBack: 0
   m_slowness: 0
-  m_stunned: 0
+  m_isOnFire: 0
+  m_isBurning: 0
+  m_onFireParticles: {fileID: 0}
   m_stunDuration: 0
   m_stunIcon: {fileID: 0}
   m_detectionRange: 6
@@ -161,6 +164,7 @@ MonoBehaviour:
   number: 5
   m_enemyCounter: {fileID: 0}
   m_playerController: {fileID: 0}
+  m_timeAlive: 0
 --- !u!50 &1691778104812726232
 Rigidbody2D:
   serializedVersion: 4
