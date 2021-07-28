@@ -53,7 +53,7 @@ public class PlayerHealthManager : HealthManager
             }
 
 
-            if (  !GetComponentInChildren<DroneController>().gameObject.activeSelf || !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
+            if (  !GetComponentInChildren<DroneController>() || !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
             {
                 Die( );
             }

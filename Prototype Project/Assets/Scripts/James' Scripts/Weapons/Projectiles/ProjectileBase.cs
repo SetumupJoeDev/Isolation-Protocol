@@ -62,7 +62,7 @@ public class ProjectileBase : MonoBehaviour
         {
 
         }
-        if (transform.parent.gameObject.transform.parent.tag == "Weapon")
+        if (transform.parent.gameObject.transform.parent.tag == "Weapon" && m_enemyCounter != null )
         {
             Debug.Log(transform.parent.gameObject.transform.parent.name);
             m_enemyCounter.bulletCounter (transform.parent.gameObject.transform.parent.name);

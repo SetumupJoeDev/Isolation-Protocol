@@ -20,29 +20,27 @@ public class MovementGoal : TaskGoal
 
     public override void CheckObjectiveProgress( )
     {
-        while ( !GoalAchieved( ) )
+        if ( !m_movedUp && Input.GetKeyDown( KeyCode.W ) )
         {
-            if ( !m_movedUp && Input.GetKeyDown( KeyCode.W ) )
-            {
-                m_movedUp = true;
-                m_currentAmount++;
-            }
-            if ( !m_movedDown && Input.GetKeyDown( KeyCode.S ) )
-            {
-                m_movedDown = true;
-                m_currentAmount++;
-            }
-            if ( !m_movedLeft && Input.GetKeyDown( KeyCode.A ) )
-            {
-                m_movedLeft = true;
-                m_currentAmount++;
-            }
-            if ( !m_movedRight && Input.GetKeyDown( KeyCode.D ) )
-            {
-                m_movedRight = true;
-                m_currentAmount++;
-            }
+            m_movedUp = true;
+            m_currentAmount++;
         }
+        if ( !m_movedDown && Input.GetKeyDown( KeyCode.S ) )
+        {
+            m_movedDown = true;
+            m_currentAmount++;
+        }
+        if ( !m_movedLeft && Input.GetKeyDown( KeyCode.A ) )
+        {
+            m_movedLeft = true;
+            m_currentAmount++;
+        }
+        if ( !m_movedRight && Input.GetKeyDown( KeyCode.D ) )
+        {
+            m_movedRight = true;
+            m_currentAmount++;
+        }
+        
     }
 
 }
