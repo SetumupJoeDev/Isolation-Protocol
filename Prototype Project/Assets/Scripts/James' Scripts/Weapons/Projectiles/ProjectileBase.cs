@@ -110,7 +110,7 @@ public class ProjectileBase : MonoBehaviour
             CollideWithTarget( collision );
 
         }
-        else if( LayerMask.LayerToName( collision.gameObject.layer ) == "Walls" )
+        else if( LayerMask.LayerToName( collision.gameObject.layer ) == "Walls" || collision.gameObject.GetComponents<TutorialDummy>() != null)
         {
             CollideWithWall( collision );
         }
