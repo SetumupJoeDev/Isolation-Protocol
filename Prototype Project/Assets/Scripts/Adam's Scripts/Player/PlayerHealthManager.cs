@@ -69,10 +69,6 @@ public class PlayerHealthManager : HealthManager
     // Deactivates player and sets up death screen
     private void Die()
     {
-       
-       
-
-
         Instantiate(m_deathCamera);
         Instantiate(m_deathUI);
         

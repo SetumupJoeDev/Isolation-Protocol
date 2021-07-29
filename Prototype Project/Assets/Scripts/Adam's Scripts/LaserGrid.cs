@@ -5,7 +5,10 @@ using UnityEngine;
 public class LaserGrid : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] m_lasers; 
+    private GameObject[] m_lasers;
+    [SerializeField]
+    private GameObject[] m_powerUpVfx;
+    public float m_timePowerUp;
     public float m_timeOn;
     public float m_timeOff;
     
@@ -35,6 +38,18 @@ public class LaserGrid : MonoBehaviour
         }
 
         yield return new WaitForSeconds(m_timeOff);
+
+        StartCoroutine(PowerUp());
+    }
+
+    private IEnumerator PowerUp()
+    {
+        for (int i = 0; i < m_powerUpVfx.Length; i++)
+        {
+            m_powerUpVfx[i].SetActive(true);
+        }
+
+        yield return new WaitForSeconds(m_timePowerUp);
 
         StartCoroutine(On());
     }
