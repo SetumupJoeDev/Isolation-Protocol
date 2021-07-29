@@ -19,4 +19,9 @@ public class TutorialTask
         //Initialisation logic goes here
     }
 
+    public virtual void StartTask()
+    {
+        //Task starting goes here
+    }
+
 }
