@@ -6,30 +6,46 @@ using TMPro;
 public class TutorialController : MonoBehaviour
 {
 
+    [Header("Booleans")]
+
     public bool m_isTaskActive;
 
     public bool m_tutorialComplete;
 
+    [Header("Tasks")]
+
     public List<TutorialTask> m_tutorialTasks;
+
+    public TutorialTask m_currentTask;
+
+    [Header("Audio")]
 
     public AudioClip[] m_voiceClips;
 
     public AudioSource m_voiceLinePlayer;
 
+    [Header("Dummy Enemies")]
+
     public GameObject m_dummies;
 
     public GameObject m_holoSlug;
 
-    public TutorialTask m_currentTask;
+    [Header("Indices")]
 
     public int m_currentTaskIndex = 0;
 
     public int m_voiceLineIndex = 0;
 
+    [Header("User Interface")]
+
+    public CanvasController m_menuCanvasController;
+
     public TextMeshProUGUI m_taskName;
     public TextMeshProUGUI m_taskDescription;
     public TextMeshProUGUI m_taskVariableName;
     public TextMeshProUGUI m_taskCounter;
+
+    [Header("Player")]
 
     public PlayerController m_playerController;
 
@@ -95,7 +111,7 @@ public class TutorialController : MonoBehaviour
             {
                 m_currentTaskIndex++;
 
-                if ( m_currentTaskIndex > m_tutorialTasks.Count )
+                if ( m_currentTaskIndex >= m_tutorialTasks.Count )
                 {
                     m_tutorialComplete = true;
                 }
@@ -121,14 +137,18 @@ public class TutorialController : MonoBehaviour
 
         yield return new WaitForSeconds( m_voiceLinePlayer.clip.length );
 
-        if ( m_voiceLineIndex < m_voiceClips.Length )
+        if ( !m_tutorialComplete )
         {
             m_voiceLinePlayer.clip = m_voiceClips[m_voiceLineIndex];
+
+            StartNewTask( );
+
+            m_isTaskActive = true;
         }
-
-        StartNewTask();
-
-        m_isTaskActive = true;
+        else
+        {
+            m_menuCanvasController.ToggleCanvas( );
+        }
 
     }
 

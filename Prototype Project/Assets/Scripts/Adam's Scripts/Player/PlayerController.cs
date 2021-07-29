@@ -8,9 +8,13 @@ using UnityEngine.Analytics;
 public class PlayerController : CharacterBase
 {
 
+
+
     public DictionaryBase dictionary;
 
     //James' Work
+
+    private static PlayerController playerInstance;
 
     [Header("Weapons")]
 
@@ -150,6 +154,16 @@ public class PlayerController : CharacterBase
         };
 
         DontDestroyOnLoad(this.gameObject);
+
+        if( playerInstance == null )
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            Destroy( gameObject );
+        }
+
     }
 
     // Update is called once per frame
