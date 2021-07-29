@@ -17,7 +17,6 @@ public class AimGoal : TaskGoal
 
     public void DummyTrigger()
     {
-        Debug.Log("Dummy hit!");
         m_currentAmount++;
         if ( GoalAchieved( ) )
         {

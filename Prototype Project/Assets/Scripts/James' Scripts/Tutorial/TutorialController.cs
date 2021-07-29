@@ -8,6 +8,8 @@ public class TutorialController : MonoBehaviour
 
     public bool m_isTaskActive;
 
+    public bool m_tutorialComplete;
+
     public List<TutorialTask> m_tutorialTasks;
 
     public AudioClip[] m_voiceClips;
@@ -78,20 +80,32 @@ public class TutorialController : MonoBehaviour
     public void Update( )
     {
 
-        if (m_isTaskActive)
+
+        if ( !m_tutorialComplete )
         {
-            m_currentTask.m_taskGoal.CheckObjectiveProgress();
 
-            m_taskCounter.text = m_currentTask.m_taskGoal.m_currentAmount.ToString();
-        }
+            if ( m_isTaskActive )
+            {
+                m_currentTask.m_taskGoal.CheckObjectiveProgress( );
 
-        if ( m_currentTask.m_taskGoal.GoalAchieved( ) )
-        {
-            m_currentTaskIndex++;
+                m_taskCounter.text = m_currentTask.m_taskGoal.m_currentAmount.ToString( );
+            }
 
-            m_currentTask = m_tutorialTasks[m_currentTaskIndex];
+            if ( m_currentTask.m_taskGoal.GoalAchieved( ) )
+            {
+                m_currentTaskIndex++;
 
-            StartCoroutine(WaitForVoiceClip( ) );
+                if ( m_currentTaskIndex > m_tutorialTasks.Count )
+                {
+                    m_tutorialComplete = true;
+                }
+                else
+                {
+                    m_currentTask = m_tutorialTasks[m_currentTaskIndex];
+                }
+
+                StartCoroutine( WaitForVoiceClip( ) );
+            }
         }
 
     }
@@ -106,6 +120,11 @@ public class TutorialController : MonoBehaviour
         m_voiceLineIndex++;
 
         yield return new WaitForSeconds( m_voiceLinePlayer.clip.length );
+
+        if ( m_voiceLineIndex < m_voiceClips.Length )
+        {
+            m_voiceLinePlayer.clip = m_voiceClips[m_voiceLineIndex];
+        }
 
         StartNewTask();
 

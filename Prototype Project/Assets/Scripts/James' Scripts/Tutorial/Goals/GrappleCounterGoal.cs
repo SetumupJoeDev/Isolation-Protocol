@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrappleCounterGoal : TaskGoal
 {
     
-    public GrappleCounterGoal( int goalAmount = 2 )
+    public GrappleCounterGoal( int goalAmount = 1 )
     {
         m_goalAmount = goalAmount;
 
