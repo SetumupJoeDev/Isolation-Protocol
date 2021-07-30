@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3883301828414324665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.29, y: -0.89, z: -1.9980469}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: 707556317688852800, guid: 14c13173c68699942b51b2a00ec46add, type: 3}
   - {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
   m_hatchingSound: {fileID: 8300000, guid: 7ee16405891a3594fb6d369fbce94921, type: 3}
+  m_enemyCounter: {fileID: 0}
 --- !u!50 &3883301828414324671
 Rigidbody2D:
   serializedVersion: 4

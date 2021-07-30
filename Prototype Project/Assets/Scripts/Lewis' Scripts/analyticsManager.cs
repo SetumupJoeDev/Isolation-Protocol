@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ public class analyticsManager : MonoBehaviour
     public int parasiteEggKilledFirst;
     public int droidKilled = 0;
     public int droidKilledFirst;
-    public static int roomsCrossed = 0;
+    public  int roomsCrossed = 0;
     public int bulletsHit = 0;
 
 
@@ -81,8 +82,13 @@ public class analyticsManager : MonoBehaviour
     public string activeScene; 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+
+        
+        gameEvents.hello.goodBye += roomCount;
+
+
         DontDestroyOnLoad(gameObject);
         if (GameObject.Find("easyName").GetComponent<email>() != null)
         {
@@ -96,7 +102,12 @@ public class analyticsManager : MonoBehaviour
 
         SceneManager.sceneLoaded += onSceneLoaded; 
     }
-   
+
+    private void Hello_OnGrappleTaskStart()
+    {
+        throw new NotImplementedException();
+    }
+
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
@@ -109,7 +120,7 @@ public class analyticsManager : MonoBehaviour
         
     }
 
-
+   
     public void AverageNumber()
     {
         // List(enemyEnum + complete list of times that enemy died)
@@ -117,7 +128,10 @@ public class analyticsManager : MonoBehaviour
 
     }
 
-
+    public void roomCount()
+    {
+     
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -294,6 +308,8 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
     // Update is called once per frame
     void Update()  
     {
+     //   gameEvents.hello.runGoodbye();
+
 
         currentTime += 1 * Time.deltaTime;
         timeInGame = currentTime.ToString();
@@ -349,6 +365,5 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         }
     }
 
-   
-   
+  
 }

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5320534695325496833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.48, y: 2.49, z: -2.6974802}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,6 +125,10 @@ MonoBehaviour:
   m_damagedAmount: 0
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
+  number: 5
+  m_enemyCounter: {fileID: 0}
+  m_playerController: {fileID: 0}
+  m_timeAlive: 0
 --- !u!50 &5320534695325496837
 Rigidbody2D:
   serializedVersion: 4

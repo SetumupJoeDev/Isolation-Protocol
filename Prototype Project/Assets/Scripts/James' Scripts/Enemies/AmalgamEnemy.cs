@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AmalgamEnemy : EnemyBase
 {
     public AudioClip m_windupSound; // Lewis' code

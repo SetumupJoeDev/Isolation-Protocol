@@ -128,12 +128,13 @@ public class PlayerController : CharacterBase
 
     //End of James' work
 
-   
+    public analyticsManager m_enemyCounter;
 
     // Sets up initial values of variables and references not set in inspector
     private void Start()
     {
-        
+  //      m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // replace with events manager
+
         m_playerHealthManager = GetComponent<PlayerHealthManager>();
         m_healthManager = GetComponent<PlayerHealthManager>();
         m_animator      = GetComponent<Animator>();
@@ -539,10 +540,10 @@ public class PlayerController : CharacterBase
         {
             if (collision.gameObject.layer == 12) // checks for doorcollider
             {
+                gameEvents.hello.runGoodbye();
+                
 
-
-
-                analyticsManager.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
+                m_enemyCounter.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
             }
         }
     }

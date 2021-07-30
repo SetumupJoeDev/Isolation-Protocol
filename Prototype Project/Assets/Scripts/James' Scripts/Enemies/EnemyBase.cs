@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyBase : CharacterBase
 {
@@ -62,6 +63,9 @@ public class EnemyBase : CharacterBase
     [SerializeField]
     [Tooltip("Determines whether or not the enemy is currently attacking.")]
     protected bool m_isAttacking;
+
+
+    public bool m_canAttack;
 
     #endregion
 
@@ -127,6 +131,16 @@ public class EnemyBase : CharacterBase
 
     #endregion
 
+
+    private void Start()
+    {
+        gameEvents.hello.enemyTargetPlayer += CheckcanAttack;
+
+    }
+
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -173,9 +187,11 @@ public class EnemyBase : CharacterBase
     public virtual void AttackMode( )
     {
         //If the player is outside of the enemy's attack range, they return to the chasing state
-        if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange )
+        if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange ) // and the player is inside the room 
         {
+            
             m_currentState = enemyStates.chasing;
+            GetComponent<AIPath>().canMove = true;
         }
         //If the enemy is not attacking, their attack coroutine is started
         else if ( !m_isAttacking && !m_isStunned)
@@ -195,10 +211,16 @@ public class EnemyBase : CharacterBase
         }
     }
 
+    public void CheckcanAttack()
+    {
+        m_canAttack = true;
+    }
+
+
     protected override void FixedUpdate( )
     {
         //If the enemy is in the chasing state and isn't currently knocked back, they chase the player
-        if( m_currentState == enemyStates.chasing && !m_knockedBack )
+        if( m_currentState == enemyStates.chasing && !m_knockedBack &&  m_canAttack == true)
         {
             ChaseTarget( );
         }
@@ -243,6 +265,7 @@ public class EnemyBase : CharacterBase
         //Otherwise, if they are closer than the chase proximity, they enter the attacking state and have their velocity set to 0
         else if( distanceToTarget <= m_chaseProximity )
         {
+            GetComponent<AIPath>().canMove = false;
             m_currentState = enemyStates.attacking;
             m_characterRigidBody.velocity = Vector3.zero;
             m_characterRigidBody.angularVelocity = 0;
@@ -292,6 +315,7 @@ public class EnemyBase : CharacterBase
         if ( collider != null && !VisionObscured( collider ) && collider.GetComponent<PlayerHealthManager>().m_currentPlayerState == PlayerHealthManager.playerState.alive )
         {
             m_currentTarget = collider.gameObject;
+            GetComponent<AIDestinationSetter>().target = m_currentTarget.transform;
             m_currentState = enemyStates.chasing;
             m_searchingForTargets = false;
             yield break;
@@ -369,4 +393,9 @@ public class EnemyBase : CharacterBase
             }
         }
     }
+
+
+
+   
+
 }

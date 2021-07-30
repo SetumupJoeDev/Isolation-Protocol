@@ -194,6 +194,14 @@ public class RoomController : MonoBehaviour
         int random = Random.Range(0, m_lootDrops.Length);
         Instantiate(m_lootDrops[random], transform.position, Quaternion.identity);
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (m_discovered == true && collision.gameObject.CompareTag("Enemy"))
+        {
+            gameEvents.hello.runEnemyTargetPlayer();
+            Debug.Log("goodbye");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

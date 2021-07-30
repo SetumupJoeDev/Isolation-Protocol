@@ -150,7 +150,7 @@ public class ProjectileBase : MonoBehaviour
 
         m_previouslyDamageTarget = null;
 
-        transform.SetParent( m_parentTransform );
+        transform.SetParent( m_parentTransform ); // does this mess up the time rewind?
 
         gameObject.SetActive( false );
     }

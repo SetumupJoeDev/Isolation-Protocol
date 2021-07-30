@@ -3321,7 +3321,7 @@ GameObject:
   - component: {fileID: 3622568030334552029}
   - component: {fileID: 4442560336077871557}
   m_Layer: 12
-  m_Name: Top_Bottom_Right
+  m_Name: Top_Bottom_Right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3342,7 +3342,7 @@ Transform:
   - {fileID: 7094279140992830381}
   - {fileID: 5868356612080802964}
   - {fileID: 8846375501422388185}
-  - {fileID: 4505917496385708891}
+  - {fileID: 4679521129136885500}
   - {fileID: 8438687849411390106}
   - {fileID: 8312578214122547221}
   - {fileID: 2282584525324563412}
@@ -3361,25 +3361,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de7018f4bd3d843bba4aa0945b89b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wallLayer:
-    serializedVersion: 2
-    m_Bits: 1024
   m_spawners:
   - {fileID: 7069657601966755095}
   - {fileID: 809158892527824138}
   - {fileID: 2210981005444097849}
   m_spawnedFrom: {fileID: 0}
+  m_wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   m_discovered: 0
   m_cleared: 0
+  m_doors:
+  - {fileID: 850726392342882072}
+  - {fileID: 4926197642391444439}
+  - {fileID: 2570749406138766166}
   m_lootDrops:
   - {fileID: 395475774317939712, guid: 2dde4f86e5759554395f317fdbd86538, type: 3}
   - {fileID: 7386625985900479494, guid: f9750d89e6ff660458c55b9c9814a895, type: 3}
   - {fileID: 8338654364327356435, guid: 11dcc332309d76e4991d0b81fe2554c7, type: 3}
   m_dropChance: 0.2
-  m_doors:
-  - {fileID: 850726392342882072}
-  - {fileID: 4926197642391444439}
-  - {fileID: 2570749406138766166}
   m_enemySpawner: {fileID: 0}
 --- !u!61 &4442560336077871557
 BoxCollider2D:
@@ -3556,11 +3556,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7311313928978322412, guid: 0575718eb62032245ac8f0dc70ed50fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0575718eb62032245ac8f0dc70ed50fa, type: 3}
---- !u!4 &4505917496385708891 stripped
+--- !u!4 &4679521129136885500 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1949991510870359627, guid: 0575718eb62032245ac8f0dc70ed50fa,
+  m_CorrespondingSourceObject: {fileID: 7311313928978322412, guid: 0575718eb62032245ac8f0dc70ed50fa,
     type: 3}
   m_PrefabInstance: {fileID: 2704410358465813776}
   m_PrefabAsset: {fileID: 0}
