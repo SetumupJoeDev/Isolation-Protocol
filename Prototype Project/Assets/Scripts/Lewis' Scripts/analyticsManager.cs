@@ -79,7 +79,10 @@ public class analyticsManager : MonoBehaviour
 
     public bool isPlaytester = false;
 
-    public string activeScene; 
+    public string activeScene;
+
+
+    public List<int> list;
 
     // Start is called before the first frame update
     private void Start()
@@ -308,8 +311,8 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
     // Update is called once per frame
     void Update()  
     {
-     //   gameEvents.hello.runGoodbye();
-
+        //   gameEvents.hello.runGoodbye();
+        Debug.Log(list[1]);
 
         currentTime += 1 * Time.deltaTime;
         timeInGame = currentTime.ToString();

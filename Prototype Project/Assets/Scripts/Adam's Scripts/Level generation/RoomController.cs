@@ -198,7 +198,7 @@ public class RoomController : MonoBehaviour
     {
         if (m_discovered == true && collision.gameObject.CompareTag("Enemy"))
         {
-            gameEvents.hello.runEnemyTargetPlayer();
+            gameEvents.hello.runEnemyTargetPlayer(); // enemies can now chase the player only if the player is within the same room
             Debug.Log("goodbye");
         }
     }

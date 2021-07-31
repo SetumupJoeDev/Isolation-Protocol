@@ -65,7 +65,7 @@ public class EnemyBase : CharacterBase
     protected bool m_isAttacking;
 
 
-    public bool m_canAttack;
+    public bool m_canChasePlayer;
 
     #endregion
 
@@ -134,7 +134,7 @@ public class EnemyBase : CharacterBase
 
     private void Start()
     {
-        gameEvents.hello.enemyTargetPlayer += CheckcanAttack;
+        gameEvents.hello.enemyTargetPlayer += checkCanChasePlayer;
 
     }
 
@@ -187,15 +187,16 @@ public class EnemyBase : CharacterBase
     public virtual void AttackMode( )
     {
         //If the player is outside of the enemy's attack range, they return to the chasing state
-        if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange ) // and the player is inside the room 
+        if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange ) 
         {
+            GetComponent<AIPath>().canMove = true;
             
             m_currentState = enemyStates.chasing;
-            GetComponent<AIPath>().canMove = true;
         }
         //If the enemy is not attacking, their attack coroutine is started
         else if ( !m_isAttacking && !m_isStunned)
         {
+            
             StartCoroutine( AttackTarget( ) );
             m_isAttacking = true;
         }
@@ -211,16 +212,16 @@ public class EnemyBase : CharacterBase
         }
     }
 
-    public void CheckcanAttack()
+    public void checkCanChasePlayer()
     {
-        m_canAttack = true;
+        m_canChasePlayer = true;
     }
 
 
     protected override void FixedUpdate( )
     {
         //If the enemy is in the chasing state and isn't currently knocked back, they chase the player
-        if( m_currentState == enemyStates.chasing && !m_knockedBack &&  m_canAttack == true)
+        if( m_currentState == enemyStates.chasing && !m_knockedBack &&  m_canChasePlayer == true)
         {
             ChaseTarget( );
         }
@@ -265,10 +266,11 @@ public class EnemyBase : CharacterBase
         //Otherwise, if they are closer than the chase proximity, they enter the attacking state and have their velocity set to 0
         else if( distanceToTarget <= m_chaseProximity )
         {
-            GetComponent<AIPath>().canMove = false;
             m_currentState = enemyStates.attacking;
             m_characterRigidBody.velocity = Vector3.zero;
             m_characterRigidBody.angularVelocity = 0;
+            GetComponent<AIPath>().canMove = false;
+
         }
         //If the player is further away than double the enemy's detection range, they lose sight of them and return to idle and have their velocity set to 0
         if ( distanceToTarget > m_detectionRange * 2 )
