@@ -42,6 +42,8 @@ public class EnemyBase : CharacterBase
     [Tooltip("The closest distance to the player to which the enemy will move.")]
     protected float m_chaseProximity;
 
+    public AIPath m_enemyAI;
+
     #endregion
 
     #region Attacking
@@ -134,15 +136,16 @@ public class EnemyBase : CharacterBase
 
     private void Start()
     {
-        gameEvents.hello.enemyTargetPlayer += checkCanChasePlayer;
+        m_enemyAI = GetComponent<AIPath>( );
 
+        //gameEvents.hello.enemyTargetPlayer += checkCanChasePlayer;
     }
 
 
 
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         //Switches through the enemy's current state and acts accordingly
         switch ( m_currentState )
@@ -160,7 +163,16 @@ public class EnemyBase : CharacterBase
                 break;
             case ( enemyStates.chasing ):
                 {
-                    
+                    //If the enemy is in the chasing state and isn't currently knocked back, they chase the player
+                    if ( m_currentState == enemyStates.chasing && !m_knockedBack )
+                    {
+                        ChaseTarget( );
+                    }
+                    //If the enemy is knocked back, their knockback force is simulated
+                    if ( m_knockedBack )
+                    {
+                        SimulateKnockback( );
+                    }
                 }
                 break;
                 //If the enemy is in the attacking state, they attack the player or return to the chasing state
@@ -174,14 +186,16 @@ public class EnemyBase : CharacterBase
         //Animates the enemy to face the correct direction using the correct animation
         Animate( );
 
+        base.Update( );
+
     }
 
     protected void Animate( )
     {
         //Sets the value of the animator floats using the velocity of the enemy, so that the face the correct direction
-        m_animator.SetFloat( "Horizontal" , m_directionalVelocity.normalized.x );
-        m_animator.SetFloat( "Vertical" , m_directionalVelocity.normalized.y );
-        m_animator.SetFloat( "Speed" , m_characterRigidBody.velocity.sqrMagnitude );
+        m_animator.SetFloat( "Horizontal" , m_enemyAI.desiredVelocity.normalized.x );
+        m_animator.SetFloat( "Vertical" , m_enemyAI.desiredVelocity.normalized.y );
+        m_animator.SetFloat( "Speed" , m_enemyAI.velocity.magnitude );
     }
 
     public virtual void AttackMode( )
@@ -189,7 +203,7 @@ public class EnemyBase : CharacterBase
         //If the player is outside of the enemy's attack range, they return to the chasing state
         if ( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_attackRange ) 
         {
-            GetComponent<AIPath>().canMove = true;
+            m_enemyAI.canMove = true;
             
             m_currentState = enemyStates.chasing;
         }
@@ -220,16 +234,7 @@ public class EnemyBase : CharacterBase
 
     protected override void FixedUpdate( )
     {
-        //If the enemy is in the chasing state and isn't currently knocked back, they chase the player
-        if( m_currentState == enemyStates.chasing && !m_knockedBack &&  m_canChasePlayer == true)
-        {
-            ChaseTarget( );
-        }
-        //If the enemy is knocked back, their knockback force is simulated
-        if ( m_knockedBack )
-        {
-            SimulateKnockback( );
-        }
+        
     }
 
     public override void Die( )
@@ -252,24 +257,15 @@ public class EnemyBase : CharacterBase
 
     protected virtual void ChaseTarget( )
     {
-        //Calculates the directional velocity of the enemy using the position of their current target and the enemy
-        m_directionalVelocity = m_currentTarget.transform.position - transform.position;
 
-        //Calculates the current distance between 
+        //Calculates the current distance between this enemy and its target
         float distanceToTarget = Vector3.Distance( transform.position , m_currentTarget.transform.position );
 
-        //If the enemy is further from the player than the chase proximity, then they move towards the player
-        if ( distanceToTarget > m_chaseProximity && !m_isStunned )
-        {
-            m_characterRigidBody.velocity = m_directionalVelocity.normalized * (m_moveSpeed + m_slowness) * Time.deltaTime;
-        }
         //Otherwise, if they are closer than the chase proximity, they enter the attacking state and have their velocity set to 0
-        else if( distanceToTarget <= m_chaseProximity )
+        if( distanceToTarget <= m_chaseProximity )
         {
             m_currentState = enemyStates.attacking;
-            m_characterRigidBody.velocity = Vector3.zero;
-            m_characterRigidBody.angularVelocity = 0;
-            GetComponent<AIPath>().canMove = false;
+            m_enemyAI.canMove = false;
 
         }
         //If the player is further away than double the enemy's detection range, they lose sight of them and return to idle and have their velocity set to 0
@@ -277,8 +273,6 @@ public class EnemyBase : CharacterBase
         {
             m_currentState = enemyStates.idle;
             m_searchingForTargets = false;
-            m_characterRigidBody.velocity = Vector3.zero;
-            m_characterRigidBody.angularVelocity = 0;
         }
     }
 
@@ -292,8 +286,6 @@ public class EnemyBase : CharacterBase
 
         //Sends out a raycast from the position of the enemy to that of the player, checking for any colliders on the wall layer
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, direction , distance, m_wallLayer );
-
-        Debug.DrawLine( transform.position , collider.gameObject.transform.position );
 
         //If raycast hits a wall, then rayHit will not be null and the enemy's vision is obscured, so the method returns true
         if( rayHit.collider != null )
