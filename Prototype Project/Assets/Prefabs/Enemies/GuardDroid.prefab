@@ -128,11 +128,12 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.125
   m_chaseProximity: 1
+  m_enemyAI: {fileID: 0}
   m_attackRange: 1.5
   m_attackDamage: 1
   m_attackInterval: 4
   m_isAttacking: 0
-  m_canAttack: 0
+  m_canChasePlayer: 0
   m_lootBoostModifier: 0
   m_maxCigaretteDrops: 12
   m_minCigaretteDrops: 3
@@ -295,7 +296,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 1.6
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2

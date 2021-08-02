@@ -82,13 +82,14 @@ public class analyticsManager : MonoBehaviour
     public string activeScene;
 
 
-    public List<int> list;
+    List<averageClass> list = new List<averageClass>();
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-
+     
         
+
         gameEvents.hello.goodBye += roomCount;
 
 
@@ -186,7 +187,7 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         {
             case "BoltM4250":
                 boltBulletsShot++;
-               
+           //     list.Insert(1, new averageClass(boltBulletsShot));
 
                 break;
 
