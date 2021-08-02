@@ -192,7 +192,7 @@ public class RoomController : MonoBehaviour
     private void DropLoot()
     {
         int random = Random.Range(0, m_lootDrops.Length);
-        Instantiate(m_lootDrops[random], transform.position, Quaternion.identity);
+        Instantiate(m_lootDrops[random], transform.position - new Vector3(5,5,0), Quaternion.identity);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
