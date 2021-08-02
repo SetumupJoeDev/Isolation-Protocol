@@ -15,13 +15,14 @@ public class LaserGrid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(On());
+        StartCoroutine(PowerUp());
     }
     
     private IEnumerator On()
     {
         for (int i = 0; i < m_lasers.Length; i++)
         {
+            m_powerUpVfx[i].SetActive(false);
             m_lasers[i].SetActive(true);
         }
 
