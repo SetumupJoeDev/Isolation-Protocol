@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5011560008744817111, guid: 77e1866d75500c8468f937ba29516227,
+  m_Sprite: {fileID: 4707851117713992178, guid: 0087b9622a8977940be4e6237c53d52b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,11 +130,12 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.25
   m_chaseProximity: 2.5
+  m_enemyAI: {fileID: 0}
   m_attackRange: 3
   m_attackDamage: 2
   m_attackInterval: 2
   m_isAttacking: 0
-  m_canAttack: 0
+  m_canChasePlayer: 0
   m_lootBoostModifier: 1
   m_maxCigaretteDrops: 4
   m_minCigaretteDrops: 2
@@ -261,7 +262,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8571428, y: 2}
+    oldSize: {x: 0.8125, y: 0.875}
     newSize: {x: 0.8125, y: 0.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

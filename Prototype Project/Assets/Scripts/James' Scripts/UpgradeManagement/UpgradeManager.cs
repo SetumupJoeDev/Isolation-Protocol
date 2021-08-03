@@ -69,6 +69,8 @@ public class UpgradeManager : InteractableObject
 
             m_upgradeUI.blocksRaycasts = false;
 
+            m_isActivated = false;
+
         }
         //Toggles the canvas on if it is currently transparent
         else

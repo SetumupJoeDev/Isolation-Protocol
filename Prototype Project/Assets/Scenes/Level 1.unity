@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
         type: 3}
       propertyPath: m_rightDoorRooms.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_rightDoorRooms.Array.data[1]
       value: 
-      objectReference: {fileID: 2943545043576358957, guid: d9500dd92c38e804ba00e0f56b90a22d,
+      objectReference: {fileID: 2441236871168476977, guid: 7a22d197113ed5d4ba117e0a8780e9ad,
         type: 3}
     - target: {fileID: 2823378628373888598, guid: 28d6ec5ea93685f42b1fd06bba6e13b1,
         type: 3}
@@ -1942,7 +1942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1172477140}
   - component: {fileID: 1172477139}
-  - component: {fileID: 1172477138}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -1950,18 +1949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1172477138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172477137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04d178827eb60e40bc8ad0fe96a2aa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1172477139
 MonoBehaviour:
   m_ObjectHideFlags: 0

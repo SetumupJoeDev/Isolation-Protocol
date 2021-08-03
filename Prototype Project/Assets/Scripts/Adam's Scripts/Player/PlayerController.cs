@@ -195,28 +195,32 @@ public class PlayerController : CharacterBase
 
             // James' work
 
-            CheckForInteractables( );
-
-            if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_isStunned )
+            if (!m_isInMenu)
             {
-                m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
-            }
-            if( Input.GetMouseButtonUp( 0 ) && !m_isInMenu )
-            {
-                m_currentWeapon.GetComponent<GunBase>( ).StopFiring( );
-            }
 
-            float scrollWheelValue = Input.GetAxis( "Mouse ScrollWheel" );
+                CheckForInteractables();
 
-            if ( scrollWheelValue != 0 )
-            {
-                float indexModifier = scrollWheelValue * 10;
-                SwapWeapon( ( int )indexModifier );
-            }
+                if (Input.GetMouseButton(0) && !m_isInMenu && !m_isStunned)
+                {
+                    m_currentWeapon.GetComponent<GunBase>().FireWeapon();
+                }
+                if (Input.GetMouseButtonUp(0) && !m_isInMenu)
+                {
+                    m_currentWeapon.GetComponent<GunBase>().StopFiring();
+                }
 
-            if ( Input.GetKeyDown( KeyCode.R ) && !m_isStunned )
-            {
-                m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
+                float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
+
+                if (scrollWheelValue != 0)
+                {
+                    float indexModifier = scrollWheelValue * 10;
+                    SwapWeapon((int)indexModifier);
+                }
+
+                if (Input.GetKeyDown(KeyCode.R) && !m_isStunned)
+                {
+                    m_currentWeapon.GetComponent<GunBase>().ReloadWeapon();
+                }
             }
 
             if ( Input.GetKeyDown( KeyCode.Tab ) )
@@ -263,7 +267,7 @@ public class PlayerController : CharacterBase
 
         //End of James' work
 
-        else
+        else if(!m_isInMenu)
         {
             // Moves player normally
             Move();
@@ -339,7 +343,7 @@ public class PlayerController : CharacterBase
 
         if (m_canDash)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && !m_isInMenu)
             {
                 m_isDashing = true;
                 m_canDash = false;
