@@ -22,6 +22,8 @@ public class UpgradeManager : InteractableObject
 
         m_playerController.m_isInMenu = !m_playerController.m_isInMenu;
 
+        m_playerController.ToggleHUD( );
+
         CheckForNewUnlocks( );
 
         ToggleUpgradeCanvas( );
