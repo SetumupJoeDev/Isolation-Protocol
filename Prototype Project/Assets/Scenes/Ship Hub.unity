@@ -563,6 +563,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bedbd6cc7dcfb3d47b1a49637b9b2012, type: 3}
+--- !u!114 &290914871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5305091136025217241, guid: 5a9e3893e0777a04286abffc77950566,
+    type: 3}
+  m_PrefabInstance: {fileID: 5305091135096762553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775e8b2a0e21f4049a9dafc7af5be8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &412140339
 GameObject:
   m_ObjectHideFlags: 0
@@ -11017,6 +11029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 290914871}
+    - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 979090181}
     - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
         type: 3}
@@ -11027,6 +11044,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleUpgradeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ToggleIsInMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
         type: 3}
@@ -11042,6 +11069,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7277269166742265297, guid: 5a9e3893e0777a04286abffc77950566,
         type: 3}

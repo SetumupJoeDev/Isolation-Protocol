@@ -10,6 +10,7 @@ public class ElectricPuddle : MonoBehaviour
     private bool            m_caught;
     private CharacterBase   m_caughtThing;
 
+    public AudioClip m_crackleSound;
     private void Start()
     {
         m_electrified = false;
@@ -20,6 +21,7 @@ public class ElectricPuddle : MonoBehaviour
     {
         if(m_electrified && m_caught)
         {
+            AudioSource.PlayClipAtPoint(m_crackleSound, transform.position);
             StartCoroutine(m_caughtThing.Stun());
         }
     }
@@ -27,6 +29,7 @@ public class ElectricPuddle : MonoBehaviour
     private IEnumerator Electrified()
     {
         m_electrified = true;
+        
         m_particles.Play();
         yield return new WaitForSeconds(1);
         StartCoroutine(NotElectrified());

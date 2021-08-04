@@ -13,9 +13,14 @@ public class Door : MonoBehaviour
     [SerializeField]
     private GameObject m_openDoor;
 
+
+    public AudioClip m_doorOpenNoise;
+    public AudioClip m_doorCloseNoise;
+
     // Switches active tilemap to closed door
     public void Close()
     {
+        AudioSource.PlayClipAtPoint(m_doorCloseNoise, transform.position);
         m_openDoor.SetActive(false);
         m_closedDoor.SetActive(true);
     }
@@ -23,6 +28,7 @@ public class Door : MonoBehaviour
     // Switches active tilemap to open door
     public void Open()
     {
+        AudioSource.PlayClipAtPoint(m_doorOpenNoise, transform.position);
         m_closedDoor.SetActive(false);
         m_openDoor.SetActive(true);
     }

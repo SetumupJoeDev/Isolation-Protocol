@@ -59,6 +59,10 @@ public class RoomController : MonoBehaviour
     [HideInInspector]
     public EnemySpawner     m_enemySpawner;
 
+
+
+    public AudioClip m_alarm;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -208,6 +212,8 @@ public class RoomController : MonoBehaviour
         // Closes the doors and spawns enemies when the player enters the room for the first time
         if (collision.CompareTag("Player") && !m_discovered)
         {
+            AudioSource.PlayClipAtPoint(m_alarm, transform.position);
+
             m_discovered = true;
             for (int i = 0; i < m_doors.Length; i++)
             {
@@ -215,4 +221,7 @@ public class RoomController : MonoBehaviour
             }
         }
     }
+
+
+  
 }

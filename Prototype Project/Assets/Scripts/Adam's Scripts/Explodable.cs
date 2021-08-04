@@ -28,6 +28,8 @@ public class Explodable : MonoBehaviour
     [SerializeField]
     protected ParticleSystem m_vfx;
 
+
+    public AudioClip m_explosionSound;
     protected void Start()
     {
         if (m_timed)
@@ -38,6 +40,7 @@ public class Explodable : MonoBehaviour
 
     protected void Explode()
     {
+        AudioSource.PlayClipAtPoint(m_explosionSound, transform.position);
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, m_explosionRadius);
         if (hit.Length != 0)
         {

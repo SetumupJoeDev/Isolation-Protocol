@@ -39,6 +39,8 @@ public class email : MonoBehaviour
        
     }
 
+    //this script collects data from manager and sends it off with the method below. 
+
 
     public void superiorMethod(analyticsManager analyticData)
     {

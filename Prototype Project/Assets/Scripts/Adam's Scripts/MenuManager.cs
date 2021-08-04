@@ -12,6 +12,11 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void Tutorial( )
+    {
+        SceneManager.LoadScene( "TutorialScene" );
+    }
+
     public void Quit()
     {
         Application.Quit();
