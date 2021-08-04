@@ -78,6 +78,14 @@ public class ProjectileBase : MonoBehaviour
 
         m_parentTransform = transform.parent;
 
+        ResetProjectile( );
+
+    }
+
+    public virtual void ResetProjectile( )
+    {
+        m_currentDamagedTargets = 0;
+        m_previouslyDamageTarget = null;
     }
 
     public virtual IEnumerator WaitToDisable( float lifetime )
@@ -110,7 +118,7 @@ public class ProjectileBase : MonoBehaviour
             CollideWithTarget( collision );
 
         }
-        else if( LayerMask.LayerToName( collision.gameObject.layer ) == "Walls" || collision.gameObject.GetComponents<TutorialDummy>() != null)
+        else if( LayerMask.LayerToName( collision.gameObject.layer ) == "Walls" || collision.gameObject.GetComponents<TutorialDummy>() != null && collision.gameObject != m_previouslyDamageTarget )
         {
             CollideWithWall( collision );
         }
@@ -148,11 +156,10 @@ public class ProjectileBase : MonoBehaviour
     public virtual void DisableProjectile( )
     {
 
-        m_previouslyDamageTarget = null;
-
         transform.SetParent( m_parentTransform ); // does this mess up the time rewind?
 
         gameObject.SetActive( false );
+
     }
 
     // Update is called once per frame
