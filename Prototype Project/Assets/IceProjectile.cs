@@ -7,7 +7,7 @@ public class IceProjectile : ProjectileBase
 
     public GameObject[] m_childShards;
 
-    private float m_velocityModifier = -1.0f;
+    private float m_velocityModifier = -1.75f;
 
     public bool m_hasFragmented;
 
@@ -19,6 +19,8 @@ public class IceProjectile : ProjectileBase
         {
             
             shard.GetComponent<BoxCollider2D>( ).enabled = false;
+
+            shard.GetComponent<IceProjectile>( ).m_projectileVelocity = m_projectileVelocity;
 
             shard.transform.position = transform.position;
 
@@ -52,6 +54,11 @@ public class IceProjectile : ProjectileBase
     {
         foreach ( GameObject shard in m_childShards )
         {
+
+            shard.transform.SetParent( null );
+
+            shard.transform.position = transform.position;
+
             shard.SetActive( true );
 
             IceProjectile shardScript = shard.GetComponent<IceProjectile>( );
