@@ -9,6 +9,15 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] m_rightDoorRooms;
     public GameObject[] m_bottomDoorRooms;
 
+    [Header("Specific Door Combos")]
+    public GameObject[] m_topLeftDoorRooms;
+    public GameObject[] m_topRightDoorRooms;
+    public GameObject[] m_bottomLeftDoorRooms;
+    public GameObject[] m_bottomRightDoorRooms;
+    public GameObject[] m_topBottomDoorRooms;
+    public GameObject[] m_leftRightDoorRooms;
+
+
     [Header("Dead End Door Rooms")]
     public GameObject m_topDeadEndRoom;
     public GameObject m_leftDeadEndRoom;
