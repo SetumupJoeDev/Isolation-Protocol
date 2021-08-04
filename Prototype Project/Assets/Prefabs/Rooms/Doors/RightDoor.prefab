@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_closedDoor: {fileID: 3375865697622514866}
   m_openDoor: {fileID: 3375865696909505568}
+  m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
+  m_doorCloseNoise: {fileID: 8300000, guid: 18e9d1a6e657d3c4594ac65e5dca7af2, type: 3}
 --- !u!61 &6261262799737676215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,14 +174,32 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: NaN
+      e01: 0
+      e02: 0
+      e03: NaN
+      e10: NaN
+      e11: 0
+      e12: 0
+      e13: NaN
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
   m_TileColorArray:
   - m_RefCount: 2
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -1, y: -1, z: 0}
-  m_Size: {x: 2, y: 2, z: 1}
+  m_Origin: {x: -8, y: -2, z: 0}
+  m_Size: {x: 9, y: 4, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

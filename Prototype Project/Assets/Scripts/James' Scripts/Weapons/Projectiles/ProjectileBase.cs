@@ -53,7 +53,7 @@ public class ProjectileBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
-
+        analyticsEventManager.current.onBoltShoot();
         try
         {
             m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<analyticsManager>( );
@@ -65,7 +65,8 @@ public class ProjectileBase : MonoBehaviour
         if (transform.parent.gameObject.transform.parent.tag == "Weapon" && m_enemyCounter != null )
         {
             Debug.Log(transform.parent.gameObject.transform.parent.name);
-            m_enemyCounter.bulletCounter (transform.parent.gameObject.transform.parent.name);
+          
+          //  m_enemyCounter.bulletCounter (transform.parent.gameObject.transform.parent.name);
         }
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
