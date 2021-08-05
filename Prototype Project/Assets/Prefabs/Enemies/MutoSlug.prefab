@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -5039117719978488633}
   - component: {fileID: -6377455770681300112}
   - component: {fileID: -2771208841674208407}
+  - component: {fileID: -2147430626504691718}
   m_Layer: 11
   m_Name: MutoSlug
   m_TagString: Enemy
@@ -133,19 +134,13 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.5
   m_chaseProximity: 2.75
-  m_enemyAI: {fileID: 0}
+  m_enemyAI: {fileID: -2771208841674208407}
   m_attackRange: 3
   m_attackDamage: 1
   m_attackInterval: 1
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 1
-  m_maxCigaretteDrops: 0
-  m_minCigaretteDrops: 0
-  m_cigPackPrefab: {fileID: 0}
-  m_maxFuelDrops: 0
-  m_minFuelDrops: 0
-  m_fabricatorFuelPrefab: {fileID: 0}
+  m_lootDropper: {fileID: -2147430626504691718}
   m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 8691593258372746762}
@@ -5103,6 +5098,30 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!114 &-2147430626504691718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691593258372746765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 0
+  m_maxCigaretteDrops: 0
+  m_minCigaretteDrops: 0
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
+  m_maxFuelDrops: 0
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
+  m_canDropWeapons: 0
+  m_weaponDrops: []
+  m_weaponForceSpeed: 0
 --- !u!1 &8691593259481302473
 GameObject:
   m_ObjectHideFlags: 0

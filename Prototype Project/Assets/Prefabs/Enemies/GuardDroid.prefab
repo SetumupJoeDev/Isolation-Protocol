@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1691778104812726237}
   - component: {fileID: 1691778104812726238}
   - component: {fileID: 1691778104812726239}
+  - component: {fileID: 4554647151226170143}
   - component: {fileID: 1691778104812726232}
   - component: {fileID: 1691778104812726233}
   - component: {fileID: 1691778104812726234}
@@ -130,25 +131,18 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.125
   m_chaseProximity: 1
-  m_enemyAI: {fileID: 0}
+  m_enemyAI: {fileID: -6073778912052828035}
   m_attackRange: 1.5
   m_attackDamage: 1
   m_attackInterval: 4
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 0
-  m_maxCigaretteDrops: 12
-  m_minCigaretteDrops: 3
-  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
-    type: 3}
-  m_maxFuelDrops: 3
-  m_minFuelDrops: 0
-  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
-    type: 3}
+  m_lootDropper: {fileID: 4554647151226170143}
   m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 1691778104812726234}
   m_deathSound: {fileID: 8300000, guid: 1c4e89bd01b8fd947a242e674e92a8c1, type: 3}
+  m_taserZap: {fileID: 0}
 --- !u!114 &1691778104812726239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +166,30 @@ MonoBehaviour:
   m_enemyCounter: {fileID: 0}
   m_playerController: {fileID: 0}
   m_timeAlive: 0
+--- !u!114 &4554647151226170143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691778104812726235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 1
+  m_maxCigaretteDrops: 12
+  m_minCigaretteDrops: 4
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
+  m_maxFuelDrops: 4
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
+  m_canDropWeapons: 0
+  m_weaponDrops: []
+  m_weaponForceSpeed: 0
 --- !u!50 &1691778104812726232
 Rigidbody2D:
   serializedVersion: 4
