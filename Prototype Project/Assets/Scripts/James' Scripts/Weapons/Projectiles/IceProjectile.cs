@@ -41,6 +41,8 @@ public class IceProjectile : ProjectileBase
         
         base.CollideWithTarget( collision );
 
+        collision.GetComponent<CharacterBase>().Stun();
+
         if ( !m_hasFragmented )
         {
             FragmentProjectile( );

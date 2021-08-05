@@ -1169,7 +1169,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6835831274454365561}
-  - component: {fileID: 6835831274454365562}
   m_Layer: 5
   m_Name: DroneUpgrades
   m_TagString: Untagged
@@ -1199,21 +1198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6835831274454365562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835831274454365563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d75e17d5c0dcd4e81f99c193be5bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_productList: {fileID: 0}
-  m_playerCurrency: {fileID: 0}
-  m_combatDrone: {fileID: 0}
 --- !u!1 &6835831274455481059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1750,7 @@ MonoBehaviour:
   m_productImage: {fileID: 6835831276221920331}
   m_productName: {fileID: 6835831274787630089}
   m_buttonID: 0
-  m_storeController: {fileID: 6835831274454365562}
+  m_storeController: {fileID: 0}
   m_buttonList: {fileID: 6835831276059826178}
   m_storeProduct: {fileID: 0}
   m_isSelected: 0
@@ -2203,7 +2187,7 @@ MonoBehaviour:
   m_productImage: {fileID: 6835831276332803546}
   m_productName: {fileID: 6835831276049018448}
   m_buttonID: 0
-  m_storeController: {fileID: 6835831274454365562}
+  m_storeController: {fileID: 0}
   m_buttonList: {fileID: 6835831274905421502}
   m_storeProduct: {fileID: 0}
   m_isSelected: 0
@@ -2434,7 +2418,7 @@ MonoBehaviour:
   m_productImage: {fileID: 6835831276186964906}
   m_productName: {fileID: 6835831274834542177}
   m_buttonID: 0
-  m_storeController: {fileID: 6835831274454365562}
+  m_storeController: {fileID: 0}
   m_buttonList: {fileID: 0}
   m_storeProduct: {fileID: 0}
   m_isSelected: 0
@@ -2696,7 +2680,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6835831274995756661}
-  - component: {fileID: 6835831274995756662}
   m_Layer: 5
   m_Name: WeaponFabrication
   m_TagString: Untagged
@@ -2727,20 +2710,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6835831274995756662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835831274995756663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f6b48fac9c702439644b3095d1b1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_productList: {fileID: 0}
-  m_playerCurrency: {fileID: 0}
 --- !u!1 &6835831275013796100
 GameObject:
   m_ObjectHideFlags: 0

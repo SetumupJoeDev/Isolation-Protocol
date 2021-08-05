@@ -16,6 +16,8 @@ public class FabricatorProductButton : InterfaceButton
 
     public bool m_isSelected;
 
+    public AudioClip m_insufficientFundsClip;
+
     [SerializeField]
     private int m_productPrice;
 
@@ -79,12 +81,16 @@ public class FabricatorProductButton : InterfaceButton
             UpdateProductInfo( );
 
         }
-        else if ( m_storeController.PlayerCanAfford( ) )
+        else if ( m_storeController.PlayerCanAfford( m_productPrice ) )
         {
             m_storeProduct.SetIsUnlocked( true );
 
             UpdateProductInfo( );
 
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(m_insufficientFundsClip, transform.position);
         }
     }
 
@@ -92,12 +98,6 @@ public class FabricatorProductButton : InterfaceButton
     {
         //Sets the text of the itemDescription UI element to that contained within the button's product description file
         m_itemDescriptionUI.text = m_productDescriptionFile.text;
-
-        //Sets the item index of the store controller to that of the button, so the correct product can be bought
-        m_storeController.SetItemIndex( m_productIndex );
-
-        //Sets the price of the selected item in the store controller to that of the button, so the player will be charged correctly
-        m_storeController.SetItemPrice( m_productPrice );
 
         if ( !m_storeProduct.GetIsUnlocked( ) )
         {
