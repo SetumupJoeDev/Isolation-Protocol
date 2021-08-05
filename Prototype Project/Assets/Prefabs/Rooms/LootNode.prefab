@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4868267142762024967}
   - component: {fileID: 7325961614672461041}
+  - component: {fileID: 7268557769074149332}
   - component: {fileID: 5252685908638242873}
   m_Layer: 20
   m_Name: LootNode
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 278991166e5628944b3c2b4a3c2f0432, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,14 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9e11aca9852a7498afd4c11ea53de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxCiggiesToGen: 10
-  m_minCiggiesToGen: 2
-  m_maxFuelToGen: 8
-  m_minFuelToGen: 0
+  m_lootDropper: {fileID: 7268557769074149332}
+--- !u!114 &7268557769074149332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135071889503761532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 0
+  m_maxCigaretteDrops: 15
+  m_minCigaretteDrops: 5
   m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
     type: 3}
+  m_maxFuelDrops: 12
+  m_minFuelDrops: 6
   m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
     type: 3}
+  m_canDropWeapons: 1
+  m_weaponDrops:
+  - {fileID: 1723716174640896278, guid: bb9d9bbf31c77d344bf8c31be62fde89, type: 3}
+  - {fileID: 2305405639533229087, guid: 4bbd9b33021790d4c8107453676e8c87, type: 3}
+  - {fileID: 2826790146597685599, guid: 3386f67ee3ca4ce40a7f4aa185a91d79, type: 3}
+  - {fileID: 6397452515842425130, guid: c65afe1c5f952be459317f42da9c3983, type: 3}
+  m_weaponForceSpeed: 250
 --- !u!58 &5252685908638242873
 CircleCollider2D:
   m_ObjectHideFlags: 0

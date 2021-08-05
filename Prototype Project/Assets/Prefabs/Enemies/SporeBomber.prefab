@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3212257350937651369}
   - component: {fileID: 3172916569568265504}
   - component: {fileID: 3085078595131871408}
+  - component: {fileID: -4456716925264178665}
   - component: {fileID: 7615200690259607806}
   - component: {fileID: 7923894035695252538}
   - component: {fileID: 1100247383958278156}
@@ -131,19 +132,13 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0
   m_chaseProximity: 1
-  m_enemyAI: {fileID: 0}
+  m_enemyAI: {fileID: 8246234093726002011}
   m_attackRange: 2
   m_attackDamage: 2
   m_attackInterval: 0
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 0
-  m_maxCigaretteDrops: 0
-  m_minCigaretteDrops: 0
-  m_cigPackPrefab: {fileID: 0}
-  m_maxFuelDrops: 0
-  m_minFuelDrops: 0
-  m_fabricatorFuelPrefab: {fileID: 0}
+  m_lootDropper: {fileID: -4456716925264178665}
   m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 1100247383958278156}
@@ -174,6 +169,30 @@ MonoBehaviour:
   m_enemyCounter: {fileID: 0}
   m_playerController: {fileID: 0}
   m_timeAlive: 0
+--- !u!114 &-4456716925264178665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707556317688852800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 0
+  m_maxCigaretteDrops: 0
+  m_minCigaretteDrops: 0
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
+  m_maxFuelDrops: 0
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
+  m_canDropWeapons: 0
+  m_weaponDrops: []
+  m_weaponForceSpeed: 0
 --- !u!50 &7615200690259607806
 Rigidbody2D:
   serializedVersion: 4

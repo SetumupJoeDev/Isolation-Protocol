@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6181425082429339099}
   - component: {fileID: -144105786389208230}
   - component: {fileID: -6558978873879493318}
+  - component: {fileID: 172931851780030090}
   m_Layer: 11
   m_Name: BasicEnemyMelee
   m_TagString: Enemy
@@ -131,20 +132,13 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.25
   m_chaseProximity: 1
-  m_enemyAI: {fileID: 0}
+  m_enemyAI: {fileID: -6558978873879493318}
   m_attackRange: 2
   m_attackDamage: 1
   m_attackInterval: 1.75
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 1
-  m_maxCigaretteDrops: 6
-  m_minCigaretteDrops: 2
-  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
-    type: 3}
-  m_maxFuelDrops: 0
-  m_minFuelDrops: 0
-  m_fabricatorFuelPrefab: {fileID: 0}
+  m_lootDropper: {fileID: 172931851780030090}
   m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 5707961849273049072}
@@ -316,6 +310,30 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!114 &172931851780030090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707961849273049078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 1
+  m_maxCigaretteDrops: 8
+  m_minCigaretteDrops: 2
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
+  m_maxFuelDrops: 2
+  m_minFuelDrops: 0
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
+  m_canDropWeapons: 0
+  m_weaponDrops: []
+  m_weaponForceSpeed: 0
 --- !u!1 &8969352006456949522
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,15 +6,13 @@ using UnityEngine;
 public class AudioLogListController : MonoBehaviour
 {
 
-    public TextAsset[] m_textTranscripts;
-
-    public AudioClip[] m_audioLogClips;
-
-    public GameObject m_transcriptText;
+    public AudioLogScriptableObject[] m_audioLogs;
 
     public List<GameObject> m_audioLogButtons;
 
     public GameObject m_buttonTemplate;
+
+    public Text m_transcriptText;
 
     public int m_logsUnlocked;
 
@@ -28,7 +26,7 @@ public class AudioLogListController : MonoBehaviour
     public void PopulateButtonList( )
     {
         //Loops through and generates a new button from the template for the number of entried in the list
-        for( int i = 0; i < m_textTranscripts.Length; i++ )
+        for( int i = 0; i < m_audioLogs.Length; i++ )
         {
             //Instantiates a new button using the template button
             GameObject newButton = Instantiate(m_buttonTemplate);
@@ -46,10 +44,10 @@ public class AudioLogListController : MonoBehaviour
             newButton.transform.SetParent( m_buttonTemplate.transform.parent, false );
 
             //Sets the log transcript file of the new button to the matching one in the list
-            buttonScript.SetLogTranscriptContent( m_textTranscripts[i] );
+            buttonScript.SetLogTranscriptContent( m_audioLogs[i].m_logTranscript );
 
             //Sets the audio log clip of the new button to the matching one on the list
-            buttonScript.SetButtonLogClip( m_audioLogClips[i] );
+            buttonScript.SetButtonLogClip( m_audioLogs[i].m_logAudio );
 
             //Sets the transcript UI text element of the new button so that, when clicked, a written version of the audiolog will display
             buttonScript.SetTranscriptTextElement( m_transcriptText.GetComponent<Text>( ) );

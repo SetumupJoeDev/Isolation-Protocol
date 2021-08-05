@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 966570563917422948}
   - component: {fileID: 7822461044899087985}
   - component: {fileID: 966570563917422949}
+  - component: {fileID: 8366868516477313486}
   - component: {fileID: 966570563917422953}
   - component: {fileID: 966570563917422946}
   - component: {fileID: 966570563917422947}
@@ -132,21 +133,13 @@ MonoBehaviour:
   m_searchingForTargets: 0
   m_searchInterval: 0.25
   m_chaseProximity: 2.5
-  m_enemyAI: {fileID: 0}
+  m_enemyAI: {fileID: -6674609144801313155}
   m_attackRange: 3
   m_attackDamage: 2
   m_attackInterval: 2
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 1
-  m_maxCigaretteDrops: 4
-  m_minCigaretteDrops: 2
-  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
-    type: 3}
-  m_maxFuelDrops: 6
-  m_minFuelDrops: 2
-  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
-    type: 3}
+  m_lootDropper: {fileID: 8366868516477313486}
   m_spawner: {fileID: 0}
   m_currentState: 0
   m_animator: {fileID: 966570563917422953}
@@ -175,7 +168,7 @@ MonoBehaviour:
   m_shockwaveMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_knockbackForce: 1200
   m_shockwaveDamage: 2
-  m_knockbackDuration: 1.75
+  m_knockbackDuration: 0.55
   m_shockwaveMaxRadius: 4.5
   m_shockwaveSpeed: 5
   m_currentShockwaveRadius: 0
@@ -207,6 +200,30 @@ MonoBehaviour:
   m_enemyCounter: {fileID: 0}
   m_playerController: {fileID: 0}
   m_timeAlive: 0
+--- !u!114 &8366868516477313486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966570563917422952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169dcb280564bd4f8414733743a5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lootBoostModifier: 1
+  m_maxCigaretteDrops: 10
+  m_minCigaretteDrops: 3
+  m_cigPackPrefab: {fileID: 1058704861666707095, guid: bea48b909a7925b44880dbc399bafe48,
+    type: 3}
+  m_maxFuelDrops: 12
+  m_minFuelDrops: 4
+  m_fabricatorFuelPrefab: {fileID: 1230355558324615768, guid: 5dac0cb59b5543c4f850260439a808c6,
+    type: 3}
+  m_canDropWeapons: 0
+  m_weaponDrops: []
+  m_weaponForceSpeed: 0
 --- !u!95 &966570563917422953
 Animator:
   serializedVersion: 3
