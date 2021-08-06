@@ -83,6 +83,7 @@ public class FabricatorProductButton : InterfaceButton
         }
         else if ( m_storeController.PlayerCanAfford( m_productPrice ) )
         {
+            
             m_storeProduct.SetIsUnlocked( true );
 
             UpdateProductInfo( );

@@ -25,7 +25,8 @@ public class analyticsManager : MonoBehaviour
     public int parasiteEggKilledFirst;
     public int droidKilled = 0;
     public int droidKilledFirst;
-    public  int roomsCrossed = 0;
+    public int stunDroidKilled;
+    public static int roomsCrossed = 0;
     public int bulletsHit = 0;
 
 
@@ -36,12 +37,22 @@ public class analyticsManager : MonoBehaviour
     public int sporeBomberSpawned;
     public int wallGrowthSpawned;
     public int parasiteEggSpawned;
-    public int droidSpawned;
+    public int gravyDroidSpawned;
     public int stunDroidSpawned;
 
 
+    public int basicRangedAttacked;
+    public int basicMeleeAttacked;
+    public int faceHuggerAttacked;
+    public int LargeAttacked;
+    public int sporeBomberAttacked;
+    public int wallGrowthAttacked;
+    public int parasiteEggAttacked;
+    public int droidAttacked;
+    public int stunDroidAttacked;
 
-   
+
+
 
 
     public int boltBulletsShot = 0;
@@ -84,115 +95,84 @@ public class analyticsManager : MonoBehaviour
 
     List<averageClass> list = new List<averageClass>();
 
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void OnEnable()
     {
-     
-        
+        analyticsEventManager.analytics.bulletShootIncrement += countBolt;
 
-        gameEvents.hello.goodBye += roomCount;
+        analyticsEventManager.analytics.bulletHitIncrement += bulletHitCounter;
+
+        analyticsEventManager.analytics.enemyDeathIncrement += incrementKilledNewEnemy;
+
+        analyticsEventManager.analytics.countEnemyIncrement += enemyCounterSwitch;
+
+        analyticsEventManager.analytics.onEnemyAttackIncrement += enemyAttack;
+
+        analyticsEventManager.analytics.onBuyItemIncrement += itemBuy;
 
 
-        DontDestroyOnLoad(gameObject);
-        if (GameObject.Find("easyName").GetComponent<email>() != null)
+        // Put all of the events and their corresponding methods here 
+    }
+    public void itemBuy(string str)
+    {
+        Debug.Log(str);
+    }
+
+
+    public void enemyAttack(string str)
+    {
+       switch (str)
         {
-            email = GameObject.Find("easyName").GetComponent<email>();
-           
+            case "BasicEnemyMelee(Clone)":
+                basicMeleeAttacked++;
+                break;
+
+            case "SporeBomber(Clone)":
+                sporeBomberAttacked++;
+                break;
+
+            case "SporeHealer(Clone)":
+                wallGrowthAttacked++;
+                break;
+
+            case "ParasiteEgg(Clone)":
+                parasiteEggAttacked++;
+                break;
+
+            case "MutoSlug(Clone)":
+
+                faceHuggerAttacked++;
+
+                break;
+
+            case "BasicRangedEnemy(Clone)":
+                basicRangedAttacked++;
+                break;
+
+            case "Amalgam(Clone)":
+                LargeAttacked++;
+                break;
+
+            case "GravyDroid(Clone)":
+                droidAttacked++;
+                break;
+
+            case "GuardDroid(Clone)":
+                stunDroidAttacked++;
+                break;
+
         }
-        if (GameObject.Find("Player").GetComponent<CurrencyManager>() != null)
-        {
-            currencyManager = GameObject.Find("Player").GetComponent<CurrencyManager>();
-        }
-
-        SceneManager.sceneLoaded += onSceneLoaded; 
-    }
-
-    private void Hello_OnGrappleTaskStart()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-
-        packInformation();
-
-        if (isPlaytester == true)
-        {
-            email.superiorMethod(this);
-        }
-        
-    }
-
-
-    public void countBolt()
-    {
-
-    }
-   
-    public void AverageNumber()
-    {
-        // List(enemyEnum + complete list of times that enemy died)
-        // Sum list, divide by number in list
 
     }
 
-    public void roomCount()
+    public void countBolt(string str)
     {
-     
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    
-        isPlaytester = true;
-        playTestEnable.m_isPlaytester = true;
-
-        // call countenemy();
-
-    }
-
-
-    public void packInformation()
-    {
-        ciggiesCurrent = currencyManager.m_cigarettePacksCount;
-        ciggiesTotal = currencyManager.m_TotalCigarettePacksCount;
-        fabricatorFuelCurrent = currencyManager.m_fabricatorFuelCount;
-        fabricatorFuelTotal = currencyManager.m_totalFabricatorFuelCount;
-        activeScene = SceneManager.GetActiveScene().name;
-    }
-
-
-public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
-    {
-       
-
-
-        if (isPlaytester == true)
-        {
-            packInformation();
-
-            email.superiorMethod(this);
-            Debug.Log("death works");
-        }
-    }
-
-    public void itemBroughtCounter (string name)
-    {
-        // fabricatorStoreBase.buyselecteditem() runs this switch statement, passes in m_selectedItemIndex and increments this item brought
-    }
-
-
-
-    public void bulletCounter(string name) // ProjectileBase script passes values into this switch statemtent and calls it whenever it's enabled
-    {
-       
-        switch (name)
+        switch (str)
         {
             case "BoltM4250":
                 boltBulletsShot++;
-           //     list.Insert(1, new averageClass(boltBulletsShot));
+                //     list.Insert(1, new averageClass(boltBulletsShot));
 
                 break;
 
@@ -286,7 +266,7 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
                 basicMeleeSpawned++;
                 break;
             case "GravyDroid(Clone)":
-                droidSpawned++;
+                gravyDroidSpawned++;
                 break;
             case "MutoSlug(Clone)":
                 faceHuggerSpawned++;
@@ -313,26 +293,7 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
         }
     }
 
-    
-    // Update is called once per frame
-    void Update()  
-    {
-        //   gameEvents.hello.runGoodbye();
-        Debug.Log(list[1]);
-
-        currentTime += 1 * Time.deltaTime;
-        timeInGame = currentTime.ToString();
-        allBulletsShot = subMachineGunBulletsShot + boltBulletsShot;
-
-        if (Input.GetKeyDown(KeyCode.T)) 
-        {
-            onDeath();
-            print("I sent!");
-        }
-    }
-
-
-     public void incrementKilledNewEnemy(string enemyName)
+    public void incrementKilledNewEnemy(string enemyName)
     {
         switch (enemyName)
         {
@@ -353,7 +314,7 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
                 break;
 
             case "MutoSlug(Clone)":
-               
+
                 faceHuggerKilled++;
 
                 break;
@@ -364,15 +325,150 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
 
             case "Amalgam(Clone)":
                 LargeKilled++;
-                    break;
+                break;
 
-            // case gravy boy
-            // case droid
+            case "GravyDroid(Clone)":
+                droidKilled++;
+                break;
+
+            case "GuardDroid(Clone)":
+                stunDroidKilled++;
+                break;
 
 
 
         }
     }
 
+
+
+
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+
+
+     
+
+
+
+        DontDestroyOnLoad(gameObject);
+        if (GameObject.Find("easyName").GetComponent<email>() != null)
+        {
+            email = GameObject.Find("easyName").GetComponent<email>();
+           
+        }
+        if (GameObject.Find("Player").GetComponent<CurrencyManager>() != null)
+        {
+            currencyManager = GameObject.Find("Player").GetComponent<CurrencyManager>();
+        }
+
+        SceneManager.sceneLoaded += onSceneLoaded; 
+    }
+
+    private void Hello_OnGrappleTaskStart()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        packInformation();
+
+        if (isPlaytester == true)
+        {
+            email.superiorMethod(this);
+        }
+        
+    }
+
+
+  
+   
+    public void AverageNumber()
+    {
+        // List(enemyEnum + complete list of times that enemy died)
+        // Sum list, divide by number in list
+
+    }
+
+    public void roomCount()
+    {
+     
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    
+        isPlaytester = true;
+        playTestEnable.m_isPlaytester = true;
+
+        // call countenemy();
+
+    }
+
+
+    public void packInformation()
+    {
+        ciggiesCurrent = currencyManager.m_cigarettePacksCount;
+        ciggiesTotal = currencyManager.m_TotalCigarettePacksCount;
+        fabricatorFuelCurrent = currencyManager.m_fabricatorFuelCount;
+        fabricatorFuelTotal = currencyManager.m_totalFabricatorFuelCount;
+        activeScene = SceneManager.GetActiveScene().name;
+    }
+
+
+public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
+    {
+       
+
+
+        if (isPlaytester == true)
+        {
+            packInformation();
+
+            email.superiorMethod(this);
+            Debug.Log("death works");
+        }
+    }
+
+    public void itemBroughtCounter (string name)
+    {
+        // fabricatorStoreBase.buyselecteditem() runs this switch statement, passes in m_selectedItemIndex and increments this item brought
+    }
+
+
+
+
+    
+
+    
+
+    
+    // Update is called once per frame
+    void Update()  
+    {
+        //   gameEvents.hello.runGoodbye();
+   
+
+        currentTime += 1 * Time.deltaTime;
+        timeInGame = currentTime.ToString();
+        allBulletsShot = subMachineGunBulletsShot + boltBulletsShot;
+
+        if (Input.GetKeyDown(KeyCode.T)) 
+        {
+            onDeath();
+            print("I sent!");
+        }
+    }
+
+
+     
   
 }

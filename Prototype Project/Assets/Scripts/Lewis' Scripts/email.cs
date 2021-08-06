@@ -47,7 +47,7 @@ public class email : MonoBehaviour
       
         WWWForm form = new WWWForm();
         Debug.Log(analyticData.basicMeleeKilled);
-        form.AddField("entry.420162231", analyticData.roomsCrossed); // finds the appropriate form for the data typed passed into this code
+        form.AddField("entry.420162231", analyticsManager.roomsCrossed);// finds the appropriate form for the data typed passed into this code
         form.AddField("entry.100712115", analyticData.basicMeleeKilled);
         form.AddField("entry.4744759", analyticData.basicRangedKilled);
         form.AddField("entry.1063026462", analyticData.faceHuggerKilled);

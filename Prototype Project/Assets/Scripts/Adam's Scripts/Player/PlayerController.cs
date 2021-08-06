@@ -544,10 +544,7 @@ public class PlayerController : CharacterBase
         {
             if (collision.gameObject.layer == 12) // checks for doorcollider
             {
-                gameEvents.hello.runGoodbye();
-                
-
-                m_enemyCounter.roomsCrossed++; // adds 1 onto rooms crossed for analytics 
+                analyticsManager.roomsCrossed++;
             }
         }
     }

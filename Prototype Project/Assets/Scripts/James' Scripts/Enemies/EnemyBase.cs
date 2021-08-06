@@ -222,6 +222,7 @@ public class EnemyBase : CharacterBase
 
     public override void Die( )
     {
+        analyticsEventManager.analytics?.onEnemyDeath(gameObject.name);
         //Plays the enemy's death sound
         AudioSource.PlayClipAtPoint(m_deathSound, transform.position);
 

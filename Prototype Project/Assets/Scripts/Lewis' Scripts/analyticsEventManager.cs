@@ -5,30 +5,58 @@ using UnityEngine;
 
 public class analyticsEventManager : MonoBehaviour
 {
-    public static analyticsEventManager current;
+    public static analyticsEventManager analytics;
 
-    public void Awake()
+    private void Awake()
     {
-        current = this;
+        analytics = this;
     }
 
 
-    public event Action boltShootIncrement;
+
+    public event Action<String> bulletShootIncrement;
+
+    public event Action<String> bulletHitIncrement;
 
 
+    public event Action<String> enemyDeathIncrement;
+
+    public event Action<String> countEnemyIncrement;
+
+    public event Action<String> onEnemyAttackIncrement;
 
 
-
-  
-
+    public event Action<String> onBuyItemIncrement;
 
 
-
-public void onBoltShoot()
+public void onBulletShoot(string str)
     {
-        if (boltShootIncrement != null)
-        {
-            boltShootIncrement();
-        }
+        bulletShootIncrement?.Invoke(str);
     }
+
+public void onBulletHit(string string1)
+    {
+        bulletHitIncrement?.Invoke(string1);
+    }
+
+
+    public void onEnemyDeath(string string2)
+    {
+        enemyDeathIncrement?.Invoke(string2);
+    }
+    public void onEnemySpawn(string string3)
+    {
+        countEnemyIncrement?.Invoke(string3);
+    }
+
+    public void onEnemyAttack(string name)
+    {
+        onEnemyAttackIncrement?.Invoke(name);
+    }
+
+
+public void onBuyItem(string name)
+    {
+        onBuyItemIncrement?.Invoke(name);
+    }   
 }

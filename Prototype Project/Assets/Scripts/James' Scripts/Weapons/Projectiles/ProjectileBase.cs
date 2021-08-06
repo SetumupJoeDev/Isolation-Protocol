@@ -48,16 +48,21 @@ public class ProjectileBase : MonoBehaviour
     #endregion
 
 
-    public analyticsManager  m_enemyCounter;
+    public string m_firingWeaponName;
 
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
-        if (analyticsEventManager.current != null) 
+        m_firingWeaponName = gameObject.transform.parent.transform.parent.name;
+
+        if (analyticsEventManager.analytics != null)
         {
-            analyticsEventManager.current.onBoltShoot( );
+          
+
+            analyticsEventManager.analytics.onBulletShoot(m_firingWeaponName); // When this object is spawned, gets the name of the gunthat shot it, and passes that name to analytics
+           
         }
-        
+
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
@@ -67,7 +72,7 @@ public class ProjectileBase : MonoBehaviour
             StartCoroutine( WaitToDisable( m_projectileLifetime ) );
         }
 
-        m_parentTransform = transform.parent;
+        m_parentTransform = transform.parent; // maybe this messes with time reverse? 
 
         ResetProjectile( );
 
@@ -90,13 +95,11 @@ public class ProjectileBase : MonoBehaviour
 
     public void OnTriggerEnter2D( Collider2D collision )
     {
-        CollideWithObject( collision );
+     
 
-        if (collision.gameObject.tag == "Enemy" && m_enemyCounter != null )
-        {
+            CollideWithObject( collision );
 
-            m_enemyCounter.bulletHitCounter(transform.parent.gameObject.transform.parent.name);
-        }
+       
        
     }
 
@@ -105,7 +108,10 @@ public class ProjectileBase : MonoBehaviour
         //If the object the projectile collided with has a health manager and isn't the previously damaged object, then they take damage
         if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageTarget )
         {
+           
 
+                
+            
             CollideWithTarget( collision );
 
         }
@@ -122,7 +128,16 @@ public class ProjectileBase : MonoBehaviour
 
     public virtual void CollideWithTarget( Collider2D collision )
     {
+        if (analyticsEventManager.analytics != null)
+        {
+
+
+            analyticsEventManager.analytics.onBulletHit(m_firingWeaponName); // Passes the name of what the bullet hit to analytics 
+        }
         collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
+       
+
+        
 
         //The value of currentDamagedTargets is incrememented to keep track of how many more objects this projectile can damage
         m_currentDamagedTargets++;

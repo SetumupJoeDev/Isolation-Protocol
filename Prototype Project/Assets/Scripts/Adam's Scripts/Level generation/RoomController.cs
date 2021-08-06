@@ -63,9 +63,12 @@ public class RoomController : MonoBehaviour
 
     public AudioClip m_alarm;
 
+
     // Start is called before the first frame update
     private void Start()
     {
+      
+
         m_raycastPositions = new Vector3[]
         {
             new Vector3(0,5,0),     // up
@@ -198,14 +201,7 @@ public class RoomController : MonoBehaviour
         int random = Random.Range(0, m_lootDrops.Length);
         Instantiate(m_lootDrops[random], transform.position - new Vector3(5,5,0), Quaternion.identity);
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (m_discovered == true && collision.gameObject.CompareTag("Enemy"))
-        {
-            gameEvents.hello.runEnemyTargetPlayer(); // enemies can now chase the player only if the player is within the same room
-            Debug.Log("goodbye");
-        }
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

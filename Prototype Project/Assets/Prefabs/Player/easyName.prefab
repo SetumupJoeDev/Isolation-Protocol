@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7179495705281627745}
   - component: {fileID: 7179495705281627746}
+  - component: {fileID: 149546475408101420}
   - component: {fileID: 7179495705281627747}
   - component: {fileID: 7179495705281627756}
   - component: {fileID: 7179495705281627757}
@@ -48,18 +49,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicMeleeKilled: 0
+  basicMeleeKilledFirst: 0
   basicRangedKilled: 0
+  basicRangedKilledFirst: 0
   faceHuggerKilled: 0
+  faceHuggerKilledFirst: 0
   LargeKilled: 0
+  LargeKilledFirst: 0
   sporeBomberKilled: 0
+  sporeBomberKilledFirst: 0
   wallGrowthKilled: 0
+  wallGrowthKilledFirst: 0
   parasiteEggKilled: 0
+  parasiteEggKilledFirst: 0
   droidKilled: 0
+  droidKilledFirst: 0
+  roomsCrossed: 0
   bulletsHit: 0
+  basicRangedSpawned: 0
+  basicMeleeSpawned: 0
+  faceHuggerSpawned: 0
+  LargeSpawned: 0
+  sporeBomberSpawned: 0
+  wallGrowthSpawned: 0
+  parasiteEggSpawned: 0
+  droidSpawned: 0
+  stunDroidSpawned: 0
   boltBulletsShot: 0
   boltHits: 0
   subMachineGunBulletsShot: 0
   subMachineGunBulletsHit: 0
+  burstRifleShot: 0
+  burstRifleHit: 0
+  DMRshot: 0
+  DMRHit: 0
+  minigunShot: 0
+  minigunHit: 0
+  SawnOffShotgunShot: 0
+  SawnOffShotgunHit: 0
+  SniperRifleShot: 0
+  SniperRifleHit: 0
+  TacticalRifleShot: 0
+  TacticalRifleHit: 0
+  TacticalShotgunShot: 0
+  TacticalShotgunHit: 0
   allBulletsShot: 0
   currentTime: 0
   timeInGame: 
@@ -71,6 +104,18 @@ MonoBehaviour:
   currencyManager: {fileID: 0}
   isPlaytester: 0
   activeScene: 
+--- !u!114 &149546475408101420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179495705281627758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e23500b591a1941a560c43803a7e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7179495705281627747
 MonoBehaviour:
   m_ObjectHideFlags: 0

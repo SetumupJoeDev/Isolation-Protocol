@@ -13,7 +13,6 @@ public class EnemyHealthManager : HealthManager
     public float m_currentHealthFloat;
     public int number =5;
 
-    public analyticsManager m_enemyCounter; // Lewis' and James' code
     public PlayerController m_playerController;
 
     public float m_timeAlive; 
@@ -21,18 +20,9 @@ public class EnemyHealthManager : HealthManager
 
     public override void Start()
     {
-       
 
-        try
-        {
-            m_enemyCounter = GameObject.Find( "easyName" ).GetComponent<analyticsManager>( );
-            m_enemyCounter.enemyCounterSwitch(gameObject.name);
 
-        }
-        catch (NullReferenceException e )
-        {
-            Debug.LogWarning( "Couldn't find an Analytics Manager in the scene." );
-        }
+        analyticsEventManager.analytics.onEnemySpawn(gameObject.name);
         //Sets the spriteRenderer to be that attached to the gameObject
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         
@@ -58,12 +48,7 @@ public class EnemyHealthManager : HealthManager
     }
     public override void TakeDamage( int damage )
     {
-        if ( m_enemyCounter != null )
-        {
-            m_enemyCounter.bulletsHit++;
-        }
-       // m_playerController.m_currentWeapon.name
-        // pass in the gameobject which is active 
+       
 
         base.TakeDamage( damage );
 
@@ -74,15 +59,13 @@ public class EnemyHealthManager : HealthManager
         {
             if ( gameObject.GetComponent<EnemyBase>( ) != null )
             {
-                if(m_enemyCounter != null) // important thing about code, needs to be able to run independetly 
-                {
-                    m_enemyCounter.incrementKilledNewEnemy(gameObject.name);
-
-                }
+              
                 gameObject.GetComponent<EnemyBase>( ).Die( );
             }
             else
             {
+                Debug.Log(gameObject.name);
+                analyticsEventManager.analytics.onEnemyDeath(gameObject.name);
                 Destroy( gameObject );
             }
         }

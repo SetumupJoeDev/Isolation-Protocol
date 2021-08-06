@@ -36,9 +36,12 @@ public class AmalgamEnemy : EnemyBase
 
     public override IEnumerator AttackTarget( )
     {
+        analyticsEventManager.analytics.onEnemyAttack(gameObject.name);
+
+
 
         gameObject.transform.localScale = new Vector3(1.5f, 1.5f);// Lewis' code, Makes enemy larger to indicate windup
-
+        
         AudioSource.PlayClipAtPoint(m_windupSound, transform.position); // Lewis' code, play sound to indicate windup
 
         //Waits for the duration of the windup before attacking to give the player the opportunity to avoid the attack
@@ -50,7 +53,6 @@ public class AmalgamEnemy : EnemyBase
 
         //Waits for the duration of the attack interval before having the opportunity to attack again
         yield return new WaitForSeconds( m_attackInterval );
-
         m_isAttacking = false;
 
     }
