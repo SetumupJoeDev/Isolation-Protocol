@@ -10,7 +10,7 @@ public class email : MonoBehaviour
 {
 
     string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScryss7QVf9Vv5Ab45uzcHDfjKaihY-efWtNNcIrtUwpbmI6A/formResponse";
- public analyticsManager m_enemyCounter;
+ //public analyticsManager m_enemyCounter;
     public playTestEnable m_playTestEnable;
     int testValue = 5;
 
@@ -20,11 +20,12 @@ public class email : MonoBehaviour
     
     void Start()
     {
-        if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null)
-        {
 
-            m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // finds the gameobject that stores important game data 
-        }
+
+        analyticsEventManager.analytics.onAnalyticsPass += superiorMethod;
+
+
+     
 
         if (GameObject.Find("playTesterName").GetComponent<playTestEnable>() != null)
         {
@@ -46,7 +47,7 @@ public class email : MonoBehaviour
     {
       
         WWWForm form = new WWWForm();
-        Debug.Log(analyticData.basicMeleeKilled);
+        
         form.AddField("entry.420162231", analyticsManager.roomsCrossed);// finds the appropriate form for the data typed passed into this code
         form.AddField("entry.100712115", analyticData.basicMeleeKilled);
         form.AddField("entry.4744759", analyticData.basicRangedKilled);
@@ -57,7 +58,7 @@ public class email : MonoBehaviour
         form.AddField("entry.1896346647", analyticData.droidKilled);
         form.AddField("entry.1456948801", analyticData.parasiteEggKilled);
         form.AddField("entry.426456186", analyticData.timeInGame);
-        form.AddField("entry.1975649807", analyticData.allBulletsShot);
+
         form.AddField("entry.1218885744", analyticData.boltHits);
         form.AddField("entry.1493791387", analyticData.subMachineGunBulletsHit);
         form.AddField("entry.1928014227", analyticData.boltBulletsShot);

@@ -25,7 +25,7 @@ public class PlayerHealthManager : HealthManager
 
     public playerState m_currentPlayerState;
 
-    public analyticsManager analytics;
+    
 
 
     // Lowers player health by amount given if vulnerable
@@ -44,13 +44,7 @@ public class PlayerHealthManager : HealthManager
         // Call player death method when out of health
         if( m_currentHealth <= 0 )
         {
-            if (GameObject.Find("easyName").GetComponent<analyticsManager>() != null)
-            {
-
-                analytics = GameObject.Find("easyName").GetComponent<analyticsManager>();
-
-                analytics.onDeath();
-            }
+         
 
 
             if (  !GetComponentInChildren<DroneController>() || !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
@@ -69,6 +63,7 @@ public class PlayerHealthManager : HealthManager
     // Deactivates player and sets up death screen
     private void Die()
     {
+        analyticsEventManager.analytics?.playerDeathMethod(); // this tells the analytic Manager to trigger a method to send off data when the player dies 
         Instantiate(m_deathCamera);
         Instantiate(m_deathUI);
         

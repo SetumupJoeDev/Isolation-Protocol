@@ -28,6 +28,35 @@ public class analyticsEventManager : MonoBehaviour
 
     public event Action<String> onBuyItemIncrement;
 
+    public event Action<analyticsManager> onAnalyticsPass;
+
+    public event Action onPlayerDeath;
+
+    public event Action<CurrencyManager> CurrencyIncrement;
+
+    public event Action onCurrencyIncrement;
+
+    public void whenCurrencyIncrement()
+    {
+        onCurrencyIncrement?.Invoke();
+    }
+
+    public void onCurrencyCall(CurrencyManager script)
+    {
+        CurrencyIncrement?.Invoke(script);
+    }
+    public void playerDeathMethod()
+    {
+        onPlayerDeath?.Invoke();
+    }
+
+    public void passAnalytics(analyticsManager script)
+    {
+        onAnalyticsPass?.Invoke(script);
+    }
+
+
+   
 
 public void onBulletShoot(string str)
     {

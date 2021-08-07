@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 // TODO -- Gun switch statements need to be updated with new weapons, add shop and drone feedback, add enemyCounter values, 
 public class analyticsManager : MonoBehaviour
 {
+
+    #region Count of killed enemies 
+    [Header("Count of killed enemies")]
     public int basicMeleeKilled = 0;
     public int basicMeleeKilledFirst;
     public int basicRangedKilled = 0;
@@ -26,10 +29,15 @@ public class analyticsManager : MonoBehaviour
     public int droidKilled = 0;
     public int droidKilledFirst;
     public int stunDroidKilled;
+    [Space]
+    #endregion
+
+
     public static int roomsCrossed = 0;
     public int bulletsHit = 0;
 
-
+    #region count of Enemies Spawned 
+    [Header("Count of Enemies Spawned")]
     public int basicRangedSpawned;
     public int basicMeleeSpawned;
     public int faceHuggerSpawned;
@@ -39,8 +47,11 @@ public class analyticsManager : MonoBehaviour
     public int parasiteEggSpawned;
     public int gravyDroidSpawned;
     public int stunDroidSpawned;
+    [Space]
+    #endregion
 
-
+    #region Count of enemies attacked
+    [Header("Count of enemies attacked")]
     public int basicRangedAttacked;
     public int basicMeleeAttacked;
     public int faceHuggerAttacked;
@@ -50,11 +61,12 @@ public class analyticsManager : MonoBehaviour
     public int parasiteEggAttacked;
     public int droidAttacked;
     public int stunDroidAttacked;
+    [Space]
+    #endregion
 
 
-
-
-
+    #region bullets hit and Shot
+    [Header("Bullets hit and shot counter")]
     public int boltBulletsShot = 0;
     public int boltHits = 0;
     public int subMachineGunBulletsShot = 0;
@@ -74,8 +86,11 @@ public class analyticsManager : MonoBehaviour
     public int TacticalShotgunShot;
     public int TacticalShotgunHit;
    
-    public int allBulletsShot;
+    [Space]
+    #endregion
 
+    #region miscellanous 
+    [Header("Miscellanous")]
     public float currentTime = 0f;
     public string timeInGame;
 
@@ -84,21 +99,23 @@ public class analyticsManager : MonoBehaviour
     public int ciggiesCurrent;
     public int fabricatorFuelCurrent;
 
-    public email email;
+ 
 
-    public CurrencyManager currencyManager; 
+    
 
     public bool isPlaytester = false;
 
     public string activeScene;
 
+    #endregion
 
-    List<averageClass> list = new List<averageClass>();
 
-
+    public CurrencyManager CurrencyManager;
 
     public void OnEnable()
     {
+        
+
         analyticsEventManager.analytics.bulletShootIncrement += countBolt;
 
         analyticsEventManager.analytics.bulletHitIncrement += bulletHitCounter;
@@ -111,16 +128,19 @@ public class analyticsManager : MonoBehaviour
 
         analyticsEventManager.analytics.onBuyItemIncrement += itemBuy;
 
+        analyticsEventManager.analytics.onPlayerDeath += onDeath;
+
+        analyticsEventManager.analytics.CurrencyIncrement += packInfo;
 
         // Put all of the events and their corresponding methods here 
     }
     public void itemBuy(string str)
     {
-        Debug.Log(str);
+     //   Switch statement that counts how many of a certain type of item was created
     }
 
 
-    public void enemyAttack(string str)
+    public void enemyAttack(string str) // counts how many times the enemy attacks
     {
        switch (str)
         {
@@ -208,10 +228,9 @@ public class analyticsManager : MonoBehaviour
                 TacticalShotgunShot++;
                 break;
         }
-    }
+    } // ProjectileBase Script passes values into this switch statement whenever it is enabled, counting how many bullets were spawned from what gun 
 
     public void bulletHitCounter(string name)
-    // ProjectileBase script passes values into this switch statemtent and calls it whenever it's collides with an enemy
     {
         switch (name)
         {
@@ -253,7 +272,8 @@ public class analyticsManager : MonoBehaviour
                 break;
         }
 
-    }
+    }    // ProjectileBase script passes values into this switch statemtent and calls it whenever it's collides with an enemy
+
 
     public void enemyCounterSwitch(string name)
     {
@@ -291,7 +311,7 @@ public class analyticsManager : MonoBehaviour
                 stunDroidSpawned++;
                 break;
         }
-    }
+    } // EnemyHealthManager onStart() passes a name into this switch statement which counts how many enemies have spawned 
 
     public void incrementKilledNewEnemy(string enemyName)
     {
@@ -338,11 +358,11 @@ public class analyticsManager : MonoBehaviour
 
 
         }
-    }
+    } // EnemyBase passes the name of it's gameObject before it dies into this switch statement which counts how many enemies have died
 
 
 
-
+    
 
 
 
@@ -352,120 +372,91 @@ public class analyticsManager : MonoBehaviour
 
 
 
-     
 
-
+        
 
         DontDestroyOnLoad(gameObject);
-        if (GameObject.Find("easyName").GetComponent<email>() != null)
-        {
-            email = GameObject.Find("easyName").GetComponent<email>();
-           
-        }
-        if (GameObject.Find("Player").GetComponent<CurrencyManager>() != null)
-        {
-            currencyManager = GameObject.Find("Player").GetComponent<CurrencyManager>();
-        }
+   
+      
 
         SceneManager.sceneLoaded += onSceneLoaded; 
     }
 
-    private void Hello_OnGrappleTaskStart()
-    {
-        throw new NotImplementedException();
-    }
+  
 
-    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void onSceneLoaded(Scene scene, LoadSceneMode mode) // whenver a new scene is loaded 
     {
 
-        packInformation();
+     //   packInformation(); // keeps a track of the currency by calling a method which counts it 
 
-        if (isPlaytester == true)
-        {
-            email.superiorMethod(this);
-        }
+       
+            analyticsEventManager.analytics?.passAnalytics(this); // When the player loads into a new scene, it sends data from this script into Email 
+        
         
     }
 
 
   
    
-    public void AverageNumber()
-    {
-        // List(enemyEnum + complete list of times that enemy died)
-        // Sum list, divide by number in list
 
-    }
 
-    public void roomCount()
-    {
-     
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision) // this script's gameObject has a renderer and a collider attached, if the player runs into it, it indicates they're a playtester 
     {
         
     
         isPlaytester = true;
         playTestEnable.m_isPlaytester = true;
-
-        // call countenemy();
+        
 
     }
 
 
-    public void packInformation()
+     
+
+
+    
+    public void packInfo(CurrencyManager currency)
     {
-        ciggiesCurrent = currencyManager.m_cigarettePacksCount;
-        ciggiesTotal = currencyManager.m_TotalCigarettePacksCount;
-        fabricatorFuelCurrent = currencyManager.m_fabricatorFuelCount;
-        fabricatorFuelTotal = currencyManager.m_totalFabricatorFuelCount;
+        ciggiesCurrent = currency.m_cigarettePacksCount;
+        ciggiesTotal = currency.m_fabricatorFuelCount ;
+        fabricatorFuelCurrent = currency.m_totalFabricatorFuelCount;
+        fabricatorFuelTotal = currency.m_TotalCigarettePacksCount;
+        Debug.Log(currency.m_TotalCigarettePacksCount);
         activeScene = SceneManager.GetActiveScene().name;
-    }
 
+    }
 
 public    void onDeath() // Lewis' code. Called when the player dies, so to send off playtest data 
     {
-       
 
+    
 
         if (isPlaytester == true)
         {
-            packInformation();
-
-            email.superiorMethod(this);
+          ;
+            analyticsEventManager.analytics?.passAnalytics(this); // When the player dies, it sends data from this script into Email 
+            //email.superiorMethod(this);
             Debug.Log("death works");
         }
     }
 
-    public void itemBroughtCounter (string name)
-    {
-        // fabricatorStoreBase.buyselecteditem() runs this switch statement, passes in m_selectedItemIndex and increments this item brought
-    }
-
-
-
-
-    
-
-    
-
-    
-    // Update is called once per frame
-    void Update()  
-    {
-        //   gameEvents.hello.runGoodbye();
    
 
+
+
+    
+
+    
+
+    
+    
+    void Update()  
+    {
+
+       
         currentTime += 1 * Time.deltaTime;
         timeInGame = currentTime.ToString();
-        allBulletsShot = subMachineGunBulletsShot + boltBulletsShot;
-
-        if (Input.GetKeyDown(KeyCode.T)) 
-        {
-            onDeath();
-            print("I sent!");
-        }
+      
     }
 
 
