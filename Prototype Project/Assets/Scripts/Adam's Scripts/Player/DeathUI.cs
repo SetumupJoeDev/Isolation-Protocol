@@ -27,7 +27,7 @@ public class DeathUI : MonoBehaviour
     // Reloads game from the start of level 1
     private void Retry()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Ship Hub");
     }
 
     // Loads scene with link to feedback survey form for player to fill

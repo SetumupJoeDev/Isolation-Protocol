@@ -69,7 +69,8 @@ public class PlayerHealthManager : HealthManager
         
         // Sets camera position to players position when they died
         m_deathCamera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10); 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        m_currentPlayerState = playerState.dead;
     }
 
     // Makes player invulnerable for a short time

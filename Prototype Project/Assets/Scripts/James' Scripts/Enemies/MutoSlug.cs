@@ -7,13 +7,19 @@ public class MutoSlug : EnemyBase
 
     #region Attacking
 
-    [Header("Attacking")]
+    [Header("Leaping")]
 
     [Tooltip("Determines how long the enemy waits before pouncing.")]
     public float m_pouncePrepDuration;
 
     [Tooltip("The amount of force with which the enemy leaps at the player.")]
     public float m_leapForce;
+
+    public Vector3 m_leapDirection;
+
+    public bool m_isLeaping;
+
+    public float m_leapDuration;
 
     [Tooltip("Determines whether or not this enemy has attached to its target.")]
     public bool m_isAttachedToTarget;
@@ -47,57 +53,47 @@ public class MutoSlug : EnemyBase
 
     protected override void FixedUpdate( )
     {
-        base.FixedUpdate( );
+        if ( m_isLeaping )
+        {
+            LeapAtPlayer( );
+        }
     }
 
     public override IEnumerator AttackTarget( )
     {
-        //If the enemy is not attached to its target, it will attempt to pounce on them and latch on
-        if ( !m_isAttachedToTarget )
+        if ( !m_isLeaping )
         {
-           
-
-            //Calculates the leap direction before "charging" the pounce, so that the player is able to dodge it
-            Vector3 leapDirection = m_currentTarget.transform.position - transform.position;
-
-            //"Charges" the dodge to telegraph the attack to the player
-            yield return new WaitForSeconds( m_pouncePrepDuration );
-
-          //  gameObject.GetComponent<ParticleSystem>().Play(); // Lewis' code. Triggers particle system for feedback
-
-            //Leaps towards the player using the leap force
-            m_characterRigidBody.velocity = leapDirection * m_leapForce * Time.deltaTime;
-
-            yield return new WaitForSeconds(1f);
-
-
-            if (!m_isAttachedToTarget)
+            //If the enemy is not attached to its target, it will attempt to pounce on them and latch on
+            if ( !m_isAttachedToTarget )
             {
-                m_characterRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+
+
+                //Calculates the leap direction before "charging" the pounce, so that the player is able to dodge it
+                m_leapDirection = m_currentTarget.transform.position - transform.position;
+
+                //"Charges" the dodge to telegraph the attack to the player
+                yield return new WaitForSeconds( m_pouncePrepDuration );
+
+                m_isLeaping = true;
+
+                yield return new WaitForSeconds( m_leapDuration );
+
+                m_isLeaping = false;
+
+            }
+            else
+            {
+                //Waits until the attack interval has passed to deal damage so that the player doesn't take damage each frame
+                yield return new WaitForSeconds( m_attackInterval );
+
+                //Reduce's the target's health by the value of attack damage
+                m_currentTarget.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
+
             }
 
-            yield return new WaitForSeconds(1f);
-
-
-            if (!m_isAttachedToTarget)
-            {
-                m_characterRigidBody.constraints = RigidbodyConstraints2D.None;
-            }
-
+            //Sets this to false so that the coroutine can be executed again
+            m_isAttacking = false;
         }
-        else
-        {
-            //Waits until the attack interval has passed to deal damage so that the player doesn't take damage each frame
-            yield return new WaitForSeconds( m_attackInterval );
-
-            //Reduce's the target's health by the value of attack damage
-            m_currentTarget.GetComponent<HealthManager>( ).TakeDamage( m_attackDamage );
-
-        }
-
-        //Sets this to false so that the coroutine can be executed again
-        m_isAttacking = false;
-
     }
 
     private void AttachToPlayer( Collider2D playerCollider )
@@ -136,6 +132,12 @@ public class MutoSlug : EnemyBase
             Destroy( m_colliderObject );
         }
 
+    }
+
+    public void LeapAtPlayer( )
+    {
+        //Leaps towards the player using the leap force
+        m_characterRigidBody.velocity = m_leapDirection * m_leapForce * Time.deltaTime;
     }
 
     public override void Die( )

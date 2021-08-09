@@ -14,6 +14,8 @@ public class GameStartDoor : InteractableObject
         // Loads the 1st level
         SceneManager.LoadScene( "Level 1" );
 
+        m_playerController.ToggleWeaponsFree( );
+
         for (int i = 0; i < m_togglePlayerObjects.Length; i++)
         {
             m_togglePlayerObjects[i].SetActive(true);
