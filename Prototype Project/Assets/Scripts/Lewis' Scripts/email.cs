@@ -11,7 +11,7 @@ public class email : MonoBehaviour
 
     string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScryss7QVf9Vv5Ab45uzcHDfjKaihY-efWtNNcIrtUwpbmI6A/formResponse";
  //public analyticsManager m_enemyCounter;
-    public playTestEnable m_playTestEnable;
+   // public playTestEnable m_playTestEnable;
     int testValue = 5;
 
     float currentTime = 0;
@@ -29,7 +29,7 @@ public class email : MonoBehaviour
 
         if (GameObject.Find("playTesterName").GetComponent<playTestEnable>() != null)
         {
-            m_playTestEnable = GameObject.Find("playTesterName").GetComponent<playTestEnable>();
+       //     m_playTestEnable = GameObject.Find("playTesterName").GetComponent<playTestEnable>();
         }
 
         //StartCoroutine(Post(testValue)); // Begins the process to send off the important game data 
@@ -37,7 +37,7 @@ public class email : MonoBehaviour
 
      void Update()
     {
-       
+      
     }
 
     //this script collects data from manager and sends it off with the method below. 
@@ -45,7 +45,7 @@ public class email : MonoBehaviour
 
     public void superiorMethod(analyticsManager analyticData)
     {
-      
+        Debug.Log("I ran at Email");
         WWWForm form = new WWWForm();
         
         form.AddField("entry.420162231", analyticsManager.roomsCrossed);// finds the appropriate form for the data typed passed into this code
@@ -63,7 +63,7 @@ public class email : MonoBehaviour
         form.AddField("entry.1493791387", analyticData.subMachineGunBulletsHit);
         form.AddField("entry.1928014227", analyticData.boltBulletsShot);
         form.AddField("entry.978007937", analyticData.subMachineGunBulletsShot);
-        form.AddField("entry.1613226958",playTestEnable.m_playerName);
+       // form.AddField("entry.1613226958",playTestEnable.m_playerName);
         form.AddField("entry.1240865199", analyticData.ciggiesTotal);
         form.AddField("entry.1902725297", analyticData.ciggiesCurrent);
         form.AddField("entry.1360343214", analyticData.fabricatorFuelTotal);
