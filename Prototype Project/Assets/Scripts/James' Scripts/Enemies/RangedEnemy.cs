@@ -13,6 +13,14 @@ public class RangedEnemy : EnemyBase
 
     private Vector3 m_aimingDirection;
 
+    [Space]
+
+    [Header("Retreating")]
+
+    public float m_retreatProximity;
+
+    public bool m_isRetreating;
+
     public override IEnumerator AttackTarget( )
     {
 
@@ -24,6 +32,31 @@ public class RangedEnemy : EnemyBase
 
         m_isAttacking = false;
 
+    }
+
+    public override void AttackMode( )
+    {
+        base.AttackMode( );
+
+        if(Vector3.Distance(transform.position, m_currentTarget.transform.position) < m_retreatProximity )
+        {
+            m_isRetreating = true;
+        }
+
+    }
+
+    protected override void FixedUpdate( )
+    {
+        if ( m_isRetreating )
+        {
+            m_characterRigidBody.velocity = -m_aimingDirection.normalized * m_moveSpeed * Time.fixedDeltaTime;
+
+            if( Vector3.Distance( transform.position , m_currentTarget.transform.position ) > m_retreatProximity )
+            {
+                m_isRetreating = false;
+            }
+
+        }
     }
 
     public void FireProjectile( )
