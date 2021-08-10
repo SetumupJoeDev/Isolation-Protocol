@@ -16,6 +16,8 @@ public class GameStartDoor : InteractableObject
 
         m_playerController.ToggleWeaponsFree( );
 
+        m_playerController.m_currentWeapon.SetActive( true );
+
         for (int i = 0; i < m_togglePlayerObjects.Length; i++)
         {
             m_togglePlayerObjects[i].SetActive(true);
