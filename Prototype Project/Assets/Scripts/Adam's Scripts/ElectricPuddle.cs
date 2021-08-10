@@ -14,14 +14,14 @@ public class ElectricPuddle : MonoBehaviour
     private void Start()
     {
         m_electrified = false;
-        StartCoroutine(Electrified());
+        StartCoroutine(NotElectrified());
     }
 
     private void Update()
     {
         if(m_electrified && m_caught)
         {
-            AudioSource.PlayClipAtPoint(m_crackleSound, transform.position);
+            
             StartCoroutine(m_caughtThing.Stun());
         }
     }
@@ -31,6 +31,7 @@ public class ElectricPuddle : MonoBehaviour
         m_electrified = true;
         
         m_particles.Play();
+        AudioSource.PlayClipAtPoint(m_crackleSound, transform.position);
         yield return new WaitForSeconds(1);
         StartCoroutine(NotElectrified());
     }

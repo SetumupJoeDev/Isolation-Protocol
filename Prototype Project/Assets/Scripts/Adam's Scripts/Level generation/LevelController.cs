@@ -16,16 +16,16 @@ public class LevelController : MonoBehaviour
     [Header("Status")]
 
     [Tooltip("The number of rooms that have been spawned")]
-    public int              m_numberOfRooms;
+    public int              m_numberOfCombatRooms;
 
     [Tooltip("Whether or not the limit of rooms has been reached")]
     public bool             m_reachedLimit;
 
-    [Tooltip("Whether or not a shop room has been spawned")]
-    public bool             m_hasShop;
+    [Tooltip("The amount of rooms that have been cleared")]
+    public int              m_roomsCleared;
 
-    [Tooltip("Whether or not an exit room has been spawned")]
-    public bool             m_hasExitRoom;
+    [Tooltip("The door to the exit room")]
+    public Door             m_exitRoomDoor;
 
     [Tooltip("A list of the rooms that have been spawned")]
     public List<GameObject> m_roomList;
@@ -38,7 +38,7 @@ public class LevelController : MonoBehaviour
     private void Update()
     {
         // Checks if the room limit has been reached
-        if(m_numberOfRooms >= m_aproxRoomLimit)
+        if(m_numberOfCombatRooms >= m_aproxRoomLimit)
         {
             m_reachedLimit = true;
         }

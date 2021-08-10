@@ -2239,7 +2239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5424493664182608062}
-  - component: {fileID: -3857024024009329244}
+  - component: {fileID: 6841065168095712288}
   m_Layer: 0
   m_Name: Bottom_Exit
   m_TagString: Untagged
@@ -2263,7 +2263,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3857024024009329244
+--- !u!114 &6841065168095712288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2286,6 +2286,7 @@ MonoBehaviour:
   m_lootDrops: []
   m_dropChance: 0
   m_enemySpawner: {fileID: 0}
+  m_alarm: {fileID: 0}
 --- !u!1 &4540449948569571175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_closedDoor: {fileID: 4540449949751813604}
   m_openDoor: {fileID: 4540449948569571175}
+  m_doorOpenNoise: {fileID: 0}
+  m_doorCloseNoise: {fileID: 0}
 --- !u!1 &4540449949751813604
 GameObject:
   m_ObjectHideFlags: 0

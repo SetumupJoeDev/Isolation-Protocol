@@ -39,6 +39,8 @@ public class RoomController : MonoBehaviour
     [SerializeField]      
     private float           m_dropChance;
 
+    private LevelController m_levelController;
+
     // Booleans to check for the openings of the room and whether or not those openings lead to a wall
     private bool            m_openTop;
     private bool            m_openLeft;
@@ -67,15 +69,14 @@ public class RoomController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-      
+        m_levelController = GameObject.FindGameObjectWithTag("StartRoom").GetComponent<LevelController>();
 
         m_raycastPositions = new Vector3[]
         {
-            new Vector3(0,5,0),     // up
-            new Vector3(0,-5,0),    // down
-            new Vector3(5,0,0),     // right
-            new Vector3(-5,0,0)     // left
-
+        new Vector3(0,5,0),     // up
+        new Vector3(0,-5,0),    // down
+        new Vector3(5,0,0),     // right
+        new Vector3(-5,0,0)     // left
         };
 
         // Determines what directions the room has doors in
@@ -145,13 +146,20 @@ public class RoomController : MonoBehaviour
             default:
                 break;
         }
-        
     }
 
     // Opens the doors and maybe drops loot when the room is cleared 
     public void Cleared()
     {
         m_cleared = true;
+        
+        m_levelController.m_roomsCleared++;
+
+        if (m_levelController.m_roomsCleared >= m_levelController.m_numberOfCombatRooms)
+        {
+            m_levelController.m_exitRoomDoor.Open();
+        }
+
         for (int i = 0; i < m_doors.Length; i++)
         {
             m_doors[i].Open();
@@ -189,7 +197,7 @@ public class RoomController : MonoBehaviour
     private void SwitchSpawnedRoom()
     {
         m_spawnedFrom.m_spawned = false;
-        m_spawnedFrom.m_levelController.m_numberOfRooms--;
+        m_spawnedFrom.m_levelController.m_numberOfCombatRooms--;
         m_spawnedFrom.m_levelController.m_roomList.Remove(gameObject);
         m_spawnedFrom.Spawn();
         Destroy(gameObject);
@@ -217,7 +225,4 @@ public class RoomController : MonoBehaviour
             }
         }
     }
-
-
-  
 }

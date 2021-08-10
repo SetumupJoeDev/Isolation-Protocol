@@ -1152,8 +1152,8 @@ Tilemap:
   - first: {x: -8, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 34
-      m_TileSpriteIndex: 23
+      m_TileIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1161,8 +1161,8 @@ Tilemap:
   - first: {x: -7, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 34
-      m_TileSpriteIndex: 23
+      m_TileIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1841,8 +1841,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 628a7b9205398824fa135591a28a55f3, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 903d57fb78de681449b0638076f884d9, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: f169f1898b99d5c4ab1998f08cd0b60b, type: 2}
   - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: 3419fc3aa2b7f6e4e88a02dc1afc6837, type: 2}
   - m_RefCount: 6
@@ -1885,8 +1885,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9cd1773683ca13d4d882de2d46ef11cd, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 5aa04f5dd527ecd41a2d6d0b61595a71, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: 77f62f4bcc23c6a459f2d87dedf75be7, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: f0619dc21fe05454c96d2d9c682a2f88, type: 2}
   - m_RefCount: 1
@@ -1966,8 +1966,9 @@ Tilemap:
   - m_RefCount: 9
     m_Data: {fileID: 4178608674543401392, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: -4724062262896591196, guid: 71744f7729d580641b1cfd3961b5a749,
+      type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1820959713491907927, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
@@ -1992,9 +1993,8 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -2665198293602984337, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: -1021755142000098347, guid: 71744f7729d580641b1cfd3961b5a749,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -8890568422641097341, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
@@ -4094,7 +4094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3165423418384140574}
-  - component: {fileID: 1646989291538867836}
+  - component: {fileID: 2691814412899525349}
   m_Layer: 0
   m_Name: Shop_Left
   m_TagString: Untagged
@@ -4118,7 +4118,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1646989291538867836
+--- !u!114 &2691814412899525349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4141,6 +4141,7 @@ MonoBehaviour:
   m_lootDrops: []
   m_dropChance: 0
   m_enemySpawner: {fileID: 0}
+  m_alarm: {fileID: 0}
 --- !u!1001 &4875528443656960167
 PrefabInstance:
   m_ObjectHideFlags: 0
