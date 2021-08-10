@@ -107,6 +107,9 @@ public class analyticsManager : MonoBehaviour
 
     public string activeScene;
 
+
+    public email email;
+
     #endregion
 
 
@@ -433,9 +436,9 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
 
         if (isPlaytester == true)
         {
-          ;
-            analyticsEventManager.analytics?.passAnalytics(this); // When the player dies, it sends data from this script into Email 
-            //email.superiorMethod(this);
+          
+           // analyticsEventManager.analytics?.passAnalytics(this); // When the player dies, it sends data from this script into Email 
+            email.superiorMethod(this);
             Debug.Log("death works");
         }
     }
@@ -456,7 +459,16 @@ public    void onDeath() // Lewis' code. Called when the player dies, so to send
        
         currentTime += 1 * Time.deltaTime;
         timeInGame = currentTime.ToString();
-      
+
+
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            email.superiorMethod(this);
+            Debug.Log("I run");
+            //analyticsEventManager.analytics?.passAnalytics(this);
+            Debug.Log("I ran!");
+        }
     }
 
 

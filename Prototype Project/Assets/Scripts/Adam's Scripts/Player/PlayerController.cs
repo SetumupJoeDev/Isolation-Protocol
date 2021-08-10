@@ -30,6 +30,8 @@ public class PlayerController : CharacterBase
     [Tooltip("The array containing the player's carried weapons.")]
     public GameObject[] m_carriedWeapons;
 
+    public bool m_weaponsFree;
+
     public PlayerHealthManager m_playerHealthManager;
 
     //End of James' work
@@ -200,26 +202,30 @@ public class PlayerController : CharacterBase
 
                 CheckForInteractables();
 
-                if (Input.GetMouseButton(0) && !m_isInMenu && !m_isStunned)
+                if ( m_weaponsFree )
                 {
-                    m_currentWeapon.GetComponent<GunBase>().FireWeapon();
-                }
-                if (Input.GetMouseButtonUp(0) && !m_isInMenu)
-                {
-                    m_currentWeapon.GetComponent<GunBase>().StopFiring();
-                }
 
-                float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
+                    if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_isStunned )
+                    {
+                        m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
+                    }
+                    if ( Input.GetMouseButtonUp( 0 ) && !m_isInMenu )
+                    {
+                        m_currentWeapon.GetComponent<GunBase>( ).StopFiring( );
+                    }
 
-                if (scrollWheelValue != 0)
-                {
-                    float indexModifier = scrollWheelValue * 10;
-                    SwapWeapon((int)indexModifier);
-                }
+                    float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
 
-                if (Input.GetKeyDown(KeyCode.R) && !m_isStunned)
-                {
-                    m_currentWeapon.GetComponent<GunBase>().ReloadWeapon();
+                    if ( scrollWheelValue != 0 )
+                    {
+                        float indexModifier = scrollWheelValue * 10;
+                        SwapWeapon( ( int )indexModifier );
+                    }
+
+                    if ( Input.GetKeyDown( KeyCode.R ) && !m_isStunned )
+                    {
+                        m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
+                    }
                 }
             }
 
@@ -290,6 +296,11 @@ public class PlayerController : CharacterBase
     public void ToggleIsInMenu( )
     {
         m_isInMenu = !m_isInMenu;
+    }
+
+    public void ToggleWeaponsFree( )
+    {
+        m_weaponsFree = !m_weaponsFree;
     }
 
     // End of James' work
@@ -479,6 +490,8 @@ public class PlayerController : CharacterBase
             }
         }
 
+        m_currentWeapon.GetComponent<GunBase>( ).UpdateUIElements( );
+
     }
 
     private bool CanSwapWeapon( )
@@ -522,6 +535,7 @@ public class PlayerController : CharacterBase
             if ( Input.GetKeyDown( KeyCode.E ) )
             {
                 interactable.Activated( this );
+    
             }
         }
 

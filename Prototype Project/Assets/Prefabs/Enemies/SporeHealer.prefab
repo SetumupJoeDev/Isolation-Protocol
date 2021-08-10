@@ -126,7 +126,6 @@ MonoBehaviour:
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
   number: 5
-  m_enemyCounter: {fileID: 0}
   m_playerController: {fileID: 0}
   m_timeAlive: 0
 --- !u!50 &5320534695325496837
@@ -148,7 +147,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5320534695325496838
 BoxCollider2D:

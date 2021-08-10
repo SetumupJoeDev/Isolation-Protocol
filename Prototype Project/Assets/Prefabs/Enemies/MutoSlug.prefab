@@ -146,7 +146,10 @@ MonoBehaviour:
   m_animator: {fileID: 8691593258372746762}
   m_deathSound: {fileID: 8300000, guid: 1f95381544702c444bef8166f2d1a555, type: 3}
   m_pouncePrepDuration: 0.15
-  m_leapForce: 350
+  m_leapForce: 140
+  m_leapDirection: {x: 0, y: 0, z: 0}
+  m_isLeaping: 0
+  m_leapDuration: 0.85
   m_isAttachedToTarget: 0
   m_attachedLayerIndex: 0
   m_attachedPlayer: {fileID: 0}
@@ -212,7 +215,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8691593258372746763
 BoxCollider2D:
@@ -5244,6 +5247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BurningParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782256412661564611, guid: d73fd38d0a071574782be729c584c97d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73fd38d0a071574782be729c584c97d, type: 3}
