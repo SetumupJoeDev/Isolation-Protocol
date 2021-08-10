@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5322,13 +5322,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8946654811430897864, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
         type: 3}
-      propertyPath: m_exitRoomDoor
-      value: 
-      objectReference: {fileID: 2097785488}
-    - target: {fileID: 8946654811430897864, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
-        type: 3}
       propertyPath: m_aproxRoomLimit
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9035814462693991644, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
         type: 3}
@@ -5496,15 +5491,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2097785488 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 377762418513878902, guid: 39a1ae3fb6e38d04a9c28579ec7b01c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 925346394}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
