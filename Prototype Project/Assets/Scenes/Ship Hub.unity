@@ -5847,8 +5847,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_light: {fileID: 934385256}
+  m_shouldFlicker: 0
   m_maxFlickerDuration: 2.5
   m_maxTimeBetweenFlickers: 0.15
+  m_lightSound: {fileID: 0}
 --- !u!1 &939136532
 GameObject:
   m_ObjectHideFlags: 0
@@ -10713,6 +10715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822051857034256484, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_fabricatorFuelCount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
