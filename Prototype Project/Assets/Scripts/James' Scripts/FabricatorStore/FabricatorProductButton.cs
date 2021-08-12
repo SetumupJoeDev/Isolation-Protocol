@@ -86,6 +86,8 @@ public class FabricatorProductButton : InterfaceButton
             
             m_storeProduct.SetIsUnlocked( true );
 
+            m_storeController.ChargePlayer( m_productPrice );
+
             UpdateProductInfo( );
 
         }

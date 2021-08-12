@@ -41,6 +41,9 @@ public class LevelController : MonoBehaviour
         if(m_numberOfCombatRooms >= m_aproxRoomLimit)
         {
             m_reachedLimit = true;
+
+            gameEvents.hello.levelLoaded( );
+
         }
     }
 }

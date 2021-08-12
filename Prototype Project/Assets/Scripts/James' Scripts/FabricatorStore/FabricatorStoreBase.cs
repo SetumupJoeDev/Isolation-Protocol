@@ -11,6 +11,8 @@ public class FabricatorStoreBase : MonoBehaviour
     [SerializeField]
     protected CurrencyManager m_playerCurrency;
 
+    public AudioSource m_itemPurchased;
+
     public bool PlayerCanAfford( int itemPrice )
     {
         //If the player's fuel count is greater than or equal to the price of the selected product, they can afford it and this method returns true
@@ -24,4 +26,14 @@ public class FabricatorStoreBase : MonoBehaviour
             return false;
         }
     }
+
+    public void ChargePlayer( int amountToCharge )
+    {
+
+        m_playerCurrency.m_fabricatorFuelCount -= amountToCharge;
+
+        m_itemPurchased.Play( );
+
+    }
+
 }

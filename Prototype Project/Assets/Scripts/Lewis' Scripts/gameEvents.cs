@@ -8,6 +8,8 @@ public class gameEvents : MonoBehaviour
 
     public static gameEvents hello;
 
+    public event Action levelLoadingComplete;
+
     private void Awake()
     {
         hello = this;
@@ -26,4 +28,13 @@ public class gameEvents : MonoBehaviour
     {
         goodBye?.Invoke();
     }
+
+    public void levelLoaded( )
+    {
+        if( levelLoadingComplete != null )
+        {
+            levelLoadingComplete( );
+        }
+    }
+
 }

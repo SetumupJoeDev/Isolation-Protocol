@@ -21,18 +21,19 @@ public class DeathUI : MonoBehaviour
         // Adds listeners to run respective methods when buttons are clicked
         m_retryButton.onClick.AddListener(Retry);
 
-        m_surveyButton.onClick.AddListener(Survey);
+        //m_surveyButton.onClick.AddListener(Survey);
     }
 
     // Reloads game from the start of level 1
     private void Retry()
     {
         SceneManager.LoadScene("Ship Hub");
+        Destroy( FindObjectOfType<PlayerController>( ) );
     }
 
     // Loads scene with link to feedback survey form for player to fill
-    private void Survey()
-    {
-        SceneManager.LoadScene("Lewis' Test Scene");
-    }
+    //private void Survey()
+    //{
+    //    SceneManager.LoadScene("Lewis' Test Scene");
+    //}
 }

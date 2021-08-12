@@ -16,6 +16,12 @@ public class FabrictatorModule : InteractableObject
     [SerializeField]
     private Sprite m_highlightedSprite;
 
+    public AudioSource m_windowOpen;
+
+    public AudioSource m_windowClose;
+
+    public AudioSource m_tabClose;
+
     public override void Activated( PlayerController playerController )
     {
         //Toggles the fabricator's canvas to make it visible to the player
@@ -27,6 +33,17 @@ public class FabrictatorModule : InteractableObject
         //Sets the player as in a menu, so they cannot move or shoot
         m_playerController.m_isInMenu = true;
 
+        m_windowOpen.Play( );
+    }
+
+    public void PlayWindowCloseSound( )
+    {
+        m_windowClose.Play( );
+    }
+
+    public void PlayTabCloseSound( )
+    {
+        m_tabClose.Play( );
     }
 
     public override void ToggleHighlighting( bool highlightActive )

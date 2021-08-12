@@ -5,7 +5,7 @@ using UnityEngine;
 public class CanvasController : MonoBehaviour
 {
     [SerializeField]
-    private CanvasGroup m_canvasGroup;
+    protected CanvasGroup m_canvasGroup;
 
     public bool m_isCanvasActive = false;
 
@@ -47,5 +47,4 @@ public class CanvasController : MonoBehaviour
         m_isCanvasActive = false;
 
     }
-
 }

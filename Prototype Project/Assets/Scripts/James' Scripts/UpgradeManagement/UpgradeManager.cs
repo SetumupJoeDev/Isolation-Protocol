@@ -15,6 +15,10 @@ public class UpgradeManager : InteractableObject
 
     public GameObject[] m_upgradeButtons;
 
+    public AudioSource m_windowOpenSound;
+
+    public AudioSource m_windowCloseSound;
+
     public override void Activated( PlayerController playerController )
     {
 
@@ -28,6 +32,13 @@ public class UpgradeManager : InteractableObject
 
         ToggleUpgradeCanvas( );
 
+        m_windowOpenSound.Play( );
+
+    }
+
+    public void PlayWindowCloseSound( )
+    {
+        m_windowCloseSound.Play( );
     }
 
     public void CheckForNewUnlocks( )
