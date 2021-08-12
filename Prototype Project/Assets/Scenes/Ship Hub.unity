@@ -6266,12 +6266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d91bcc6759d0bd44903e99ae10789f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &934385255 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2837880324138197709, guid: 4fbc061d78b13d444b55d460220cd0e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2837880323359012010}
-  m_PrefabAsset: {fileID: 0}
+  m_light: {fileID: 934385256}
+  m_shouldFlicker: 0
+  m_maxFlickerDuration: 2.5
+  m_maxTimeBetweenFlickers: 0.15
+  m_lightSound: {fileID: 0}
 --- !u!1 &939136532
 GameObject:
   m_ObjectHideFlags: 0

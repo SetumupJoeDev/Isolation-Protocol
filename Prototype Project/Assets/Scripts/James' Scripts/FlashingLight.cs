@@ -22,6 +22,9 @@ public class FlashingLight : MonoBehaviour
     private void Start( )
     {
 
+        m_maxFlickerDuration = Random.Range(1, 4);
+        m_maxTimeBetweenFlickers = Random.Range(0.5f, 3);
+
         m_light = GetComponent<Light2D>( );
 
         if ( m_shouldFlicker )
@@ -40,13 +43,13 @@ public class FlashingLight : MonoBehaviour
 
         m_light.enabled = true;
 
-        m_lightSound.Play( );
+     //   m_lightSound.Play( );
 
         yield return new WaitForSeconds( timeBetweenFlickers );
 
         m_light.enabled = false;
 
-        m_lightSound.Pause( );
+    //    m_lightSound.Pause( );
 
         yield return new WaitForSeconds( flickerDuration );
 
