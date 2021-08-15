@@ -1759,7 +1759,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 84d6e4515bf940342995e318d4d49579, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2580,7 +2580,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 84d6e4515bf940342995e318d4d49579, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4590,6 +4590,9 @@ Transform:
   - {fileID: 2897020116104294620}
   - {fileID: 5276677317671238749}
   - {fileID: 8151753031840546387}
+  - {fileID: 2743447709787359853}
+  - {fileID: 4931658520418967724}
+  - {fileID: 6285175407332800034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6206,8 +6209,8 @@ Tilemap:
   - first: {x: 0, y: 5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileIndex: 12
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6215,8 +6218,8 @@ Tilemap:
   - first: {x: 1, y: 5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileIndex: 12
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6283,9 +6286,9 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 29a3e9121fb51ec4b8abba35c6957e36, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: eeaad36fa7eedc546a4576e2b82a4b93, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 9ca8bd3d5d0fce64bb642167deedfd48, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b53b69c51b8c8ae4f90e1f7c3504abb3, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: fd15ac26c77afb7448275fbcced2f9d5, type: 2}
@@ -6392,10 +6395,10 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -4219274533792531202, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 6238294990305606144, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 1
     m_Data: {fileID: -406165813909630477, guid: 71744f7729d580641b1cfd3961b5a749,
       type: 3}
   - m_RefCount: 2
@@ -6570,7 +6573,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 84d6e4515bf940342995e318d4d49579, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6772,6 +6775,231 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &70370564500257499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2292821975828686416}
+    m_Modifications:
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.485
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.864
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.014668932
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9998924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665339, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_Name
+      value: Blue Light Flickering (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5943f004c6c2af4a805d467c2b3f0ec, type: 3}
+--- !u!4 &6285175407332800034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 70370564500257499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1419664502263131221
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2292821975828686416}
+    m_Modifications:
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.492
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.014668932
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9998924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665339, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_Name
+      value: Blue Light Flickering (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5943f004c6c2af4a805d467c2b3f0ec, type: 3}
+--- !u!4 &4931658520418967724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1419664502263131221}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8201551026051204756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2292821975828686416}
+    m_Modifications:
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.014668932
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9998924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324017170392665339, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+        type: 3}
+      propertyPath: m_Name
+      value: Blue Light Flickering
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5943f004c6c2af4a805d467c2b3f0ec, type: 3}
+--- !u!4 &2743447709787359853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6324017170392665337, guid: c5943f004c6c2af4a805d467c2b3f0ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 8201551026051204756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8576484721906892712
 PrefabInstance:
   m_ObjectHideFlags: 0
