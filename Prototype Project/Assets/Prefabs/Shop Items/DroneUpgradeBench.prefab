@@ -1100,6 +1100,8 @@ MonoBehaviour:
   m_availableUpgrades: []
   m_buttonGenerator: {fileID: 4273570241507543513}
   m_upgradeButtons: []
+  m_windowOpenSound: {fileID: 0}
+  m_windowCloseSound: {fileID: 0}
   m_drone: {fileID: 0}
 --- !u!61 &3217835900880092843
 BoxCollider2D:
@@ -1339,7 +1341,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 32
   m_Viewport: {fileID: 4273570241490694748}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 4273570241802426722}
