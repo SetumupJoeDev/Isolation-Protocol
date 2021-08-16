@@ -8,23 +8,15 @@ public class HUDManager : MonoBehaviour
 {
     [Header("Sprites")]
 
-    [Tooltip("The empty heart sprite")]
+    [Tooltip("The health bar sprites")]
     [SerializeField]
-    private Sprite              m_emptyHeart;
-
-    [Tooltip("The half heart sprite")]
-    [SerializeField]
-    private Sprite              m_halfHeart;
-
-    [Tooltip("The full heart sprite")]
-    [SerializeField]
-    private Sprite              m_fullHeart;
+    private Sprite[]            m_healthSprites;
     
     [Header("HUD Elements")]
 
-    [Tooltip("The HUD health display heart images")]
+    [Tooltip("The HUD health display image")]
     [SerializeField]
-    private Image[]             m_hearts;
+    private Image               m_healthBar;
 
     [Tooltip("The dash cooldown text object")]
     [SerializeField]
@@ -77,7 +69,9 @@ public class HUDManager : MonoBehaviour
     private void Update()
     {
         m_playerCurrentHealth = m_playerHealth.m_currentHealth;
-        
+
+        m_healthBar.sprite = m_healthSprites[m_playerCurrentHealth];
+
         // Updates text on text objects
         m_dashCooldown.text = m_cooldownTimer.ToString("F2");
 
@@ -89,8 +83,6 @@ public class HUDManager : MonoBehaviour
         m_numberOfCigs.text = m_playerCurrency.m_cigarettePacksCount.ToString();
         m_amountOfFuel.text = m_playerCurrency.m_fabricatorFuelCount.ToString();
 
-        UpdateHearts(); 
-        
         // Ticks down timer if dash is on cooldown
         if (m_dashOnCooldown)
         {
@@ -99,56 +91,6 @@ public class HUDManager : MonoBehaviour
         else
         {
             m_dashCooldown.gameObject.SetActive(false);
-        }
-    }
-
-    // Manually changes the displayed heart sprites based on player current health
-    // (currently made specifically for when player has 6 max health as there are no current plans to change the max health of the player in anyway)
-    private void UpdateHearts()
-    {
-        if (m_playerCurrentHealth == m_playerMaxHealth)
-        {
-            for (int i = 0; i < m_hearts.Length; i++)
-            {
-                m_hearts[i].sprite = m_fullHeart;
-            }
-        }
-        if (m_playerCurrentHealth == 5)
-        {
-            m_hearts[0].sprite = m_fullHeart;
-            m_hearts[1].sprite = m_fullHeart;
-            m_hearts[2].sprite = m_halfHeart;
-        }
-        if (m_playerCurrentHealth == 4)
-        {
-            m_hearts[0].sprite = m_fullHeart;
-            m_hearts[1].sprite = m_fullHeart;
-            m_hearts[2].sprite = m_emptyHeart;
-        }
-        if (m_playerCurrentHealth == 3)
-        {
-            m_hearts[0].sprite = m_fullHeart;
-            m_hearts[1].sprite = m_halfHeart;
-            m_hearts[2].sprite = m_emptyHeart;
-        }
-        if (m_playerCurrentHealth == 2)
-        {
-            m_hearts[0].sprite = m_fullHeart;
-            m_hearts[1].sprite = m_emptyHeart;
-            m_hearts[2].sprite = m_emptyHeart;
-        }
-        if (m_playerCurrentHealth == 1)
-        {
-            m_hearts[0].sprite = m_halfHeart;
-            m_hearts[1].sprite = m_emptyHeart;
-            m_hearts[2].sprite = m_emptyHeart;
-        }
-        if (m_playerCurrentHealth == 0)
-        {
-            for (int i = 0; i < m_hearts.Length; i++)
-            {
-                m_hearts[i].sprite = m_emptyHeart;
-            }
         }
     }
 
