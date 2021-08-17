@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject[]    m_commonEnemyTypes;
 
-    [Tooltip("Enemy types that will be usually spawned")]
+    [Tooltip("Enemy types that will be less usually spawned")]
     [SerializeField]
     private GameObject[]    m_uncommonEnemyTypes;
 
