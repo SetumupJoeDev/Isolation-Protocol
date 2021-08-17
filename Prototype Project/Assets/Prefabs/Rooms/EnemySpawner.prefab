@@ -141,9 +141,9 @@ MonoBehaviour:
   m_randomizePositions: 0
   m_minSpawns: 2
   m_maxSpawns: 4
-  m_commonEnemyChance: 50
-  m_uncommonEnemyChance: 40
-  m_rareEnemyChance: 10
+  m_commonEnemyChance: 0.5
+  m_uncommonEnemyChance: 0.4
+  m_rareEnemyChance: 0.1
   m_spawnPoints:
   - {fileID: 6065115907997520965}
   - {fileID: 2732896993753540608}
@@ -159,6 +159,13 @@ MonoBehaviour:
   - {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
   - {fileID: 8691593258372746765, guid: 6967b129e483247429591adf563ef577, type: 3}
   - {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
+  m_commonEnemyTypes:
+  - {fileID: 5707961849273049078, guid: d9aab9aff723c4e4ba48c9fba94504fe, type: 3}
+  - {fileID: 1368252334955682932, guid: 720243304ef07fa4e827904d9a71df6d, type: 3}
+  m_uncommonEnemyTypes:
+  - {fileID: 8691593258372746765, guid: 6967b129e483247429591adf563ef577, type: 3}
+  m_rareEnemyTypes:
+  - {fileID: 966570563917422952, guid: c1b719a22f6d11d48b0ed9fc7ecb50e5, type: 3}
   m_enemyLayouts:
   - {fileID: 11400000, guid: b9702390bcc77134a92011e08985fc21, type: 2}
   - {fileID: 11400000, guid: 7c1d131eba346744dbc3a2f2b52221f3, type: 2}
