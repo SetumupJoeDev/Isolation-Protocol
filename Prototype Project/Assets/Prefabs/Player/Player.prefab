@@ -1381,7 +1381,7 @@ GameObject:
   - component: {fileID: 39924564617958578}
   - component: {fileID: 751925017182255498}
   - component: {fileID: 6105259723810757502}
-  - component: {fileID: 6619192077581276679}
+  - component: {fileID: 6821326931440557047}
   m_Layer: 8
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -1483,7 +1483,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &6619192077581276679
+--- !u!114 &6821326931440557047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1492,11 +1492,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489579749380354514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 861dd868b428a8d48893c3440d85fe9d, type: 3}
+  m_Script: {fileID: 11500000, guid: a185f23fe9f70784fbf18ac495a08a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvasGroup: {fileID: 6105259723810757502}
+  m_canvasGroup: {fileID: 0}
   m_isCanvasActive: 0
+  m_fadeIncrement: 0
+  m_fadeIncrementDelay: 0.015
 --- !u!1 &1604833435921743468
 GameObject:
   m_ObjectHideFlags: 0
