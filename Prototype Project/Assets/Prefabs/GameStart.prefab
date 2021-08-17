@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4255575232458168833}
   - component: {fileID: 4255575232458168832}
   - component: {fileID: 4255575232458168835}
-  - component: {fileID: 4255575232458168834}
+  - component: {fileID: 6354903841336150679}
   m_Layer: 18
   m_Name: GameStart
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.21875}
   m_EdgeRadius: 0
---- !u!114 &4255575232458168834
+--- !u!114 &6354903841336150679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4255575232458168837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99dc525a10f4b04787e6a0477955adf, type: 3}
+  m_Script: {fileID: 11500000, guid: 159e3bfd995979048a7281af38b89210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_isBeingLookedAt: 0
   m_highlightingActive: 0
   m_playerController: {fileID: 0}
   m_interactionPrompt: {fileID: 0}
+  m_isActivated: 0
+  m_togglePlayerObjects: []
+  m_loadingScreenController: {fileID: 0}
