@@ -12,14 +12,14 @@ public class AudioLogListController : MonoBehaviour
 
     public GameObject m_buttonTemplate;
 
-    public Text m_transcriptText;
-
     public int m_logsUnlocked;
 
     // Start is called before the first frame update
     void Start()
     {
         PopulateButtonList( );
+
+        CheckForUnlockedLogs( );
     }
 
     
@@ -49,15 +49,20 @@ public class AudioLogListController : MonoBehaviour
             //Sets the audio log clip of the new button to the matching one on the list
             buttonScript.SetButtonLogClip( m_audioLogs[i].m_logAudio );
 
-            //Sets the transcript UI text element of the new button so that, when clicked, a written version of the audiolog will display
-            buttonScript.SetTranscriptTextElement( m_transcriptText.GetComponent<Text>( ) );
-
             //Adds the newly created button to the list so that they can later be unlocked sequentially
             m_audioLogButtons.Add( newButton );
 
             //Disables the button so that the player starts with no collected logs
             newButton.SetActive( false );
 
+        }
+    }
+
+    public void CheckForUnlockedLogs( )
+    {
+        for(int i = 0; i < m_logsUnlocked; i++ )
+        {
+            m_audioLogButtons[i].SetActive( true );
         }
     }
 
