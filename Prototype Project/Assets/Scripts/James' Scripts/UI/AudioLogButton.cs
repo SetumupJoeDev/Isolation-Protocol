@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 public class AudioLogButton : MonoBehaviour
@@ -16,7 +17,7 @@ public class AudioLogButton : MonoBehaviour
     private Text m_buttonLabel;
 
     [SerializeField]
-    private Text m_transcriptText;
+    private TextMeshProUGUI m_transcriptText;
 
     [SerializeField]
     private AudioSource m_audioLogPlayer;
@@ -35,11 +36,6 @@ public class AudioLogButton : MonoBehaviour
     public void SetButtonLogClip( AudioClip newClip )
     {
         m_audioLogClip = newClip;
-    }
-
-    public void SetTranscriptTextElement( Text newTextElement )
-    {
-        m_transcriptText = newTextElement;
     }
 
     public void OnClick( )
