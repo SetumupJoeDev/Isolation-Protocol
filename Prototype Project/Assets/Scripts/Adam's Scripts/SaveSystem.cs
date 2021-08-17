@@ -42,7 +42,7 @@ public static class SaveSystem
 
     #region Fabricator
 
-    public static void SaveFabricator(ButtonListGenerator droneList, ButtonListGenerator exoSuitList, ButtonListGenerator weaponList)
+    public static void SaveFabricator(FabricatorUpgradeListGenerator droneList, FabricatorUpgradeListGenerator exoSuitList, FabricatorUpgradeListGenerator weaponList)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 // Manages the player character's health and specific methods needed
 public class PlayerHealthManager : HealthManager
@@ -14,19 +15,12 @@ public class PlayerHealthManager : HealthManager
     [SerializeField]
     private GameObject  m_deathUI;
     
-    [Tooltip("The death camera")]
-    [SerializeField]
-    private GameObject  m_deathCamera; // Used to continue showing the game once the player object is either destroyed or deactivated upon death
-
     public GameObject   m_bloodEffect;            // Lewis' code.
     public AudioClip    m_playerDamagedFeedback;   // Lewis' code.
 
     public enum playerState { alive, dead, downed}
 
     public playerState m_currentPlayerState;
-
-    
-
 
     // Lowers player health by amount given if vulnerable
     public override void TakeDamage(int damage)
@@ -44,9 +38,6 @@ public class PlayerHealthManager : HealthManager
         // Call player death method when out of health
         if( m_currentHealth <= 0 )
         {
-         
-
-
             if (  !GetComponentInChildren<DroneController>() || !gameObject.GetComponentInChildren<DefibMode>( ).enabled || !gameObject.GetComponentInChildren<DefibMode>( ).m_canDefibPlayer )
             {
                 Die( );
@@ -63,13 +54,14 @@ public class PlayerHealthManager : HealthManager
     // Deactivates player and sets up death screen
     private void Die()
     {
+        SaveSystem.SavePlayer(gameObject.GetComponent<PlayerController>());
+
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+
         analyticsEventManager.analytics?.playerDeathMethod(); // this tells the analytic Manager to trigger a method to send off data when the player dies 
-        Instantiate(m_deathCamera);
-        Instantiate(m_deathUI);
+
+        m_deathUI.SetActive(true);
         
-        // Sets camera position to players position when they died
-        m_deathCamera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10); 
-        //gameObject.SetActive(false);
         m_currentPlayerState = playerState.dead;
     }
 

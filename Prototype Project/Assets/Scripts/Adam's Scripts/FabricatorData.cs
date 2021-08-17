@@ -9,7 +9,7 @@ public class FabricatorData
     public bool[] m_exoSuitUpgradesUnlocks;
     public bool[] m_weaponUnlocks;
 
-    public FabricatorData(ButtonListGenerator droneList, ButtonListGenerator exoSuitList, ButtonListGenerator weaponList)
+    public FabricatorData(FabricatorUpgradeListGenerator droneList, FabricatorUpgradeListGenerator exoSuitList, FabricatorUpgradeListGenerator weaponList)
     {
         m_droneUpgradesUnlocks = new bool[droneList.m_buttonObjectReferences.Length];
         m_exoSuitUpgradesUnlocks = new bool[exoSuitList.m_buttonObjectReferences.Length];

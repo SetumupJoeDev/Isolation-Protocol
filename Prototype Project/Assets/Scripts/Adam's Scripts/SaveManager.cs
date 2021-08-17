@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public PlayerController     m_player;
-    public ButtonListGenerator  m_droneUpgrades;
-    public ButtonListGenerator  m_exoSuitUpgrades;
-    public ButtonListGenerator  m_weaponUnlocks;
+    public PlayerController               m_player;
+    public FabricatorUpgradeListGenerator m_droneUpgrades;
+    public FabricatorUpgradeListGenerator m_exoSuitUpgrades;
+    public FabricatorUpgradeListGenerator m_weaponUnlocks;
+
+    private void Awake()
+    {
+        Load();
+    }
 
     public void Save()
     {
@@ -20,7 +25,6 @@ public class SaveManager : MonoBehaviour
     {
         PlayerData playerData = SaveSystem.LoadPlayer();
 
-        m_player.m_currencyManager.m_cigarettePacksCount = playerData.m_playerCigs;
         m_player.m_currencyManager.m_fabricatorFuelCount = playerData.m_playerFuel;
 
 

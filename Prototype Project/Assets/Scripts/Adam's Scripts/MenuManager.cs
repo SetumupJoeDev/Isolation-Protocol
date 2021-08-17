@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1;
     }
 
@@ -38,5 +38,10 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1;
+    }
+
+    public void LinkToSurvey()
+    {
+        Application.OpenURL("https://forms.gle/d38QM6iLT82SNn3A7");
     }
 }
