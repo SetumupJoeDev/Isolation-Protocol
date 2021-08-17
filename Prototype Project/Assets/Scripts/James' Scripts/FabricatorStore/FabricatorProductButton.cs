@@ -32,6 +32,8 @@ public class FabricatorProductButton : InterfaceButton
     [SerializeField]
     private TextMeshProUGUI m_itemPriceText;
 
+    private string m_outOfStockText = "Out Of Stock";
+
     public void SetName(string newName )
     {
         m_productName.text = newName;
@@ -56,7 +58,10 @@ public class FabricatorProductButton : InterfaceButton
         }
         else
         {
-            m_itemPriceText.text = "Out Of Stock";
+            m_itemPriceText.text = m_outOfStockText;
+
+            m_itemPriceText.color = Color.red;
+
         }
     }
 
