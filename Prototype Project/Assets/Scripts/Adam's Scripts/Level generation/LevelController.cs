@@ -38,7 +38,7 @@ public class LevelController : MonoBehaviour
     private void Update()
     {
         // Checks if the room limit has been reached
-        if(m_numberOfCombatRooms >= m_aproxRoomLimit)
+        if(m_numberOfCombatRooms >= m_aproxRoomLimit && !m_reachedLimit)
         {
             m_reachedLimit = true;
 
