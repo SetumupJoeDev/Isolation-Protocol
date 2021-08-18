@@ -43,7 +43,11 @@ public class LevelController : MonoBehaviour
             m_reachedLimit = true;
 
             gameEvents.hello.levelLoaded( );
+        }
 
+        if(m_roomsCleared >= m_numberOfCombatRooms && m_exitRoomDoor.m_closed && m_reachedLimit)
+        {
+            m_exitRoomDoor.Open();
         }
     }
 }
