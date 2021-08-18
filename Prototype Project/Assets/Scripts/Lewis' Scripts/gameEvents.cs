@@ -10,6 +10,8 @@ public class gameEvents : MonoBehaviour
 
     public event Action levelLoadingComplete;
 
+    public event Action<LevelLoader, string> loadingNewLevel;
+
     private void Awake()
     {
         hello = this;
@@ -34,6 +36,14 @@ public class gameEvents : MonoBehaviour
         if( levelLoadingComplete != null )
         {
             levelLoadingComplete( );
+        }
+    }
+
+    public void loadingLevel( LevelLoader levelController, string newLevelName )
+    {
+        if( loadingNewLevel != null )
+        {
+            loadingNewLevel( levelController, newLevelName );
         }
     }
 

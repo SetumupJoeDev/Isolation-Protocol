@@ -110,8 +110,6 @@ public class GunBase : MonoBehaviour
         //Finds and assigns the reloading bar UI slider for use in displaying reload progress to the player
         m_reloadingBar = reloadBar.GetComponent<Slider>( );
 
-        Debug.Log( GameObject.Find( "ReloadingBar" ).GetComponent<Slider>() );
-
     }
 
     protected virtual void Awake( )

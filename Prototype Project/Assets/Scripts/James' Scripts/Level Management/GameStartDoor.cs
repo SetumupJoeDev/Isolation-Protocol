@@ -9,20 +9,23 @@ public class GameStartDoor : InteractableObject
     [SerializeField]
     private GameObject[] m_togglePlayerObjects;
 
+    public LevelLoader m_levelLoader;
+
+    private string m_levelToLoad = "Level 1";
+
     public LoadingScreenController m_loadingScreenController;
 
     public override void Activated( PlayerController playerController )
     {
 
-        StartCoroutine( m_loadingScreenController.FadeIn( this ) );
+        gameEvents.hello.loadingLevel( m_levelLoader, m_levelToLoad );
+
+        EnablePlayerCombatObjects( );
 
     }
 
-    public void LoadLevel( )
+    public void EnablePlayerCombatObjects( )
     {
-        // Loads the 1st level
-        SceneManager.LoadScene( "Level 1" );
-
         m_playerController.ToggleWeaponsFree( );
 
         m_playerController.m_currentWeapon.SetActive( true );

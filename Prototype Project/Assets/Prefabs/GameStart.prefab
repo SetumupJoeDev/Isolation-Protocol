@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4255575232458168832}
   - component: {fileID: 4255575232458168835}
   - component: {fileID: 1910680565}
+  - component: {fileID: 6693108828655352833}
   m_Layer: 18
   m_Name: GameStart
   m_TagString: Untagged
@@ -128,7 +129,20 @@ MonoBehaviour:
   m_interactionPrompt: {fileID: 3819151253647030154}
   m_isActivated: 0
   m_togglePlayerObjects: []
+  m_levelLoader: {fileID: 6693108828655352833}
   m_loadingScreenController: {fileID: 0}
+--- !u!114 &6693108828655352833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255575232458168837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a788dca0892b0f4598e21184cbfcdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1979329606
 PrefabInstance:
   m_ObjectHideFlags: 0

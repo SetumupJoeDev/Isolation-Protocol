@@ -11,10 +11,12 @@ public class LoadingScreenController : CanvasController
 
     private void Start( )
     {
+        gameEvents.hello.loadingNewLevel += FadeCanvasIn;
+
         gameEvents.hello.levelLoadingComplete += FadeCanvasOut;
     }
 
-    public IEnumerator FadeIn( GameStartDoor gameStart )
+    public IEnumerator FadeIn( LevelLoader levelLoader, string newLevelName )
     {
         while ( m_canvasGroup.alpha < 1 )
         {
@@ -26,8 +28,13 @@ public class LoadingScreenController : CanvasController
 
         m_canvasGroup.blocksRaycasts = true;
 
-        gameStart.LoadLevel( );
+        levelLoader.LoadNewLevel( newLevelName );
 
+    }
+
+    public void FadeCanvasIn( LevelLoader levelLoader, string newLevelName )
+    {
+        StartCoroutine( FadeIn( levelLoader, newLevelName ) );
     }
 
     public void FadeCanvasOut( )
