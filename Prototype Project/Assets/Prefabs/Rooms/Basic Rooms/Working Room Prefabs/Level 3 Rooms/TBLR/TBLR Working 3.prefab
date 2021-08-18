@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 787434578945614003}
   m_openDoor: {fileID: 787434578391447784}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -815,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 1323382939931685782}
   m_openDoor: {fileID: 1323382940997720341}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -1094,13 +1096,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459207280487424184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439c166b227b6c34b965f2cc3ab36853, type: 3}
+  m_Script: {fileID: 11500000, guid: af4173eb04f1ff842ac543793a9af8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_light: {fileID: 1459207280487424185}
   m_shouldFlicker: 1
-  m_maxFlickerDuration: 0
-  m_maxTimeBetweenFlickers: 0
+  m_maxFlickerDuration: 0.5
+  m_maxTimeBetweenFlickers: 3
   m_lightSound: {fileID: 0}
 --- !u!1 &1601748689308900088
 GameObject:
@@ -2599,6 +2601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 1826637891746130439}
   m_openDoor: {fileID: 1826637892895310485}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -3061,6 +3064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 3677741881432641188}
   m_openDoor: {fileID: 3677741880499896700}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -3521,7 +3525,7 @@ GameObject:
   - component: {fileID: 4533726394139549337}
   - component: {fileID: 7242316687148445579}
   - component: {fileID: 7623264807757757002}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Tilemap_props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9204,13 +9208,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6252682609523022741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439c166b227b6c34b965f2cc3ab36853, type: 3}
+  m_Script: {fileID: 11500000, guid: af4173eb04f1ff842ac543793a9af8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_light: {fileID: 6252682609523022740}
+  m_light: {fileID: 1459207280487424185}
   m_shouldFlicker: 0
-  m_maxFlickerDuration: 0
-  m_maxTimeBetweenFlickers: 0
+  m_maxFlickerDuration: 0.5
+  m_maxTimeBetweenFlickers: 3
   m_lightSound: {fileID: 0}
 --- !u!1 &6350514119713589641
 GameObject:
@@ -14843,13 +14847,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7941687159972215448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439c166b227b6c34b965f2cc3ab36853, type: 3}
+  m_Script: {fileID: 11500000, guid: af4173eb04f1ff842ac543793a9af8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_light: {fileID: 7941687159972215449}
+  m_light: {fileID: 1459207280487424185}
   m_shouldFlicker: 0
-  m_maxFlickerDuration: 0
-  m_maxTimeBetweenFlickers: 0
+  m_maxFlickerDuration: 0.5
+  m_maxTimeBetweenFlickers: 3
   m_lightSound: {fileID: 0}
 --- !u!1 &7945397938087202767
 GameObject:

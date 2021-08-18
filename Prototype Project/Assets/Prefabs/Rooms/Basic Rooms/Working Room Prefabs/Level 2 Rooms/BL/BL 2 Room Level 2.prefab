@@ -652,6 +652,9 @@ MonoBehaviour:
   m_randomizePositions: 0
   m_minSpawns: 2
   m_maxSpawns: 4
+  m_commonEnemyChance: 0
+  m_uncommonEnemyChance: 0
+  m_rareEnemyChance: 0
   m_spawnPoints:
   - {fileID: 2645997112747641139}
   - {fileID: 6160596380086875510}
@@ -665,6 +668,9 @@ MonoBehaviour:
   - {fileID: 1368252334955682932, guid: 720243304ef07fa4e827904d9a71df6d, type: 3}
   - {fileID: 1368252334955682932, guid: baa725771b8f9404e820edf1bd0128cb, type: 3}
   - {fileID: 1691778104812726235, guid: 9b5b4f95cb5c4e94b8724270177e6599, type: 3}
+  m_commonEnemyTypes: []
+  m_uncommonEnemyTypes: []
+  m_rareEnemyTypes: []
   m_enemyLayouts:
   - {fileID: 11400000, guid: b9702390bcc77134a92011e08985fc21, type: 2}
   - {fileID: 11400000, guid: 7c1d131eba346744dbc3a2f2b52221f3, type: 2}
@@ -2316,6 +2322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 4889422026549995188}
   m_openDoor: {fileID: 4889422027496302956}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -2803,6 +2810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_closed: 0
   m_closedDoor: {fileID: 5444311001418743214}
   m_openDoor: {fileID: 5444311001972909557}
   m_doorOpenNoise: {fileID: 8300000, guid: 5eefe7ee1c57f844595b88fbe8049bf8, type: 3}
@@ -7732,7 +7740,8 @@ GameObject:
   - component: {fileID: 6895702346120649556}
   - component: {fileID: 180254334849589226}
   - component: {fileID: 7526971180102081950}
-  m_Layer: 0
+  - component: {fileID: 5549272684170698969}
+  m_Layer: 23
   m_Name: Tilemap_props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8268,6 +8277,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!19719996 &5549272684170698969
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147961552511326038}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &6160596380086875510
 GameObject:
   m_ObjectHideFlags: 0

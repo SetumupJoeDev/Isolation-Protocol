@@ -2155,6 +2155,7 @@ GameObject:
   - component: {fileID: 7361729920862017588}
   - component: {fileID: 4658963221093889854}
   - component: {fileID: 2926292449835999991}
+  - component: {fileID: 52320568819227732}
   m_Layer: 23
   m_Name: Tilemap_props (1)
   m_TagString: Untagged
@@ -2937,6 +2938,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!19719996 &52320568819227732
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311237040518394228}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &5112549541819833246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5533,6 +5550,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87356495fcccbde43a7260b9c440106c, type: 3}
+--- !u!4 &7348933567163999494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3375865696689645798, guid: 87356495fcccbde43a7260b9c440106c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5414967032596516320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6484291047633814916 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1358125051146684516, guid: 87356495fcccbde43a7260b9c440106c,
@@ -5545,12 +5568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe557c048cb430f4491a69af4f935d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7348933567163999494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3375865696689645798, guid: 87356495fcccbde43a7260b9c440106c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5414967032596516320}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5931543740286166263
 PrefabInstance:
   m_ObjectHideFlags: 0
