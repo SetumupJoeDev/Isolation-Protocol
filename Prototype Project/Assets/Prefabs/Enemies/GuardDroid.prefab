@@ -37,6 +37,7 @@ Transform:
   m_LocalPosition: {x: 2.49, y: 1.21, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
+  - {fileID: 2171676008010894818}
   - {fileID: 6910615139420413684}
   - {fileID: 1388158605135329710}
   m_Father: {fileID: 0}
@@ -223,7 +224,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019787312, y: 0.03058052}
+  m_Offset: {x: 0.00011435151, y: -0.0017397404}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -234,7 +235,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.111368656, y: 0.24088597}
+  m_Size: {x: 0.9151575, y: 1.0531065}
   m_EdgeRadius: 0
 --- !u!95 &1691778104812726234
 Animator:
@@ -333,6 +334,36 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!1 &8999907646262366136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2171676008010894818}
+  m_Layer: 14
+  m_Name: WallCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2171676008010894818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999907646262366136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1691778104812726236}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &621872922713132878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 6288777676267655610, guid: 5d92d3a559d7a6849b92a8fabee8e382,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6288777676267655610, guid: 5d92d3a559d7a6849b92a8fabee8e382,
         type: 3}
@@ -424,7 +455,7 @@ PrefabInstance:
     - target: {fileID: 2687610013734572406, guid: d73fd38d0a071574782be729c584c97d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2687610013734572406, guid: d73fd38d0a071574782be729c584c97d,
         type: 3}

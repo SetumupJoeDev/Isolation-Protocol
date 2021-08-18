@@ -103,10 +103,14 @@ public class GunBase : MonoBehaviour
         m_reloadTime = m_reloadSound.clip.length;
 
         //Finds and assigns the reloading bar UI canvas for use in displaying reload progress to the player
-        m_reloadingCanvas = GameObject.Find("ReloadingBarCanvas").GetComponent<CanvasController>( );
+        m_reloadingCanvas = GameObject.Find("ReloadingBarUI").GetComponent<CanvasController>( );
+
+        GameObject reloadBar = GameObject.Find("ReloadingBar");
 
         //Finds and assigns the reloading bar UI slider for use in displaying reload progress to the player
-        m_reloadingBar = GameObject.Find("ReloadingBar").GetComponent<Slider>( );
+        m_reloadingBar = reloadBar.GetComponent<Slider>( );
+
+        Debug.Log( GameObject.Find( "ReloadingBar" ).GetComponent<Slider>() );
 
     }
 
