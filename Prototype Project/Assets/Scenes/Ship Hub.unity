@@ -720,6 +720,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_shouldFlicker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_maxFlickerDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_maxTimeBetweenFlickers
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbc061d78b13d444b55d460220cd0e5, type: 3}
 --- !u!1 &373488740 stripped
@@ -11526,6 +11541,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 979090171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &979090178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7680569103110904581, guid: 10cf6b0107a9906478d418b3aceed83b,
+    type: 3}
+  m_PrefabInstance: {fileID: 979090171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2175ae09ce46047826e327a542987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &979090180 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1822051857034256484, guid: 10cf6b0107a9906478d418b3aceed83b,
@@ -12032,18 +12059,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1702637327 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6821326931440557047, guid: 10cf6b0107a9906478d418b3aceed83b,
-    type: 3}
-  m_PrefabInstance: {fileID: 979090171}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185f23fe9f70784fbf18ac495a08a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &1702637328 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 6105259723810757502, guid: 10cf6b0107a9906478d418b3aceed83b,
@@ -12485,7 +12500,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_loadingScreenController
       value: 
-      objectReference: {fileID: 1702637327}
+      objectReference: {fileID: 0}
     - target: {fileID: 4255575232458168834, guid: 5a38d224f4305c44e9469377a01c5027,
         type: 3}
       propertyPath: m_togglePlayerObjects.Array.size
@@ -12526,7 +12541,43 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_playerController
+      value: 
+      objectReference: {fileID: 979090181}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_interactionPrompt
+      value: 
+      objectReference: {fileID: 1191718926}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_loadingScreenController
+      value: 
+      objectReference: {fileID: 979090178}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_togglePlayerObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_togglePlayerObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 979090174}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_togglePlayerObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 979090172}
+    - target: {fileID: 6354903841336150679, guid: 5a38d224f4305c44e9469377a01c5027,
+        type: 3}
+      propertyPath: m_togglePlayerObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 979090173}
+    m_RemovedComponents:
+    - {fileID: 4255575232458168834, guid: 5a38d224f4305c44e9469377a01c5027, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a38d224f4305c44e9469377a01c5027, type: 3}
 --- !u!1 &1992532884 stripped
 GameObject:
@@ -12922,6 +12973,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_shouldFlicker
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_maxFlickerDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612938520368500914, guid: 4fbc061d78b13d444b55d460220cd0e5,
+        type: 3}
+      propertyPath: m_maxTimeBetweenFlickers
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbc061d78b13d444b55d460220cd0e5, type: 3}
