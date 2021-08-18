@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6324017170392665337}
   - component: {fileID: 6324017170392665338}
-  - component: {fileID: 5095688266764754558}
   m_Layer: 0
   m_Name: Blue Light Flickering
   m_TagString: Untagged
@@ -73,20 +72,3 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &5095688266764754558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324017170392665339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4173eb04f1ff842ac543793a9af8d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_light: {fileID: 6324017170392665338}
-  m_shouldFlicker: 0
-  m_maxFlickerDuration: 0
-  m_maxTimeBetweenFlickers: 0
-  m_lightSound: {fileID: 0}
