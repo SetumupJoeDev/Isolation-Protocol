@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7455161866468678108}
   - component: {fileID: 7531151687124927998}
   - component: {fileID: 1403694726875479776}
-  - component: {fileID: 646442505414087004}
+  - component: {fileID: 4122111571759441692}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: TranscriptScrollArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,14 +31,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6103269025441132652}
-  - {fileID: 8852509676924235363}
   m_Father: {fileID: 8558605026409245662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 249.1, y: -113.6}
-  m_SizeDelta: {x: 1139.4424, y: 606.3633}
+  m_SizeDelta: {x: 1039.4424, y: 506.36328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7531151687124927998
 CanvasRenderer:
@@ -77,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &646442505414087004
+--- !u!114 &4122111571759441692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,27 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 279311473671650364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 4782388208005471806}
-  m_Horizontal: 0
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 6103269025441132652}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 9100325249631570857}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  m_ShowMaskGraphic: 1
 --- !u!1 &587517162532847184
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +101,7 @@ GameObject:
   - component: {fileID: 2163538421432583829}
   - component: {fileID: 769111483801509524}
   m_Layer: 0
-  m_Name: AudiologTranscript
+  m_Name: AudiologTranscriptText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,15 +116,15 @@ RectTransform:
   m_GameObject: {fileID: 587517162532847184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0083683, y: 2.0083683, z: 2.0083683}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6103269025441132652}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 560, y: 300}
+  m_AnchoredPosition: {x: -0.00048828125, y: -600.1}
+  m_SizeDelta: {x: 1119.4424, y: 1806.6139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2163538421432583829
 CanvasRenderer:
@@ -199,15 +181,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 117.65
+  m_fontSize: 130
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 40
-  m_fontSizeMax: 200
+  m_fontSizeMax: 130
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -215,7 +197,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -346,12 +328,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7406065353798106561}
-  m_Father: {fileID: 7455161866468678108}
+  m_Father: {fileID: 6103269025441132652}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 17.000122, y: 0}
   m_SizeDelta: {x: 20, y: -0.000061035156}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8237937560336524106
@@ -433,8 +415,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9168232274382971314}
   m_HandleRect: {fileID: 8828251166982610317}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.99997884
+  m_Size: 0.33563524
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -450,9 +432,9 @@ GameObject:
   - component: {fileID: 6103269025441132652}
   - component: {fileID: 6771045366794111242}
   - component: {fileID: 4105348772760773846}
-  - component: {fileID: 5675727807790097813}
+  - component: {fileID: 4907779555731100758}
   m_Layer: 5
-  m_Name: Viewport
+  m_Name: TextViewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,13 +452,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4782388208005471806}
+  - {fileID: 8852509676924235363}
   m_Father: {fileID: 7455161866468678108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6771045366794111242
 CanvasRenderer:
@@ -515,7 +498,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5675727807790097813
+--- !u!114 &4907779555731100758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,10 +507,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6499296621149692175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
+  m_Content: {fileID: 4782388208005471806}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 32
+  m_Viewport: {fileID: 7455161866468678108}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 9100325249631570857}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6976155087733866358
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00012207031}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8558605026298101338
@@ -1239,6 +1239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8558605027062632808}
+  - component: {fileID: 1864558787444327277}
   m_Layer: 5
   m_Name: AudioLogInterface
   m_TagString: Untagged
@@ -1268,6 +1269,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1864558787444327277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558605027062632811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06934b7951e592b43ab9bf2a5cbeecdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioLogs:
+  - {fileID: 11400000, guid: 4ba4f6202198daf47affb1ee59baf734, type: 2}
+  - {fileID: 11400000, guid: d970632623321bd4396f1870e63b9023, type: 2}
+  - {fileID: 11400000, guid: 458478e701791494691e9ed872f20276, type: 2}
+  - {fileID: 11400000, guid: 9f21d47385e4b7c46af92e937a3bd976, type: 2}
+  - {fileID: 11400000, guid: 04e36f50d2a2d4a459e2707ae52ecd11, type: 2}
+  - {fileID: 11400000, guid: b31cd5a21fe7578479f9902ca3aef711, type: 2}
+  - {fileID: 11400000, guid: 5ed9cc96ba0763a48b8cab64bb4492c0, type: 2}
+  - {fileID: 11400000, guid: 8bcda5e18f10540468015b989f7549d2, type: 2}
+  - {fileID: 11400000, guid: ae12c3fd3eb18b14da370c7ba2f51bcf, type: 2}
+  - {fileID: 11400000, guid: feaf1196ad9410e47b3b04b8fe97a995, type: 2}
+  - {fileID: 11400000, guid: 0c12f4beec71e184db92942923572fc8, type: 2}
+  - {fileID: 11400000, guid: 8411a5645a35af34d8d573b4c250532b, type: 2}
+  - {fileID: 11400000, guid: 789e737443cbf474f9e078b6097ef31a, type: 2}
+  - {fileID: 11400000, guid: 1fe369ff08bed644aaf727cdf0e9b2b9, type: 2}
+  - {fileID: 11400000, guid: 796607fdb269cb842be77e75e69bac82, type: 2}
+  - {fileID: 11400000, guid: c456cc0de54979348a5eb71e676996d1, type: 2}
+  - {fileID: 11400000, guid: ff33303bfc2a791428dccb2cc611d0a3, type: 2}
+  - {fileID: 11400000, guid: 6b60383083b5ec542aa6789993dae969, type: 2}
+  - {fileID: 11400000, guid: b1596f795e12fa147942b1dceaca2bd1, type: 2}
+  - {fileID: 11400000, guid: f37a465c58753b940ae157ffeca7696d, type: 2}
+  m_audioLogButtons: []
+  m_buttonTemplate: {fileID: 8558605027967134279}
+  m_logsUnlocked: 5
 --- !u!1 &8558605027144515887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1395,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06934b7951e592b43ab9bf2a5cbeecdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioLogs: []
+  m_audioLogs:
+  - {fileID: 11400000, guid: 4ba4f6202198daf47affb1ee59baf734, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_audioLogButtons: []
   m_buttonTemplate: {fileID: 8558605027967134279}
   m_logsUnlocked: 0
