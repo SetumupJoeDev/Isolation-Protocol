@@ -12,6 +12,8 @@ public class AudioLogPlayer : MonoBehaviour
 
     private bool m_hasPlayed;
 
+    private bool m_wasStopped;
+
 
     // Update is called once per frame
     void Update()
@@ -34,7 +36,7 @@ public class AudioLogPlayer : MonoBehaviour
 
         }
         //Otherwise, if the log has played but isn't currently playing, the timeline value is set to 100 to show the player that the clip has ended
-        else if( m_hasPlayed )
+        else if( m_hasPlayed && !m_wasStopped )
         {
     
             m_playbackTimeline.value = 100;
@@ -42,6 +44,20 @@ public class AudioLogPlayer : MonoBehaviour
             m_hasPlayed = false;
 
         }
+    }
 
+    public void PlayButtonPressed( )
+    {
+        if ( m_playbackSource.isPlaying )
+        {
+            m_playbackSource.Stop( );
+            m_playbackTimeline.value = 0;
+            m_wasStopped = true;
+        }
+        else
+        {
+            m_playbackSource.Play( );
+            m_wasStopped = false;
+        }
     }
 }
