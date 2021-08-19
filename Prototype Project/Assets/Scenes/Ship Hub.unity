@@ -6121,6 +6121,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &811412788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5612784114331654977, guid: 10cf6b0107a9906478d418b3aceed83b,
+    type: 3}
+  m_PrefabInstance: {fileID: 979090171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &825567097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9125488975058274793, guid: 10cf6b0107a9906478d418b3aceed83b,
@@ -11234,7 +11240,7 @@ PrefabInstance:
     - target: {fileID: 4577938039159839647, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4767671511690832895, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -12277,6 +12283,14 @@ PrefabInstance:
       propertyPath: m_loadingScreenController
       value: 
       objectReference: {fileID: 1694709055}
+    - target: {fileID: 1910680565, guid: 5a38d224f4305c44e9469377a01c5027, type: 3}
+      propertyPath: m_togglePlayerObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910680565, guid: 5a38d224f4305c44e9469377a01c5027, type: 3}
+      propertyPath: m_togglePlayerObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 811412788}
     - target: {fileID: 4255575232458168833, guid: 5a38d224f4305c44e9469377a01c5027,
         type: 3}
       propertyPath: m_RootOrder
