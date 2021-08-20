@@ -5,17 +5,17 @@ using UnityEngine;
 public class CollectableAudioLog : InteractableObject
 {
 
-    [SerializeField]
-    private Sprite m_highlightedSprite;
-
-    [SerializeField]
-    private Sprite m_defaultSprite;
-
-    [SerializeField]
-    private SpriteRenderer m_spriteRenderer;
-
-    [SerializeField]
-    private AudioClip m_logCollected;
+    [Tooltip("The sprite to switch to when this object is highlighted.")]
+    public Sprite m_highlightedSprite;
+    
+    [Tooltip("The object's default sprite.")]
+    public Sprite m_defaultSprite;
+    
+    [Tooltip("The sprite renderer component attached to this object.")]
+    public SpriteRenderer m_spriteRenderer;
+    
+    [Tooltip("The total number of audiologs the player has collected.")]
+    public AudioClip m_logCollected;
 
     public override void Activated( PlayerController playerController )
     {

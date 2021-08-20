@@ -44,7 +44,7 @@ public class CurrencyBase : CollectableBase
     // Update is called once per frame
     public virtual void Update()
     {
-        
+        //Checks to see if the player has come within the gravitational range of the object
         if( !m_playerEnteredRange )
         {
             CheckIsPlayerInRange( );
@@ -54,6 +54,7 @@ public class CurrencyBase : CollectableBase
 
     public virtual void FixedUpdate( )
     {
+        //If the player has entered the gravitational range of the object, it gravitates towards them
         if( m_playerEnteredRange )
         {
             GravitateToPlayer( );

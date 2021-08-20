@@ -37,6 +37,7 @@ public class LootDropper : MonoBehaviour
     [Tooltip("The array of weapon prefabs that this script can generate in a loot drop.")]
     public GameObject[] m_weaponDrops;
 
+    [Tooltip("The amount of force with which the generated weapon is pushed from the loot node.")]
     public float m_weaponForceSpeed;
 
     #endregion

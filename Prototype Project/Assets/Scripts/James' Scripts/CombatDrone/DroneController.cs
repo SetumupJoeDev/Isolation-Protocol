@@ -9,21 +9,26 @@ public class DroneController : MonoBehaviour
 
     [Header("Movement")]
 
-    [SerializeField]
+    [Tooltip("The speed at which the drone moves to follow the player.")]
     public float m_moveSpeed;
 
+    //The current directional vvelocity of the drone
     [SerializeField]
     private Vector3 m_moveDirection;
 
+    //The distance from the player that the drone stops when following
     [SerializeField]
     private float m_followDistance;
 
+    //A boolean that determines whether or not the drone can currently follow the player
     private bool m_canFollow;
 
     [SerializeField]
+    [Tooltip("The Rigidbody2D component attached to the Drone.")]
     private Rigidbody2D m_rigidBody;
 
     [SerializeField]
+    [Tooltip("The player that this drone should follow.")]
     private GameObject m_playerObject;
 
     [Space]
@@ -35,27 +40,35 @@ public class DroneController : MonoBehaviour
     [Header("Combat")]
 
     [SerializeField]
+    [Tooltip("The layer upon which the drone's targets sit. E.g the Enemy layer.")]
     private LayerMask m_targetLayer;
 
     [SerializeField]
+    [Tooltip("The time between each shot the drone fires.")]
     private float m_fireInterval;
 
     [SerializeField]
+    [Tooltip("The range that enemies must be within for the drone to fire on them.")]
     private float m_fireRange;
 
     [SerializeField]
+    [Tooltip("The prefab for the drone's projectiles.")]
     private GameObject m_projectilePrefab;
 
     [SerializeField]
+    [Tooltip("The drone's currently targeted enemy.")]
     private GameObject m_currentTarget;
 
     [SerializeField]
+    [Tooltip("The direction in which the drone is currently firing.")]
     private Vector3 m_firingDirection;
 
     [SerializeField]
+    [Tooltip("A boolean that determines whether or not the drone can currently fire at enemies.")]
     private bool m_canFire;
 
     [SerializeField]
+    [Tooltip("A boolean that determines if the drone is currently firing at an enemy.")]
     private bool m_isFiring;
 
     [Space]
@@ -67,6 +80,7 @@ public class DroneController : MonoBehaviour
     [Header("Drone Upgrades")]
 
     [SerializeField]
+    [Tooltip("An array containing all of the drone's upgrade modules.")]
     private DroneBehaviourBase[] m_droneUpgrades;
 
     #endregion
@@ -116,6 +130,7 @@ public class DroneController : MonoBehaviour
             FireAtEnemy( );
         }
 
+        //Sets this to false so that the coroutine can be called again
         m_isFiring = false;
 
     }
@@ -177,6 +192,7 @@ public class DroneController : MonoBehaviour
 
     public void EnableUpgrade( int upgradeToEnable )
     {
+        //Disables all of the drone's upgrades before enabling the upgrade at the index passed in to the method
         DisableAllUpgrades( );
 
         m_droneUpgrades[upgradeToEnable].enabled = true;

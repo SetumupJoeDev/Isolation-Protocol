@@ -21,6 +21,7 @@ public class ActiveDroneBehaviourBase : DroneBehaviourBase
 
     #endregion
 
+    //A boolean that determines whether or not this upgrade's behaviour is currently active
     [SerializeField]
     protected bool m_behaviourActive;
 
