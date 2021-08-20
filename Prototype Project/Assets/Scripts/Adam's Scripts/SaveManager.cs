@@ -14,6 +14,11 @@ public class SaveManager : MonoBehaviour
         Load();
     }
 
+    private void Start()
+    {
+        FabricatorEventListener.current.onFabricatorProductUnlock += Save;
+    }
+
     public void Save()
     {
         SaveSystem.SavePlayer(m_player);

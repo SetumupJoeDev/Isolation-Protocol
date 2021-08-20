@@ -54,8 +54,6 @@ public class PlayerHealthManager : HealthManager
     // Deactivates player and sets up death screen
     private void Die()
     {
-        SaveSystem.SavePlayer(gameObject.GetComponent<PlayerController>());
-
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
 
         analyticsEventManager.analytics?.playerDeathMethod(); // this tells the analytic Manager to trigger a method to send off data when the player dies 

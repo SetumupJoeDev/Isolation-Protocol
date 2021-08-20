@@ -7,9 +7,6 @@ using UnityEngine.Analytics;
 // (Anything not marked as someone else's work via comments is Adam's work)
 public class PlayerController : CharacterBase
 {
-
-
-
     public DictionaryBase dictionary;
 
     //James' Work
@@ -246,6 +243,8 @@ public class PlayerController : CharacterBase
             if ( m_playerHealthManager.m_currentPlayerState == PlayerHealthManager.playerState.dead )
             {
                 gameObject.GetComponent<AnalyticsEventTracker>().enabled = true; // enables the event tracker, it'll send the playtest data to the server
+
+                SaveSystem.SavePlayer(this);
             }
         }
     }

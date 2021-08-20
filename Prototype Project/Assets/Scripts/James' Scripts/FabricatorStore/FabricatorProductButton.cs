@@ -95,6 +95,8 @@ public class FabricatorProductButton : InterfaceButton
 
             UpdateProductInfo( );
 
+            FabricatorEventListener.current.FabricatorProductUnlock();
+
         }
         else
         {
