@@ -32,6 +32,8 @@ public class SaveManager : MonoBehaviour
 
         m_player.m_currencyManager.m_fabricatorFuelCount = playerData.m_playerFuel;
 
+        m_player.m_carriedWeapons = playerData.m_equippedWeapons;
+
 
         FabricatorData FabricatorData = SaveSystem.LoadFabricator();
         

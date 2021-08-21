@@ -93,10 +93,9 @@ public class FabricatorProductButton : InterfaceButton
 
             m_storeController.ChargePlayer( m_productPrice );
 
-            UpdateProductInfo( );
-
             FabricatorEventListener.current.FabricatorProductUnlock();
-
+            
+            UpdateProductInfo( );
         }
         else
         {
