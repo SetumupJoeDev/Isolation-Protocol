@@ -26,6 +26,8 @@ public class WeaponWall : UpgradeManager
         //Disables the weapon so it can't be used in the hub area
         m_playerController.m_carriedWeapons[chosenSlot].SetActive( false );
 
+        SaveSystem.SavePlayer(m_playerController);
+
     }
 
     public void ChangeSelectedWeapon( int weaponIndex )

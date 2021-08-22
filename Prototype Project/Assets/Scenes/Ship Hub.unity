@@ -5780,7 +5780,15 @@ MonoBehaviour:
   m_player: {fileID: 979090181}
   m_droneUpgrades: {fileID: 6835831275985202104}
   m_exoSuitUpgrades: {fileID: 6835831275985202105}
-  m_weaponUnlocks: {fileID: 6835831275985202106}
+  m_weaponUnlocks:
+  - {fileID: 11400000, guid: ee7fd00b9982e724caedbbc61aa57a25, type: 2}
+  - {fileID: 11400000, guid: e588108a22591784388168303acb7d49, type: 2}
+  - {fileID: 11400000, guid: 8c162de1ecf54404bb894207d71b37cc, type: 2}
+  - {fileID: 11400000, guid: 9a0ea324d8252544b935aeea5fe8293d, type: 2}
+  - {fileID: 11400000, guid: 47a9f9b26d823604eab6d65fc30eb684, type: 2}
+  - {fileID: 11400000, guid: c1dee45ea2dffc041a6c9d7a0d1e29ec, type: 2}
+  - {fileID: 11400000, guid: 0cbfbc43dd632834c8626675b3034638, type: 2}
+  m_weaponWall: {fileID: 290914871}
 --- !u!4 &686926541
 Transform:
   m_ObjectHideFlags: 0
@@ -11053,7 +11061,7 @@ PrefabInstance:
     - target: {fileID: 202121998825316509, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 419.99994
+      value: 420.00012
       objectReference: {fileID: 0}
     - target: {fileID: 202121998877621557, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -11175,6 +11183,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 146.75
       objectReference: {fileID: 0}
+    - target: {fileID: 739303471977651412, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1048334480622947056, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -11218,7 +11231,7 @@ PrefabInstance:
     - target: {fileID: 1822051857034256484, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_fabricatorFuelCount
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1979166841643934149, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -11240,6 +11253,11 @@ PrefabInstance:
       propertyPath: m_audioLogList
       value: 
       objectReference: {fileID: 911573775}
+    - target: {fileID: 3715704714287060928, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_carriedWeapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder
@@ -11338,7 +11356,7 @@ PrefabInstance:
     - target: {fileID: 3915358375777454403, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -296.91827
+      value: 903.3068
       objectReference: {fileID: 0}
     - target: {fileID: 4577938039159839647, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -11363,7 +11381,7 @@ PrefabInstance:
     - target: {fileID: 5104504200505103518, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_Name
-      value: BoltM4250
+      value: BoltM4250(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 5104504200505103518, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -13707,18 +13725,6 @@ MonoBehaviour:
 --- !u!114 &6835831275985202105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6835831274905421502, guid: 524b7075bb3478c4a9533d2a71cca2fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 6835831275985202103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d00a7a0906dc1640a2f3b92ebecf3bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6835831275985202106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6835831276059826178, guid: 524b7075bb3478c4a9533d2a71cca2fa,
     type: 3}
   m_PrefabInstance: {fileID: 6835831275985202103}
   m_PrefabAsset: {fileID: 0}

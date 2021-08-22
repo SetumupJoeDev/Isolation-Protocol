@@ -9,11 +9,11 @@ public class FabricatorData
     public bool[] m_exoSuitUpgradesUnlocks;
     public bool[] m_weaponUnlocks;
 
-    public FabricatorData(FabricatorUpgradeListGenerator droneList, FabricatorUpgradeListGenerator exoSuitList, FabricatorUpgradeListGenerator weaponList)
+    public FabricatorData(FabricatorUpgradeListGenerator droneList, FabricatorUpgradeListGenerator exoSuitList, FabricatorStoreProduct[] weaponList)
     {
         m_droneUpgradesUnlocks = new bool[droneList.m_buttonObjectReferences.Length];
         m_exoSuitUpgradesUnlocks = new bool[exoSuitList.m_buttonObjectReferences.Length];
-        m_weaponUnlocks = new bool[weaponList.m_buttonObjectReferences.Length];
+        m_weaponUnlocks = new bool[weaponList.Length];
 
         for (int i = 0; i < droneList.m_buttonObjectReferences.Length; i++)
         {
@@ -25,9 +25,9 @@ public class FabricatorData
             m_exoSuitUpgradesUnlocks[i] = exoSuitList.m_buttonObjectReferences[i].GetIsUnlocked();
         }
 
-        for (int i = 0; i < weaponList.m_buttonObjectReferences.Length; i++)
+        for (int i = 0; i < weaponList.Length; i++)
         {
-            m_weaponUnlocks[i] = weaponList.m_buttonObjectReferences[i].GetIsUnlocked();
+            m_weaponUnlocks[i] = weaponList[i].GetIsUnlocked();
         }
     }
 }
