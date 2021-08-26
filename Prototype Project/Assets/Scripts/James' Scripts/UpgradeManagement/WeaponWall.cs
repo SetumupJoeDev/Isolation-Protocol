@@ -12,7 +12,28 @@ public class WeaponWall : UpgradeManager
     public virtual void AssignWeaponToSlot( int chosenSlot )
     {
 
-        Destroy( m_playerController.m_carriedWeapons[chosenSlot] );
+        GameObject[] tempArray = m_playerController.m_carriedWeapons;
+
+        if ( chosenSlot == 2 && m_playerController.m_carriedWeapons.Length <= 3 || m_playerController.m_carriedWeapons.Length == 3)
+        {
+            m_playerController.m_carriedWeapons = new GameObject[3];
+        }
+        else
+        {
+            m_playerController.m_carriedWeapons = new GameObject[2];
+        }
+
+        if ( tempArray.Length <= m_playerController.m_carriedWeapons.Length )
+        {
+            for ( int i = 0; i < tempArray.Length; i++ )
+            {
+                m_playerController.m_carriedWeapons[i] = Instantiate( tempArray[i] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+            }
+        }
+        else
+        {
+            m_playerController.m_carriedWeapons[0] = Instantiate( tempArray[0] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+        }
 
         //Instantiates a new weapon at the player's weapon hold point using the weapon prefab
         m_playerController.m_carriedWeapons[chosenSlot] = Instantiate( m_selectedWeapon , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
