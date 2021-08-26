@@ -215,9 +215,17 @@ public class EnemyBase : CharacterBase
     }
 
 
-    protected override void FixedUpdate( )
+    public override IEnumerator Stun( )
     {
-        
+
+        m_enemyAI.canMove = false;
+        m_stunIcon.SetActive( true );
+
+        yield return new WaitForSeconds( m_stunDuration );
+
+        m_stunIcon.SetActive(false);
+        m_enemyAI.canMove = true;
+
     }
 
     public override void Die( )

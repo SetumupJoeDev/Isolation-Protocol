@@ -148,15 +148,11 @@ public class CharacterBase : MonoBehaviour
     public virtual IEnumerator TemporarySlowness( float slownessDuration, float slownessAmount )
     {
 
-        Debug.Log( "Entering slowness! Duration: " + slownessDuration + "Amount: " + slownessAmount );
-
         m_slowedByHazard = true;
 
         m_slowness += slownessAmount;
 
         yield return new WaitForSeconds( slownessDuration );
-
-        Debug.Log( "Leaving slowness!" );
 
         m_slowness -= slownessAmount;
 
@@ -165,7 +161,7 @@ public class CharacterBase : MonoBehaviour
     }
 
     // Adam's code
-     public IEnumerator Stun()
+     public virtual IEnumerator Stun()
     {
         m_characterRigidBody.velocity = Vector3.zero;
         m_isStunned = true;
