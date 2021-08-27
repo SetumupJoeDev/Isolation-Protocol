@@ -35,6 +35,7 @@ public class SearchMode : DroneBehaviourBase
         {
             case ( searchState.findingNode ):
             {
+                    //If the drone finds a loot node, it moves towards it and disables the drone's basic movement and combat behaviours temportarily
                     if ( FindLootNode( ) )
                     {
                         m_droneController.DisableBasicBehaviours( );
@@ -45,12 +46,14 @@ public class SearchMode : DroneBehaviourBase
 
             case ( searchState.movingToNode ):
             {
-                    MoveToNode( );
+                //Moves the drone toward the loot node it has found
+                MoveToNode( );
             }
             break;
 
             case ( searchState.searchingForLoot ):
             {
+                    //If the drone isn't currently searching for loot, the SearchForLoot coroutine is started to generate loot
                     if ( !m_searchingForLoot )
                     {
                         StartCoroutine( SearchForLoot( ) );
@@ -65,8 +68,10 @@ public class SearchMode : DroneBehaviourBase
     public bool FindLootNode( )
     {
 
+        //Uses an overlap circle to search for objects on the loot node layer
         Collider2D lootNode = Physics2D.OverlapCircle( transform.position , m_searchRadius , m_searchNodeLayer );
 
+        //If a loot node is found, it is saved as the drone's current loot node to search
         if( lootNode != null )
         {
             m_currentLootNode = lootNode.gameObject;
@@ -83,8 +88,10 @@ public class SearchMode : DroneBehaviourBase
     public void MoveToNode( )
     {
 
+        //Moves the drone towards the loot node using deltaTime to make it framerate independant
         gameObject.transform.position = Vector3.MoveTowards( transform.position , m_currentLootNode.transform.position , m_moveToNodeSpeed * Time.deltaTime );
 
+        //If the drone is within very close proximity to the loot node, we assume it has reached it and so it begins searching for loot
         if( Vector3.Distance(transform.position, m_currentLootNode.transform.position) < Mathf.Epsilon )
         {
             m_currentSearchState = searchState.searchingForLoot;
@@ -97,14 +104,18 @@ public class SearchMode : DroneBehaviourBase
 
         m_searchingForLoot = true;
 
+        //Waits for the duration of the drone's search time before generating loot
         yield return new WaitForSeconds( m_searchTime );
 
+        //Calls the GenerateLoot function of the loot node to produce currency/weapons
         m_currentLootNode.GetComponent<SearchNode>( ).GenerateLoot( );
 
+        //Returns the drone to its node-finding state
         m_currentSearchState = searchState.findingNode;
 
         m_searchingForLoot = false;
 
+        //Re-enables the drone's basic functionalities
         m_droneController.EnableBasicBehaviours( );
 
     }

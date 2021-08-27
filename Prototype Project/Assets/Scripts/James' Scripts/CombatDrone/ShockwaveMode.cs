@@ -9,35 +9,36 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
 
     [Header("Shockwave Settings")]
 
-    [SerializeField]
-    private float m_shockwaveLineWidth;
+    [Tooltip("The width of the line rendered to represent the shockwave.")]
+    public float m_shockwaveLineWidth;
 
-    [SerializeField]
-    private Material m_shockwaveMaterial;
+    [Tooltip("The material applied to the shockwave line renderer.")]
+    public Material m_shockwaveMaterial;
 
-    [SerializeField]
-    private float m_knockbackForce;
+    [Tooltip("The amount of knockback applied to characters hit by the shockwave.")]
+    public float m_knockbackForce;
 
-    [SerializeField]
-    private int m_shockwaveDamage;
+    [Tooltip("The amount of damage dealt to characters hit by the shockwave.")]
+    public int m_shockwaveDamage;
 
-    [SerializeField]
-    private float m_knockbackDuration;
+    [Tooltip("The duration for which the characters hit by the shockwave experience knockback")]
+    public float m_knockbackDuration;
 
-    [SerializeField]
-    private float m_shockwaveMaxRadius;
+    [Tooltip("The maximum size that the shockwave will grow to before stopping.")]
+    public float m_shockwaveMaxRadius;
 
-    [SerializeField]
-    private float m_shockwaveSpeed;
+    [Tooltip("The speed at which the shockwave's radius grows.")]
+    public float m_shockwaveSpeed;
 
-    [SerializeField]
-    private int m_shockwaveVertices;
+    [Tooltip("The number of vertices in the shockwave's line renderer. The higher the number the smoother the circle will be.")]
+    public int m_shockwaveVertices;
 
-    [SerializeField]
-    private LayerMask m_targetLayer;
+    [Tooltip("The layer upon which targets of the shockwave sit.")]
+    public LayerMask m_targetLayer;
 
     #endregion
 
+    //The shockwave script attached to this object
     private Shockwave m_shockwave;
 
     // Start is called before the first frame update
@@ -45,8 +46,10 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
     {
         base.Awake( );
 
+        //Creates a shockwave component and adds it to the GameObject, and also assigns it
         m_shockwave = gameObject.AddComponent( typeof( Shockwave ) ) as Shockwave;
 
+        //Assigns all of the values required by the shockwave
         InitialiseShockwaveValues( );
 
         m_shockwave.enabled = false;
@@ -82,6 +85,8 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
 
     public void InitialiseShockwaveValues( )
     {
+
+        //Assigns all of the necessary values to the shockwave component
         m_shockwave.m_shockwaveDamage = m_shockwaveDamage;
 
         m_shockwave.m_shockwaveLineWidth = m_shockwaveLineWidth;

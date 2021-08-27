@@ -21,6 +21,7 @@ public class CharacterBase : MonoBehaviour
     [Tooltip("The rigidbody component attached to the character. Used to add physical forces.")]
     public Rigidbody2D m_characterRigidBody;
 
+    [Tooltip("A boolean that determines whether or not the character is currently slowed by anything.")]
     public bool m_slowedByHazard;
 
     [Space]
@@ -31,9 +32,8 @@ public class CharacterBase : MonoBehaviour
 
     [Header("Health Management")]
 
-    [SerializeField]
     [Tooltip("The Health Manager script for this character.")]
-    protected HealthManager m_healthManager;
+    public HealthManager m_healthManager;
 
     #endregion
 
@@ -44,13 +44,13 @@ public class CharacterBase : MonoBehaviour
     [Tooltip("The duration of the knockback effect.")]
     public float m_knockbackDuration;
 
-    [Tooltip("The direction in which the player has been knocked back.")]
+    [Tooltip("The direction in which the character has been knocked back.")]
     public Vector3 m_knockbackDirection;
 
-    [SerializeField]
-    protected float m_knockbackForce;
+    [Tooltip("The amount of force with which this character moves when knocked back.")]
+    public float m_knockbackForce;
 
-    [Tooltip("Determines whether or not the player is currently being knocked back.")]
+    [Tooltip("Determines whether or not the character is currently being knocked back.")]
     public bool m_knockedBack;
 
     #endregion
@@ -95,10 +95,12 @@ public class CharacterBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        //Adam's code
         if (m_isOnFire && !m_isBurning)
         {
             StartCoroutine(Burn());
         }
+        //End of Adam's code
     }
 
     public void SimulateKnockback()
@@ -124,6 +126,7 @@ public class CharacterBase : MonoBehaviour
         //Waits for the duration of the knockback before setting the character's velocity to 0 and setting them as no longer being knocked back
         yield return new WaitForSeconds(m_knockbackDuration);
 
+        //Zeroes the characters velocity to prevent them from continuing to move after knockback if they should be stationary
         m_characterRigidBody.velocity = Vector3.zero;
 
         m_knockedBack = false;
@@ -147,13 +150,16 @@ public class CharacterBase : MonoBehaviour
 
     public virtual IEnumerator TemporarySlowness( float slownessDuration, float slownessAmount )
     {
-
+        //Sets this to true so that the character cannot be repeatedly slowed by hazards
         m_slowedByHazard = true;
 
+        //Increments this value to reduce the speed at which the character moves while stunned
         m_slowness += slownessAmount;
 
+        //Waits for the duration of the slowness before removing the effect
         yield return new WaitForSeconds( slownessDuration );
 
+        //
         m_slowness -= slownessAmount;
 
         m_slowedByHazard = false;

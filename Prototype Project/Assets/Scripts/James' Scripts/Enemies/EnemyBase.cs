@@ -197,7 +197,7 @@ public class EnemyBase : CharacterBase
             StartCoroutine( AttackTarget( ) );
             m_isAttacking = true;
         }
-
+        //If the player is no longer alive, the enemy returns to its idle state
         if ( m_currentTarget.GetComponent<PlayerHealthManager>( ).m_currentPlayerState != PlayerHealthManager.playerState.alive )
         {
             m_currentTarget = null;

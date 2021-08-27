@@ -12,26 +12,28 @@ public class SentryMode : ActiveDroneBehaviourBase
 
     [Header("Combat")]
 
-    [SerializeField]
-    private bool m_isFiring;
+    [Tooltip("A boolean that determines whether or not the drone is currently firing.")]
+    public bool m_isFiring;
 
-    [SerializeField]
-    private float m_fireRadius;
+    [Tooltip("The radius in which targets must be for the drone to fire on them.")]
+    public float m_fireRadius;
 
-    [SerializeField]
-    private float m_fireInterval;
+    [Tooltip("The time before each shot fired by the drone.")]
+    public float m_fireInterval;
 
-    [SerializeField]
-    private GameObject m_projectilePrefab;
+    [Tooltip("The prefab for the projectile the drone will fire.")]
+    public GameObject m_projectilePrefab;
 
-    [SerializeField]
-    private LayerMask m_targetLayer;
+    [Tooltip("The layer upon which the drone's targets will sit.")]
+    public LayerMask m_targetLayer;
 
+    //The enemy that the drone is currently targeting
     private GameObject m_currentEnemy;
 
+    //The direction in which the drone is currently aiming, usually at its current enemy
     private Vector3 m_aimingDirection;
 
-    [SerializeField]
+    [Tooltip("The amount of time for which the drone remains in sentry mode.")]
     private float m_sentryModeDuration;
 
     #endregion
@@ -42,14 +44,14 @@ public class SentryMode : ActiveDroneBehaviourBase
 
     [Header("Sounds")]
 
-    [SerializeField]
-    private AudioClip m_setupSound;
+    [Tooltip("The sound that plays when the drone enters sentry mode.")]
+    public AudioClip m_setupSound;
 
-    [SerializeField]
-    private AudioClip m_deactivatedSound;
+    [Tooltip("The sound that plays when the drone leaves sentry mode.")]
+    public AudioClip m_deactivatedSound;
 
-    [SerializeField]
-    private AudioClip m_firingSound;
+    [Tooltip("The sound that plays when the drone fires.")]
+    public AudioClip m_firingSound;
 
     #endregion
 
