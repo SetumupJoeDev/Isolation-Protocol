@@ -12,11 +12,15 @@ public class DroneWorkbench : UpgradeManager
     {
         //Toggles the drone on and off when the button is pressed
         m_drone.gameObject.SetActive( !m_drone.gameObject.activeSelf );
+
+        SaveSystem.SavePlayer(m_playerController);
     }
 
     public void ToggleUpgrade( int upgradeIndex )
     {
         m_drone.EnableUpgrade( upgradeIndex );
+
+        SaveSystem.SavePlayer(m_playerController);
     }
 
 }

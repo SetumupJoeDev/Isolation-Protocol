@@ -53,6 +53,13 @@ public class SaveManager : MonoBehaviour
             }
         }
 
+        m_player.m_drone.gameObject.SetActive(playerData.m_isDroneActive);
+
+        for (int i = 0; i < m_player.m_drone.m_droneUpgrades.Length; i++)
+        {
+            m_player.m_drone.m_droneUpgrades[i].enabled = playerData.m_droneModes[i];
+        }
+
         FabricatorData fabricatorData = SaveSystem.LoadFabricator(m_droneUpgrades, m_exoSuitUpgrades, m_weaponUnlocks);
 
         for (int i = 0; i < m_droneUpgrades.m_buttonObjectReferences.Length; i++)

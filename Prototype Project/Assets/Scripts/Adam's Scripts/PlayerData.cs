@@ -7,6 +7,8 @@ public class PlayerData
 {
     public int      m_playerFuel;
     public string[] m_equippedWeapons;
+    public bool     m_isDroneActive;
+    public bool[]   m_droneModes;
 
     public PlayerData(PlayerController player)
     {
@@ -17,6 +19,15 @@ public class PlayerData
         for (int i = 0; i < player.m_carriedWeapons.Length; i++)
         {
             m_equippedWeapons[i] = player.m_carriedWeapons[i].name;
+        }
+
+        m_isDroneActive = player.m_drone.gameObject.activeSelf;
+
+        m_droneModes = new bool[player.m_drone.m_droneUpgrades.Length];
+
+        for (int i = 0; i < player.m_drone.m_droneUpgrades.Length; i++)
+        {
+            m_droneModes[i] = player.m_drone.m_droneUpgrades[i].enabled;
         }
     }
 }

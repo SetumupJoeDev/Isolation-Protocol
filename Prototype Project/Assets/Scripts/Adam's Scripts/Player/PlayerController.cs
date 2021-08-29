@@ -33,6 +33,8 @@ public class PlayerController : CharacterBase
 
     //End of James' work
 
+    public DroneController m_drone;
+
     [Header("Animation")]
     
     // Reference to animator

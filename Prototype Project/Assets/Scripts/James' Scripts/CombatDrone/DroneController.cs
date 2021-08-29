@@ -79,9 +79,8 @@ public class DroneController : MonoBehaviour
 
     [Header("Drone Upgrades")]
 
-    [SerializeField]
     [Tooltip("An array containing all of the drone's upgrade modules.")]
-    private DroneBehaviourBase[] m_droneUpgrades;
+    public DroneBehaviourBase[] m_droneUpgrades;
 
     #endregion
 
