@@ -7,20 +7,20 @@ using UnityEngine;
 public class AudioLogButton : MonoBehaviour
 {
 
-    [SerializeField]
-    private TextAsset m_logTranscriptContent;
+    [Tooltip("The text file containing the audi log's transcript.")]
+    public TextAsset m_logTranscriptContent;
 
-    [SerializeField]
-    private AudioClip m_audioLogClip;
+    [Tooltip("The audio clip of this button's audio log.")]
+    public AudioClip m_audioLogClip;
 
-    [SerializeField]
-    private Text m_buttonLabel;
+    [Tooltip("The text asset that display's the name of this audiolog.")]
+    public Text m_buttonLabel;
 
-    [SerializeField]
-    private TextMeshProUGUI m_transcriptText;
+    [Tooltip("The text element that contains and displays the text transcript of this audiolog.")]
+    public TextMeshProUGUI m_transcriptText;
 
-    [SerializeField]
-    private AudioSource m_audioLogPlayer;
+    [Tooltip("The AudioSource that plays the audio log clips.")]
+    public AudioSource m_audioLogPlayer;
 
     public void SetButtonLabelText( string labelText )
     {

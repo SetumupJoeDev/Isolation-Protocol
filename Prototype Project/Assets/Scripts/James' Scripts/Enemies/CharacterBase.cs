@@ -159,9 +159,10 @@ public class CharacterBase : MonoBehaviour
         //Waits for the duration of the slowness before removing the effect
         yield return new WaitForSeconds( slownessDuration );
 
-        //
+        //Reduces the player's slowness value to restore their movement speed
         m_slowness -= slownessAmount;
 
+        //Sets this to false so that they can be slowed again
         m_slowedByHazard = false;
 
     }

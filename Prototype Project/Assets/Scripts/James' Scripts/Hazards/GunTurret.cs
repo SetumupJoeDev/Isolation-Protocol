@@ -5,8 +5,10 @@ using UnityEngine;
 public class GunTurret : TurretBase
 {
 
+    [Tooltip("The prefab for the turret's projectile.")]
     public GameObject m_projectile;
 
+    [Tooltip("The positions from which the turret fires its projectiles.")]
     public Transform[] m_barrelTransforms;
 
     public override IEnumerator FireAtTarget( )

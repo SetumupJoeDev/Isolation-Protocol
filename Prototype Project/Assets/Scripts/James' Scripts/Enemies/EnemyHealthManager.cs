@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class EnemyHealthManager : HealthManager
 {
-    SpriteRenderer m_spriteRenderer;// Lewis' code
-    public float m_damagedTime = 0.15f; // Lewis's code.
+    // Lewis' code
+
+    SpriteRenderer m_spriteRenderer;
+    public float m_damagedTime = 0.15f; 
 
     public float m_damagedAmount ;
     public float m_maxHealthFloat;
     public float m_currentHealthFloat;
     public int number =5;
 
-    public PlayerController m_playerController;
+    public float m_timeAlive;
 
-    public float m_timeAlive; 
+    //End of Lewis's code.
+
+    public PlayerController m_playerController;
 
 
     public override void Start()
@@ -32,9 +36,7 @@ public class EnemyHealthManager : HealthManager
 
     private void Update()
     {
-        //Debug.Log(m_damagedAmount);
-        //Debug.Log(m_currentHealthFloat + "current health float");
-        //Debug.Log(m_maxHealthFloat + "max health float");
+        //Lewis' code
 
         m_timeAlive += Time.deltaTime * 1f;
 
@@ -42,9 +44,8 @@ public class EnemyHealthManager : HealthManager
     
         m_damagedAmount = m_maxHealth / m_currentHealthFloat;
         
+        //End of Lewis' code
 
-
- 
     }
     public override void TakeDamage( int damage )
     {
@@ -54,19 +55,16 @@ public class EnemyHealthManager : HealthManager
 
         StartCoroutine(damageFeedback()); // Lewis' code
 
-        //If the enemy's health reaches 0, they die
+        //If the enemy's health reaches 0, they die and an event is called for the analytics manager to register an enemy death
         if( m_currentHealth <= 0 )
         {
             if ( gameObject.GetComponent<EnemyBase>( ) != null )
             {
-              
+
                 gameObject.GetComponent<EnemyBase>( ).Die( );
-            }
-            else
-            {
-                Debug.Log(gameObject.name);
-                analyticsEventManager.analytics.onEnemyDeath(gameObject.name);
-                Destroy( gameObject );
+
+                analyticsEventManager.analytics.onEnemyDeath( gameObject.name );
+
             }
         }
     }

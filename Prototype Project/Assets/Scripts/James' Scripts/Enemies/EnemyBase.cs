@@ -9,39 +9,33 @@ public class EnemyBase : CharacterBase
     #region TargetDetection
 
     [Header("Player Detection")]
-    [SerializeField]
     [Tooltip("The range at which this enemy can detect the player.")]
-    protected float m_detectionRange;
+    public float m_detectionRange;
 
-    [SerializeField]
     [Tooltip("The layer on which the player sits. Used in target detection to filter to only the player.")]
-    protected LayerMask m_playerLayer;
+    public LayerMask m_playerLayer;
 
-    [SerializeField]
     [Tooltip("The layer on which the game's walls sit. Used to determine if the enemy's vision is obscured.")]
-    protected LayerMask m_wallLayer;
+    public LayerMask m_wallLayer;
 
-    [SerializeField]
     [Tooltip("The current target of this enemy.")]
-    protected GameObject m_currentTarget;
+    public GameObject m_currentTarget;
 
-    [SerializeField]
     [Tooltip("Determines whether or not the enemy is currently searching for targets.")]
-    protected bool m_searchingForTargets;
+    public bool m_searchingForTargets;
 
-    [SerializeField]
     [Tooltip("The interval between target searches. Used to save resources when lots of enemies are searching.")]
-    protected float m_searchInterval;
+    public float m_searchInterval;
 
     #endregion
 
     #region Chasing
 
     [Header("Chasing")]
-    [SerializeField]
     [Tooltip("The closest distance to the player to which the enemy will move.")]
-    protected float m_chaseProximity;
+    public float m_chaseProximity;
 
+    [Tooltip("The A* pathfinding component attached to this enemy that allows them to pathfind.")]
     public AIPath m_enemyAI;
 
     #endregion
@@ -50,23 +44,19 @@ public class EnemyBase : CharacterBase
 
     [Header("Attacking")]
 
-    [SerializeField]
     [Tooltip("The attack range of the enemy.")]
-    protected float m_attackRange;
+    public float m_attackRange;
 
-    [SerializeField]
     [Tooltip("The amount of damahe this enemy deals on each attack.")]
-    protected int m_attackDamage;
+    public int m_attackDamage;
 
-    [SerializeField]
     [Tooltip("The interval between this enemy's attacks.")]
-    protected float m_attackInterval;
+    public float m_attackInterval;
 
-    [SerializeField]
     [Tooltip("Determines whether or not the enemy is currently attacking.")]
-    protected bool m_isAttacking;
+    public bool m_isAttacking;
 
-
+    [Tooltip("A boolean that determines whether or not this enemy can currently chase the player.")]
     public bool m_canChasePlayer;
 
     #endregion
@@ -90,7 +80,7 @@ public class EnemyBase : CharacterBase
     public enum enemyStates { idle, chasing, attacking };
 
     [Header("Enemy States")]
-    [SerializeField]
+
     [Tooltip( "The current state the enemy is in." )]
     protected enemyStates m_currentState;
 
@@ -98,7 +88,9 @@ public class EnemyBase : CharacterBase
 
     #region Animation
 
-    [SerializeField]
+    [Header("Animation")]
+
+    [Tooltip("The animator component attached to this enemy.")]
     protected Animator m_animator;
 
     #endregion
@@ -209,21 +201,31 @@ public class EnemyBase : CharacterBase
         }
     }
 
+
+    //Lewis' code
     public void checkCanChasePlayer()
     {
         m_canChasePlayer = true;
     }
+    //end of Lewis' code
 
 
     public override IEnumerator Stun( )
     {
 
+        //Disables movement on the enemy's AI path so they can no longer chase the player
         m_enemyAI.canMove = false;
+
+        //Enables the enemy's stun icon to give a visual indication of the status effect
         m_stunIcon.SetActive( true );
 
+        //Waits for the stun duration before reversing the effects
         yield return new WaitForSeconds( m_stunDuration );
 
+        //Disables the stun icon to inform the player that the enemy is no longer stunned
         m_stunIcon.SetActive(false);
+
+        //Re-enables movement on the AI path so thr enemy can chase the player again
         m_enemyAI.canMove = true;
 
     }

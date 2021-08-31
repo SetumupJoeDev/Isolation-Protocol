@@ -6,20 +6,20 @@ using UnityEngine;
 public class FabricatorStoreProduct : ScriptableObject
 {
 
-    [SerializeField]
-    private int m_itemPrice;
+    [Tooltip("The price of the item.")]
+    public int m_itemPrice;
 
-    [SerializeField]
-    private Sprite m_itemSprite;
+    [Tooltip("The item's sprite.")]
+    public Sprite m_itemSprite;
 
-    [SerializeField]
-    private string m_itemName;
+    [Tooltip("The name of the item.")]
+    public string m_itemName;
 
-    [SerializeField]
-    private TextAsset m_itemDescription;
+    [Tooltip("The product description of the item.")]
+    public TextAsset m_itemDescription;
 
-    [SerializeField]
-    private bool m_isUnlocked;
+    [Tooltip("A boolean that determines whether or not this product is unlocked.")]
+    public bool m_isUnlocked;
 
     public void Start( )
     {

@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class FabrictatorModule : InteractableObject
 {
-    [SerializeField]
-    private CanvasController m_fabricatorCanvas;
+    [Tooltip("The canvas controller attached to the UI canvas of the fabricator store.")]
+    public CanvasController m_fabricatorCanvas;
 
-    [SerializeField]
-    private SpriteRenderer m_spriteRenderer;
+    [Tooltip("The sprite renderer attached to the fabricator module.")]
+    public SpriteRenderer m_spriteRenderer;
 
-    [SerializeField]
+    [Tooltip("The default sprite of the fabricator.")]
     private Sprite m_defaultSprite;
 
-    [SerializeField]
-    private Sprite m_highlightedSprite;
+    [Tooltip("The highlighted version of the fabricator's sprite.")]
+    public Sprite m_highlightedSprite;
 
+    [Tooltip("The sound that plays when the player opens a UI window.")]
     public AudioSource m_windowOpen;
 
+    [Tooltip("The sound that plays when the player closes a UI window.")]
     public AudioSource m_windowClose;
 
+    [Tooltip("The sound that plays when the player changes to a different UI tab.")]
     public AudioSource m_tabClose;
 
     public override void Activated( PlayerController playerController )
@@ -33,16 +36,19 @@ public class FabrictatorModule : InteractableObject
         //Sets the player as in a menu, so they cannot move or shoot
         m_playerController.m_isInMenu = true;
 
+        //Plays the sound of the UI window opening
         m_windowOpen.Play( );
     }
 
     public void PlayWindowCloseSound( )
     {
+        //Plays the sound of the UI window closing
         m_windowClose.Play( );
     }
 
     public void PlayTabCloseSound( )
     {
+        //Plays the sound of the UI tab changing
         m_tabClose.Play( );
     }
 

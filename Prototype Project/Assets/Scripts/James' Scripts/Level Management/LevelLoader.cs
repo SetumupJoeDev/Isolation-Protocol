@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
     
     public void LoadNewLevel( string levelName )
     {
+        //Loads the scene with the name passed in through arguments
         SceneManager.LoadScene( levelName );
     }
 

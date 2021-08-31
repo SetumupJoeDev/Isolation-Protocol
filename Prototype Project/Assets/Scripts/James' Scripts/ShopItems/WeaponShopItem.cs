@@ -5,8 +5,10 @@ using UnityEngine;
 public class WeaponShopItem : ShopItem
 {
 
+    [Tooltip("The prefab of the weapon that can be equipped by the player.")]
     public GameObject m_weaponPrefab;
 
+    [Tooltip("The sprite of the weapon that can be purchased.")]
     public SpriteRenderer m_weaponSprite;
 
     public override void Start( )
@@ -32,14 +34,16 @@ public class WeaponShopItem : ShopItem
         //If the player cann afford the weapon, it is bought
         if ( BuyItem( m_playerController.m_currencyManager ) )
         {
-
+            //If the player has less than 4 weapons, this weapon is added to their weapon array
             if ( m_playerController.m_carriedWeapons.Length < 4 )
             {
-
+                //Creates a temporary array to store the player's current weapons
                 GameObject[] tempArray = m_playerController.m_carriedWeapons;
 
+                //Creates a new array to store the player's weapons in to prevent issues with saving the array with null entries
                 m_playerController.m_carriedWeapons = new GameObject[tempArray.Length + 1];
 
+                //Loops through each position in the temporary array and assigns the weapon from the tempArray to the new array
                 for ( int i = 0; i < tempArray.Length; i++ )
                 {
                     m_playerController.m_carriedWeapons[i] = Instantiate( tempArray[i] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );

@@ -13,10 +13,12 @@ public class SporeBomber : EnemyBase
     [Tooltip("The GameObject with an attached particle system that will play the spore explosion effect.")]
     public GameObject m_explosionParticles;
 
+    [Tooltip("A boolean that determines whether or not this enemy is currently detonating.")]
     public bool m_isDetonating;
 
     public override IEnumerator AttackTarget( )
     {
+        //Runs this enemy's death function, as they die when they attack
         Die( );
 
         //Returns null as this enemy can only attack once before it dies
@@ -26,7 +28,7 @@ public class SporeBomber : EnemyBase
 
     public override void Die( )
     {
-
+        //If the enemy isn't currently detonating, the Detonate and base Die methods are executed
         if ( !m_isDetonating )
         {
 
@@ -40,6 +42,7 @@ public class SporeBomber : EnemyBase
     public void Detonate( )
     {
 
+        //Sets this to true so the enemy can only detonate once
         m_isDetonating = true;
 
         //Sets the transform parent of the particle explosion to null so that the object isn't destroyed with the enemy itself

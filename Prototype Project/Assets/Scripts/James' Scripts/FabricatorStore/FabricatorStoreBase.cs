@@ -5,12 +5,10 @@ using UnityEngine;
 public class FabricatorStoreBase : MonoBehaviour
 {
 
-    [SerializeField]
-    protected ButtonListGenerator m_productList;
+    [Tooltip("The currency manager of the player.")]
+    public CurrencyManager m_playerCurrency;
 
-    [SerializeField]
-    protected CurrencyManager m_playerCurrency;
-
+    [Tooltip("The sound to play when the player purchases a product.")]
     public AudioSource m_itemPurchased;
 
     public bool PlayerCanAfford( int itemPrice )
@@ -29,9 +27,10 @@ public class FabricatorStoreBase : MonoBehaviour
 
     public void ChargePlayer( int amountToCharge )
     {
-
+        //Subtracts the price of the purchased prodcut from the player's fuel count
         m_playerCurrency.m_fabricatorFuelCount -= amountToCharge;
 
+        //Plays the item purchased sound
         m_itemPurchased.Play( );
 
     }

@@ -7,6 +7,7 @@ public class GrappleCounterTask : TutorialTask
 
     public override void Initialise()
     {
+        //Initialises the task by creating a new goal and assigning the task's information
 
         m_taskGoal = new GrappleCounterGoal();
 
@@ -22,6 +23,7 @@ public class GrappleCounterTask : TutorialTask
 
     public override void StartTask()
     {
+        //Calls the GrappleTaskStart event
         TutorialEventListener.current.GrappleTaskStart( );
     }
 

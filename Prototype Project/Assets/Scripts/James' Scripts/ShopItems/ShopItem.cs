@@ -15,6 +15,7 @@ public class ShopItem : InteractableObject
     [Tooltip("The price of this item.")]
     public int m_itemPrice;
 
+    [Tooltip("The script that controls the item's price prompt.")]
     public PricePromptController m_itemPricePrompt;
 
     // Start is called before the first frame update
@@ -50,12 +51,10 @@ public class ShopItem : InteractableObject
         if( playerCurrency.m_cigarettePacksCount >= m_itemPrice )
         {
             playerCurrency.m_cigarettePacksCount -= m_itemPrice;
-            Debug.Log( "Cha-ching!" );
             return true;
         }
         else
         {
-            Debug.Log( "Insufficient funds!" );
             return false;
         }
     }

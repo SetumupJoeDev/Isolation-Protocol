@@ -6,25 +6,33 @@ using UnityEngine;
 public class TutorialEventListener : MonoBehaviour
 {
     
+    //The current instance of the event listener
     public static TutorialEventListener current;
 
     private void Awake()
     {
+        //Sets current as this instance of the script
         current = this;
     }
 
+    //The event that gets called when a tutorial dummy is shot
     public event Action OnDummyHit;
 
+    //The event that gets called when the aiming task starts
     public event Action OnAimTaskStart;
 
+    //The event that gets called when the aiming task ends
     public event Action OnAimTaskEnd;
 
+    //The event that gets called when the Holo Slug is killed
     public event Action OnHoloSlugDeath;
 
+    //The event that gets called when the grapple counter task starts
     public event Action OnGrappleTaskStart;
 
     public void DummyHit()
     {
+        //Calls the event if any methods are subscribed to it
         if( OnDummyHit != null)
         {
             OnDummyHit( );
@@ -33,7 +41,8 @@ public class TutorialEventListener : MonoBehaviour
 
     public void AimTaskStart()
     {
-        if(OnAimTaskStart != null)
+        //Calls the event if any methods are subscribed to it
+        if ( OnAimTaskStart != null)
         {
             OnAimTaskStart( );
         }
@@ -41,7 +50,8 @@ public class TutorialEventListener : MonoBehaviour
 
     public void AimTaskEnd()
     {
-        if( OnAimTaskEnd != null)
+        //Calls the event if any methods are subscribed to it
+        if ( OnAimTaskEnd != null)
         {
             OnAimTaskEnd( );
         }
@@ -49,7 +59,8 @@ public class TutorialEventListener : MonoBehaviour
 
     public void HoloSlugDeath()
     {
-        if(OnHoloSlugDeath != null)
+        //Calls the event if any methods are subscribed to it
+        if ( OnHoloSlugDeath != null)
         {
             OnHoloSlugDeath( );
         }
@@ -57,7 +68,8 @@ public class TutorialEventListener : MonoBehaviour
 
     public void GrappleTaskStart()
     {
-        if( OnGrappleTaskStart != null )
+        //Calls the event if any methods are subscribed to it
+        if ( OnGrappleTaskStart != null )
         {
             OnGrappleTaskStart( );
         }

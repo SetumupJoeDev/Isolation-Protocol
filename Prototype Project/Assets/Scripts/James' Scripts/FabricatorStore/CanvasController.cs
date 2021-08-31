@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    [SerializeField]
-    protected CanvasGroup m_canvasGroup;
+    
+    [Tooltip("The canvas group component attached to this object that this script will control.")]
+    public CanvasGroup m_canvasGroup;
 
+    [Tooltip("A boolean that determines whether or not the canvas is currently active.")]
     public bool m_isCanvasActive = false;
 
     public void ToggleCanvas( )

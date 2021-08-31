@@ -15,10 +15,13 @@ public class MutoSlug : EnemyBase
     [Tooltip("The amount of force with which the enemy leaps at the player.")]
     public float m_leapForce;
 
-    public Vector3 m_leapDirection;
+    //The direction in which the Muto Slug will leap
+    private Vector3 m_leapDirection;
 
+    [Tooltip("A boolean that determines whether or not the slug is currently leaping.")]
     public bool m_isLeaping;
 
+    [Tooltip("The duration of the slug's leap attack.")]
     public float m_leapDuration;
 
     [Tooltip("Determines whether or not this enemy has attached to its target.")]
@@ -53,6 +56,7 @@ public class MutoSlug : EnemyBase
 
     protected override void FixedUpdate( )
     {
+        //If the slug is currently leaping, the LeapAtPlayer method is executed to simulate the leaping physics
         if ( m_isLeaping )
         {
             LeapAtPlayer( );
@@ -74,10 +78,13 @@ public class MutoSlug : EnemyBase
                 //"Charges" the dodge to telegraph the attack to the player
                 yield return new WaitForSeconds( m_pouncePrepDuration );
 
+                //Sets this to true so that the leap attack will be simulated
                 m_isLeaping = true;
 
+                //Waits for the duration of the Muto SLug's leap before disabling the attack
                 yield return new WaitForSeconds( m_leapDuration );
 
+                //Sets this to false to return the slug to its normal behaviour
                 m_isLeaping = false;
 
             }

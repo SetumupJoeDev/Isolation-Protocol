@@ -9,26 +9,32 @@ public class TurretBase : MonoBehaviour
 
     [Header("Player Detection")]
 
+    [Tooltip("The Field of View script attached to this turret.")]
     public FieldOfView m_fieldOfView;
 
+    [Tooltip("The physics layer that this turret uses to search for targets.")]
     public LayerMask m_targetLayer;
 
     public enum turretStates { searching, attacking, disabled}
 
+    [Tooltip("The current state that the turret is in, 'Searching', 'Attacking' or 'Disabled'.")]
     public turretStates m_currentTurretState;
 
+    [Tooltip("The minimum rotation of the turret.")]
     [Range(0, 360)]
     public int m_minRotation;
 
+    [Tooltip("The maximum rotation of the turret.")]
     [Range(0, 360)]
     public int m_maxRotation;
 
-    public bool m_rotatingLeft;
-
+    [Tooltip("The speed at which the turret rotates.")]
     public float m_rotationSpeed;
 
+    [Tooltip("A boolean that determines whether or not the turret has lost the player.")]
     public bool m_hasLostPlayer;
 
+    [Tooltip("The amount of time it takes before returning to search mode after losing the player.")]
     public float m_timeUntilTargetLost;
 
     #endregion
@@ -116,8 +122,10 @@ public class TurretBase : MonoBehaviour
         //Waits for the duration of the time until target lost before setting the current target as null and returning to search mode
         yield return new WaitForSeconds( m_timeUntilTargetLost );
 
+        //Sets the current target as null so it can be reassigned later without causing issues
         m_currentTarget = null;
 
+        //Sets the turrets current state as searching to find a new target
         m_currentTurretState = turretStates.searching;
 
     }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class AudioLogScriptableObject : ScriptableObject
 {
 
+    [Tooltip("The audio clip associated with this audiolog.")]
     public AudioClip m_logAudio;
 
+    [Tooltip("The text transcript associated with this audiolog.")]
     public TextAsset m_logTranscript;
 
 }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class PricePromptController : MonoBehaviour
 {
 
+    [Tooltip("The name of the product this prompt is attached to.")]
     public Text m_productName;
 
+    [Tooltip("The price of the product this prompt is attached to.")]
     public Text m_productPrice;
 
 }

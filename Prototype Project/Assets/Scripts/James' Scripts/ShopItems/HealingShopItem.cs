@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealingShopItem : ShopItem
 {
 
+    [Tooltip("The amount of health that this item restores.")]
     public int m_healAmount;
 
     public override void Activated( PlayerController playerController )

@@ -6,12 +6,16 @@ using UnityEngine;
 public class AudioLogPlayer : MonoBehaviour
 {
 
+    [Tooltip("The AudioSource that plays the audio log clips.")]
     public AudioSource m_playbackSource;
 
+    [Tooltip("The slider used to represent how much of the audio log has been played.")]
     public Slider m_playbackTimeline;
 
+    [Tooltip("A boolean that determines if the audiosource has recently been played.")]
     private bool m_hasPlayed;
 
+    [Tooltip("A boolean that determines if the audiosource had been stopped before it finished playing.")]
     private bool m_wasStopped;
 
 
@@ -48,15 +52,20 @@ public class AudioLogPlayer : MonoBehaviour
 
     public void PlayButtonPressed( )
     {
+        //If the audiosource is playing, then it is stopped and the timeline is reset
         if ( m_playbackSource.isPlaying )
         {
             m_playbackSource.Stop( );
             m_playbackTimeline.value = 0;
+            //This is set to true so that the value of the slider can be updated correctly during the update method
             m_wasStopped = true;
         }
+        //Otherwise, the audiosource is played
         else
         {
             m_playbackSource.Play( );
+
+            //This is set to false so that the value of the slider can be updated correctly during the update method
             m_wasStopped = false;
         }
     }

@@ -26,6 +26,7 @@ public class FieldOfView : MonoBehaviour
     [Tooltip("The furthest distance that this FOV will reach.")]
     public float m_viewDistance;
 
+    //
     private float m_startingAngle;
 
     // Start is called before the first frame update

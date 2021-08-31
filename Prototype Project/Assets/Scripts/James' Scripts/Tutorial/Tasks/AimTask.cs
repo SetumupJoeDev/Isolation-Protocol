@@ -7,7 +7,7 @@ public class AimTask : TutorialTask
 
     public override void Initialise()
     {
-
+        //Initialises the task by creating a new goal and assigning the task's information
         m_taskGoal = new AimGoal();
 
         m_taskTitle = "Aiming & Shooting";
@@ -22,6 +22,7 @@ public class AimTask : TutorialTask
 
     public override void StartTask()
     {
+        //Calls the AimTaskStart event
         TutorialEventListener.current.AimTaskStart( );
     }
 

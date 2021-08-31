@@ -6,16 +6,18 @@ using UnityEngine;
 public class InterfaceButton : MonoBehaviour
 {
 
-    [SerializeField]
+    [Tooltip("The image that represents the product.")]
     public Image m_productImage;
 
-    [SerializeField]
+    [Tooltip("The name of the product.")]
     public Text m_productName;
 
+    [Tooltip("The button's numerical ID.")]
     public int m_buttonID;
 
     public virtual void OnClick( )
     {
+        //On click behaviour goes here
 
     }
 

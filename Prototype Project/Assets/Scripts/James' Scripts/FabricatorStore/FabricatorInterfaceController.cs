@@ -5,19 +5,20 @@ using UnityEngine;
 public class FabricatorInterfaceController : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject m_upgradeSelectionMenu;
-
-    [SerializeField]
-    private GameObject m_weaponsList;
-
-    [SerializeField]
-    private GameObject m_exoSuitUpgrades;
-
-    [SerializeField]
-    private GameObject m_droneUpgrades;
-
-    private GameObject m_currentMenu;
+    [Tooltip("The GameObject that contains the initial upgrade selection choices.")]
+    public GameObject m_upgradeSelectionMenu;
+    
+    [Tooltip("The GameObject that contains the weapon purchase screen.")]
+    public GameObject m_weaponsList;
+    
+    [Tooltip("The GameObject that contains the Player Upgrade purchase screen.")]
+    public GameObject m_exoSuitUpgrades;
+     
+    [Tooltip("The GameObject that contains the Drone Upgrade purchase screen.")]
+    public GameObject m_droneUpgrades;
+     
+    [Tooltip("The currently active menu of the interface.")]
+    public GameObject m_currentMenu;
 
     public void Start( )
     {

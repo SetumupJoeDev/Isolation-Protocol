@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class AmmoShopItem : ShopItem
 {
+
+    [Tooltip("The percentages of the player's weapons' ammo to restore when collected")]
     [Range(0, 1)]
     public float m_percentageOfAmmoToRestore;
 
-    [SerializeField]
-    private SpriteRenderer m_spriteRenderer;
+    [Tooltip("The sprite renderer attached to this object.")]
+    public SpriteRenderer m_spriteRenderer;
 
-    [SerializeField]
-    private Sprite m_defaultSprite;
+    [Tooltip("The ammo item's default sprite.")]
+    public Sprite m_defaultSprite;
 
-    [SerializeField]
-    private Sprite m_highlightedSprite;
+    [Tooltip("The ammo item's highlighted sprite.")]
+    public Sprite m_highlightedSprite;
 
     public override void Activated( PlayerController playerController )
     {
