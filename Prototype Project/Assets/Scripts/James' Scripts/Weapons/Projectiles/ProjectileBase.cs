@@ -72,7 +72,8 @@ public class ProjectileBase : MonoBehaviour
             StartCoroutine( WaitToDisable( m_projectileLifetime ) );
         }
 
-        m_parentTransform = transform.parent; // maybe this messes with time reverse? 
+        //Sets the parent transform to the objects current parent transfrom so that it can be re-childed to it later
+        m_parentTransform = transform.parent; 
 
         ResetProjectile( );
 
@@ -96,10 +97,7 @@ public class ProjectileBase : MonoBehaviour
     public void OnTriggerEnter2D( Collider2D collision )
     {
      
-
-            CollideWithObject( collision );
-
-       
+        CollideWithObject( collision );
        
     }
 
@@ -109,9 +107,6 @@ public class ProjectileBase : MonoBehaviour
         if ( collision.gameObject.GetComponent<HealthManager>( ) != null && collision.gameObject != m_previouslyDamageTarget )
         {
            
-
-                
-            
             CollideWithTarget( collision );
 
         }
@@ -130,15 +125,10 @@ public class ProjectileBase : MonoBehaviour
     {
         if (analyticsEventManager.analytics != null)
         {
-
-
             analyticsEventManager.analytics.onBulletHit(m_firingWeaponName); // Passes the name of what the bullet hit to analytics 
         }
         collision.gameObject.GetComponent<HealthManager>( ).TakeDamage( m_projectileDamage );
-       
-
         
-
         //The value of currentDamagedTargets is incrememented to keep track of how many more objects this projectile can damage
         m_currentDamagedTargets++;
 
@@ -162,7 +152,7 @@ public class ProjectileBase : MonoBehaviour
     public virtual void DisableProjectile( )
     {
 
-        transform.SetParent( m_parentTransform ); // does this mess up the time rewind?
+        transform.SetParent( m_parentTransform );
 
         gameObject.SetActive( false );
 

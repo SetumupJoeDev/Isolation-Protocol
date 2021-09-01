@@ -5,15 +5,18 @@ using UnityEngine;
 public class WeaponWall : UpgradeManager
 {
 
+    [Tooltip("The selected weapon, chosen by clicking one of the weapon selection buttons.")]
     public GameObject m_selectedWeapon;
 
+    [Tooltip("An array containing all of the prefabs of the weapons that can be equipped.")]
     public GameObject[] m_weaponPrefabs;
 
     public virtual void AssignWeaponToSlot( int chosenSlot )
     {
-
+        //Creates a temporary array to store the player's current weapons
         GameObject[] tempArray = m_playerController.m_carriedWeapons;
 
+        //Resizes the player's weapons array according to its current length and the index of the chosen weapon slot
         if ( chosenSlot == 2 && m_playerController.m_carriedWeapons.Length <= 3 || m_playerController.m_carriedWeapons.Length == 3)
         {
             m_playerController.m_carriedWeapons = new GameObject[3];
@@ -23,6 +26,7 @@ public class WeaponWall : UpgradeManager
             m_playerController.m_carriedWeapons = new GameObject[2];
         }
 
+        //If the temporary array is shoter or the same length as the player's new weapons array, then we loop through and assign all of the weapons in the temp array to the player's new weapons array
         if ( tempArray.Length <= m_playerController.m_carriedWeapons.Length )
         {
             for ( int i = 0; i < tempArray.Length; i++ )
@@ -30,6 +34,7 @@ public class WeaponWall : UpgradeManager
                 m_playerController.m_carriedWeapons[i] = Instantiate( tempArray[i] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
             }
         }
+        //Otherwise, we instantiate just the first in the array of the temp array to that of the new weapons array
         else
         {
             m_playerController.m_carriedWeapons[0] = Instantiate( tempArray[0] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
@@ -53,6 +58,7 @@ public class WeaponWall : UpgradeManager
 
     public void ChangeSelectedWeapon( int weaponIndex )
     {
+        //Sets the selected weapon as that at the array index passed in by the button
         m_selectedWeapon = m_weaponPrefabs[weaponIndex];
     }
 

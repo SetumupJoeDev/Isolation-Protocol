@@ -5,13 +5,16 @@ using UnityEngine;
 public class DroppableWeapon : InteractableObject
 {
 
+    [Tooltip("The prefab of the weapon this object represents.")]
     public GameObject m_weaponPrefab;
 
     public override void Activated(PlayerController playerController)
     {
         
+        //Runs the base activation code
         base.Activated(playerController);
 
+        //Equips the weapon to the player
         EquipToPlayer( );
 
     }
@@ -21,16 +24,19 @@ public class DroppableWeapon : InteractableObject
 
         if( m_playerController.m_carriedWeapons.Length < 4 )
         {
-
+            //Creates a temporary array containing the player's current weapons
             GameObject[] tempArray = m_playerController.m_carriedWeapons;
 
+            //Resizes the player's weapons array to hold the new weapon
             m_playerController.m_carriedWeapons = new GameObject[tempArray.Length + 1];
 
+            //Loops through the temporary array and adds the weapons from it to the player's new weapon array
             for ( int i = 0; i < tempArray.Length; i++ )
             {
                 m_playerController.m_carriedWeapons[i] = Instantiate( tempArray[i] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
             }
 
+            //Creates an int variable used to place the weapon at the end of the weapons array
             int newWeaponIndex = m_playerController.m_carriedWeapons.Length - 1;
 
             //Instantiates a new weapon at the player's weapon hold point using the weapon prefab

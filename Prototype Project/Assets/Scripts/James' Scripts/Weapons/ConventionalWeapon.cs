@@ -55,18 +55,23 @@ public class ConventionalWeapon : GunBase
 
             ProjectileBase newBullet = null;
 
+            //Loops through the projectile pool to find an inactive projectile to fire
             foreach( GameObject projectile in m_projectileArray )
             {
                 if( !projectile.activeSelf )
                 {
                     newBullet = projectile.GetComponent<ProjectileBase>( );
 
+                    //Positions the projectile at the barrel transform
                     projectile.transform.position = m_barrelTransform.position;
 
+                    //Activates the projectile so it will be simulated
                     projectile.SetActive( true );
 
+                    //Un-childs the projectile so it can move freely
                     projectile.transform.parent = null;
 
+                    //Breaks the loop so that only one projectile is fired
                     break;
                 }
             }
@@ -115,11 +120,15 @@ public class ConventionalWeapon : GunBase
 
     public virtual Vector3 GenerateBulletSpread( )
     {
+
+        //Generates a random spread value for the fired bullet's velocity
         float randX = Random.Range(m_minSpreadValue, m_maxSpreadValue);
         float randY = Random.Range(m_minSpreadValue, m_maxSpreadValue);
 
+        //Creates a new Vector3 using the above generated values added to the aiming direction
         Vector3 returnVector = new Vector3(m_aimingDirection.x + randX, m_aimingDirection.y + randY);
 
+        //Returns the above vector
         return returnVector;
 
     }

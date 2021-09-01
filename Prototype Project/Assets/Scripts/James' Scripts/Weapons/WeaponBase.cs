@@ -196,6 +196,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UpdateUIElements( )
     {
+        //Updates the weapon UI elements with the latest values
         m_totalAmmoText.text = m_currentCarriedAmmo.ToString( );
 
         m_magazineUIText.text = m_currentMagAmmo.ToString( ) + " / " + m_magCapacity.ToString( );
