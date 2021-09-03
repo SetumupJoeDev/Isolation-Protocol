@@ -81,6 +81,9 @@ public class FabricatorProductButton : InterfaceButton
             //The player is charged using the price of the product
             m_storeController.ChargePlayer( m_productPrice );
 
+            //Call the player upgrade unlock event to trigger changes in the player according to product name
+            FabricatorEventListener.current.PlayerUpgradeUnlock(m_storeProduct.m_itemName);
+            
             //Calls the fabricator unlock event to trigget a quicksave event
             FabricatorEventListener.current.FabricatorProductUnlock();
             

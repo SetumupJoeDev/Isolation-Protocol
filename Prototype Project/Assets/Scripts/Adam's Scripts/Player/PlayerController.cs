@@ -13,6 +13,8 @@ public class PlayerController : CharacterBase
 
     private static PlayerController playerInstance;
 
+    #region Weapons
+
     [Header("Weapons")]
 
     [Tooltip("The position of the weapon on the player.")]
@@ -29,28 +31,38 @@ public class PlayerController : CharacterBase
 
     public bool m_weaponsFree;
 
+    #endregion
+
     public PlayerHealthManager m_playerHealthManager;
 
     //End of James' work
 
     public DroneController m_drone;
 
+    #region Animation
+
     [Header("Animation")]
     
     // Reference to animator
-    private Animator    m_animator;
+    private Animator       m_animator;
     
     // Mouse direction relative to player position
-    private Vector2     m_mouseDirection;
+    private Vector2        m_mouseDirection;
+
+    #endregion
+
+    #region UI
 
     [Header("UI")]
 
     [Tooltip("The HUD Manager")]
-    public HUDManager   m_hud;
+    public HUDManager      m_hud;
 
     [Tooltip("The pause menu canvas")]
     [SerializeField]
-    private GameObject m_pauseMenu;
+    private GameObject     m_pauseMenu;
+
+    #endregion
 
     #region Dash
 
@@ -129,13 +141,28 @@ public class PlayerController : CharacterBase
 
     //End of James' work
 
+    #region Upgrades
+
+    [Header("Upgrades")]
+
+    public bool m_hasDexterityBoost;
+
+    [Tooltip("The player move speed after 'Turbo Legs' upgrade is unlocked")]
+    [SerializeField]
+    private float m_upgradedMoveSpeed;
+
+    [Tooltip("The amount in seconds that the reload time will be decreased by after 'Dexterity Boost' is unlocked")]
+    [SerializeField]
+    private float m_reloadTimeDecreaseAmount;
+
+    #endregion
+
     public analyticsManager m_enemyCounter;
 
     // Sets up initial values of variables and references not set in inspector
     private void Start()
     {
-  //      m_enemyCounter = GameObject.Find("easyName").GetComponent<analyticsManager>(); // replace with events manager
-
+        FabricatorEventListener.current.onPlayerUpgradeUnlock += PlayerUpgrades;
         m_playerHealthManager = GetComponent<PlayerHealthManager>();
         m_healthManager = GetComponent<PlayerHealthManager>();
         m_animator      = GetComponent<Animator>();
@@ -165,7 +192,6 @@ public class PlayerController : CharacterBase
         {
             Destroy( gameObject );
         }
-
     }
 
     // Update is called once per frame
@@ -182,8 +208,6 @@ public class PlayerController : CharacterBase
 
             // Gets mouse position within screen space
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            
 
             if ( !m_isStunned )
             {
@@ -406,6 +430,37 @@ public class PlayerController : CharacterBase
 
         m_canDash = true;
 
+    }
+
+    public void PlayerUpgrades(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Turbo Legs":
+                IncreaseMoveSpeed();
+                break;
+            case "Dexterity Boost":
+                DecreaseReloadTime();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void IncreaseMoveSpeed()
+    {
+        m_moveSpeed = m_upgradedMoveSpeed;
+    }
+
+    public void DecreaseReloadTime()
+    {
+        for (int i = 0; i < m_carriedWeapons.Length; i++)
+        {
+            if (m_carriedWeapons[i].GetComponent<GunBase>().m_reloadTime > 0)
+            {
+                m_carriedWeapons[i].GetComponent<GunBase>().m_reloadTime -= m_reloadTimeDecreaseAmount;
+            }
+        }
     }
 
     //James' Work

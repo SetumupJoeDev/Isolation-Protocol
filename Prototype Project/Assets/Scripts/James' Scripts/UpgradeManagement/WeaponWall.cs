@@ -31,13 +31,19 @@ public class WeaponWall : UpgradeManager
         {
             for ( int i = 0; i < tempArray.Length; i++ )
             {
-                m_playerController.m_carriedWeapons[i] = Instantiate( tempArray[i] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+                m_playerController.m_carriedWeapons[i] = tempArray[i];
+
+                //Sets the new weapon's transform parent to the player's weapon hold point
+                m_playerController.m_carriedWeapons[i].transform.parent = m_playerController.m_weaponAttachPoint.transform;
             }
         }
         //Otherwise, we instantiate just the first in the array of the temp array to that of the new weapons array
         else
         {
-            m_playerController.m_carriedWeapons[0] = Instantiate( tempArray[0] , m_playerController.m_weaponAttachPoint.transform.position , Quaternion.identity );
+            m_playerController.m_carriedWeapons[0] = tempArray[0];
+
+            //Sets the new weapon's transform parent to the player's weapon hold point
+            m_playerController.m_carriedWeapons[0].transform.parent = m_playerController.m_weaponAttachPoint.transform;
         }
 
         //Instantiates a new weapon at the player's weapon hold point using the weapon prefab
@@ -53,7 +59,6 @@ public class WeaponWall : UpgradeManager
         m_playerController.m_carriedWeapons[chosenSlot].SetActive( false );
 
         SaveSystem.SavePlayer(m_playerController);
-
     }
 
     public void ChangeSelectedWeapon( int weaponIndex )

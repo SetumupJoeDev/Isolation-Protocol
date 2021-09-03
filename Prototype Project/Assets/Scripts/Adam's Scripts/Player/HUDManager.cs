@@ -8,9 +8,29 @@ public class HUDManager : MonoBehaviour
 {
     [Header("Sprites")]
 
-    [Tooltip("The health bar sprites")]
+    [Tooltip("The small health bar sprites")]
     [SerializeField]
-    private Sprite[]            m_healthSprites;
+    private Sprite[]            m_smallHealthSprites;
+
+    [Tooltip("The medium health bar sprites")]
+    [SerializeField]
+    private Sprite[]            m_mediumHealthSprites;
+
+    [Tooltip("The large heatlh bar sprites")]
+    [SerializeField]
+    private Sprite[]            m_fullHealthSprites;
+
+    [Tooltip("The small blue health bar sprite")]
+    [SerializeField]
+    private Sprite              m_smallCombatArmour;
+
+    [Tooltip("The medium blue health bar sprite")]
+    [SerializeField]
+    private Sprite              m_mediumCombatArmour;
+
+    [Tooltip("The full blue health bar sprite")]
+    [SerializeField]
+    private Sprite              m_fullCombatArmour;
     
     [Header("HUD Elements")]
 
@@ -42,17 +62,11 @@ public class HUDManager : MonoBehaviour
     private PlayerController    m_playerController;
 
     // Reference to player health manager
-    private HealthManager       m_playerHealth;
+    private PlayerHealthManager m_playerHealth;
 
     // Reference to player currency manager
     private CurrencyManager     m_playerCurrency;
 
-    // Player max health
-    private int                 m_playerMaxHealth;
-    
-    // Player current health
-    private int                 m_playerCurrentHealth;
-    
     // Player dash cooldown countdown timer
     private float               m_cooldownTimer;
 
@@ -60,17 +74,54 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         m_playerController = GetComponentInParent<PlayerController>();
-        m_playerHealth = GetComponentInParent<HealthManager>();
+        m_playerHealth = GetComponentInParent<PlayerHealthManager>();
         m_playerCurrency = GetComponentInParent<CurrencyManager>();
-        m_playerMaxHealth = m_playerHealth.m_maxHealth;
         m_cooldownTimer = m_playerController.m_dashCooldown;
     }
 
     private void Update()
     {
-        m_playerCurrentHealth = m_playerHealth.m_currentHealth;
-
-        m_healthBar.sprite = m_healthSprites[m_playerCurrentHealth];
+        switch (m_playerHealth.m_maxHealth)
+        {
+            case 6:
+                if (m_playerHealth.m_hasCombatArmour)
+                {
+                    m_healthBar.sprite = m_smallCombatArmour;
+                    m_healthBar.SetNativeSize();
+                }
+                else
+                {
+                    m_healthBar.sprite = m_smallHealthSprites[m_playerHealth.m_currentHealth];
+                    m_healthBar.SetNativeSize();
+                }
+                break;
+            case 8:
+                if (m_playerHealth.m_hasCombatArmour)
+                {
+                    m_healthBar.sprite = m_mediumCombatArmour;
+                    m_healthBar.SetNativeSize();
+                }
+                else
+                {
+                    m_healthBar.sprite = m_mediumHealthSprites[m_playerHealth.m_currentHealth];
+                    m_healthBar.SetNativeSize();
+                }
+                break;
+            case 10:
+                if (m_playerHealth.m_hasCombatArmour)
+                {
+                    m_healthBar.sprite = m_fullCombatArmour;
+                    m_healthBar.SetNativeSize();
+                }
+                else
+                {
+                    m_healthBar.sprite = m_fullHealthSprites[m_playerHealth.m_currentHealth];
+                    m_healthBar.SetNativeSize();
+                }
+                break;
+            default:
+                break;
+        }
 
         // Updates text on text objects
         m_dashCooldown.text = m_cooldownTimer.ToString("F2");

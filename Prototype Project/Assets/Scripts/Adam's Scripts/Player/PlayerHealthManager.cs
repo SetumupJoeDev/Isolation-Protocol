@@ -18,21 +18,37 @@ public class PlayerHealthManager : HealthManager
     public GameObject   m_bloodEffect;            // Lewis' code.
     public AudioClip    m_playerDamagedFeedback;   // Lewis' code.
 
-    public enum playerState { alive, dead, downed}
+    public enum playerState { alive, dead, downed }
 
-    public playerState m_currentPlayerState;
+    public playerState  m_currentPlayerState;
+
+    public bool         m_hasCombatArmour;
+
+    public override void Start()
+    {
+        base.Start();
+        FabricatorEventListener.current.onPlayerUpgradeUnlock += HealthUpgrades;
+    }
 
     // Lowers player health by amount given if vulnerable
     public override void TakeDamage(int damage)
     {
         if (m_isVulnerable)
         {
-            StartCoroutine(PlayerDamageFeedBack()); // Lewis' code. See co-routine below
-            m_currentHealth -= damage;
-            
-            // Makes player invulnerable for short time after getting damaged
-            m_isVulnerable = false;
-            StartCoroutine(DamagedInvunerability()); 
+            if (m_hasCombatArmour)
+            {
+                m_hasCombatArmour = false;
+            }
+            else
+            {
+                StartCoroutine(PlayerDamageFeedBack()); // Lewis' code. See co-routine below
+                
+                m_currentHealth -= damage;
+
+                // Makes player invulnerable for short time after getting damaged
+                m_isVulnerable = false;
+                StartCoroutine(DamagedInvunerability());
+            }
         }
 
         // Call player death method when out of health
@@ -61,6 +77,30 @@ public class PlayerHealthManager : HealthManager
         m_deathUI.SetActive(true);
         
         m_currentPlayerState = playerState.dead;
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        m_maxHealth += amount;
+        m_currentHealth = m_maxHealth;
+    }
+
+    public void HealthUpgrades(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Combat Armour":
+                m_hasCombatArmour = true;
+                break;
+            case "Vitality Increase":
+                IncreaseMaxHealth(2);
+                break;
+            case "Stamina Stim":
+                IncreaseMaxHealth(2);
+                break;
+            default:
+                break;
+        }
     }
 
     // Makes player invulnerable for a short time

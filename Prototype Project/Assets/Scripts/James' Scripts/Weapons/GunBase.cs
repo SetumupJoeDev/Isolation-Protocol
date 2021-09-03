@@ -31,9 +31,8 @@ public class GunBase : MonoBehaviour
 
     [Header("Reloading & Ammo")]
 
-    [SerializeField]
     [Tooltip("The amount of time it takes for this weapon to reload.")]
-    protected float m_reloadTime;
+    public float m_reloadTime;
 
     [SerializeField]
     [Tooltip("The sound this weapon makes when it reloads.")]

@@ -13,12 +13,20 @@ public class FabricatorEventListener : MonoBehaviour
     }
 
     public event Action onFabricatorProductUnlock;
-
     public void FabricatorProductUnlock()
     {
         if(onFabricatorProductUnlock != null)
         {
             onFabricatorProductUnlock( );
+        }
+    }
+
+    public event Action<string> onPlayerUpgradeUnlock;
+    public void PlayerUpgradeUnlock(string itemName)
+    {
+        if(onPlayerUpgradeUnlock != null)
+        {
+            onPlayerUpgradeUnlock(itemName);
         }
     }
 }

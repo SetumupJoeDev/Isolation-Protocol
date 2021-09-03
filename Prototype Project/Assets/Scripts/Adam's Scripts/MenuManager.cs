@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject m_areYouSurePanel;
+
     public void Play()
     {
         SceneManager.LoadScene("Ship Hub");
@@ -20,6 +22,22 @@ public class MenuManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ClearSaveData()
+    {
+        SaveSystem.DeletePlayerData();
+        SaveSystem.DeleteFabricatorData();
+    }
+
+    public void AreYouSure()
+    {
+        m_areYouSurePanel.SetActive(true);
+    }
+
+    public void Cancel()
+    {
+        m_areYouSurePanel.SetActive(false);
     }
 
     public void Resume()

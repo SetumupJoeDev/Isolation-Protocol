@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public int      m_maxHealth;
     public int      m_playerFuel;
     public string[] m_equippedWeapons;
     public bool     m_isDroneActive;
@@ -12,6 +13,8 @@ public class PlayerData
 
     public PlayerData(PlayerController player)
     {
+        m_maxHealth = player.m_playerHealthManager.m_maxHealth;
+
         m_playerFuel = player.m_currencyManager.m_fabricatorFuelCount;
 
         m_equippedWeapons = new string[player.m_carriedWeapons.Length];

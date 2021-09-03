@@ -50,6 +50,15 @@ public static class SaveSystem
         }
     }
 
+    public static void DeletePlayerData()
+    {
+        string path = Path.Combine(Application.persistentDataPath + "/player.data");
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+    }
+
     #endregion
 
     #region Fabricator
@@ -96,6 +105,15 @@ public static class SaveSystem
             Debug.LogWarning("Save file created in " + path);
             
             return data;
+        }
+    }
+
+    public static void DeleteFabricatorData()
+    {
+        string path = Path.Combine(Application.persistentDataPath + "/fabricator.data");
+        if (File.Exists(path))
+        {
+            File.Delete(path);
         }
     }
 
