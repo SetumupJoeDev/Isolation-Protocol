@@ -8,8 +8,13 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject m_areYouSurePanel;
 
-    public void Play()
+    public void ShipHub()
     {
+        if(GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
+        }
+        
         SceneManager.LoadScene("Ship Hub");
         Time.timeScale = 1;
     }
@@ -54,6 +59,7 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1;
     }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitSound: {fileID: 18688208}
+  m_spriteRenderer: {fileID: 0}
 --- !u!61 &18688205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1307,6 +1308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908686576}
   - component: {fileID: 908686575}
+  - component: {fileID: 908686577}
   m_Layer: 0
   m_Name: EventTracker
   m_TagString: Untagged
@@ -1340,6 +1342,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908686577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908686574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70a1babab9b8b54f991c250abe15489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1013064789
 GameObject:
   m_ObjectHideFlags: 0
@@ -7045,6 +7059,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 202121998825316509, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 420.00006
+      objectReference: {fileID: 0}
     - target: {fileID: 202121999302035106, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7055,9 +7074,39 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 202121999302035106, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 631071486008872752, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 739303471977651412, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 739303471977651412, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048334480622947056, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048334480622947056, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048334480622947056, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
@@ -7115,10 +7164,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060931, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3715704714287060932, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915358375777454403, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 903.3069
       objectReference: {fileID: 0}
     - target: {fileID: 5636462271164767425, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
@@ -7817,6 +7876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitSound: {fileID: 18688208}
+  m_spriteRenderer: {fileID: 0}
 --- !u!61 &1884289811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8037,6 +8097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitSound: {fileID: 18688208}
+  m_spriteRenderer: {fileID: 0}
 --- !u!61 &1944549097
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9835,6 +9896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitSound: {fileID: 18688208}
+  m_spriteRenderer: {fileID: 0}
 --- !u!61 &1958811185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15197,19 +15259,13 @@ MonoBehaviour:
   m_attackInterval: 1
   m_isAttacking: 0
   m_canChasePlayer: 0
-  m_lootBoostModifier: 0
-  m_maxCigaretteDrops: 0
-  m_minCigaretteDrops: 0
-  m_cigPackPrefab: {fileID: 0}
-  m_maxFuelDrops: 0
-  m_minFuelDrops: 0
-  m_fabricatorFuelPrefab: {fileID: 0}
+  m_lootDropper: {fileID: 0}
   m_spawner: {fileID: 0}
-  m_currentState: 0
-  m_animator: {fileID: 8691593257465246099}
   m_deathSound: {fileID: 8300000, guid: f32d08c871c785c48adf8a901073823e, type: 3}
   m_pouncePrepDuration: 0.15
   m_leapForce: 350
+  m_isLeaping: 0
+  m_leapDuration: 0
   m_isAttachedToTarget: 0
   m_attachedLayerIndex: 0
   m_attachedPlayer: {fileID: 0}
@@ -15364,9 +15420,8 @@ MonoBehaviour:
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
   number: 5
-  m_enemyCounter: {fileID: 0}
-  m_playerController: {fileID: 0}
   m_timeAlive: 0
+  m_playerController: {fileID: 0}
 --- !u!1 &8691593258507811408
 GameObject:
   m_ObjectHideFlags: 0
