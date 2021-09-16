@@ -91,7 +91,7 @@ public class EnemyBase : CharacterBase
     [Header("Animation")]
 
     [Tooltip("The animator component attached to this enemy.")]
-    protected Animator m_animator;
+    public Animator m_animator;
 
     #endregion
 
@@ -108,6 +108,8 @@ public class EnemyBase : CharacterBase
     private void Start()
     {
         m_enemyAI = GetComponent<AIPath>( );
+
+        m_animator = GetComponent<Animator>( );
 
         //gameEvents.hello.enemyTargetPlayer += checkCanChasePlayer;
     }

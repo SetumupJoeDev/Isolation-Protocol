@@ -34,7 +34,7 @@ public class SentryMode : ActiveDroneBehaviourBase
     private Vector3 m_aimingDirection;
 
     [Tooltip("The amount of time for which the drone remains in sentry mode.")]
-    private float m_sentryModeDuration;
+    public float m_sentryModeDuration;
 
     #endregion
 

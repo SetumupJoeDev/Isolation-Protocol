@@ -24,15 +24,6 @@ public class email : MonoBehaviour
 
         analyticsEventManager.analytics.onAnalyticsPass += superiorMethod;
 
-
-     
-
-        if (GameObject.Find("playTesterName").GetComponent<playTestEnable>() != null)
-        {
-       //     m_playTestEnable = GameObject.Find("playTesterName").GetComponent<playTestEnable>();
-        }
-
-        //StartCoroutine(Post(testValue)); // Begins the process to send off the important game data 
     }
 
      void Update()

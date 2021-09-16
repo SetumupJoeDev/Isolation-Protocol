@@ -27,8 +27,11 @@ public class SaveManager : MonoBehaviour
     {
         PlayerData playerData = SaveSystem.LoadPlayer(m_player);
 
-        m_player.m_playerHealthManager.m_maxHealth = playerData.m_maxHealth;
-        m_player.m_playerHealthManager.m_currentHealth = playerData.m_maxHealth;
+        if ( playerData.m_maxHealth != 0 )
+        {
+            m_player.m_playerHealthManager.m_maxHealth = playerData.m_maxHealth;
+            m_player.m_playerHealthManager.m_currentHealth = playerData.m_maxHealth;
+        }
 
         m_player.m_currencyManager.m_fabricatorFuelCount = playerData.m_playerFuel;
 

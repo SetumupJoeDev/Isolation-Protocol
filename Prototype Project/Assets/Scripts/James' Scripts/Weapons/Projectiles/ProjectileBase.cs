@@ -53,16 +53,7 @@ public class ProjectileBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void OnEnable()
     {
-        m_firingWeaponName = gameObject.transform.parent.transform.parent.name;
-
-        if (analyticsEventManager.analytics != null)
-        {
-          
-
-            analyticsEventManager.analytics.onBulletShoot(m_firingWeaponName); // When this object is spawned, gets the name of the gunthat shot it, and passes that name to analytics
-           
-        }
-
+      
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
@@ -76,6 +67,16 @@ public class ProjectileBase : MonoBehaviour
         m_parentTransform = transform.parent; 
 
         ResetProjectile( );
+
+        m_firingWeaponName = m_parentTransform.name;
+
+        if ( analyticsEventManager.analytics != null )
+        {
+
+
+            analyticsEventManager.analytics.onBulletShoot( m_firingWeaponName ); // When this object is spawned, gets the name of the gunthat shot it, and passes that name to analytics
+
+        }
 
     }
 

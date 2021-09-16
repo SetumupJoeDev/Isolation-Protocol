@@ -103,6 +103,8 @@ public class ShockwaveMode : ActiveDroneBehaviourBase
 
         m_shockwave.m_shockwaveVertCount = m_shockwaveVertices;
 
+        m_shockwave.m_targetLayer = m_targetLayer;
+
     }
 
     public override void EnableModuleBehaviour( )
