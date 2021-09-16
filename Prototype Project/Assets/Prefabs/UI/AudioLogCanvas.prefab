@@ -1991,23 +1991,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.3
---- !u!114 &8558605027967134280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8558605027967134279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad639d3377ce9c4db139cb199a8a6b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_logTranscriptContent: {fileID: 0}
-  m_audioLogClip: {fileID: 0}
-  m_buttonLabel: {fileID: 8558605027031434030}
-  m_transcriptText: {fileID: 769111483801509524}
-  m_audioLogPlayer: {fileID: 8558605026771319679}
 --- !u!1 &8558605027982902084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2440,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8558605027967134280}
+      objectReference: {fileID: 0}
     - target: {fileID: 3091508780609860542, guid: 00ad14d7ab9950e47a8198ff0bacfe07,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -2580,27 +2563,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00ad14d7ab9950e47a8198ff0bacfe07, type: 3}
---- !u!1 &8558605027967134279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3091508780609860540, guid: 00ad14d7ab9950e47a8198ff0bacfe07,
-    type: 3}
-  m_PrefabInstance: {fileID: 6638722798394677755}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8558605027031434030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3091508779692251861, guid: 00ad14d7ab9950e47a8198ff0bacfe07,
-    type: 3}
-  m_PrefabInstance: {fileID: 6638722798394677755}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8558605027967134276 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3091508780609860543, guid: 00ad14d7ab9950e47a8198ff0bacfe07,
+    type: 3}
+  m_PrefabInstance: {fileID: 6638722798394677755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8558605027967134279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091508780609860540, guid: 00ad14d7ab9950e47a8198ff0bacfe07,
     type: 3}
   m_PrefabInstance: {fileID: 6638722798394677755}
   m_PrefabAsset: {fileID: 0}

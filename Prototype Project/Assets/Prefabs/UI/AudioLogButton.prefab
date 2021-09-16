@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 3091508780609860529}
   - component: {fileID: 3091508780609860542}
   - component: {fileID: 9003742914347687995}
+  - component: {fileID: 4539935343722559880}
   m_Layer: 5
   m_Name: AudioLogButton
   m_TagString: Untagged
@@ -305,3 +306,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4539935343722559880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091508780609860540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad639d3377ce9c4db139cb199a8a6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_logTranscriptContent: {fileID: 0}
+  m_audioLogClip: {fileID: 0}
+  m_buttonLabel: {fileID: 3091508779692251861}
+  m_transcriptText: {fileID: 0}
+  m_audioLogPlayer: {fileID: 0}
