@@ -7109,6 +7109,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3715704714287060928, guid: 10cf6b0107a9906478d418b3aceed83b,
+        type: 3}
+      propertyPath: m_weaponsFree
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3715704714287060930, guid: 10cf6b0107a9906478d418b3aceed83b,
         type: 3}
       propertyPath: m_RootOrder
@@ -15261,6 +15266,7 @@ MonoBehaviour:
   m_canChasePlayer: 0
   m_lootDropper: {fileID: 0}
   m_spawner: {fileID: 0}
+  m_animator: {fileID: 0}
   m_deathSound: {fileID: 8300000, guid: f32d08c871c785c48adf8a901073823e, type: 3}
   m_pouncePrepDuration: 0.15
   m_leapForce: 350
