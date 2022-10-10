@@ -224,15 +224,20 @@ public class RoomController : MonoBehaviour
             AudioSource.PlayClipAtPoint(m_alarm, transform.position);
 
             m_discovered = true;
-            for (int i = 0; i < 4; i++)
-            {
-                m_puddle[i].PlayerEnterTrigger();
-            }
-             // activates eletric trap in the rooms
+
+          
+
+       
             for (int i = 0; i < m_doors.Length; i++)
             {
                 m_doors[i].Close();
             }
+
+            for (int i = 0; i < 4; i++)
+            {
+                m_puddle[i].PlayerEnterTrigger();
+            }
+
         }
     }
 }

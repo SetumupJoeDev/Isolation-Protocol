@@ -5,8 +5,7 @@ using UnityEngine;
 public class ElectricPuddle : MonoBehaviour
 {
 
-    // lewis' code
-    public bool playerIsInside;
+
 
     public ParticleSystem   m_particles;
     public bool             m_electrified;
