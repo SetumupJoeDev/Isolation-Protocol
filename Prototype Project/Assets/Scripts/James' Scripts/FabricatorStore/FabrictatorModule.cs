@@ -11,7 +11,7 @@ public class FabrictatorModule : InteractableObject
     public SpriteRenderer m_spriteRenderer;
 
     [Tooltip("The default sprite of the fabricator.")]
-    private Sprite m_defaultSprite;
+    public Sprite m_defaultSprite;
 
     [Tooltip("The highlighted version of the fabricator's sprite.")]
     public Sprite m_highlightedSprite;

@@ -70,6 +70,8 @@ public class HUDManager : MonoBehaviour
     // Player dash cooldown countdown timer
     private float               m_cooldownTimer;
 
+    public GameObject m_weaponsCanvasGroup;
+
     // Basic reference setup
     private void Start()
     {
@@ -151,5 +153,15 @@ public class HUDManager : MonoBehaviour
         m_cooldownTimer = m_playerController.m_dashCooldown;
         m_dashOnCooldown = true;
         m_dashCooldown.gameObject.SetActive(true);
+    }
+
+
+    public void DisableWeaponHUD()
+    {
+        m_weaponsCanvasGroup.active = false;
+    }
+    public void EnableWeaponHUD()
+    {
+        m_weaponsCanvasGroup.active = true;
     }
 }

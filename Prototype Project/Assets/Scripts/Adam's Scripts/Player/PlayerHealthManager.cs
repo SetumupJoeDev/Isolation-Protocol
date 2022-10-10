@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -16,7 +16,7 @@ public class PlayerHealthManager : HealthManager
     private GameObject  m_deathUI;
     
     public GameObject   m_bloodEffect;            // Lewis' code.
-    public AudioClip    m_playerDamagedFeedback;   // Lewis' code.
+    public AudioClip[]    m_playerDamagedFeedback;   // Lewis' code.
 
     public enum playerState { alive, dead, downed }
 
@@ -115,7 +115,8 @@ public class PlayerHealthManager : HealthManager
     {
         if (gameObject.name == "Player")
         {
-            AudioSource.PlayClipAtPoint(m_playerDamagedFeedback, transform.position);
+            int index = Random.Range(0, 4);
+            AudioSource.PlayClipAtPoint(m_playerDamagedFeedback[index], transform.position);
             m_bloodEffect.SetActive(true);
             yield return new WaitForSecondsRealtime(0.4f);
             m_bloodEffect.SetActive(false);

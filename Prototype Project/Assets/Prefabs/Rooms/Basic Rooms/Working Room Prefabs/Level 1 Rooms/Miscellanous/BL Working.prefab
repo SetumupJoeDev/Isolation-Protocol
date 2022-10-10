@@ -397,6 +397,8 @@ MonoBehaviour:
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
+  puddle:
+  - {fileID: 5072256360079049597}
   m_discovered: 0
   m_cleared: 0
   m_doors:
@@ -4677,6 +4679,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3385908048832327619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5072256360079049597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7537177665832430782, guid: a07f2c046cf478646a46a1cacdf9b35e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3385908048832327619}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe7f0ae2629285498ffa06ca935f956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3401212464162583033
 PrefabInstance:
   m_ObjectHideFlags: 0

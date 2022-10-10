@@ -1239,6 +1239,7 @@ MonoBehaviour:
   m_numberOfCigs: {fileID: 7360131197878958975}
   m_amountOfFuel: {fileID: 6983791626257026496}
   m_dashOnCooldown: 0
+  m_weaponsCanvasGroup: {fileID: 0}
 --- !u!225 &1151129425
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2611,6 +2612,7 @@ MonoBehaviour:
   m_upgradedMoveSpeed: 275
   m_reloadTimeDecreaseAmount: 0.5
   m_enemyCounter: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!114 &6337423104324772008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2629,8 +2631,11 @@ MonoBehaviour:
   m_playerHUD: {fileID: 1068616569810411678}
   m_deathUI: {fileID: 7078379414915174543}
   m_bloodEffect: {fileID: 2015217535207012955}
-  m_playerDamagedFeedback: {fileID: 8300000, guid: b403670b43adcbe4db84364aefc9d6eb,
-    type: 3}
+  m_playerDamagedFeedback:
+  - {fileID: 8300000, guid: 4c1595f197c627a4a911aeb1c7b4af26, type: 3}
+  - {fileID: 8300000, guid: 8a8de7b723293a94e9d24dadc4b5dd5a, type: 3}
+  - {fileID: 8300000, guid: 88c5db109a1a88649af7f1fbf204d3c0, type: 3}
+  - {fileID: 8300000, guid: 86c605ddcb8d54045a55c9f072d85a6b, type: 3}
   m_currentPlayerState: 0
   m_hasCombatArmour: 0
 --- !u!114 &1822051857034256484
@@ -2798,6 +2803,7 @@ GameObject:
   - component: {fileID: 3715704714721768769}
   - component: {fileID: 3715704714721768770}
   - component: {fileID: 5678511686303613555}
+  - component: {fileID: 2809170454187136359}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2902,6 +2908,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &2809170454187136359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715704714721768771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edad5fecc809ee4fb4eda6f14bf4aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ambientNoises:
+  - {fileID: 8300000, guid: 29200692eaab42940a00ec34f9354ff3, type: 3}
+  location: {x: 0, y: 0, z: 0}
 --- !u!1 &3715704715133831705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6733,7 +6754,7 @@ PrefabInstance:
     - target: {fileID: 8558605027562857645, guid: ab768921b26078649bf3103a9f723384,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8558605027567899103, guid: ab768921b26078649bf3103a9f723384,
         type: 3}
@@ -6788,7 +6809,7 @@ PrefabInstance:
     - target: {fileID: 9100325249631570857, guid: ab768921b26078649bf3103a9f723384,
         type: 3}
       propertyPath: m_Value
-      value: 0.9999787
+      value: 0.99997884
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8558605026409245663, guid: ab768921b26078649bf3103a9f723384, type: 3}

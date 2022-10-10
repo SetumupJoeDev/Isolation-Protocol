@@ -11,7 +11,7 @@ public class PlayerController : CharacterBase
 
     //James' Work
 
-    private static PlayerController playerInstance;
+    private static PlayerController playerInstance; 
 
     #region Weapons
 
@@ -158,6 +158,7 @@ public class PlayerController : CharacterBase
     #endregion
 
     public analyticsManager m_enemyCounter;
+    public HUDManager hud;
 
     // Sets up initial values of variables and references not set in inspector
     private void Start()
@@ -228,6 +229,9 @@ public class PlayerController : CharacterBase
                 if ( m_weaponsFree )
                 {
 
+                    hud.EnableWeaponHUD();
+
+
                     if ( Input.GetMouseButton( 0 ) && !m_isInMenu && !m_isStunned )
                     {
                         m_currentWeapon.GetComponent<GunBase>( ).FireWeapon( );
@@ -249,6 +253,10 @@ public class PlayerController : CharacterBase
                     {
                         m_currentWeapon.GetComponent<GunBase>( ).ReloadWeapon( );
                     }
+                }
+                else
+                {
+                    hud.DisableWeaponHUD();
                 }
             }
 

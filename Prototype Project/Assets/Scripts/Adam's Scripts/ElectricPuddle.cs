@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ElectricPuddle : MonoBehaviour
 {
+
+    // lewis' code
+    public bool playerIsInside;
+
     public ParticleSystem   m_particles;
     public bool             m_electrified;
 
@@ -14,11 +18,20 @@ public class ElectricPuddle : MonoBehaviour
     private void Start()
     {
         m_electrified = false;
-        StartCoroutine(NotElectrified());
+      
+    }
+
+    public void PlayerEnterTrigger()
+    {
+        
+            StartCoroutine(NotElectrified());
+       
+
     }
 
     private void Update()
     {
+        
         if(m_electrified && m_caught)
         {
             

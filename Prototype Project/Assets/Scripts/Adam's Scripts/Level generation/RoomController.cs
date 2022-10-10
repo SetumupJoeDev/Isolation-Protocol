@@ -19,6 +19,10 @@ public class RoomController : MonoBehaviour
 
     [Header("Status")]
 
+    //lewis' code
+    public ElectricPuddle[] m_puddle;
+
+
     [Tooltip("Whether or not the player has come into this room")]
     public bool             m_discovered;
 
@@ -216,9 +220,15 @@ public class RoomController : MonoBehaviour
         // Closes the doors and spawns enemies when the player enters the room for the first time
         if (collision.CompareTag("Player") && !m_discovered)
         {
+
             AudioSource.PlayClipAtPoint(m_alarm, transform.position);
 
             m_discovered = true;
+            for (int i = 0; i < 4; i++)
+            {
+                m_puddle[i].PlayerEnterTrigger();
+            }
+             // activates eletric trap in the rooms
             for (int i = 0; i < m_doors.Length; i++)
             {
                 m_doors[i].Close();
