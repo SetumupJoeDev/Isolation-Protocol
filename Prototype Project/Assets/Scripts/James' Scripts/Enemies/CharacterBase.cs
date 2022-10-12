@@ -84,6 +84,16 @@ public class CharacterBase : MonoBehaviour
     #endregion
     // End of Adam's code
 
+
+    #region Time Rewind mechanics
+    
+    #endregion
+
+    private void Start()
+    {
+        
+    }
+
     protected virtual void FixedUpdate()
     {
         //If the character is currently knocked back, then their knockback force is simulated
@@ -135,7 +145,7 @@ public class CharacterBase : MonoBehaviour
 
     public virtual void Die()
     {
-        //Death logic goes here!
+
         Destroy(gameObject);
     }
 

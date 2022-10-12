@@ -91,6 +91,8 @@ public class RangedEnemy : EnemyBase
 
                 projectile.GetComponent<ProjectileBase>( ).m_projectileVelocity = m_aimingDirection;
 
+          
+
                 //Breaks so that only one projectile is fired
                 break;
 

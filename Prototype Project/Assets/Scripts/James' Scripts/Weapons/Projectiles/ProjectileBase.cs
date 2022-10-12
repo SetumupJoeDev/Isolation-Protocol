@@ -54,6 +54,8 @@ public class ProjectileBase : MonoBehaviour
     public virtual void OnEnable()
     {
       
+    //begin recording information, such as transform.position, direction and time of creation. Store here!            ON PROJECTILE HIT or DISABLED!!!
+        
         //Assigns the rigidbody attached to this object as the projectileRigidBody
         m_projectileRigidBody = gameObject.GetComponent<Rigidbody2D>( );
 
@@ -91,6 +93,9 @@ public class ProjectileBase : MonoBehaviour
         //Waits for the duration of the projectile's lifetime before being destroyed
         yield return new WaitForSeconds( lifetime );
 
+
+        //Collect data such as transform.position, then send that along with other data off via Method(data needed for timetravelenabler) or Event(data needed for it)
+        
         DisableProjectile( );
 
     }

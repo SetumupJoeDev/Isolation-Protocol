@@ -13,18 +13,29 @@ public class EnemyHealthManager : HealthManager
     public float m_damagedAmount ;
     public float m_maxHealthFloat;
     public float m_currentHealthFloat;
-    public int number =5;
+    public int number = 5;
 
     public float m_timeAlive;
+   
 
-    //End of Lewis's code.
+    public float[] hello;
+
+    //End of Lewis's code.  
 
     public PlayerController m_playerController;
 
-
+   public static List<enemyList> enemyLists = new List<enemyList>();
+  
+    
     public override void Start()
     {
 
+
+
+
+
+
+  
 
         analyticsEventManager.analytics.onEnemySpawn(gameObject.name);
         //Sets the spriteRenderer to be that attached to the gameObject
@@ -34,11 +45,21 @@ public class EnemyHealthManager : HealthManager
     } 
 
 
+ 
+
+
     private void Update()
     {
-        //Lewis' code
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            TakeDamage(1);
+        }
 
-        m_timeAlive += Time.deltaTime * 1f;
+
+
+        //Lewis' code
+       
+        m_timeAlive += Time.deltaTime;
 
         m_currentHealthFloat = (float)m_currentHealth;
     
@@ -61,9 +82,17 @@ public class EnemyHealthManager : HealthManager
             if ( gameObject.GetComponent<EnemyBase>( ) != null )
             {
 
-                gameObject.GetComponent<EnemyBase>( ).Die( );
+             
+                timeTravelEnabler.m_OnEnemyDeath(); // This calls an event on timeTravelEnabler, when the enemy dies, to prepare the enemy for the time rewind mechanic, 
+                // go to line 50 in timeTravelEnabler script
+                
 
-                analyticsEventManager.analytics.onEnemyDeath( gameObject.name );
+              //  gameObject.GetComponent<EnemyBase>().Die(); // for the time being, we don't want to destroy the gameObject due to the time rewind mechanic
+
+
+                analyticsEventManager.analytics.onEnemyDeath( gameObject.name ); 
+
+               
 
             }
         }

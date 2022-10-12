@@ -107,6 +107,8 @@ public class EnemyBase : CharacterBase
 
     private void Start()
     {
+        
+
         m_enemyAI = GetComponent<AIPath>( );
 
         m_animator = GetComponent<Animator>( );
