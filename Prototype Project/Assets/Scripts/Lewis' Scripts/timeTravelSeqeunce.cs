@@ -20,21 +20,33 @@ public class timeTravelSeqeunce : MonoBehaviour
 
 
     public bool m_playerAlive; //3____ This bool also helps ensure that Rewind() and m_OnPlayerDeath(float) event does not begin prematurely
- 
 
+    public delegate bool m_checkEnemyCanRewind(float time);
+    public static m_checkEnemyCanRewind m_checkEnemyRewind;
 
    
     // Start is called before the first frame update
     void Start()
     {
-      
 
+
+        m_checkEnemyRewind += EnemyCanBeginRewind;
 
         m_playerAlive = true;//4____  See 3
     }
 
     
-
+    public bool EnemyCanBeginRewind(float enemyDeathTime)
+    {
+        if (enemyDeathTime >= m_time)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
   
     // Update is called once per frame
@@ -59,26 +71,26 @@ public class timeTravelSeqeunce : MonoBehaviour
 
 
         }
-       if(count ==0 && m_playerAlive == false) //____7 When the player dies, the event below is triggered
-        {
+     //  if(count ==0 && m_playerAlive == false) //____7 When the player dies, the event below is triggered
+     //   {
 
 
 
-            timeTravelEnabler.m_OnPlayerDeath(m_time); //____8 If player dies, but some enemies survive, this event allows the surviving enemies to time travel. It also 
+         //   timeTravelEnabler.m_OnPlayerDeath(m_time); //____8 If player dies, but some enemies survive, this event allows the surviving enemies to time travel. It also 
             // calls the method that begins time travel
 
 
-            count++;//____9 This means that the event is only triggered once
+          //  count++;//____9 This means that the event is only triggered once
           
  
 
-        }
+      //  }
 
 
-       if(m_rewindTime == true) //_____10 When the rewind begins, calls this method
-        {
-            RewindTime();
-        }
+    //   if(m_rewindTime == true) //_____10 When the rewind begins, calls this method
+      //  {
+        //    RewindTime();
+     //   }
         
       
 

@@ -83,11 +83,11 @@ public class EnemyHealthManager : HealthManager
             {
 
              
-                timeTravelEnabler.m_OnEnemyDeath(); // This calls an event on timeTravelEnabler, when the enemy dies, to prepare the enemy for the time rewind mechanic, 
-                // go to line 50 in timeTravelEnabler script
+         //       timeTravelEnabler.m_OnEnemyDeath(); // This calls an event on timeTravelEnabler, when the enemy dies, to prepare the enemy for the time rewind mechanic, 
+              //   go to line 50 in timeTravelEnabler script
                 
 
-              //  gameObject.GetComponent<EnemyBase>().Die(); // for the time being, we don't want to destroy the gameObject due to the time rewind mechanic
+                gameObject.GetComponent<EnemyBase>().Die(); 
 
 
                 analyticsEventManager.analytics.onEnemyDeath( gameObject.name ); 

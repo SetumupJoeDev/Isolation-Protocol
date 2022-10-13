@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
 public class timeTravelEnabler : MonoBehaviour
 {
-    public GameObject player;
 
-    public EnemyHealthManager healthManager;
+
     public Component[] comps;
     public bool m_isDead;
 
@@ -37,39 +38,42 @@ public class timeTravelEnabler : MonoBehaviour
 
         Positions = new List<Vector3>();
 
-        healthManager =  gameObject.GetComponent<EnemyHealthManager>();
 
-        m_OnEnemyDeath += PrepareEnemyForRewind; // Go to EnemyHealthManager Line 86 for explaination
-        m_OnPlayerDeath += OnPlayerDeathButEnemySurvival; // Line 115
-        m_OnPlayerDeath += Begin; //Line 123
+
+        //   m_OnEnemyDeath += PrepareEnemyForRewind; // Go to EnemyHealthManager Line 86 for explaination
+        //    m_OnPlayerDeath += OnPlayerDeathButEnemySurvival; // Line 115
+        //  m_OnPlayerDeath += Begin; //Line 123
         //_____12 The Functions needed for the rewind mechanic [OnPlayerDeathButEnemySurival && Begin] are associated to m_OnPlayerDeath Event. Go to Line 106 for ____13
 
 
     }
 
-    public void PrepareEnemyForRewind()  //This disables the Sprite renderer, and sets the time of the enemy's death, used to trigger TrueRewind() at the right time, and disables all
-        //components and sets the bool to true to stop the counter. This method is triggered in EnemyHealthManager Line 86 (When the enemy dies)
-        // This method effectively kills the enemy, but does not destory the gameObject so it can be used in the rewind time mechanic. I will add a function or CoRoutine at some point
-        // so that the enemy is not clogging up memory, but only a short backlog of enemies are stored ready for the rewind time mechanic
-    {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        m_timeOfEnemyDeath = m_timeOfEnemyAlive;
-        for (int i = 0; i <= comps.Length; i++)
-        {
-            
-            Component compToBeDestroyed = comps[i];
-         
-            if (compToBeDestroyed != null)
-            {
-                Destroy(compToBeDestroyed);
+    /*  public void PrepareEnemyForRewind()  //This disables the Sprite renderer, and sets the time of the enemy's death, used to trigger TrueRewind() at the right time, and disables all
+          //components and sets the bool to true to stop the counter. This method is triggered in EnemyHealthManager Line 86 (When the enemy dies)
+          // This method effectively kills the enemy, but does not destory the gameObject so it can be used in the rewind time mechanic. I will add a function or CoRoutine at some point
+          // so that the enemy is not clogging up memory, but only a short backlog of enemies are stored ready for the rewind time mechanic
+      {
+          Debug.Log("I ran once");
 
-            }
 
-            m_isDead = true;
+          gameObject.GetComponent<SpriteRenderer>().enabled = false;
+          m_timeOfEnemyDeath = m_timeOfEnemyAlive;
+          for (int i = 0; i <= comps.Length; i++)
+          {
 
-        }
-    }
+              Component compToBeDestroyed = comps[i];
 
+              if (compToBeDestroyed != null)
+              {
+                  Destroy(compToBeDestroyed);
+
+              }
+
+              m_isDead = true;
+
+          }
+      }
+    */
 
 
 
@@ -77,36 +81,37 @@ public class timeTravelEnabler : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-
-       
-
-        
-   
-
-        
+ //   void Update()
+   // {
 
 
 
 
-        }
 
 
-    private void FixedUpdate()
-    {
-        
-            TrueRewind(m_timeOfEnemyDeath); //___ 14 Calls the Rewind Method every Physics Update
-        
-     
-        if(m_isDead == false) //While the enemy is still alive, the Record() method is called every physics update. The Record() method 
-              // Stores in a List the enemy's transform and other actions, allowing for an accurate rewind, it also keeps a timer updated
-        {
-            Record();
-        }
-    }
-    //____13 See below for how these methods allow the Rewind time mechanic to start      Go to Line 97 and Find TrueRewind in the FixedUpdate method for ____14
-    #region Methods for rewind time mechanic
+
+
+
+
+
+  //  }
+
+
+   // private void FixedUpdate()
+  // {
+
+        //   TrueRewind(m_timeOfEnemyDeath); //___ 14 Calls the Rewind Method every Physics Update
+
+
+        //    if(m_isDead == false) //While the enemy is still alive, the Record() method is called every physics update. The Record() method 
+        // Stores in a List the enemy's transform and other actions, allowing for an accurate rewind, it also keeps a timer updated
+        //    {
+        //       Record();
+        //   }
+        //  }
+        //____13 See below for how these methods allow the Rewind time mechanic to start      Go to Line 97 and Find TrueRewind in the FixedUpdate method for ____14
+        #region Methods for rewind time mechanic
+        /*
     public void OnPlayerDeathButEnemySurvival(float m_timeOfPlayerDeath) //Method called at timeTravelSequence Line 69 (eeeeeeey) when the player dies
         // When player dies, this method assigns enemyDeath to be equal to player death time
        // The rewind method uses enemyDeath, despite the enemy not dying, this means the enemy can rewind correctly. 
@@ -122,8 +127,12 @@ public class timeTravelEnabler : MonoBehaviour
       
        M_isRewinding = true; //This allows TrueRewind() to begin Rewinding time every fixedUpdate
 
-    }
+    
+        }
+        */
     #endregion 
+
+        /*
     public void Record() // This method is responsible for updating the 2 Lists every FixedUpdate frame.
     {
         m_timeOfEnemyAlive += Time.deltaTime; //Updates the float to reflect time
@@ -135,7 +144,8 @@ public class timeTravelEnabler : MonoBehaviour
 
     public void TrueRewind(float m_enemyDeathTime)
     {
-        if (M_isRewinding == true && m_enemyDeathTime >= player.GetComponent<timeTravelSeqeunce>().m_time) 
+      
+            if(M_isRewinding == true && timeTravelSeqeunce.m_checkEnemyRewind(m_enemyDeathTime))
             //___15 This method is called every Fixedupdate, but will only set off if we are currently Rewinding and enemyDeathTime is equal to the timeKeeper's time
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true; //___16 This sprite is now visible, so if it had been killed, it can now be seen
@@ -155,6 +165,7 @@ public class timeTravelEnabler : MonoBehaviour
        //     }
        //      }
 
-    }
-}
-
+    } */
+//
+//
+//*/

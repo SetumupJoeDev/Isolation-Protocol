@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 966570563917422951}
+  - component: {fileID: 476913978631110498}
   - component: {fileID: 966570563917422950}
   - component: {fileID: 966570563917422948}
   - component: {fileID: 7822461044899087985}
@@ -44,6 +45,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476913978631110498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966570563917422952}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17ddf5e6f7a5dc4eb694894c594f7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comps:
+  - {fileID: 966570563917422948}
+  - {fileID: 7822461044899087985}
+  - {fileID: 966570563917422949}
+  - {fileID: 8366868516477313486}
+  - {fileID: 966570563917422947}
+  - {fileID: 966570563917422953}
+  - {fileID: -7759136196019019852}
+  - {fileID: -6674609144801313155}
+  m_isDead: 0
+  M_isRewinding: 0
+  count: 0
+  m_timeOfEnemyAlive: 0
+  m_timeOfEnemyDeath: 0
 --- !u!212 &966570563917422950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -141,7 +168,6 @@ MonoBehaviour:
   m_canChasePlayer: 0
   m_lootDropper: {fileID: 8366868516477313486}
   m_spawner: {fileID: 0}
-  m_currentState: 0
   m_animator: {fileID: 966570563917422953}
   m_deathSound: {fileID: 8300000, guid: 5f0c0453fc61bcf40a989e0c14be85e6, type: 3}
   m_windupSound: {fileID: 8300000, guid: 96d24e783f1ffde48a1f16f6ceaff409, type: 3}
@@ -197,8 +223,9 @@ MonoBehaviour:
   m_maxHealthFloat: 0
   m_currentHealthFloat: 0
   number: 5
-  m_playerController: {fileID: 0}
   m_timeAlive: 0
+  hello: []
+  m_playerController: {fileID: 0}
 --- !u!114 &8366868516477313486
 MonoBehaviour:
   m_ObjectHideFlags: 0
